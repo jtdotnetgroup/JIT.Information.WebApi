@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Abp" Version="4.5.0" />
+    <PackageReference Include="Abp.AspNetCore" Version="4.5.0" />
+    <PackageReference Include="Abp.EntityFrameworkCore" Version="4.5.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CommonTools\CommonTools.csproj" />
+    <ProjectReference Include="..\JIT.InfomationSystem.Core\JIT.InfomationSystem.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SystemSetting\WorkingProcedure\" />
+  </ItemGroup>
+
+</Project>
