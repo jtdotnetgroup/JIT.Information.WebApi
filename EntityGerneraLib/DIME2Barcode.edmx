@@ -235,6 +235,28 @@
           <Property Name="完成数量" Type="decimal" Precision="38" Scale="8" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
+警告 6002: 表/视图“DIME2Barcode.dbo.VW_ICMODispBill_By_Date”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VW_ICMODispBill_By_Date">
+          <Key>
+            <PropertyRef Name="FSrcID" />
+            <PropertyRef Name="日期" />
+            <PropertyRef Name="操作员" />
+            <PropertyRef Name="派工数量" />
+            <PropertyRef Name="完成数量" />
+            <PropertyRef Name="合格数量" />
+          </Key>
+          <Property Name="FSrcID" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="日期" Type="datetime" Nullable="false" />
+          <Property Name="机台" Type="int" />
+          <Property Name="班组" Type="int" />
+          <Property Name="操作员" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="派工数量" Type="decimal" Precision="28" Scale="8" Nullable="false" />
+          <Property Name="完成数量" Type="decimal" Precision="28" Scale="8" Nullable="false" />
+          <Property Name="合格数量" Type="decimal" Precision="28" Scale="8" Nullable="false" />
+          <Property Name="FMOBillNo" Type="varchar" MaxLength="200" />
+          <Property Name="FMOInterID" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
 警告 6002: 表/视图“DIME2Barcode.dbo.VW_MOBillList”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="VW_MOBillList">
           <Key>
@@ -486,6 +508,20 @@
     [VW_ICMODaily].[完成数量] AS [完成数量]
     FROM [dbo].[VW_ICMODaily] AS [VW_ICMODaily]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="VW_ICMODispBill_By_Date" EntityType="Self.VW_ICMODispBill_By_Date" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ICMODispBill_By_Date].[FSrcID] AS [FSrcID], 
+    [VW_ICMODispBill_By_Date].[日期] AS [日期], 
+    [VW_ICMODispBill_By_Date].[机台] AS [机台], 
+    [VW_ICMODispBill_By_Date].[班组] AS [班组], 
+    [VW_ICMODispBill_By_Date].[操作员] AS [操作员], 
+    [VW_ICMODispBill_By_Date].[派工数量] AS [派工数量], 
+    [VW_ICMODispBill_By_Date].[完成数量] AS [完成数量], 
+    [VW_ICMODispBill_By_Date].[合格数量] AS [合格数量], 
+    [VW_ICMODispBill_By_Date].[FMOBillNo] AS [FMOBillNo], 
+    [VW_ICMODispBill_By_Date].[FMOInterID] AS [FMOInterID]
+    FROM [dbo].[VW_ICMODispBill_By_Date] AS [VW_ICMODispBill_By_Date]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="VW_MOBillList" EntityType="Self.VW_MOBillList" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [VW_MOBillList].[任务单号] AS [任务单号], 
@@ -514,6 +550,7 @@
           <EntitySet Name="t_ICItem" EntityType="DIME2Barcode.t_ICItem" />
           <EntitySet Name="VW_MOBillList" EntityType="DIME2Barcode.VW_MOBillList" />
           <EntitySet Name="VW_ICMODaily" EntityType="DIME2Barcode.VW_ICMODaily" />
+          <EntitySet Name="VW_ICMODispBill_By_Date" EntityType="DIME2Barcode.VW_ICMODispBill_By_Date" />
         </EntityContainer>
         <EntityType Name="t_ICItem">
           <Key>
@@ -768,6 +805,26 @@
           <Property Name="计划完工日期" Type="DateTime" Precision="3" />
           <Property Name="完成数量" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
         </EntityType>
+        <EntityType Name="VW_ICMODispBill_By_Date">
+          <Key>
+            <PropertyRef Name="FSrcID" />
+            <PropertyRef Name="日期" />
+            <PropertyRef Name="操作员" />
+            <PropertyRef Name="派工数量" />
+            <PropertyRef Name="完成数量" />
+            <PropertyRef Name="合格数量" />
+          </Key>
+          <Property Name="FSrcID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="机台" Type="Int32" />
+          <Property Name="班组" Type="Int32" />
+          <Property Name="操作员" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="派工数量" Type="Decimal" Nullable="false" Precision="28" Scale="8" />
+          <Property Name="完成数量" Type="Decimal" Nullable="false" Precision="28" Scale="8" />
+          <Property Name="合格数量" Type="Decimal" Nullable="false" Precision="28" Scale="8" />
+          <Property Name="FMOBillNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FMOInterID" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1019,6 +1076,22 @@
                 <ScalarProperty Name="任务单号" ColumnName="任务单号" />
                 <ScalarProperty Name="计划单号" ColumnName="计划单号" />
                 <ScalarProperty Name="日期" ColumnName="日期" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ICMODispBill_By_Date">
+            <EntityTypeMapping TypeName="DIME2Barcode.VW_ICMODispBill_By_Date">
+              <MappingFragment StoreEntitySet="VW_ICMODispBill_By_Date">
+                <ScalarProperty Name="FMOInterID" ColumnName="FMOInterID" />
+                <ScalarProperty Name="FMOBillNo" ColumnName="FMOBillNo" />
+                <ScalarProperty Name="合格数量" ColumnName="合格数量" />
+                <ScalarProperty Name="完成数量" ColumnName="完成数量" />
+                <ScalarProperty Name="派工数量" ColumnName="派工数量" />
+                <ScalarProperty Name="操作员" ColumnName="操作员" />
+                <ScalarProperty Name="班组" ColumnName="班组" />
+                <ScalarProperty Name="机台" ColumnName="机台" />
+                <ScalarProperty Name="日期" ColumnName="日期" />
+                <ScalarProperty Name="FSrcID" ColumnName="FSrcID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

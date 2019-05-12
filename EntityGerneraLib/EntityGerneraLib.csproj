@@ -72,6 +72,9 @@
     <Compile Include="VW_ICMODaily.cs">
       <DependentUpon>DIME2Barcode.tt</DependentUpon>
     </Compile>
+    <Compile Include="VW_ICMODispBill_By_Date.cs">
+      <DependentUpon>DIME2Barcode.tt</DependentUpon>
+    </Compile>
     <Compile Include="VW_MOBillList.cs">
       <DependentUpon>DIME2Barcode.tt</DependentUpon>
     </Compile>

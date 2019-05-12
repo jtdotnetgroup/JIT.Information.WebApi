@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Abp.Application.Services.Dto;
+﻿using System.ComponentModel.DataAnnotations;
 using Abp.Organizations;
 
 namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
 {
-    public class OrganizationDto:EntityDto<long>
+    public class OrganizationCreateInput
     {
         /// <summary>
         /// TenantId of this entity.
@@ -33,8 +30,5 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
         /// </summary>
         [Required]
         public virtual string DisplayName { get; set; }
-
-        public virtual ICollection<OrganizationDto> Children { get; set; }
-
     }
 }
