@@ -12,6 +12,7 @@ using Abp.Zero.Configuration;
 using JIT.InfomationSystem.Authentication.JwtBearer;
 using JIT.InfomationSystem.Configuration;
 using JIT.InfomationSystem.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
 
 namespace JIT.InfomationSystem
 {
@@ -63,6 +64,7 @@ namespace JIT.InfomationSystem
 
         public override void Initialize()
         {
+
             IocManager.RegisterAssemblyByConvention(typeof(InfomationSystemWebCoreModule).GetAssembly());
         }
     }

@@ -54,6 +54,10 @@ namespace JIT.DIME2Barcode.AppService
         {
             decimal? totalCommitQty = 0;
 
+            try
+            {
+
+           
 
             foreach (var dispBillI in input.Details)
             {
@@ -66,6 +70,7 @@ namespace JIT.DIME2Barcode.AppService
                      */
                     entity = new ICMODispBill()
                     {
+                        FID = Guid.NewGuid().ToString(),
                         FSrcID = dailyFid,
                         FWorkCenterID = dispBillI.FWorkCenterID,
                         FMachineID = dispBillI.FMachineID,
@@ -73,7 +78,8 @@ namespace JIT.DIME2Barcode.AppService
                         FMOInterID =dispBillI.FMOInterID,
                         FCommitAuxQty = dispBillI.FCommitAuxQty,
                         FBiller = AbpSession.UserId.ToString(),
-                        FDate = DateTime.Now
+                        FDate = DateTime.Now,
+                        FBillNo = "DI"+DateTime.Now.ToString("yyyyMMddHHmmss")+new Random().Next(1,10).ToString()
                     };
 
                     totalCommitQty += dispBillI.FCommitAuxQty;
@@ -99,6 +105,12 @@ namespace JIT.DIME2Barcode.AppService
             }
 
             return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
 
         }
 

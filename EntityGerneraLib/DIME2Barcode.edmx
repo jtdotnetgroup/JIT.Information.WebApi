@@ -241,6 +241,7 @@
             <PropertyRef Name="FSrcID" />
             <PropertyRef Name="日期" />
             <PropertyRef Name="操作员" />
+            <PropertyRef Name="计划数量" />
             <PropertyRef Name="派工数量" />
             <PropertyRef Name="完成数量" />
             <PropertyRef Name="合格数量" />
@@ -250,6 +251,7 @@
           <Property Name="机台" Type="int" />
           <Property Name="班组" Type="int" />
           <Property Name="操作员" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="计划数量" Type="decimal" Precision="28" Scale="8" Nullable="false" />
           <Property Name="派工数量" Type="decimal" Precision="28" Scale="8" Nullable="false" />
           <Property Name="完成数量" Type="decimal" Precision="28" Scale="8" Nullable="false" />
           <Property Name="合格数量" Type="decimal" Precision="28" Scale="8" Nullable="false" />
@@ -515,6 +517,7 @@
     [VW_ICMODispBill_By_Date].[机台] AS [机台], 
     [VW_ICMODispBill_By_Date].[班组] AS [班组], 
     [VW_ICMODispBill_By_Date].[操作员] AS [操作员], 
+    [VW_ICMODispBill_By_Date].[计划数量] AS [计划数量], 
     [VW_ICMODispBill_By_Date].[派工数量] AS [派工数量], 
     [VW_ICMODispBill_By_Date].[完成数量] AS [完成数量], 
     [VW_ICMODispBill_By_Date].[合格数量] AS [合格数量], 
@@ -813,6 +816,7 @@
             <PropertyRef Name="派工数量" />
             <PropertyRef Name="完成数量" />
             <PropertyRef Name="合格数量" />
+            <PropertyRef Name="计划数量" />
           </Key>
           <Property Name="FSrcID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="日期" Type="DateTime" Nullable="false" Precision="3" />
@@ -824,6 +828,7 @@
           <Property Name="合格数量" Type="Decimal" Nullable="false" Precision="28" Scale="8" />
           <Property Name="FMOBillNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="FMOInterID" Type="Int32" />
+          <Property Name="计划数量" Type="Decimal" Nullable="false" Precision="28" Scale="8" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1082,6 +1087,7 @@
           <EntitySetMapping Name="VW_ICMODispBill_By_Date">
             <EntityTypeMapping TypeName="DIME2Barcode.VW_ICMODispBill_By_Date">
               <MappingFragment StoreEntitySet="VW_ICMODispBill_By_Date">
+                <ScalarProperty Name="计划数量" ColumnName="计划数量" />
                 <ScalarProperty Name="FMOInterID" ColumnName="FMOInterID" />
                 <ScalarProperty Name="FMOBillNo" ColumnName="FMOBillNo" />
                 <ScalarProperty Name="合格数量" ColumnName="合格数量" />

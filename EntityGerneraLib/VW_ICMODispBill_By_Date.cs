@@ -24,5 +24,6 @@ namespace EntityGerneraLib
         public decimal 合格数量 { get; set; }
         public string FMOBillNo { get; set; }
         public Nullable<int> FMOInterID { get; set; }
+        public decimal 计划数量 { get; set; }
     }
 }

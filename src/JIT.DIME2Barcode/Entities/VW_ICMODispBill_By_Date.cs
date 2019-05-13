@@ -21,5 +21,6 @@ namespace JIT.DIME2Barcode.Entities
         public decimal 合格数量 { get; set; }
         public string FMOBillNo { get; set; }
         public int? FMOInterID { get; set; }
+        public decimal 计划数量 { get; set; }
     }
 }

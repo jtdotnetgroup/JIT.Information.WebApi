@@ -4,6 +4,7 @@ using Abp.Modules;
 using Abp.Reflection.Extensions;
 using JIT.DIME2Barcode;
 using JIT.InfomationSystem.Configuration;
+using Microsoft.AspNetCore.Cors;
 
 namespace JIT.InfomationSystem.Web.Host.Startup
 {
@@ -20,10 +21,13 @@ namespace JIT.InfomationSystem.Web.Host.Startup
         {
             _env = env;
             _appConfiguration = env.GetAppConfiguration();
+
+           
         }
 
         public override void Initialize()
         {
+
             IocManager.RegisterAssemblyByConvention(typeof(InfomationSystemWebHostModule).GetAssembly());
         }
     }
