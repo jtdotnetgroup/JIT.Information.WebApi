@@ -6,8 +6,12 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
 {
     public class ICMODispBillGetAllInput:PagedResultRequestDto
     {
+        public  DateTime? FDate { get; set; }
+
         [Required]
-        public  DateTime FDate { get; set; }
+        public string FMOBillNo { get; set; }
         
+        [Required]
+        public int FMOInterID { get; set; }
     }
 }

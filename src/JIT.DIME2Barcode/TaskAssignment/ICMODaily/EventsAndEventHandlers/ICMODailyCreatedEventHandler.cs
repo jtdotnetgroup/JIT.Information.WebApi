@@ -18,7 +18,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.EventsAndEventHandlers
         public async void HandleEvent(ICMODailyCreatedtEventData eventData)
         {
             var entity =await SRepository.GetAll().SingleOrDefaultAsync(p =>
-                p.FMOBillNo == eventData.FMOBillNo && p.FMOInterID == eventData.FMOInterID);
+                p.FID==eventData.FSrcID);
 
             if (entity == null)
             {
@@ -30,13 +30,13 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.EventsAndEventHandlers
                     FBiller = eventData.FBiller,
                     FPlanAuxQty = eventData.FPlanAuxQty
                 };
-               await SRepository.InsertAsync(entity);
+                SRepository.Insert(entity);
             }
             else
             {
                 entity.FPlanAuxQty = eventData.FPlanAuxQty;
 
-                await SRepository.UpdateAsync(entity);
+                 SRepository.Update(entity);
             }
         }
     }

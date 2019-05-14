@@ -259,6 +259,19 @@
           <Property Name="FMOInterID" Type="int" />
         </EntityType>
         <!--生成过程中发现错误:
+警告 6002: 表/视图“DIME2Barcode.dbo.VW_ICMOInspectBillList”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="VW_ICMOInspectBillList">
+          <Key>
+            <PropertyRef Name="产品名称" />
+          </Key>
+          <Property Name="派工单号" Type="varchar" MaxLength="200" />
+          <Property Name="产品名称" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="工序" Type="int" />
+          <Property Name="汇报数" Type="decimal" Precision="28" Scale="8" />
+          <Property Name="合格数" Type="decimal" Precision="28" Scale="8" />
+          <Property Name="不合格数" Type="decimal" Precision="28" Scale="8" />
+        </EntityType>
+        <!--生成过程中发现错误:
 警告 6002: 表/视图“DIME2Barcode.dbo.VW_MOBillList”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="VW_MOBillList">
           <Key>
@@ -525,6 +538,16 @@
     [VW_ICMODispBill_By_Date].[FMOInterID] AS [FMOInterID]
     FROM [dbo].[VW_ICMODispBill_By_Date] AS [VW_ICMODispBill_By_Date]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="VW_ICMOInspectBillList" EntityType="Self.VW_ICMOInspectBillList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ICMOInspectBillList].[派工单号] AS [派工单号], 
+    [VW_ICMOInspectBillList].[产品名称] AS [产品名称], 
+    [VW_ICMOInspectBillList].[工序] AS [工序], 
+    [VW_ICMOInspectBillList].[汇报数] AS [汇报数], 
+    [VW_ICMOInspectBillList].[合格数] AS [合格数], 
+    [VW_ICMOInspectBillList].[不合格数] AS [不合格数]
+    FROM [dbo].[VW_ICMOInspectBillList] AS [VW_ICMOInspectBillList]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="VW_MOBillList" EntityType="Self.VW_MOBillList" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [VW_MOBillList].[任务单号] AS [任务单号], 
@@ -554,6 +577,7 @@
           <EntitySet Name="VW_MOBillList" EntityType="DIME2Barcode.VW_MOBillList" />
           <EntitySet Name="VW_ICMODaily" EntityType="DIME2Barcode.VW_ICMODaily" />
           <EntitySet Name="VW_ICMODispBill_By_Date" EntityType="DIME2Barcode.VW_ICMODispBill_By_Date" />
+          <EntitySet Name="VW_ICMOInspectBillList" EntityType="DIME2Barcode.VW_ICMOInspectBillList" />
         </EntityContainer>
         <EntityType Name="t_ICItem">
           <Key>
@@ -830,6 +854,17 @@
           <Property Name="FMOInterID" Type="Int32" />
           <Property Name="计划数量" Type="Decimal" Nullable="false" Precision="28" Scale="8" />
         </EntityType>
+        <EntityType Name="VW_ICMOInspectBillList">
+          <Key>
+            <PropertyRef Name="产品名称" />
+          </Key>
+          <Property Name="派工单号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="产品名称" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="工序" Type="Int32" />
+          <Property Name="汇报数" Type="Decimal" Precision="28" Scale="8" />
+          <Property Name="合格数" Type="Decimal" Precision="28" Scale="8" />
+          <Property Name="不合格数" Type="Decimal" Precision="28" Scale="8" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1098,6 +1133,18 @@
                 <ScalarProperty Name="机台" ColumnName="机台" />
                 <ScalarProperty Name="日期" ColumnName="日期" />
                 <ScalarProperty Name="FSrcID" ColumnName="FSrcID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ICMOInspectBillList">
+            <EntityTypeMapping TypeName="DIME2Barcode.VW_ICMOInspectBillList">
+              <MappingFragment StoreEntitySet="VW_ICMOInspectBillList">
+                <ScalarProperty Name="不合格数" ColumnName="不合格数" />
+                <ScalarProperty Name="合格数" ColumnName="合格数" />
+                <ScalarProperty Name="汇报数" ColumnName="汇报数" />
+                <ScalarProperty Name="工序" ColumnName="工序" />
+                <ScalarProperty Name="产品名称" ColumnName="产品名称" />
+                <ScalarProperty Name="派工单号" ColumnName="派工单号" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

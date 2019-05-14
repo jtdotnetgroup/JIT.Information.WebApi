@@ -14,13 +14,13 @@ using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICMODaily.EventsAndEventHandlers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace JIT.DIME2Barcode.TaskAssignment
 {
     /// <summary>
     /// 任务排产接口服务
     /// </summary>
-    [UnitOfWork]
     public class ICMODailyAppService :ApplicationService
     {
         public IEventBus EventBus { get; set; } 
@@ -86,18 +86,21 @@ namespace JIT.DIME2Barcode.TaskAssignment
                     p.FShift == item.FShift && p.FMachineID == item.FMachineID &&
                     item.FWorkCenterID == p.FWorkCenterID && item.FDate == p.FDate);
 
-                totoalPlan += item.FPlanAuxQty;
+                
                 Entities.ICMODaily insertUpdateObj = null;
 
                 if (daily != null)
                 {
+                    totoalPlan -= daily.FPlanAuxQty;
+                    totoalPlan += item.FPlanAuxQty;
                     insertUpdateObj = daily;
                     insertUpdateObj.FPlanAuxQty = item.FPlanAuxQty;
                     Repository.Update(insertUpdateObj);
                 }
                 else
                 {
-                    var index = (dailyList.Count + 1).ToString("000");
+                    totoalPlan += item.FPlanAuxQty;
+                    var index = (input.Dailies.IndexOf(item)+dailyList.Count + 1).ToString("000");
                     insertUpdateObj = new Entities.ICMODaily()
                     {
                         FMachineID = item.FMachineID,
@@ -114,11 +117,11 @@ namespace JIT.DIME2Barcode.TaskAssignment
                         FDate =item.FDate.Date
                     };
 
-                   var entity=  await Repository.InsertAsync(insertUpdateObj);
+                   var entity=   Repository.Insert(insertUpdateObj);
                 }
             }
             //通过触发事件更新任务计划单的总排产数
-            await EventBus.TriggerAsync(new ICMODailyCreatedtEventData
+             await InsertOrUpdateICMOSchedul(new ICMODailyCreatedtEventData
             {
                 FSrcID = fsrcId,
                 FMOBillNo = input.FMOBillNo,
@@ -127,6 +130,31 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 FPlanAuxQty = totoalPlan
             });
             return null;
+        }
+
+        protected async Task InsertOrUpdateICMOSchedul(ICMODailyCreatedtEventData eventData)
+        {
+            var entity = await SRepository.GetAll().SingleOrDefaultAsync(p =>
+                p.FID == eventData.FSrcID);
+
+            if (entity == null)
+            {
+                entity = new ICMOSchedule()
+                {
+                    FID = eventData.FSrcID,
+                    FBillTime = DateTime.Now,
+                    FBillNo = "SC-" + eventData.FMOBillNo,
+                    FBiller = eventData.FBiller,
+                    FPlanAuxQty = eventData.FPlanAuxQty
+                };
+                SRepository.Insert(entity);
+            }
+            else
+            {
+                entity.FPlanAuxQty = eventData.FPlanAuxQty;
+
+                SRepository.Update(entity);
+            }
         }
     }
 }

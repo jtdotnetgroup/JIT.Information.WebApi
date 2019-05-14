@@ -4,6 +4,6 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos
 {
     public class ICMODailyGetAllInput:PagedAndSortedResultRequestDto
     {
-        
+        public string FMOInterID { get; set; }
     }
 }

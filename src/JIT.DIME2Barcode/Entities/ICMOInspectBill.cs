@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Abp.Domain.Entities;
 
 namespace JIT.DIME2Barcode.Entities
 {
-    public partial class ICMOInspectBill
+    public partial class ICMOInspectBill:Entity<string>
     {
+        [NotMapped]
+        public override string Id { get; set; }
+
         [Key]
         public string FID { get; set; }
         public int? FMOInterID { get; set; }

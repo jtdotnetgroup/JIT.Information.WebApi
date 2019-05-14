@@ -4,11 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="77dc414f797c46a38f221d6231562bce" Name="Diagram1" ZoomLevel="142" >
+      <Diagram DiagramId="77dc414f797c46a38f221d6231562bce" Name="Diagram1" ZoomLevel="14" >
         <EntityTypeShape EntityType="DIME2Barcode.t_ICItem" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="DIME2Barcode.VW_MOBillList" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="DIME2Barcode.VW_ICMODaily" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="DIME2Barcode.VW_ICMODispBill_By_Date" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="DIME2Barcode.VW_ICMOInspectBillList" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -20,6 +20,7 @@ namespace JIT.DIME2Barcode.AppService
         public IRepository<VW_ICMODispBill_By_Date,string> VRepository { get; set; }
         public IRepository<ICMODaily,string> DRepository { get; set; }
         public IRepository<ICMODispBill,string> Repository { get; set; }
+        public IRepository<ICMOSchedule, string> SRepository { get; set; }
 
         /// <summary>
         /// 任务派工界面数据
@@ -28,12 +29,16 @@ namespace JIT.DIME2Barcode.AppService
         /// <returns></returns>
         public  async  Task<PagedResultDto<ICMODispBillListDto>> GetAll(ICMODispBillGetAllInput input)
         {
-            var query = VRepository.GetAll().Where(p=>p.日期==input.FDate);
+
+            var query = VRepository.GetAll()
+                .Where(p => p.FMOBillNo == input.FMOBillNo && p.FMOInterID == input.FMOInterID);
+
+            query =input.FDate==null?query: query.Where(p=>p.日期==input.FDate);
 
             var count = await query.CountAsync();
             try
             {
-                var data = query.ToList();
+                var data =await query.ToListAsync();
                 var list = data.MapTo(new List<ICMODispBillListDto>());
 
                 return new PagedResultDto<ICMODispBillListDto>(count, list);
