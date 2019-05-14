@@ -120,7 +120,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
                    var entity=   Repository.Insert(insertUpdateObj);
                 }
             }
-            //通过触发事件更新任务计划单的总排产数
+            //更新任务计划单的总排产数
              await InsertOrUpdateICMOSchedul(new ICMODailyCreatedtEventData
             {
                 FSrcID = fsrcId,

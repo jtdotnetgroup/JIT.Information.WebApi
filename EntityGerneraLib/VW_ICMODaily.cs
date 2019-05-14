@@ -14,6 +14,7 @@ namespace EntityGerneraLib
     
     public partial class VW_ICMODaily
     {
+        
         public System.DateTime 日期 { get; set; }
         public string 计划单号 { get; set; }
         public string 任务单号 { get; set; }

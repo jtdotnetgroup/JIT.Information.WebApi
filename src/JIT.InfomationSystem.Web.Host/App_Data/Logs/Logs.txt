@@ -18760,3 +18760,126 @@ INFO  2019-05-14 09:32:47,735 [18   ] ore.Mvc.Internal.ControllerActionInvoker -
 INFO  2019-05-14 09:32:47,747 [18   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
 INFO  2019-05-14 09:32:47,753 [18   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.AppService.ICMOInspectBillAppService.GetAll (JIT.DIME2Barcode) in 771.9084ms
 INFO  2019-05-14 09:32:47,756 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 798.3425ms 200 application/json; charset=utf-8
+DEBUG 2019-05-14 09:35:32,331 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-14 09:35:32,350 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2019-05-14 09:35:32,368 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.Web.Host.Startup.InfomationSystemWebHostModule, JIT.InfomationSystem.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,371 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.InfomationSystemWebCoreModule, JIT.InfomationSystem.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,371 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.InfomationSystemApplicationModule, JIT.InfomationSystem.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,371 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.InfomationSystemCoreModule, JIT.InfomationSystem.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,371 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,372 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,372 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,372 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,372 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.EntityFrameworkCore.InfomationSystemEntityFrameworkModule, JIT.InfomationSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,373 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,373 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,373 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,373 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,374 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,374 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,374 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.DIME2Barcode.JITDIME2BarcodeModule, JIT.DIME2Barcode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,377 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2019-05-14 09:35:32,426 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-14 09:35:32,426 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-14 09:35:32,426 [1    ] o.Configuration.LanguageManagementConfig - Converted InfomationSystem (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-14 09:35:32,426 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-14 09:35:32,668 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: JIT.InfomationSystem.EntityFrameworkCore.InfomationSystemDbContext, JIT.InfomationSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:32,734 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: JIT.DIME2Barcode.Entities.Dime2barcodeContext, JIT.DIME2Barcode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 09:35:33,012 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-14 09:35:33,068 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-14 09:35:33,110 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-14 09:35:33,137 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: InfomationSystem
+DEBUG 2019-05-14 09:35:33,179 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-14 09:35:33,219 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
+DEBUG 2019-05-14 09:35:33,256 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2019-05-14 09:35:33,256 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-14 09:35:33,261 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Users.Dto.CreateUserDto
+DEBUG 2019-05-14 09:35:33,262 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Users.Dto.UserDto
+DEBUG 2019-05-14 09:35:33,262 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-14 09:35:33,262 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-14 09:35:33,262 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-14 09:35:33,262 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Roles.Dto.PermissionDto
+DEBUG 2019-05-14 09:35:33,262 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Roles.Dto.RoleDto
+DEBUG 2019-05-14 09:35:33,263 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-14 09:35:33,263 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.MultiTenancy.Dto.TenantDto
+DEBUG 2019-05-14 09:35:33,263 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.DispBillCreateInput
+DEBUG 2019-05-14 09:35:33,263 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingDto
+INFO  2019-05-14 09:35:36,502 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000254&fMOInterID=1624  
+INFO  2019-05-14 09:35:36,546 [5    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:35:36,588 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 89.7658ms 204 
+INFO  2019-05-14 09:35:36,608 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000254&fMOInterID=1624  
+INFO  2019-05-14 09:35:36,608 [5    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:35:36,725 [5    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 09:35:37,814 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "ICMODispBill"}. Executing action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode)
+INFO  2019-05-14 09:35:37,825 [13   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:35:38,185 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.ICMODispBillGetAllInput) - Validation state: Valid
+INFO  2019-05-14 09:35:38,453 [5    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 266.1794ms.
+INFO  2019-05-14 09:35:38,665 [9    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 09:35:38,701 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) in 883.7966ms
+INFO  2019-05-14 09:35:38,721 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2113.3596ms 200 application/json; charset=utf-8
+INFO  2019-05-14 09:37:34,779 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000245&fMOInterID=1612  
+INFO  2019-05-14 09:37:34,779 [18   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:37:34,779 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2121ms 204 
+INFO  2019-05-14 09:37:34,971 [25   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000245&fMOInterID=1612  
+INFO  2019-05-14 09:37:34,972 [25   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:37:34,973 [25   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 09:37:34,978 [25   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "ICMODispBill"}. Executing action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode)
+INFO  2019-05-14 09:37:34,979 [25   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:37:34,982 [25   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.ICMODispBillGetAllInput) - Validation state: Valid
+INFO  2019-05-14 09:37:35,034 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 51.9805ms.
+INFO  2019-05-14 09:37:35,062 [23   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 09:37:35,075 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) in 96.7732ms
+INFO  2019-05-14 09:37:35,076 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 104.8108ms 200 application/json; charset=utf-8
+INFO  2019-05-14 09:48:07,258 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000245&fMOInterID=1612  
+INFO  2019-05-14 09:48:07,259 [47   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:48:07,259 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2483ms 204 
+INFO  2019-05-14 09:48:07,291 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000245&fMOInterID=1612  
+INFO  2019-05-14 09:48:07,291 [46   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:48:07,292 [46   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 09:48:07,295 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "ICMODispBill"}. Executing action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode)
+INFO  2019-05-14 09:48:07,295 [46   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:48:07,297 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.ICMODispBillGetAllInput) - Validation state: Valid
+INFO  2019-05-14 09:48:07,314 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 16.854ms.
+INFO  2019-05-14 09:48:07,321 [47   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 09:48:07,322 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) in 26.5163ms
+INFO  2019-05-14 09:48:07,322 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 31.3199ms 200 application/json; charset=utf-8
+INFO  2019-05-14 09:54:09,785 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/AbpUserConfiguration/GetAll  
+INFO  2019-05-14 09:54:09,785 [60   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:54:09,785 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2033ms 204 
+INFO  2019-05-14 09:54:10,310 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/AbpUserConfiguration/GetAll  
+INFO  2019-05-14 09:54:10,310 [60   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:54:10,310 [60   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 09:54:10,325 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+INFO  2019-05-14 09:54:10,326 [60   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:54:10,336 [60   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 09:54:10,992 [62   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 654.9828ms.
+INFO  2019-05-14 09:54:11,029 [62   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 09:54:11,060 [62   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 734.0906ms
+INFO  2019-05-14 09:54:11,060 [62   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 750.2217ms 200 application/json; charset=utf-8
+INFO  2019-05-14 09:54:11,433 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+INFO  2019-05-14 09:54:11,433 [65   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:54:11,433 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1587ms 204 
+INFO  2019-05-14 09:54:11,484 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+INFO  2019-05-14 09:54:11,484 [65   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:54:11,485 [65   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 09:54:11,495 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+INFO  2019-05-14 09:54:11,496 [65   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:54:11,627 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 09:54:12,330 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 702.3953ms.
+INFO  2019-05-14 09:54:12,343 [64   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 09:54:12,351 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 854.9997ms
+INFO  2019-05-14 09:54:12,351 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 867.0364ms 200 application/json; charset=utf-8
+INFO  2019-05-14 09:56:47,916 [75   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/role?t=2019-05-14T01:56:47.853Z  
+INFO  2019-05-14 09:56:47,917 [75   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:56:47,917 [73   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/VW_MOBillList/GetDaTask?Sorting=%E4%BB%BB%E5%8A%A1%E5%8D%95%E5%8F%B7&SkipCount=1&MaxResultCount=100  
+INFO  2019-05-14 09:56:47,917 [75   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.317ms 204 
+INFO  2019-05-14 09:56:47,917 [73   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:56:47,917 [73   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1432ms 204 
+INFO  2019-05-14 09:56:47,969 [76   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/VW_MOBillList/GetDaTask?Sorting=%E4%BB%BB%E5%8A%A1%E5%8D%95%E5%8F%B7&SkipCount=1&MaxResultCount=100  
+INFO  2019-05-14 09:56:47,969 [76   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:56:47,969 [75   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/role?t=2019-05-14T01:56:47.853Z  
+INFO  2019-05-14 09:56:47,969 [75   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 09:56:47,969 [76   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 09:56:47,969 [75   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 09:56:47,987 [75   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 18.6741ms 404 
+INFO  2019-05-14 09:56:47,987 [80   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 18.7466ms 404 
