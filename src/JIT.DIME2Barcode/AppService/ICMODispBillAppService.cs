@@ -140,6 +140,47 @@ namespace JIT.DIME2Barcode.AppService
         }
 
 
+
+        /// <summary>
+        /// 任务派工主表列表接口
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<Array> GetDailyFsrIdTask(
+            ICMODispBillGetAllInputTwo input)
+        {
+            var query = Repository.GetAll()
+                .Where(p => p.FSrcID == input.FSrcID);
+            var count = await query.CountAsync();
+            try
+            {
+                var data = await query.ToListAsync();
+                var list = from a in data
+                    select new
+                    {   
+                        
+                        a.FID, a.FSrcID,
+                        设备 = a.FMachineID, 操作员 = a.FWorker, 班次 = a.FShift,
+                        派工数量 = a.FPlanAuxQty,
+                        派工单号 = a.FBillNo,
+                        派单时间 = a.FBillTime,
+                        计划员 = a.FBiller,
+                        备注=a.FNote,
+                        日期=a.FDate
+                    };
+
+                return list.ToArray();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+        }
+
+
     }
 
     

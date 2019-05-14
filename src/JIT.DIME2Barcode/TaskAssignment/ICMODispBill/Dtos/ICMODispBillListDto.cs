@@ -6,6 +6,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
 {
     public class ICMODispBillListDto : EntityDto<string>
     {
+        public  string FID { get; set; }
         public string FSrcID { get; set; }
         public System.DateTime 日期 { get; set; }
         public int? 机台 { get; set; }

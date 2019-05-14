@@ -13,5 +13,12 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
         
         [Required]
         public int FMOInterID { get; set; }
+
+      
+    }
+
+    public class ICMODispBillGetAllInputTwo : PagedResultRequestDto
+    {
+        public string FSrcID { get; set; }
     }
 }
