@@ -6,8 +6,11 @@ using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using Abp.Linq.Extensions;
 using JIT.DIME2Barcode.Entities;
+using JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos;
+using JIT.DIME2Barcode.TaskAssignment.VW_ICMODispBill_By_Date.Dtos;
 using Microsoft.EntityFrameworkCore;
 
 namespace JIT.DIME2Barcode.AppService
@@ -119,6 +122,25 @@ namespace JIT.DIME2Barcode.AppService
 
         }
 
+        /// <summary>
+        /// 任务派工主表列表接口
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<PagedResultDto<VW_ICMODispBill_By_Date>> GetDailyGroup(
+            VW_ICMODispBill_By_DateGetAllInput input)
+        {
+            var query = VRepository.GetAll();
+
+            var count = await query.CountAsync();
+
+            var data = await query.OrderBy(p => p.日期).PageBy(input).ToListAsync();
+
+            return new PagedResultDto<VW_ICMODispBill_By_Date>(count,data);
+        }
+
 
     }
+
+    
 }
