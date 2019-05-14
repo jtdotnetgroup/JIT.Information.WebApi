@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DIME2Barcode" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="DIME2BarcodeContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="t_ICItem" EntityType="DIME2Barcode.t_ICItem" />
+    <EntitySet Name="VW_MOBillList" EntityType="DIME2Barcode.VW_MOBillList" />
+    <EntitySet Name="VW_ICMODaily" EntityType="DIME2Barcode.VW_ICMODaily" />
+    <EntitySet Name="VW_ICMODispBill_By_Date" EntityType="DIME2Barcode.VW_ICMODispBill_By_Date" />
+    <EntitySet Name="VW_ICMOInspectBillList" EntityType="DIME2Barcode.VW_ICMOInspectBillList" />
+  </EntityContainer>
+  <EntityType Name="t_ICItem">
+    <Key>
+      <PropertyRef Name="FItemID" />
+      <PropertyRef Name="FName" />
+    </Key>
+    <Property Name="FItemID" Type="Int32" Nullable="false" />
+    <Property Name="FModel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FName" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="FHelpCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FDeleted" Type="Int16" />
+    <Property Name="FShortNumber" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="FNumber" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="FModifyTime" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="FParentID" Type="Int32" />
+    <Property Name="FBrNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FTopID" Type="Int32" />
+    <Property Name="FRP" Type="Int16" />
+    <Property Name="FOmortize" Type="Int16" />
+    <Property Name="FOmortizeScale" Type="Int16" />
+    <Property Name="FForSale" Type="Boolean" />
+    <Property Name="FStaCost" Type="Double" />
+    <Property Name="FOrderPrice" Type="Double" />
+    <Property Name="FOrderMethod" Type="Int32" />
+    <Property Name="FPriceFixingType" Type="Int32" />
+    <Property Name="FSalePriceFixingType" Type="Int32" />
+    <Property Name="FPerWastage" Type="Double" />
+    <Property Name="FARAcctID" Type="Int32" />
+    <Property Name="FPlanPriceMethod" Type="Int16" />
+    <Property Name="FPlanClass" Type="Int16" />
+    <Property Name="FErpClsID" Type="Int32" />
+    <Property Name="FUnitID" Type="Int32" />
+    <Property Name="FUnitGroupID" Type="Int32" />
+    <Property Name="FDefaultLoc" Type="Int32" />
+    <Property Name="FSPID" Type="Int32" />
+    <Property Name="FSource" Type="Int32" />
+    <Property Name="FQtyDecimal" Type="Int16" />
+    <Property Name="FLowLimit" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FHighLimit" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FSecInv" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FUseState" Type="Int32" />
+    <Property Name="FIsEquipment" Type="Boolean" />
+    <Property Name="FEquipmentNum" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="FIsSparePart" Type="Boolean" />
+    <Property Name="FFullName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FSecUnitID" Type="Int32" />
+    <Property Name="FSecCoefficient" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FSecUnitDecimal" Type="Int32" />
+    <Property Name="FAlias" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="FOrderUnitID" Type="Int32" />
+    <Property Name="FSaleUnitID" Type="Int32" />
+    <Property Name="FStoreUnitID" Type="Int32" />
+    <Property Name="FProductUnitID" Type="Int32" />
+    <Property Name="FApproveNo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="FAuxClassID" Type="Int32" />
+    <Property Name="FTypeID" Type="Int32" />
+    <Property Name="FPreDeadLine" Type="Int32" />
+    <Property Name="FSerialClassID" Type="Int32" />
+    <Property Name="FOrderRector" Type="Int32" />
+    <Property Name="FPOHghPrcMnyType" Type="Int32" />
+    <Property Name="FPOHighPrice" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FWWHghPrc" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FWWHghPrcMnyType" Type="Int32" />
+    <Property Name="FSOLowPrc" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FSOLowPrcMnyType" Type="Int32" />
+    <Property Name="FIsSale" Type="Boolean" />
+    <Property Name="FProfitRate" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FSalePrice" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FBatchManager" Type="Boolean" />
+    <Property Name="FISKFPeriod" Type="Boolean" />
+    <Property Name="FKFPeriod" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FTrack" Type="Int32" />
+    <Property Name="FPlanPrice" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FPriceDecimal" Type="Int16" />
+    <Property Name="FAcctID" Type="Int32" />
+    <Property Name="FSaleAcctID" Type="Int32" />
+    <Property Name="FCostAcctID" Type="Int32" />
+    <Property Name="FAPAcctID" Type="Int32" />
+    <Property Name="FGoodSpec" Type="Int32" />
+    <Property Name="FCostProject" Type="Int32" />
+    <Property Name="FIsSnManage" Type="Boolean" />
+    <Property Name="FStockTime" Type="Boolean" />
+    <Property Name="FBookPlan" Type="Boolean" />
+    <Property Name="FBeforeExpire" Type="Int32" />
+    <Property Name="FTaxRate" Type="Int32" />
+    <Property Name="FAdminAcctID" Type="Int32" />
+    <Property Name="FNote" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="FIsSpecialTax" Type="Boolean" />
+    <Property Name="FSOHighLimit" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FSOLowLimit" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FOIHighLimit" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FOILowLimit" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FDaysPer" Type="Int32" />
+    <Property Name="FLastCheckDate" Type="DateTime" Precision="3" />
+    <Property Name="FCheckCycle" Type="Int32" />
+    <Property Name="FCheckCycUnit" Type="Int32" />
+    <Property Name="FStockPrice" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FABCCls" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="FBatchQty" Type="Double" />
+    <Property Name="FClass" Type="Boolean" />
+    <Property Name="FCostDiffRate" Type="Double" />
+    <Property Name="FDepartment" Type="Int32" />
+    <Property Name="FSaleTaxAcctID" Type="Int32" />
+    <Property Name="FCBBmStandardID" Type="Int32" />
+    <Property Name="FCBRestore" Type="Int32" />
+    <Property Name="FPickHighLimit" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FPickLowLimit" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FPlanTrategy" Type="Int32" />
+    <Property Name="FOrderTrategy" Type="Int32" />
+    <Property Name="FLeadTime" Type="Single" />
+    <Property Name="FFixLeadTime" Type="Single" />
+    <Property Name="FTotalTQQ" Type="Int32" />
+    <Property Name="FQtyMin" Type="Decimal" Precision="23" Scale="10" />
+    <Property Name="FQtyMax" Type="Decimal" Precision="23" Scale="10" />
+    <Property Name="FCUUnitID" Type="Int32" />
+    <Property Name="FOrderInterVal" Type="Int32" />
+    <Property Name="FBatchAppendQty" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FOrderPoint" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FBatFixEconomy" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FBatChangeEconomy" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FRequirePoint" Type="Int32" />
+    <Property Name="FPlanPoint" Type="Int32" />
+    <Property Name="FDefaultRoutingID" Type="Int32" />
+    <Property Name="FDefaultWorkTypeID" Type="Int32" />
+    <Property Name="FProductPrincipal" Type="Int32" />
+    <Property Name="FDailyConsume" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FMRPCon" Type="Boolean" />
+    <Property Name="FPlanner" Type="Int32" />
+    <Property Name="FPutInteger" Type="Boolean" />
+    <Property Name="FInHighLimit" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FInLowLimit" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FLowestBomCode" Type="Int32" />
+    <Property Name="FMRPOrder" Type="Boolean" />
+    <Property Name="FIsCharSourceItem" Type="Int32" />
+    <Property Name="FCharSourceItemID" Type="Int32" />
+    <Property Name="FPlanMode" Type="Int32" />
+    <Property Name="FCtrlType" Type="Int32" />
+    <Property Name="FCtrlStraregy" Type="Int32" />
+    <Property Name="FContainerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FKanBanCapability" Type="Int32" />
+    <Property Name="FIsBackFlush" Type="Int32" />
+    <Property Name="FBackFlushStockID" Type="Int32" />
+    <Property Name="FBackFlushSPID" Type="Int32" />
+    <Property Name="F_102" Type="Double" />
+    <Property Name="F_103" Type="Double" />
+    <Property Name="F_104" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="F_105" Type="Int32" />
+    <Property Name="F_106" Type="Int32" />
+    <Property Name="F_107" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="F_108" Type="Int32" />
+    <Property Name="FChartNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FIsKeyItem" Type="Boolean" />
+    <Property Name="FMaund" Type="Int32" />
+    <Property Name="FGrossWeight" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FNetWeight" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FCubicMeasure" Type="Int32" />
+    <Property Name="FLength" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FWidth" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FHeight" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FSize" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FVersion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FStandardCost" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FStandardManHour" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FStdPayRate" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FChgFeeRate" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FStdFixFeeRate" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FOutMachFee" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FPieceRate" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FStdBatchQty" Type="Decimal" Precision="23" Scale="10" />
+    <Property Name="FPOVAcctID" Type="Int32" />
+    <Property Name="FPIVAcctID" Type="Int32" />
+    <Property Name="FMCVAcctID" Type="Int32" />
+    <Property Name="FPCVAcctID" Type="Int32" />
+    <Property Name="FSLAcctID" Type="Int32" />
+    <Property Name="FCAVAcctID" Type="Int32" />
+    <Property Name="FCBAppendRate" Type="Decimal" Precision="23" Scale="10" />
+    <Property Name="FCBAppendProject" Type="Int32" />
+    <Property Name="FCostBomID" Type="Int32" />
+    <Property Name="FCBRouting" Type="Int32" />
+    <Property Name="FOutMachFeeProject" Type="Int32" />
+    <Property Name="FInspectionLevel" Type="Int32" />
+    <Property Name="FInspectionProject" Type="Int32" />
+    <Property Name="FIsListControl" Type="Int32" />
+    <Property Name="FProChkMde" Type="Int32" />
+    <Property Name="FWWChkMde" Type="Int32" />
+    <Property Name="FSOChkMde" Type="Int32" />
+    <Property Name="FWthDrwChkMde" Type="Int32" />
+    <Property Name="FStkChkMde" Type="Int32" />
+    <Property Name="FOtherChkMde" Type="Int32" />
+    <Property Name="FStkChkPrd" Type="Int32" />
+    <Property Name="FStkChkAlrm" Type="Int32" />
+    <Property Name="FIdentifier" Type="Int32" />
+    <Property Name="FNameEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FModelEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FHSNumber" Type="Int32" />
+    <Property Name="FFirstUnit" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FSecondUnit" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FFirstUnitRate" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FSecondUnitRate" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FIsManage" Type="Boolean" />
+    <Property Name="FPackType" Type="Int32" />
+    <Property Name="FLenDecimal" Type="Int32" />
+    <Property Name="FCubageDecimal" Type="Int32" />
+    <Property Name="FWeightDecimal" Type="Int32" />
+    <Property Name="FImpostTaxRate" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FConsumeTaxRate" Type="Decimal" Precision="28" Scale="10" />
+    <Property Name="FManageType" Type="Int32" />
+    <Property Name="FExportRate" Type="Decimal" Precision="28" Scale="10" />
+  </EntityType>
+  <EntityType Name="VW_MOBillList">
+    <Key>
+      <PropertyRef Name="任务单号" />
+      <PropertyRef Name="销售订单" />
+      <PropertyRef Name="产品名称" />
+      <PropertyRef Name="单位" />
+      <PropertyRef Name="批号" />
+      <PropertyRef Name="计划生产数量" />
+      <PropertyRef Name="入库数量" />
+      <PropertyRef Name="FMOInterID" />
+      <PropertyRef Name="FStatus" />
+    </Key>
+    <Property Name="任务单号" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="状态" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="销售订单" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="车间" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="产品编码" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="产品名称" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="规格型号" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="单位" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="批号" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="计划生产数量" Type="Decimal" Nullable="false" Precision="28" Scale="10" />
+    <Property Name="入库数量" Type="Decimal" Nullable="false" Precision="28" Scale="10" />
+    <Property Name="计划开工日期" Type="DateTime" Precision="3" />
+    <Property Name="计划完工日期" Type="DateTime" Precision="3" />
+    <Property Name="FMOInterID" Type="Int32" Nullable="false" />
+    <Property Name="FStatus" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_ICMODaily">
+    <Key>
+      <PropertyRef Name="日期" />
+      <PropertyRef Name="完成数量" />
+    </Key>
+    <Property Name="日期" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="计划单号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="任务单号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="车间" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="产品编码" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="产品名称" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="规格型号" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="计划数量" Type="Decimal" Precision="38" Scale="8" />
+    <Property Name="计划开工日期" Type="DateTime" Precision="3" />
+    <Property Name="计划完工日期" Type="DateTime" Precision="3" />
+    <Property Name="完成数量" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+  </EntityType>
+  <EntityType Name="VW_ICMODispBill_By_Date">
+    <Key>
+      <PropertyRef Name="FSrcID" />
+      <PropertyRef Name="日期" />
+      <PropertyRef Name="操作员" />
+      <PropertyRef Name="派工数量" />
+      <PropertyRef Name="完成数量" />
+      <PropertyRef Name="合格数量" />
+      <PropertyRef Name="计划数量" />
+    </Key>
+    <Property Name="FSrcID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="日期" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="机台" Type="Int32" />
+    <Property Name="班组" Type="Int32" />
+    <Property Name="操作员" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="派工数量" Type="Decimal" Nullable="false" Precision="28" Scale="8" />
+    <Property Name="完成数量" Type="Decimal" Nullable="false" Precision="28" Scale="8" />
+    <Property Name="合格数量" Type="Decimal" Nullable="false" Precision="28" Scale="8" />
+    <Property Name="FMOBillNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FMOInterID" Type="Int32" />
+    <Property Name="计划数量" Type="Decimal" Nullable="false" Precision="28" Scale="8" />
+  </EntityType>
+  <EntityType Name="VW_ICMOInspectBillList">
+    <Key>
+      <PropertyRef Name="产品名称" />
+    </Key>
+    <Property Name="派工单号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="产品名称" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="工序" Type="Int32" />
+    <Property Name="汇报数" Type="Decimal" Precision="28" Scale="8" />
+    <Property Name="合格数" Type="Decimal" Precision="28" Scale="8" />
+    <Property Name="不合格数" Type="Decimal" Precision="28" Scale="8" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,13 @@
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\bin\Debug\EntityGerneraLib.dll.config
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\bin\Debug\EntityGerneraLib.dll
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\bin\Debug\EntityGerneraLib.pdb
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\bin\Debug\EntityFramework.dll
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\bin\Debug\EntityFramework.SqlServer.dll
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\bin\Debug\EntityFramework.xml
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\bin\Debug\EntityFramework.SqlServer.xml
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\obj\Debug\EntityGerneraLib.csprojAssemblyReference.cache
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\obj\Debug\EntityGerneraLib.csproj.CoreCompileInputs.cache
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\obj\Debug\EntityGerneraLib.csproj.CopyComplete
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\obj\Debug\EntityGerneraLib.dll
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\obj\Debug\EntityGerneraLib.pdb

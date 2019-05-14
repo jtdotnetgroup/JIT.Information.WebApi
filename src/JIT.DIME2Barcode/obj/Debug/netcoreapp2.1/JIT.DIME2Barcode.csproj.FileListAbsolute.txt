@@ -1,0 +1,14 @@
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.deps.json
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.dll
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csproj.CoreCompileInputs.cache
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.AssemblyInfoInputs.cache
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.AssemblyInfo.cs
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csprojAssemblyReference.cache
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.pdb
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.dll
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.pdb
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.dll
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.pdb
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csproj.CopyComplete
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\CommonTools.dll
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\CommonTools.pdb
