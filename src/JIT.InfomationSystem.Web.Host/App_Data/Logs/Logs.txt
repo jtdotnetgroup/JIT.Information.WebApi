@@ -20325,3 +20325,891 @@ INFO  2019-05-14 12:39:13,200 [11   ] ore.Mvc.Internal.ControllerActionInvoker -
 INFO  2019-05-14 12:39:13,274 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1772.7644ms 302 
 INFO  2019-05-14 12:39:13,279 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://192.168.1.168:21021/swagger  0
 INFO  2019-05-14 12:39:13,294 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 14.9024ms 404 
+INFO  2019-05-14 12:39:46,225 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://192.168.1.168:21021/  0
+INFO  2019-05-14 12:39:46,238 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host)
+INFO  2019-05-14 12:39:46,241 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host) - Validation state: Valid
+INFO  2019-05-14 12:39:46,241 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 0.0076ms.
+INFO  2019-05-14 12:39:46,252 [11   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-05-14 12:39:46,253 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host) in 14.3945ms
+INFO  2019-05-14 12:39:46,253 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 28.1939ms 302 
+INFO  2019-05-14 12:39:46,264 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://192.168.1.168:21021/swagger  0
+INFO  2019-05-14 12:39:46,266 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.2469ms 404 
+INFO  2019-05-14 12:42:37,487 [24   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://192.168.1.168:21021/  0
+INFO  2019-05-14 12:42:37,499 [24   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host)
+INFO  2019-05-14 12:42:37,501 [24   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host) - Validation state: Valid
+INFO  2019-05-14 12:42:37,501 [24   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 0.002ms.
+INFO  2019-05-14 12:42:37,519 [26   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-05-14 12:42:37,519 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host) in 20.1701ms
+INFO  2019-05-14 12:42:37,519 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 32.4245ms 302 
+INFO  2019-05-14 12:42:37,528 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://192.168.1.168:21021/swagger  0
+INFO  2019-05-14 12:42:37,529 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9623ms 404 
+INFO  2019-05-14 12:44:17,000 [35   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/  
+INFO  2019-05-14 12:44:17,007 [35   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host)
+INFO  2019-05-14 12:44:17,008 [35   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host) - Validation state: Valid
+INFO  2019-05-14 12:44:17,008 [35   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 0.0018ms.
+INFO  2019-05-14 12:44:17,022 [35   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-05-14 12:44:17,022 [35   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host) in 15.4506ms
+INFO  2019-05-14 12:44:17,023 [35   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 23.6132ms 302 
+INFO  2019-05-14 12:44:17,029 [35   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/swagger  
+INFO  2019-05-14 12:44:17,030 [35   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.1046ms 301 
+INFO  2019-05-14 12:44:17,035 [34   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/swagger/index.html  
+INFO  2019-05-14 12:44:17,057 [34   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 21.636ms 200 text/html
+INFO  2019-05-14 13:52:33,372 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000245&fMOInterID=1612  
+WARN  2019-05-14 13:52:33,402 [29   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 13:52:33,403 [29   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 13:52:33,411 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 38.2869ms 204 
+INFO  2019-05-14 13:52:33,426 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000245&fMOInterID=1612  
+WARN  2019-05-14 13:52:33,426 [29   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 13:52:33,426 [29   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 13:52:33,511 [29   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 13:52:33,616 [35   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "ICMODispBill"}. Executing action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 13:52:33,616 [35   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 13:52:33,616 [35   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 13:52:34,055 [35   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.ICMODispBillGetAllInput) - Validation state: Valid
+INFO  2019-05-14 13:52:34,466 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 411.2016ms.
+INFO  2019-05-14 13:52:34,504 [34   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 13:52:34,547 [34   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) in 931.6778ms
+INFO  2019-05-14 13:52:34,549 [34   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1122.875ms 200 application/json; charset=utf-8
+INFO  2019-05-14 13:52:38,361 [35   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000254&fMOInterID=1624  
+WARN  2019-05-14 13:52:38,361 [35   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 13:52:38,361 [35   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 13:52:38,361 [35   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2209ms 204 
+INFO  2019-05-14 13:52:38,400 [28   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000254&fMOInterID=1624  
+WARN  2019-05-14 13:52:38,401 [28   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 13:52:38,401 [28   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 13:52:38,402 [28   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 13:52:38,406 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "ICMODispBill"}. Executing action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 13:52:38,406 [28   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 13:52:38,406 [28   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 13:52:38,414 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.ICMODispBillGetAllInput) - Validation state: Valid
+INFO  2019-05-14 13:52:38,434 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 19.4513ms.
+INFO  2019-05-14 13:52:38,444 [28   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 13:52:38,444 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) in 37.9789ms
+INFO  2019-05-14 13:52:38,444 [28   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 44.2834ms 200 application/json; charset=utf-8
+INFO  2019-05-14 13:54:20,902 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000254&fMOInterID=1624  
+WARN  2019-05-14 13:54:20,902 [29   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 13:54:20,902 [29   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 13:54:20,903 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2719ms 204 
+INFO  2019-05-14 13:54:20,911 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000254&fMOInterID=1624  
+WARN  2019-05-14 13:54:20,911 [29   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 13:54:20,911 [29   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 13:54:20,912 [29   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 13:54:20,917 [29   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "ICMODispBill"}. Executing action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 13:54:20,917 [29   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 13:54:20,917 [29   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 13:54:20,918 [29   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.ICMODispBillGetAllInput) - Validation state: Valid
+INFO  2019-05-14 13:54:20,939 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 20.3119ms.
+INFO  2019-05-14 13:54:20,945 [40   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 13:54:20,945 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) in 28.484ms
+INFO  2019-05-14 13:54:20,946 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 34.2711ms 200 application/json; charset=utf-8
+INFO  2019-05-14 13:55:14,623 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000245&fMOInterID=1612  
+WARN  2019-05-14 13:55:14,623 [44   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 13:55:14,623 [44   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 13:55:14,623 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.225ms 204 
+INFO  2019-05-14 13:55:14,689 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000245&fMOInterID=1612  
+WARN  2019-05-14 13:55:14,689 [38   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 13:55:14,689 [38   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 13:55:14,690 [38   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 13:55:14,695 [38   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "ICMODispBill"}. Executing action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 13:55:14,695 [38   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 13:55:14,695 [38   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 13:55:14,698 [38   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.ICMODispBillGetAllInput) - Validation state: Valid
+INFO  2019-05-14 13:55:14,710 [37   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 11.9378ms.
+INFO  2019-05-14 13:55:14,763 [45   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 13:55:14,764 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) in 68.4687ms
+INFO  2019-05-14 13:55:14,764 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 74.9489ms 200 application/json; charset=utf-8
+INFO  2019-05-14 14:23:23,589 [79   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 14:23:23,589 [79   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 14:23:23,589 [79   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 14:23:23,589 [79   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2683ms 204 
+INFO  2019-05-14 14:23:24,125 [79   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 14:23:24,125 [79   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 14:23:24,125 [79   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 14:23:24,126 [79   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 14:23:24,143 [79   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 14:23:24,143 [79   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 14:23:24,143 [79   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 14:23:24,146 [79   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 14:23:24,819 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 673.021ms.
+INFO  2019-05-14 14:23:24,844 [75   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 14:23:24,870 [75   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 726.2772ms
+INFO  2019-05-14 14:23:24,870 [75   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 744.9785ms 200 application/json; charset=utf-8
+INFO  2019-05-14 14:23:25,264 [72   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 14:23:25,264 [72   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 14:23:25,264 [72   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 14:23:25,264 [72   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2664ms 204 
+INFO  2019-05-14 14:23:25,336 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 14:23:25,337 [74   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 14:23:25,337 [74   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 14:23:25,337 [74   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 14:23:25,346 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 14:23:25,346 [74   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 14:23:25,346 [74   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 14:23:25,485 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 14:23:26,295 [73   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 809.2236ms.
+INFO  2019-05-14 14:23:26,311 [73   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 14:23:26,321 [73   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 974.9937ms
+INFO  2019-05-14 14:23:26,321 [73   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 985.0162ms 200 application/json; charset=utf-8
+INFO  2019-05-14 14:24:06,593 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000245&fMOInterID=1612  
+WARN  2019-05-14 14:24:06,593 [74   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 14:24:06,593 [74   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 14:24:06,593 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1924ms 204 
+INFO  2019-05-14 14:24:06,980 [74   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/ICMODispBill/GetAll?fMOBillNo=WORK000245&fMOInterID=1612  
+WARN  2019-05-14 14:24:06,980 [74   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 14:24:06,980 [74   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 14:24:06,980 [74   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 14:24:06,984 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "ICMODispBill"}. Executing action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 14:24:06,985 [74   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 14:24:06,985 [74   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 14:24:06,986 [74   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.ICMODispBillGetAllInput) - Validation state: Valid
+INFO  2019-05-14 14:24:07,002 [70   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 15.7967ms.
+INFO  2019-05-14 14:24:07,005 [70   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 14:24:07,005 [70   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetAll (JIT.DIME2Barcode) in 20.7989ms
+INFO  2019-05-14 14:24:07,006 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 25.8839ms 200 application/json; charset=utf-8
+DEBUG 2019-05-14 15:25:33,522 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-14 15:25:33,599 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2019-05-14 15:25:33,623 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.Web.Host.Startup.InfomationSystemWebHostModule, JIT.InfomationSystem.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,626 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.InfomationSystemWebCoreModule, JIT.InfomationSystem.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,626 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.InfomationSystemApplicationModule, JIT.InfomationSystem.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,627 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.InfomationSystemCoreModule, JIT.InfomationSystem.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,627 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,627 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,627 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,628 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,628 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.EntityFrameworkCore.InfomationSystemEntityFrameworkModule, JIT.InfomationSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,629 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,629 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,629 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,629 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,630 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,630 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,630 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.DIME2Barcode.JITDIME2BarcodeModule, JIT.DIME2Barcode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:33,634 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2019-05-14 15:25:33,727 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-14 15:25:33,727 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-14 15:25:33,727 [1    ] o.Configuration.LanguageManagementConfig - Converted InfomationSystem (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-14 15:25:33,727 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-14 15:25:34,292 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: JIT.InfomationSystem.EntityFrameworkCore.InfomationSystemDbContext, JIT.InfomationSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:34,392 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: JIT.DIME2Barcode.Entities.Dime2barcodeContext, JIT.DIME2Barcode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-14 15:25:35,362 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-14 15:25:35,432 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-14 15:25:35,505 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-14 15:25:35,534 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: InfomationSystem
+DEBUG 2019-05-14 15:25:35,568 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-14 15:25:35,767 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
+DEBUG 2019-05-14 15:25:35,808 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2019-05-14 15:25:35,808 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-14 15:25:35,814 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Users.Dto.CreateUserDto
+DEBUG 2019-05-14 15:25:35,814 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Users.Dto.UserDto
+DEBUG 2019-05-14 15:25:35,815 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-14 15:25:35,815 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-14 15:25:35,815 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-14 15:25:35,815 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Roles.Dto.PermissionDto
+DEBUG 2019-05-14 15:25:35,815 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Roles.Dto.RoleDto
+DEBUG 2019-05-14 15:25:35,816 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-14 15:25:35,816 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.MultiTenancy.Dto.TenantDto
+DEBUG 2019-05-14 15:25:35,816 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.DispBillCreateInput
+DEBUG 2019-05-14 15:25:35,816 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingDto
+INFO  2019-05-14 15:25:40,772 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/  
+INFO  2019-05-14 15:25:40,772 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://192.168.1.168:21021/  0
+INFO  2019-05-14 15:25:40,893 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 126.6634ms 200 
+INFO  2019-05-14 15:25:50,413 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host)
+INFO  2019-05-14 15:25:51,583 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host) - Validation state: Valid
+INFO  2019-05-14 15:25:51,592 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 2.7468ms.
+INFO  2019-05-14 15:25:51,851 [9    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-05-14 15:25:51,870 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.InfomationSystem.Web.Host.Controllers.HomeController.Index (JIT.InfomationSystem.Web.Host) in 1449.2108ms
+INFO  2019-05-14 15:25:51,892 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 11131.7148ms 302 
+INFO  2019-05-14 15:26:03,197 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/swagger/index.html  
+INFO  2019-05-14 15:26:03,254 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 57.1013ms 200 text/html
+INFO  2019-05-14 15:26:03,311 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/swagger/swagger-ui.css  
+INFO  2019-05-14 15:26:03,315 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/swagger/swagger-ui-bundle.js  
+INFO  2019-05-14 15:26:03,318 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/swagger/swagger-ui-standalone-preset.js  
+INFO  2019-05-14 15:26:03,356 [13   ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-bundle.js was not modified
+INFO  2019-05-14 15:26:03,357 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui.css was not modified
+INFO  2019-05-14 15:26:03,359 [14   ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-standalone-preset.js was not modified
+INFO  2019-05-14 15:26:03,377 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 55.4506ms 304 application/javascript
+INFO  2019-05-14 15:26:03,378 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 58.2622ms 304 text/css
+INFO  2019-05-14 15:26:03,383 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 56.702ms 304 application/javascript
+INFO  2019-05-14 15:26:03,695 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/swagger/v1/swagger.json  
+INFO  2019-05-14 15:26:03,781 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/swagger/favicon-16x16.png  
+INFO  2019-05-14 15:26:03,807 [9    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon-16x16.png'. Physical path: 'N/A'
+INFO  2019-05-14 15:26:03,810 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 29.6554ms 200 image/png
+INFO  2019-05-14 15:26:04,042 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 347.2533ms 200 application/json;charset=utf-8
+INFO  2019-05-14 15:26:14,145 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/ICMODaily/GetDialyListByFMOInterID?FMOInterID=1612  
+INFO  2019-05-14 15:26:14,221 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetDialyListByFMOInterID", controller = "ICMODaily"}. Executing action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode)
+INFO  2019-05-14 15:26:15,047 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos.ICMODailyGetAllInput) - Validation state: Valid
+INFO  2019-05-14 15:26:15,289 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 240.1523ms.
+INFO  2019-05-14 15:26:15,325 [11   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 15:26:15,354 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) in 1131.1076ms
+INFO  2019-05-14 15:26:15,357 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1211.6995ms 200 application/json; charset=utf-8
+INFO  2019-05-14 15:57:20,693 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 15:57:20,719 [19   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 15:57:20,722 [19   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 15:57:20,733 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 43.8167ms 204 
+INFO  2019-05-14 15:57:20,768 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 15:57:20,771 [16   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 15:57:20,773 [16   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 15:57:20,916 [16   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 15:57:20,966 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 15:57:20,968 [14   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 15:57:20,970 [14   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 15:57:20,973 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 15:57:22,221 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 1245.4356ms.
+INFO  2019-05-14 15:57:22,274 [11   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 15:57:22,324 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 1355.744ms
+INFO  2019-05-14 15:57:22,329 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1560.481ms 200 application/json; charset=utf-8
+INFO  2019-05-14 15:57:22,850 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 15:57:22,852 [12   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 15:57:22,854 [12   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 15:57:22,859 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 7.0994ms 204 
+INFO  2019-05-14 15:57:23,103 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 15:57:23,105 [12   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 15:57:23,107 [12   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 15:57:23,110 [12   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 15:57:23,120 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 15:57:23,123 [12   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 15:57:23,125 [12   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 15:57:23,431 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 15:57:35,171 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 11737.6496ms.
+INFO  2019-05-14 15:57:35,196 [19   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 15:57:35,207 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 12084.7039ms
+INFO  2019-05-14 15:57:35,209 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 12105.8697ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:00:20,927 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:00:20,929 [9    ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:00:20,932 [9    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:00:20,934 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 7.3074ms 204 
+INFO  2019-05-14 16:00:21,753 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:00:21,756 [99   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:00:21,758 [99   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:00:21,761 [99   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:00:21,772 [99   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:00:21,774 [99   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:00:21,776 [99   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:00:21,780 [99   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:00:21,792 [99   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 9.9653ms.
+INFO  2019-05-14 16:00:21,802 [9    ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:00:21,804 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 30.2323ms
+INFO  2019-05-14 16:00:21,808 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 54.6756ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:00:22,587 [3    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:00:22,591 [3    ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:00:22,597 [3    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:00:22,604 [3    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 15.2362ms 204 
+INFO  2019-05-14 16:00:22,648 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:00:22,650 [9    ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:00:22,652 [9    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:00:22,655 [9    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:00:22,663 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 16:00:22,665 [9    ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:00:22,668 [9    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:00:22,674 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:00:31,241 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8564.7709ms.
+INFO  2019-05-14 16:00:31,251 [9    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:00:31,253 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 8588.2957ms
+INFO  2019-05-14 16:00:31,258 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8607.1699ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:01:28,364 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:01:28,366 [99   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:01:28,368 [99   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:01:28,378 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.7184ms 204 
+INFO  2019-05-14 16:01:29,810 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:01:29,911 [9    ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:01:29,980 [9    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:01:30,048 [9    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:01:30,159 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:01:30,186 [9    ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:01:30,228 [9    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:01:30,246 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:01:30,307 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 25.5992ms.
+INFO  2019-05-14 16:01:30,984 [104  ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:01:31,000 [104  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 825.2751ms
+INFO  2019-05-14 16:01:31,019 [104  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1417.0341ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:01:32,121 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:01:32,128 [99   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:01:32,132 [99   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:01:32,139 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 20.1879ms 204 
+INFO  2019-05-14 16:01:32,547 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:01:32,849 [99   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:01:33,030 [99   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:01:33,109 [99   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:01:33,248 [99   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 16:01:33,370 [99   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:01:33,451 [99   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:01:33,474 [99   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:01:46,530 [100  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 13053.6645ms.
+INFO  2019-05-14 16:01:46,540 [100  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:01:46,547 [100  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 13292.3524ms
+INFO  2019-05-14 16:01:46,554 [100  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 14082.838ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:03:47,188 [105  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:03:47,195 [105  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:03:47,203 [105  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:03:47,211 [105  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 21.6855ms 204 
+INFO  2019-05-14 16:03:48,041 [110  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:03:48,047 [110  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:03:48,052 [110  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:03:48,060 [110  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:03:48,078 [110  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:03:48,097 [110  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:03:48,109 [110  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:03:48,114 [110  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:03:48,129 [110  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 11.9383ms.
+INFO  2019-05-14 16:03:48,145 [105  ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:03:48,149 [105  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 66.6625ms
+INFO  2019-05-14 16:03:48,159 [105  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 111.3366ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:03:49,066 [113  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:03:49,068 [113  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:03:49,071 [113  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:03:49,075 [113  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 7.2771ms 204 
+INFO  2019-05-14 16:03:49,318 [110  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:03:49,330 [110  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:03:49,337 [110  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:03:49,381 [110  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:03:49,399 [110  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 16:03:49,410 [110  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:03:49,418 [110  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:03:49,429 [110  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:03:58,227 [99   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8794.2716ms.
+INFO  2019-05-14 16:03:58,254 [99   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:03:58,268 [99   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 8854.9592ms
+INFO  2019-05-14 16:03:58,301 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8956.7599ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:03:59,316 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:03:59,320 [99   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:03:59,324 [99   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:03:59,334 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 12.6492ms 204 
+INFO  2019-05-14 16:04:00,320 [112  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:04:00,326 [112  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:04:00,331 [112  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:04:00,338 [112  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:04:00,356 [112  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:04:00,360 [112  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:04:00,364 [112  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:04:00,368 [112  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:04:00,381 [112  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 10.8085ms.
+INFO  2019-05-14 16:04:00,393 [112  ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:04:00,397 [112  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 37.4372ms
+INFO  2019-05-14 16:04:00,401 [112  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 81.9497ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:04:01,127 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:04:01,130 [99   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:04:01,132 [99   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:04:01,137 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.5444ms 204 
+INFO  2019-05-14 16:04:01,322 [110  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:04:01,325 [110  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:04:01,328 [110  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:04:01,345 [110  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:04:01,361 [110  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 16:04:01,367 [110  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:04:01,371 [110  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:04:01,377 [110  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:04:10,259 [99   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8879.6399ms.
+INFO  2019-05-14 16:04:10,268 [99   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:04:10,271 [99   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 8907.6515ms
+INFO  2019-05-14 16:04:10,274 [99   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8953ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:08:29,826 [124  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:08:29,829 [124  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:08:29,834 [124  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:08:29,836 [124  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 10.3527ms 204 
+INFO  2019-05-14 16:08:30,675 [122  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:08:30,678 [122  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:08:30,682 [122  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:08:30,687 [122  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:08:30,704 [122  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:08:30,706 [122  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:08:30,709 [122  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:08:30,712 [122  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:08:30,736 [122  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 11.2593ms.
+INFO  2019-05-14 16:08:30,752 [124  ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:08:30,756 [124  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 48.7651ms
+INFO  2019-05-14 16:08:30,759 [124  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 83.6893ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:08:31,615 [127  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:08:31,618 [127  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:08:31,621 [127  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:08:31,645 [127  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 9.315ms 204 
+INFO  2019-05-14 16:08:31,752 [127  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:08:31,755 [127  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:08:31,760 [127  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:08:31,768 [127  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:08:31,778 [127  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 16:08:31,781 [127  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:08:31,785 [127  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:08:31,791 [127  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:08:36,603 [122  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4809.7809ms.
+INFO  2019-05-14 16:08:36,616 [122  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:08:36,619 [122  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 4838.4694ms
+INFO  2019-05-14 16:08:36,623 [122  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4870.4192ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:09:03,264 [122  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2019-05-14 16:09:03,272 [122  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8.1136ms 200 text/html
+INFO  2019-05-14 16:09:03,321 [122  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui.css  
+INFO  2019-05-14 16:09:03,329 [129  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-bundle.js  
+INFO  2019-05-14 16:09:03,331 [128  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-standalone-preset.js  
+INFO  2019-05-14 16:09:03,339 [122  ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui.css was not modified
+INFO  2019-05-14 16:09:03,340 [129  ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-bundle.js was not modified
+INFO  2019-05-14 16:09:03,344 [122  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 33.9196ms 304 text/css
+INFO  2019-05-14 16:09:03,347 [129  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 22.1981ms 304 application/javascript
+INFO  2019-05-14 16:09:03,352 [128  ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-standalone-preset.js was not modified
+INFO  2019-05-14 16:09:03,368 [128  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 32.1797ms 304 application/javascript
+INFO  2019-05-14 16:09:03,735 [128  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/swagger/v1/swagger.json  
+WARN  2019-05-14 16:09:03,739 [128  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:09:03,748 [128  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:09:03,757 [128  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 18.3042ms 204 
+INFO  2019-05-14 16:09:03,787 [131  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/swagger/v1/swagger.json  
+WARN  2019-05-14 16:09:03,791 [131  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:09:03,795 [131  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:09:03,799 [131  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:09:03,833 [122  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/favicon-16x16.png  
+INFO  2019-05-14 16:09:03,839 [131  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 50.1412ms 200 application/json;charset=utf-8
+INFO  2019-05-14 16:09:03,851 [122  ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon-16x16.png'. Physical path: 'N/A'
+INFO  2019-05-14 16:09:03,856 [122  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 25.5575ms 200 image/png
+INFO  2019-05-14 16:11:07,978 [122  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:11:07,985 [122  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:11:07,989 [122  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:11:08,004 [122  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 17.6719ms 204 
+INFO  2019-05-14 16:11:08,834 [140  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:11:08,837 [140  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:11:08,839 [140  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:11:08,844 [140  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:11:08,855 [140  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:11:08,858 [140  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:11:08,860 [140  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:11:08,864 [140  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:11:08,882 [140  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 14.8202ms.
+INFO  2019-05-14 16:11:08,898 [140  ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:11:08,909 [140  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 43.3854ms
+INFO  2019-05-14 16:11:08,918 [140  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 78.3325ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:11:09,858 [133  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:11:09,861 [133  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:11:09,864 [133  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:11:09,868 [133  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8.745ms 204 
+INFO  2019-05-14 16:11:10,003 [133  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:11:10,041 [133  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:11:10,046 [133  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:11:10,051 [133  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:11:10,063 [133  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 16:11:10,067 [133  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:11:10,071 [133  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:11:10,081 [133  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:11:15,630 [133  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 5546.3047ms.
+INFO  2019-05-14 16:11:15,645 [133  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:11:15,649 [133  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 5582.2574ms
+INFO  2019-05-14 16:11:15,656 [133  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5658.4968ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:11:49,662 [144  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:11:49,664 [144  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:11:49,667 [144  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:11:49,670 [144  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 7.6035ms 204 
+INFO  2019-05-14 16:11:50,502 [144  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:11:50,504 [144  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:11:50,506 [144  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:11:50,509 [144  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:11:50,517 [144  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:11:50,519 [144  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:11:50,521 [144  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:11:50,524 [144  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:11:50,540 [144  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 14.0442ms.
+INFO  2019-05-14 16:11:50,551 [144  ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:11:50,569 [144  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 35.2611ms
+INFO  2019-05-14 16:11:50,582 [144  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 69.4117ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:11:51,363 [144  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:11:51,366 [144  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:11:51,368 [144  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:11:51,370 [144  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 13.9781ms 204 
+INFO  2019-05-14 16:11:51,446 [144  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:11:51,449 [144  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:11:51,453 [144  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:11:51,458 [144  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:11:51,469 [144  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 16:11:51,473 [144  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:11:51,476 [144  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:11:51,487 [144  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:11:56,332 [147  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4841.415ms.
+INFO  2019-05-14 16:11:56,344 [133  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:11:56,352 [133  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 4875.6635ms
+INFO  2019-05-14 16:11:56,358 [133  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4908.7362ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:26:29,110 [72   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:26:29,115 [72   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:26:29,117 [72   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:26:29,119 [72   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 30.335ms 204 
+INFO  2019-05-14 16:26:29,823 [69   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:26:29,825 [69   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:26:29,828 [69   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:26:29,832 [69   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:26:29,880 [72   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:26:29,883 [72   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:26:29,886 [72   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:26:29,891 [72   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:26:29,943 [72   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 48.9487ms.
+INFO  2019-05-14 16:26:29,972 [72   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:26:29,994 [72   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 92.8579ms
+INFO  2019-05-14 16:26:30,008 [72   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 174.2789ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:26:31,429 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:26:31,437 [66   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:26:31,455 [66   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:26:31,509 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 31.0694ms 204 
+INFO  2019-05-14 16:26:31,625 [69   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:26:31,628 [69   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:26:31,633 [69   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:26:31,638 [69   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:26:31,656 [69   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 16:26:31,662 [69   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:26:31,688 [69   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:26:31,695 [69   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:26:38,074 [72   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 6375.557ms.
+INFO  2019-05-14 16:26:38,087 [68   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:26:38,090 [68   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 6431.2757ms
+INFO  2019-05-14 16:26:38,094 [68   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6467.9532ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:29:39,830 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:29:39,832 [61   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:29:39,835 [61   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:29:39,837 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.4547ms 204 
+INFO  2019-05-14 16:29:40,654 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:29:40,659 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:29:40,662 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:29:40,666 [55   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:29:40,691 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:29:40,699 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:29:40,701 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:29:40,705 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:29:40,726 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 18.8879ms.
+INFO  2019-05-14 16:29:40,736 [55   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:29:40,739 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 45.9436ms
+INFO  2019-05-14 16:29:40,743 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 90.2155ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:29:41,519 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:29:41,522 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:29:41,525 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:29:41,533 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 10.1897ms 204 
+INFO  2019-05-14 16:29:41,650 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:29:41,653 [61   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:29:41,658 [61   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:29:41,661 [61   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:29:41,678 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 16:29:41,681 [61   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:29:41,684 [61   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:29:41,691 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:29:51,128 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 9435.2224ms.
+INFO  2019-05-14 16:29:51,139 [58   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:29:51,142 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 9461.7245ms
+INFO  2019-05-14 16:29:51,148 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 9494.7885ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:29:57,024 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/ICMODaily/GetDialyListByFMOInterID  
+WARN  2019-05-14 16:29:57,027 [61   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:29:57,029 [61   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:29:57,031 [61   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 7.2275ms 204 
+INFO  2019-05-14 16:29:57,042 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/ICMODaily/GetDialyListByFMOInterID  
+WARN  2019-05-14 16:29:57,044 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:29:57,046 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:29:57,049 [55   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:29:57,053 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetDialyListByFMOInterID", controller = "ICMODaily"}. Executing action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode)
+WARN  2019-05-14 16:29:57,056 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:29:57,058 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:29:57,070 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos.ICMODailyGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:29:57,092 [61   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 19.7653ms.
+INFO  2019-05-14 16:29:57,102 [55   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:29:57,108 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) in 48.5901ms
+INFO  2019-05-14 16:29:57,111 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 69.9308ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:30:26,369 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/ICMODaily/GetDialyListByFMOInterID  
+WARN  2019-05-14 16:30:26,371 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:30:26,373 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:30:26,375 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.2714ms 204 
+INFO  2019-05-14 16:30:26,387 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/ICMODaily/GetDialyListByFMOInterID  
+WARN  2019-05-14 16:30:26,389 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:30:26,390 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:30:26,392 [55   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:30:26,396 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetDialyListByFMOInterID", controller = "ICMODaily"}. Executing action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode)
+WARN  2019-05-14 16:30:26,398 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:30:26,399 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:30:26,403 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos.ICMODailyGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:30:26,408 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.0648ms.
+INFO  2019-05-14 16:30:26,415 [57   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:30:26,420 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) in 18.6088ms
+INFO  2019-05-14 16:30:26,422 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 34.8407ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:30:43,626 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/ICMODaily/GetDialyListByFMOInterID  
+WARN  2019-05-14 16:30:43,629 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:30:43,631 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:30:43,633 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.0279ms 204 
+INFO  2019-05-14 16:30:43,645 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/ICMODaily/GetDialyListByFMOInterID  
+WARN  2019-05-14 16:30:43,647 [51   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:30:43,650 [51   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:30:43,654 [51   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:30:43,660 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetDialyListByFMOInterID", controller = "ICMODaily"}. Executing action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode)
+WARN  2019-05-14 16:30:43,661 [51   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:30:43,663 [51   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:30:43,666 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos.ICMODailyGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:30:59,071 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 15399.2338ms.
+INFO  2019-05-14 16:30:59,079 [58   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:30:59,082 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) in 15419.7997ms
+INFO  2019-05-14 16:30:59,086 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 15438.094ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:31:26,173 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:31:26,181 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:31:26,185 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:31:26,191 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 15.4556ms 204 
+INFO  2019-05-14 16:31:27,024 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:31:27,026 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:31:27,029 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:31:27,032 [58   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:31:27,041 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:31:27,044 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:31:27,047 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:31:27,052 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:31:27,076 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 19.2125ms.
+INFO  2019-05-14 16:31:27,092 [55   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:31:27,096 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 51.536ms
+INFO  2019-05-14 16:31:27,109 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 75.4636ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:31:27,958 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:31:27,960 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:31:27,962 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:31:27,966 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.008ms 204 
+INFO  2019-05-14 16:31:28,122 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:31:28,138 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:31:28,160 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:31:28,164 [57   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:31:28,193 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 16:31:28,200 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:31:28,212 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:31:28,218 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:31:31,967 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3747.5342ms.
+INFO  2019-05-14 16:31:31,977 [46   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:31:31,979 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 3783.9624ms
+INFO  2019-05-14 16:31:31,983 [46   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3864.0052ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:31:34,839 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/ICMODaily/GetDialyListByFMOInterID?FMOInterID=1612  
+WARN  2019-05-14 16:31:34,841 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:31:34,844 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:31:34,846 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 7.1113ms 204 
+INFO  2019-05-14 16:31:34,855 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/ICMODaily/GetDialyListByFMOInterID?FMOInterID=1612  
+WARN  2019-05-14 16:31:34,857 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:31:34,859 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:31:34,862 [57   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:31:34,869 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetDialyListByFMOInterID", controller = "ICMODaily"}. Executing action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode)
+WARN  2019-05-14 16:31:34,871 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:31:34,873 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:31:34,877 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos.ICMODailyGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:31:39,852 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4972.9323ms.
+INFO  2019-05-14 16:31:39,864 [48   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:31:39,866 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) in 4994.453ms
+INFO  2019-05-14 16:31:39,869 [48   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5013.6776ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:32:28,435 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/ICMODaily/GetDialyListByFMOInterID?FMOInterID=1612  
+WARN  2019-05-14 16:32:28,437 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:32:28,439 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:32:28,441 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.5089ms 204 
+INFO  2019-05-14 16:32:28,452 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/ICMODaily/GetDialyListByFMOInterID?FMOInterID=1612  
+WARN  2019-05-14 16:32:28,454 [51   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:32:28,456 [51   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:32:28,459 [51   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:32:28,468 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetDialyListByFMOInterID", controller = "ICMODaily"}. Executing action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode)
+WARN  2019-05-14 16:32:28,469 [51   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:32:28,470 [51   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:32:28,473 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos.ICMODailyGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:32:31,766 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3291.3325ms.
+INFO  2019-05-14 16:32:31,773 [51   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:32:31,775 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) in 3306.0787ms
+INFO  2019-05-14 16:32:31,779 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3325.1234ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:33:28,032 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:33:28,119 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:33:28,245 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:33:28,305 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 307.7058ms 204 
+INFO  2019-05-14 16:33:29,131 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:33:29,136 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:33:29,143 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:33:29,153 [55   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:33:29,167 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:33:29,173 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:33:29,178 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:33:29,185 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:33:29,212 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 21.363ms.
+INFO  2019-05-14 16:33:29,233 [51   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:33:29,246 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 66.5942ms
+INFO  2019-05-14 16:33:29,272 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 124.2487ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:33:30,133 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:33:30,136 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:33:30,138 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:33:30,142 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 9.1059ms 204 
+INFO  2019-05-14 16:33:30,220 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:33:30,222 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:33:30,224 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:33:30,228 [58   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:33:30,240 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 16:33:30,244 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:33:30,248 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:33:30,256 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:33:42,714 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 12455.2224ms.
+INFO  2019-05-14 16:33:42,723 [55   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:33:42,727 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 12483.229ms
+INFO  2019-05-14 16:33:42,733 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 12510.9789ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:33:49,223 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/ICMODaily/GetDialyListByFMOInterID?FMOInterID=1612  
+WARN  2019-05-14 16:33:49,225 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:33:49,227 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:33:49,229 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.7339ms 204 
+INFO  2019-05-14 16:33:49,243 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/ICMODaily/GetDialyListByFMOInterID?FMOInterID=1612  
+WARN  2019-05-14 16:33:49,245 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:33:49,247 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:33:49,250 [57   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:33:49,256 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetDialyListByFMOInterID", controller = "ICMODaily"}. Executing action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode)
+WARN  2019-05-14 16:33:49,258 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:33:49,260 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:33:49,264 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos.ICMODailyGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:33:49,269 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.6558ms.
+INFO  2019-05-14 16:33:49,281 [51   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:33:49,283 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.ICMODailyAppService.GetDialyListByFMOInterID (JIT.DIME2Barcode) in 24.4541ms
+INFO  2019-05-14 16:33:49,287 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 42.0379ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:34:22,863 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:34:22,866 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:34:22,868 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:34:22,873 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 7.0025ms 204 
+INFO  2019-05-14 16:34:23,683 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:34:23,686 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:34:23,689 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:34:23,692 [55   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:34:23,704 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:34:23,711 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:34:23,714 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:34:23,719 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:34:23,743 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 21.4769ms.
+INFO  2019-05-14 16:34:23,755 [55   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:34:23,760 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 51.5561ms
+INFO  2019-05-14 16:34:23,764 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 79.4873ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:34:24,643 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:34:24,645 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:34:24,648 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:34:24,650 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.8426ms 204 
+INFO  2019-05-14 16:34:24,784 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://192.168.1.168:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:34:24,790 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:34:24,833 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:34:24,848 [58   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:34:24,860 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 16:34:24,864 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:34:24,869 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:34:24,879 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:34:33,496 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8614.6849ms.
+INFO  2019-05-14 16:34:33,504 [58   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:34:33,506 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 8643.8436ms
+INFO  2019-05-14 16:34:33,510 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8730.3822ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:35:55,649 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:35:55,652 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:35:55,656 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:35:55,661 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 9.8977ms 204 
+INFO  2019-05-14 16:35:56,393 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:35:56,396 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:35:56,398 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:35:56,400 [57   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:35:56,408 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:35:56,412 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:35:56,414 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:35:56,422 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:35:56,435 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 11.3928ms.
+INFO  2019-05-14 16:35:56,458 [57   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:35:56,463 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 50.1727ms
+INFO  2019-05-14 16:35:56,470 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 73.1465ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:35:57,569 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:35:57,572 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:35:57,580 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:35:57,583 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 14.467ms 204 
+INFO  2019-05-14 16:35:57,913 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/TaskScheduling/GetAll?SkipCount=0&MaxResultCount=10  
+WARN  2019-05-14 16:35:57,917 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:35:57,919 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:35:57,923 [58   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:35:57,933 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "TaskScheduling"}. Executing action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-14 16:35:57,936 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:35:57,938 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:35:57,950 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:36:04,053 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 6100.4354ms.
+INFO  2019-05-14 16:36:04,087 [55   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:36:04,090 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.TaskAssignment.TaskScheduling.TaskSchedulingAppService.GetAll (JIT.DIME2Barcode) in 6153.6534ms
+INFO  2019-05-14 16:36:04,101 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6182.9225ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:36:07,903 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:36:07,905 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:07,907 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:07,912 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.5838ms 204 
+INFO  2019-05-14 16:36:07,962 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/AbpUserConfiguration/GetAll  
+WARN  2019-05-14 16:36:07,965 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:07,969 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:07,972 [58   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:36:07,980 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+WARN  2019-05-14 16:36:07,985 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:07,989 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:07,993 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-14 16:36:08,006 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 10.7485ms.
+INFO  2019-05-14 16:36:08,018 [51   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:36:08,021 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 38.4168ms
+INFO  2019-05-14 16:36:08,025 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 63.0229ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:36:08,492 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/role  
+WARN  2019-05-14 16:36:08,495 [57   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:08,500 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/service  
+INFO  2019-05-14 16:36:08,506 [57   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+WARN  2019-05-14 16:36:08,509 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:08,511 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 17.8412ms 204 
+INFO  2019-05-14 16:36:08,514 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:08,517 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 18.3649ms 204 
+INFO  2019-05-14 16:36:08,554 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/workplace/activity  
+INFO  2019-05-14 16:36:08,563 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/list/search/projects  
+WARN  2019-05-14 16:36:08,566 [51   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-05-14 16:36:08,570 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:08,571 [51   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:08,579 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/workplace/teams  
+INFO  2019-05-14 16:36:08,583 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 27.1311ms 204 
+INFO  2019-05-14 16:36:08,595 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+WARN  2019-05-14 16:36:08,603 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:08,607 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 51.2999ms 204 
+INFO  2019-05-14 16:36:08,612 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:08,616 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/service  
+INFO  2019-05-14 16:36:08,620 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/role  
+INFO  2019-05-14 16:36:08,626 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 49.4592ms 204 
+WARN  2019-05-14 16:36:08,636 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-05-14 16:36:08,639 [51   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:08,642 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:08,646 [51   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:08,652 [134  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/workplace/radar  
+INFO  2019-05-14 16:36:08,655 [58   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:36:08,658 [51   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-05-14 16:36:08,661 [134  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:08,663 [134  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:08,668 [134  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 64.6982ms 204 
+INFO  2019-05-14 16:36:08,687 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 62.0567ms 404 
+INFO  2019-05-14 16:36:08,689 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 61.9574ms 404 
+INFO  2019-05-14 16:36:08,760 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/list/search/projects  
+INFO  2019-05-14 16:36:08,778 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/workplace/activity  
+INFO  2019-05-14 16:36:08,784 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/workplace/teams  
+WARN  2019-05-14 16:36:08,793 [51   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-05-14 16:36:08,800 [55   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-05-14 16:36:08,805 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:08,808 [55   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:08,814 [51   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:08,820 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:08,823 [55   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:36:08,826 [140  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/workplace/radar  
+INFO  2019-05-14 16:36:08,832 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 55.0064ms 404 
+INFO  2019-05-14 16:36:08,836 [51   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-05-14 16:36:08,839 [140  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:08,841 [58   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:36:08,844 [140  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:08,851 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 89.1237ms 404 
+INFO  2019-05-14 16:36:08,853 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 91.1349ms 404 
+INFO  2019-05-14 16:36:08,855 [140  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:36:08,860 [140  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 95.8009ms 404 
+INFO  2019-05-14 16:36:11,003 [131  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/role?t=2019-05-14T08:36:10.878Z  
+INFO  2019-05-14 16:36:11,007 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ICMODispBill/GetDailyGroup?SkipCount=0&MaxResultCount=100  
+WARN  2019-05-14 16:36:11,009 [131  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-05-14 16:36:11,012 [51   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:11,019 [131  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:11,024 [51   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:11,035 [131  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 24.4213ms 204 
+INFO  2019-05-14 16:36:11,039 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 22.3604ms 204 
+INFO  2019-05-14 16:36:11,127 [134  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/role?t=2019-05-14T08:36:10.878Z  
+INFO  2019-05-14 16:36:11,130 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ICMODispBill/GetDailyGroup?SkipCount=0&MaxResultCount=100  
+WARN  2019-05-14 16:36:11,132 [134  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-05-14 16:36:11,133 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:11,136 [134  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:11,138 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:11,141 [134  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:36:11,143 [58   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:36:11,151 [134  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 17.4893ms 404 
+INFO  2019-05-14 16:36:11,175 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetDailyGroup", controller = "ICMODispBill"}. Executing action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetDailyGroup (JIT.DIME2Barcode)
+WARN  2019-05-14 16:36:11,179 [58   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:11,184 [58   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:11,901 [58   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetDailyGroup (JIT.DIME2Barcode) with arguments (JIT.DIME2Barcode.TaskAssignment.VW_ICMODispBill_By_Date.Dtos.VW_ICMODispBill_By_DateGetAllInput) - Validation state: Valid
+INFO  2019-05-14 16:36:11,977 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetDailyGroup (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 73.8769ms.
+INFO  2019-05-14 16:36:11,997 [135  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-14 16:36:12,007 [135  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.DIME2Barcode.AppService.ICMODispBillAppService.GetDailyGroup (JIT.DIME2Barcode) in 829.2327ms
+INFO  2019-05-14 16:36:12,017 [135  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 879.885ms 200 application/json; charset=utf-8
+INFO  2019-05-14 16:36:37,327 [131  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ICMODispBill/GetDailyFsrIdTask?SkipCount=0&MaxResultCount=100&FSrcID=0b08b65f-40c4-480a-8da4-eff94e7e0bb8  
+WARN  2019-05-14 16:36:37,329 [131  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:37,332 [131  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:37,336 [131  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.5672ms 204 
+INFO  2019-05-14 16:36:37,354 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ICMODispBill/GetDailyFsrIdTask?SkipCount=0&MaxResultCount=100&FSrcID=0b08b65f-40c4-480a-8da4-eff94e7e0bb8  
+WARN  2019-05-14 16:36:37,357 [51   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-14 16:36:37,359 [51   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-14 16:36:37,362 [51   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-14 16:36:37,365 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 11.275ms 404 

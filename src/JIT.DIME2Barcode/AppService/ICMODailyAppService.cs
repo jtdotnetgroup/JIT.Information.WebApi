@@ -156,5 +156,19 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 SRepository.Update(entity);
             }
         }
+
+
+        public async Task<Array> GetDialyListByFMOInterID(ICMODailyGetAllInput input)
+        {
+            var query = Repository.GetAll().Where(p => p.FMOInterID == input.FMOInterID);
+
+            var linq = from a in query
+                select new {a.FDate,a.FMachineID,a.FPlanAuxQty,a.FCommitAuxQty};
+
+            var data = await linq.ToListAsync();
+
+            return data.ToArray();
+
+        }
     }
 }

@@ -19,6 +19,8 @@ namespace JIT.DIME2Barcode.TaskAssignment.TaskScheduling
     public class TaskSchedulingAppService:ApplicationService
     {
         public IRepository<Entities.VW_MOBillList,string> Repository { get; set; }
+
+        public IRepository<Entities.ICMODaily,string> DRepository { get; set; }
         /// <summary>
         /// 查询所有任务单信息
         /// </summary>
@@ -59,5 +61,8 @@ namespace JIT.DIME2Barcode.TaskAssignment.TaskScheduling
             return table;
 
         }
+
+
+        
     }
 }
