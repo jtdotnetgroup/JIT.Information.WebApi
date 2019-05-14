@@ -1,0 +1,16 @@
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.dll.config
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.deps.json
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.runtimeconfig.json
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.runtimeconfig.dev.json
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.dll
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.pdb
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.dll
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.pdb
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.csprojAssemblyReference.cache
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.dll.config
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.csproj.CoreCompileInputs.cache
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.AssemblyInfoInputs.cache
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.AssemblyInfo.cs
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.csproj.CopyComplete
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.dll
+E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.EntityFrameworkCore\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.EntityFrameworkCore.pdb

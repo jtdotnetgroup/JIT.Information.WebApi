@@ -21,9 +21,9 @@ namespace JIT.DIME2Barcode.AppService
     public class ICMODispBillAppService:ApplicationService
     {
         public IRepository<VW_ICMODispBill_By_Date,string> VRepository { get; set; }
-        public IRepository<ICMODaily,string> DRepository { get; set; }
+        //public IRepository<ICMODaily,string> DRepository { get; set; }
         public IRepository<ICMODispBill,string> Repository { get; set; }
-        public IRepository<ICMOSchedule, string> SRepository { get; set; }
+        //public IRepository<ICMOSchedule, string> SRepository { get; set; }
 
         /// <summary>
         /// 任务派工界面数据
