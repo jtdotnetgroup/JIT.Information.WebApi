@@ -128,7 +128,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 }
             }
             //更新任务计划单的总排产数
-            await InsertOrUpdateICMOSchedul(new ICMODailyCreatedtEventData
+             await InsertOrUpdateICMOSchedul(new ICMODailyCreatedtEventData
             {
                 FSrcID = fsrcId,
                 FMOBillNo = input.FMOBillNo,
@@ -163,118 +163,19 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 SRepository.Update(entity);
             }
         }
-         
-        public List<ICMOSchedule> ImportDaily(List<ICMODailyCreatDto> input)
+
+
+        public async Task<Array> GetDialyListByFMOInterID(ICMODailyGetAllInput input)
         {
-            string fmobillno = "";
-            int fmointerid = -1;
-            ICMOSchedule schedule = null;
-            List<ICMOSchedule> result = new List<ICMOSchedule>();
-            //遍历导入数据
-            foreach (var inputItem in input)
-            {
-                if (inputItem != null && fmobillno != inputItem.FMOBillNo)
-                {
-                    fmobillno = inputItem.FMOBillNo;
-                    var icmo = MRepository.GetAll().SingleOrDefault(p => p.FBillNo == fmobillno);
-                    if (icmo != null)
-                    {
-                        schedule = SRepository.GetAll().SingleOrDefault(p => p.FMOBillNo == fmobillno);
+            var query = Repository.GetAll().Where(p => p.FMOInterID == input.FMOInterID);
 
-                        if (schedule == null)
-                        {
-                            schedule = new ICMOSchedule()
-                            {
-                                FID = Guid.NewGuid().ToString(),
-                                FBillTime = DateTime.Now,
-                                FBillNo = "SC-" + fmobillno,
-                                FBiller = AbpSession.UserId.ToString(),
-                                FPlanAuxQty = 0
-                            };
-                            //插入新的计划单
-                            schedule = SRepository.Insert(schedule);
-                        }
+            var linq = from a in query
+                select new {a.FDate,a.FMachineID,a.FPlanAuxQty,a.FCommitAuxQty};
 
-                        foreach (var dailyItem in inputItem.Dailies)
-                        {
-                            #region 暂时注掉不用
-                             
-                            //var entity = dailyList.SingleOrDefault(p => p.FDate == dailyItem.FDate && p.FMachineID == dailyItem.FMachineID &&
-                            //                                            p.FShift == dailyItem.FShift && p.FOperID == dailyItem.FOperID);
+            var data = await linq.ToListAsync();
 
-                            //var index = (inputItem.Dailies.IndexOf(dailyItem) + dailyList.Count + 1).ToString("000");
+            return data.ToArray();
 
-                            //if (entity == null)
-                            //{
-                            //    entity = new Entities.ICMODaily()
-                            //    {
-                            //        FMachineID = dailyItem.FMachineID,
-                            //        FWorkCenterID = dailyItem.FWorkCenterID,
-                            //        FShift = dailyItem.FShift,
-                            //        FID = Guid.NewGuid().ToString(),
-                            //        FBillNo = "DA" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + index,//任务计划单号
-                            //        FMOInterID = icmo.FInterID,//任务单号
-                            //        FMOBillNo = icmo.FBillNo,//任务单号
-                            //        FBiller = this.AbpSession.UserId.ToString(),//当前登录用户
-                            //        FSrcID = schedule.FID,
-                            //        FPlanAuxQty = dailyItem.FPlanAuxQty,
-                            //        FBillTime = DateTime.Now,
-                            //        FDate = dailyItem.FDate.Date
-                            //    };
-
-                            //}
-                            //else
-                            //{
-                            //    entity.FPlanAuxQty = dailyItem.FPlanAuxQty;
-                            //}
-                            #endregion
-
-                            var entity = schedule.Dailies.SingleOrDefault(p =>
-                                p.FDate == dailyItem.FDate && p.FMachineID == dailyItem.FMachineID &&
-                                p.FShift == dailyItem.FShift && p.FOperID == dailyItem.FOperID);
-
-                            var index = (schedule.Dailies.Count + 1).ToString("000");
-
-                            if (entity == null)
-                            {
-                                entity = new Entities.ICMODaily()
-                                {
-                                    FMachineID = dailyItem.FMachineID,
-                                    FWorkCenterID = dailyItem.FWorkCenterID,
-                                    FShift = dailyItem.FShift,
-                                    FID = Guid.NewGuid().ToString(),
-                                    FBillNo = "DA" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + index,//任务计划单号
-                                    FMOInterID = icmo.FInterID,//任务单号
-                                    FMOBillNo = icmo.FBillNo,//任务单号
-                                    FBiller = this.AbpSession.UserId.ToString(),//当前登录用户
-                                    FSrcID = schedule.FID,
-                                    FPlanAuxQty = dailyItem.FPlanAuxQty,
-                                    FBillTime = DateTime.Now,
-                                    FDate = dailyItem.FDate.Date
-                                };
-                                //插入新的日计划单
-                                schedule.Dailies.Add(entity);
-                            }
-                            else
-                            {
-                                schedule.FPlanAuxQty -= entity.FPlanAuxQty;
-                                entity.FPlanAuxQty = dailyItem.FPlanAuxQty;
-                                schedule.FPlanAuxQty += entity.FPlanAuxQty;
-                            }
-
-                        }
-                        //更新计划单
-                        SRepository.Update(schedule);
-                    }
-                    else
-                    {
-                        throw new AbpException($"任务单号：{0} 不存在" + fmobillno);
-                    }
-
-                }
-            }
-
-            return new List<ICMOSchedule>();
         }
     }
 }

@@ -6,8 +6,11 @@ using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using Abp.Linq.Extensions;
 using JIT.DIME2Barcode.Entities;
+using JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos;
+using JIT.DIME2Barcode.TaskAssignment.VW_ICMODispBill_By_Date.Dtos;
 using Microsoft.EntityFrameworkCore;
 
 namespace JIT.DIME2Barcode.AppService
@@ -18,9 +21,9 @@ namespace JIT.DIME2Barcode.AppService
     public class ICMODispBillAppService:ApplicationService
     {
         public IRepository<VW_ICMODispBill_By_Date,string> VRepository { get; set; }
-        public IRepository<ICMODaily,string> DRepository { get; set; }
+        //public IRepository<ICMODaily,string> DRepository { get; set; }
         public IRepository<ICMODispBill,string> Repository { get; set; }
-        public IRepository<ICMOSchedule, string> SRepository { get; set; }
+        //public IRepository<ICMOSchedule, string> SRepository { get; set; }
 
         /// <summary>
         /// 任务派工界面数据
@@ -118,29 +121,26 @@ namespace JIT.DIME2Barcode.AppService
             }
 
         }
+
         /// <summary>
-        /// 修改汇报数量
+        /// 任务派工主表列表接口
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<bool> UpdateFFinishAuxQty(ICMODispBillUpdateFFinishAuxQtyInput input)
+        public async Task<PagedResultDto<VW_ICMODispBill_By_Date>> GetDailyGroup(
+            VW_ICMODispBill_By_DateGetAllInput input)
         {
-            try
-            {
-                var entity = await Repository.GetAll().SingleOrDefaultAsync(p => p.FID == input.FID);
-                if (entity != null)
-                {
-                    entity.FFinishAuxQty = input.FFinishAuxQty;
-                    await Repository.UpdateAsync(entity);
-                }
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return false;
-            }
+            var query = VRepository.GetAll();
+
+            var count = await query.CountAsync();
+
+            var data = await query.OrderBy(p => p.日期).PageBy(input).ToListAsync();
+
+            return new PagedResultDto<VW_ICMODispBill_By_Date>(count,data);
         }
 
+
     }
+
+    
 }
