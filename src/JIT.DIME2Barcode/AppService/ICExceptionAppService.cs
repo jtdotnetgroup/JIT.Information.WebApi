@@ -121,8 +121,7 @@ namespace JIT.DIME2Barcode.AppService
                 Console.WriteLine(e);
                 return false;
             }
-        }
-
+        } 
 
     }
 }
