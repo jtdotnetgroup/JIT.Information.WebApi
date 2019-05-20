@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using Abp.Linq.Extensions;
 using JIT.DIME2Barcode.TaskAssignment.ICException.Dtos;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,99 +17,111 @@ namespace JIT.DIME2Barcode.AppService
     /// <summary>
     /// 派工异常记录
     /// </summary>
-    public class ICExceptionAppService : AsyncCrudAppService<ICException,ICExceptionDto, string, ICExceptionGetAllInput,
-        ICExceptionDto, ICExceptionDto, ICExceptionDto, ICExceptionDto>, IAsyncCrudAppService<ICExceptionDto, string, ICExceptionGetAllInput,
-        ICExceptionDto, ICExceptionDto, ICExceptionDto, ICExceptionDto>
+    public class ICExceptionAppService : ApplicationService
     {
-        public ICExceptionAppService(IRepository<ICException, string> repository) : base(repository)
-        {
-        }
+        //public ICExceptionAppService(IRepository<ICException, string> repository) : base(repository)
+        //{
+        //}
         //DIME2BarcodeContext context = new DIME2BarcodeContext();
+        public IRepository<DIME2Barcode.Entities.ICException, string> Repository { get; set; }
 
-        ///// <summary>
-        ///// 获取明细
-        ///// </summary>
-        ///// <param name="input"></param>
-        ///// <returns></returns>
-        //public async Task<ICExceptionDto> Get(ICExceptionDto input)
-        //{
-        //    var entity = await context.ICException.SingleOrDefaultAsync(p => p.FID == input.FID);
-        //    return entity.MapTo<ICExceptionDto>();
-        //}
-        ///// <summary>
-        ///// 获取全部数据
-        ///// </summary>
-        ///// <param name="input"></param>
-        ///// <returns></returns>
+        /// <summary>
+        /// 获取明细
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<ICExceptionDto> Get(ICExceptionInput input)
+        {
+            var entity = await Repository.GetAll()
+                .SingleOrDefaultAsync(p => p.FID == input.FID && p.FSrcID == input.FSrcID);
+            return entity.MapTo<ICExceptionDto>();
+        }
+        /// <summary>
+        /// 获取全部数据
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<PagedResultDto<ICExceptionDto>> GetAll(ICExceptionGetAllInput input)
+        { 
 
-        //public async Task<PagedResultDto<ICExceptionDto>> GetAll(ICExceptionGetAllInput input)
-        //{
-        //    var query = from a in context.ICException
-        //                select a;
+            var query = Repository.GetAll().OrderBy(p => p.FID).PageBy(input);
 
-        //    query = query.OrderBy(p => p.FID).PageBy(input);
+            var count = await Repository.GetAll().CountAsync();
 
-        //    var count = await context.ICException.CountAsync();
+            var data = await query.ToListAsync();
 
-        //    var data = await query.ToListAsync();
+            var list = data.MapTo<List<ICExceptionDto>>();
 
-        //    var list = data.MapTo<List<ICExceptionDto>>();
+            return new PagedResultDto<ICExceptionDto>(count, list);
 
-        //    return new PagedResultDto<ICExceptionDto>(count, list);
+        }
 
-        //}
-        ///// <summary>
-        ///// 添加
-        ///// </summary>
-        ///// <param name="input"></param>
-        ///// <returns></returns>
-        //public async Task<ICExceptionDto> Create(ICExceptionDto input)
-        //{
-        //    var entity = input.MapTo<JITEF.DIME2Barcode.ICException>();
+        /// <summary>
+        /// 添加和更改
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<bool> CreateAndUpdate(ICExceptionDto input)
+        {
+            try
+            {
+                var entity = await Repository.GetAll()
+                    .SingleOrDefaultAsync(p => p.FID == input.FID && p.FSrcID == input.FSrcID);
+                if (entity == null)
+                {
+                    entity = new DIME2Barcode.Entities.ICException()
+                    {
+                        FID = input.FID,
+                        FSrcID = input.FSrcID,
+                        FBiller = input.FBiller,
+                        FNote = input.FNote,
+                        FTime = input.FTime,
+                        FRemark = input.FRemark,
+                        FRecoverTime = input.FRecoverTime
+                    };
+                    await Repository.InsertAsync(entity);
+                }
+                else
+                {
+                    entity.FBiller = input.FBiller;
+                    entity.FNote = input.FNote;
+                    entity.FTime = input.FTime;
+                    entity.FRemark = input.FRemark;
+                    entity.FRecoverTime = input.FRecoverTime;
 
-        //    context.ICException.Attach(entity);
+                    await Repository.UpdateAsync(entity);
+                }
 
-        //    context.ICException.Add(entity);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
 
-        //    await context.SaveChangesAsync();
-
-        //    return entity.MapTo<ICExceptionDto>();
-
-        //}
-        ///// <summary>
-        ///// 修改
-        ///// </summary>
-        ///// <param name="input"></param>
-        ///// <returns></returns>
-        //public async Task<ICExceptionDto> Update(ICExceptionDto input)
-        //{
-        //    var entity = input.MapTo<JITEF.DIME2Barcode.ICException>();
-
-        //    context.ICException.Attach(entity);
-
-        //    context.Entry(entity).State = EntityState.Modified;
-
-        //    await context.SaveChangesAsync();
-
-        //    return entity.MapTo<ICExceptionDto>();
-        //}
-        ///// <summary>
-        ///// 删除
-        ///// </summary>
-        ///// <param name="input"></param>
-        ///// <returns></returns>
-        //public async Task Delete(ICExceptionDto input)
-        //{
-        //    var entity = await
-        //        context.ICException.SingleOrDefaultAsync(p =>
-        //            p.FID == input.FID);
-
-        //    context.ICException.Attach(entity);
-
-        //    context.Entry(entity).State = EntityState.Deleted;
-
-        //    await context.SaveChangesAsync();
-        //}
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<bool> Delete(ICExceptionDto input)
+        {
+            try
+            {
+                var entity =
+                    await Repository.GetAll().SingleOrDefaultAsync(p =>
+                        p.FID == input.FID);
+                await Repository.DeleteAsync(entity);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
 
 
     }

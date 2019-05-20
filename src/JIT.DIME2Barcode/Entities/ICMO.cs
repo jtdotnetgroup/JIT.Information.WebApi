@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Abp.Domain.Entities;
 
 namespace JIT.DIME2Barcode.Entities
 {
-    public partial class ICMO
-    {
+    public partial class ICMO:Entity<int>
+    { 
         public string FBrNo { get; set; }
         [Key]
         public int FInterID { get; set; }

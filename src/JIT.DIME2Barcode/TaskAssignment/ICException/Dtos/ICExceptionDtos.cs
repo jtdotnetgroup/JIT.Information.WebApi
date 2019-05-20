@@ -39,16 +39,10 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICException.Dtos
         public DateTime? FRecoverTime { get; set; }
         public string FNote { get; set; }
     }
-    public class ICExceptionInput : IEntityDto<string>
-    {
-        public string Id { get => FID; set => FID = value; }
+    public class ICExceptionInput  
+    { 
         public string FID { get; set; }
         public string FSrcID { get; set; }
-        public string FBiller { get; set; }
-        public DateTime? FTime { get; set; }
-        public string FRemark { get; set; }
-        public DateTime? FRecoverTime { get; set; }
-        public string FNote { get; set; }
     }
     public class ICExceptionGetAllInput : PagedResultRequestDto
     {

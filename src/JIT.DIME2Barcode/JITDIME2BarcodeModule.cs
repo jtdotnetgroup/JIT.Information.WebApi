@@ -16,6 +16,11 @@ namespace JIT.DIME2Barcode
     {
         public override void PreInitialize()
         {
+            Configuration.Caching.ConfigureAll(cache =>
+            {
+                cache.DefaultSlidingExpireTime = TimeSpan.FromMinutes(1);
+            });
+
 
             Configuration.ReplaceService<IConnectionStringResolver,Dime2BarcodeConnectionNameResolver>();
 
@@ -32,6 +37,7 @@ namespace JIT.DIME2Barcode
                     Dime2BarcodeContextConfig.Configure(options.DbContextOptions,options.ConnectionString);
                 }
             });
+            
 
             IocManager.Register<Dime2barcodeContext>();
         }

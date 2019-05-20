@@ -6,7 +6,7 @@ using Abp.Domain.Entities;
 
 namespace JIT.DIME2Barcode.Entities
 {
-    public partial class ICMOSchedule:Entity<string>
+    public class ICMOSchedule:Entity<string>
     {
         [NotMapped]
         public override string Id { get; set; }
@@ -35,5 +35,6 @@ namespace JIT.DIME2Barcode.Entities
         public string FCloser { get; set; }
         public DateTime? FCloseTime { get; set; }
         public string FNote { get; set; }
+        public List<ICMODaily> Dailies { get; set; }
     }
 }

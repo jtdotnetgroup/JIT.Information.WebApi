@@ -118,7 +118,29 @@ namespace JIT.DIME2Barcode.AppService
             }
 
         }
-
+        /// <summary>
+        /// 修改汇报数量
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<bool> UpdateFFinishAuxQty(ICMODispBillUpdateFFinishAuxQtyInput input)
+        {
+            try
+            {
+                var entity = await Repository.GetAll().SingleOrDefaultAsync(p => p.FID == input.FID);
+                if (entity != null)
+                {
+                    entity.FFinishAuxQty = input.FFinishAuxQty;
+                    await Repository.UpdateAsync(entity);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
 
     }
 }

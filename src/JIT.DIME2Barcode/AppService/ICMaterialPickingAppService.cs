@@ -24,11 +24,11 @@ namespace JIT.JIT.TaskAssignment.ICMaterialPicking
         
 
         //DIME2BarcodeContext context =new DIME2BarcodeContext();
-        /// <summary>
-        /// 获取全部数据
-        /// </summary>
-        /// <param name="input">条件</param>
-        /// <returns></returns>
+        ///// <summary>
+        ///// 获取全部数据
+        ///// </summary>
+        ///// <param name="input">条件</param>
+        ///// <returns></returns>
         //public async Task<PagedResultDto<ICMaterialPickingDto>> GetAll(ICMaterialPickingGetAllInput input)
         //{
         //    var query = from a in context.ICMaterialPicking.OrderBy(p => p.FID).PageBy(input)

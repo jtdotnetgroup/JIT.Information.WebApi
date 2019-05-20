@@ -29,11 +29,12 @@ namespace JIT.DIME2Barcode.Entities
         public Nullable<decimal> 合格数量 { get; set; }
         public Nullable<decimal> 不合格数量 { get; set; }
         public int 打印次数 { get; set; }
+        [Key]
         public string FID { get; set; }
         public int FStatus { get; set; }
         public Nullable<bool> FClosed { get; set; }
         public int FItemID { get; set; } 
-        [Key]
         public Nullable<int> FWorkcenterID { get; set; }
+        public string FsrcID { get; set; }
     }
 }
