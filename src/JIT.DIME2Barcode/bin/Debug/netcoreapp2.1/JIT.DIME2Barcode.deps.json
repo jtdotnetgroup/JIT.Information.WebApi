@@ -12,7 +12,7 @@
           "Abp.AspNetCore": "4.5.0",
           "Abp.EntityFrameworkCore": "4.5.0",
           "CommonTools": "1.0.0",
-          "JIT.InfomationSystem.Core": "1.0.0",
+          "JIT.InformationSystem.Core": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
           "Pomelo.EntityFrameworkCore.MySql": "2.2.0"
         },
@@ -2569,7 +2569,7 @@
           "CommonTools.dll": {}
         }
       },
-      "JIT.InfomationSystem.Core/1.0.0": {
+      "JIT.InformationSystem.Core/1.0.0": {
         "dependencies": {
           "Abp.AutoMapper": "4.3.0",
           "Abp.ZeroCore.EntityFrameworkCore": "4.3.0",
@@ -2579,7 +2579,7 @@
           "Microsoft.Extensions.Configuration.UserSecrets": "2.2.0"
         },
         "runtime": {
-          "JIT.InfomationSystem.Core.dll": {}
+          "JIT.InformationSystem.Core.dll": {}
         }
       }
     }
@@ -4156,7 +4156,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "JIT.InfomationSystem.Core/1.0.0": {
+    "JIT.InformationSystem.Core/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

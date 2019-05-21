@@ -3481,7 +3481,7 @@
           "bin/placeholder/CommonTools.dll": {}
         }
       },
-      "JIT.InfomationSystem.Core/1.0.0": {
+      "JIT.InformationSystem.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
@@ -3493,10 +3493,10 @@
           "Microsoft.Extensions.Configuration.UserSecrets": "2.2.0"
         },
         "compile": {
-          "bin/placeholder/JIT.InfomationSystem.Core.dll": {}
+          "bin/placeholder/JIT.InformationSystem.Core.dll": {}
         },
         "runtime": {
-          "bin/placeholder/JIT.InfomationSystem.Core.dll": {}
+          "bin/placeholder/JIT.InformationSystem.Core.dll": {}
         }
       }
     }
@@ -10322,10 +10322,10 @@
       "path": "../CommonTools/CommonTools.csproj",
       "msbuildProject": "../CommonTools/CommonTools.csproj"
     },
-    "JIT.InfomationSystem.Core/1.0.0": {
+    "JIT.InformationSystem.Core/1.0.0": {
       "type": "project",
-      "path": "../JIT.InfomationSystem.Core/JIT.InfomationSystem.Core.csproj",
-      "msbuildProject": "../JIT.InfomationSystem.Core/JIT.InfomationSystem.Core.csproj"
+      "path": "../JIT.InformationSystem.Core/JIT.InformationSystem.Core.csproj",
+      "msbuildProject": "../JIT.InformationSystem.Core/JIT.InformationSystem.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -10334,7 +10334,7 @@
       "Abp.AspNetCore >= 4.5.0",
       "Abp.EntityFrameworkCore >= 4.5.0",
       "CommonTools >= 1.0.0",
-      "JIT.InfomationSystem.Core >= 1.0.0",
+      "JIT.InformationSystem.Core >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.4",
       "Microsoft.NETCore.App >= 2.1.0",
       "Pomelo.EntityFrameworkCore.MySql >= 2.2.0"
@@ -10374,8 +10374,8 @@
             "D:\\Net\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj": {
               "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj"
             },
-            "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InfomationSystem.Core\\JIT.InfomationSystem.Core.csproj": {
-              "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InfomationSystem.Core\\JIT.InfomationSystem.Core.csproj"
+            "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj": {
+              "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj"
             }
           }
         }

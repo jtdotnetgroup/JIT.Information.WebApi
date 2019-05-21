@@ -46,5 +46,8 @@ namespace JIT.DIME2Barcode.Entities
 
         [ForeignKey("FSrcID")]
         public ICMOSchedule Schedule { get; set; }
+
     }
+
+   
 }

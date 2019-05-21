@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CommonTools\CommonTools.csproj" />
-    <ProjectReference Include="..\JIT.InfomationSystem.Core\JIT.InfomationSystem.Core.csproj" />
+    <ProjectReference Include="..\JIT.InformationSystem.Core\JIT.InformationSystem.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

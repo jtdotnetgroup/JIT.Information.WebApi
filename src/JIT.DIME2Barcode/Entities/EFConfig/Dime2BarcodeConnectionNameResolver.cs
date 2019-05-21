@@ -1,10 +1,9 @@
-﻿using System;
-using Abp.Configuration.Startup;
+﻿using Abp.Configuration.Startup;
 using Abp.Domain.Uow;
-using JIT.InfomationSystem.Configuration;
-using JIT.InfomationSystem.Web;
+using JIT.InformationSystem.Configuration;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace JIT.DIME2Barcode.Entities.EFConfig
 {

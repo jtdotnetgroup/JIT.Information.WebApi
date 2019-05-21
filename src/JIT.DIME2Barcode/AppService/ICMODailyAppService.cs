@@ -1,8 +1,14 @@
-﻿using Abp;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Dynamic.Core;
+using System.Threading.Tasks;
+using Abp;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
 using Abp.EntityFrameworkCore.Repositories;
 using Abp.Events.Bus;
 using Abp.Linq.Extensions;
@@ -11,44 +17,41 @@ using JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICMODaily.EventsAndEventHandlers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Dynamic.Core;
-using System.Threading.Tasks;
 
 namespace JIT.DIME2Barcode.TaskAssignment
 {
     /// <summary>
-    /// 任务排产接口服务
+    ///     任务排产接口服务
     /// </summary>
-    public class ICMODailyAppService :ApplicationService
+    public class ICMODailyAppService : ApplicationService
     {
-        public IEventBus EventBus { get; set; } 
-
-        //任务单仓储
-        public IRepository<ICMO> MRepository { get; set; }
-
-        //任务计划单仓储
-        public IRepository<ICMOSchedule, string> SRepository { get; set; }
-        //日计划单视图仓储
-        public IRepository<VW_ICMODaily, string> VRepository { get; set; }
-        //日计划单仓储
-        public IRepository<Entities.ICMODaily,string> Repository { get; set; }
-
-        public IRepository<VW_Group_ICMODaily, string> GrRepository { get; set; }
-
         public ICMODailyAppService()
         {
             EventBus = NullEventBus.Instance;
         }
 
+        public IEventBus EventBus { get; set; }
+
+        //任务单仓储
+
+        //任务计划单仓储
+        public IRepository<ICMOSchedule, string> SRepository { get; set; }
+
+        //日计划单视图仓储
+        public IRepository<VW_ICMODaily, string> VRepository { get; set; }
+        public IRepository<Entities.VW_MOBillList,string> MRepository { get; set; }
+
+        //日计划单仓储
+        public IRepository<Entities.ICMODaily, string> Repository { get; set; }
+
+        public IRepository<VW_Group_ICMODaily, string> GrRepository { get; set; }
+
         /// <summary>
-        /// 任务派工界面列表接口
+        ///     任务派工界面列表接口
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public  async Task<PagedResultDto<VW_ICMODailyDto>> GetAll(ICMODailyGetAllInput input)
+        public async Task<PagedResultDto<VW_ICMODailyDto>> GetAll(ICMODailyGetAllInput input)
         {
             var query = VRepository.GetAll();
 
@@ -63,18 +66,22 @@ namespace JIT.DIME2Barcode.TaskAssignment
             var list = data.MapTo<List<VW_ICMODailyDto>>();
 
             return new PagedResultDto<VW_ICMODailyDto>(count, list);
+
+
+
         }
 
         /// <summary>
-        /// 生成日计划单接口
+        ///     生成日计划单接口
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public  async Task<VW_ICMODailyDto> Create(ICMODailyCreatDto input)
+        public async Task<VW_ICMODailyDto> Create(ICMODailyCreatDto input)
         {
-            var dailyList = await Repository.GetAll().Where(p => p.FMOBillNo == input.FMOBillNo&&p.FMOInterID==input.FMOInterID).ToListAsync();
+            var dailyList = await Repository.GetAll()
+                .Where(p => p.FMOBillNo == input.FMOBillNo && p.FMOInterID == input.FMOInterID).ToListAsync();
             var fsrcId = ""; //任务计划单FID
-            decimal? totoalPlan = 0;//计划单排产数
+            decimal? totoalPlan = 0; //计划单排产数
 
             if (dailyList == null || dailyList.Count == 0)
             {
@@ -85,6 +92,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 fsrcId = dailyList.First().FSrcID;
                 totoalPlan += dailyList.Sum(p => p.FPlanAuxQty);
             }
+
             //插入日计划单
             foreach (var item in input.Dailies)
             {
@@ -92,7 +100,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
                     p.FShift == item.FShift && p.FMachineID == item.FMachineID &&
                     item.FWorkCenterID == p.FWorkCenterID && item.FDate == p.FDate);
 
-                
+
                 Entities.ICMODaily insertUpdateObj = null;
 
                 if (daily != null)
@@ -106,28 +114,29 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 else
                 {
                     totoalPlan += item.FPlanAuxQty;
-                    var index = (input.Dailies.IndexOf(item)+dailyList.Count + 1).ToString("000");
-                    insertUpdateObj = new Entities.ICMODaily()
+                    var index = (input.Dailies.IndexOf(item) + dailyList.Count + 1).ToString("000");
+                    insertUpdateObj = new Entities.ICMODaily
                     {
                         FMachineID = item.FMachineID,
                         FWorkCenterID = item.FWorkCenterID,
                         FShift = item.FShift,
                         FID = Guid.NewGuid().ToString(),
-                        FBillNo = "DA" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + index,//任务计划单号
-                        FMOInterID = input.FMOInterID,//任务单号
-                        FMOBillNo = input.FMOBillNo,//任务单号
-                        FBiller = this.AbpSession.UserId.ToString(),//当前登录用户
+                        FBillNo = "DA" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + index, //任务计划单号
+                        FMOInterID = input.FMOInterID, //任务单号
+                        FMOBillNo = input.FMOBillNo, //任务单号
+                        FBiller = AbpSession.UserId.ToString(), //当前登录用户
                         FSrcID = fsrcId,
                         FPlanAuxQty = item.FPlanAuxQty,
                         FBillTime = DateTime.Parse(DateTime.Now.ToString("yyyy-M-d HH:mm:ss")),
-                        FDate =item.FDate.Date
+                        FDate = item.FDate.Date,
                     };
 
-                   var entity=   Repository.Insert(insertUpdateObj);
+                    var entity = Repository.Insert(insertUpdateObj);
                 }
             }
+
             //更新任务计划单的总排产数
-             await InsertOrUpdateICMOSchedul(new ICMODailyCreatedtEventData
+            await InsertOrUpdateICMOSchedul(new ICMODailyCreatedtEventData
             {
                 FSrcID = fsrcId,
                 FMOBillNo = input.FMOBillNo,
@@ -145,7 +154,9 @@ namespace JIT.DIME2Barcode.TaskAssignment
 
             if (entity == null)
             {
-                entity = new ICMOSchedule()
+                
+
+                entity = new ICMOSchedule
                 {
                     FID = eventData.FSrcID,
                     FBillTime = DateTime.Now,
@@ -174,18 +185,18 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 from a1 in g1.DefaultIfEmpty()
                 select a1;
 
-                       var linq = from a in query
-                select new {a.FDate,a.FMachineID,a.FPlanAuxQty,a.FCommitAuxQty};
+            var linq = from a in query
+                select new {a.FDate, a.FMachineID, a.FPlanAuxQty, a.FCommitAuxQty};
 
             var data = await linq.ToListAsync();
 
-            var data2 =await querygroup.ToListAsync();
+            var data2 = await querygroup.ToListAsync();
 
             return data2.ToArray();
-
         }
+
         /// <summary>
-        /// 任务排产主界面点击“排产”后调用接口
+        ///     任务排产主界面点击“排产”后调用接口
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -204,36 +215,39 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 Console.WriteLine(e);
                 throw;
             }
-           
-
         }
 
-        public List<ICMOSchedule> ImportDaily(List<ICMODailyCreatDto> input)
+        public async Task<List<ICMOSchedule>> ImportDaily(List<ICMODailyCreatDto> input)
         {
-            string fmobillno = "";
-            int fmointerid = -1;
+            var fmobillno = "";
+            var fmointerid = -1;
             ICMOSchedule schedule = null;
-            List<ICMOSchedule> result = new List<ICMOSchedule>();
+            var result = new List<ICMOSchedule>();
             //遍历导入数据
             foreach (var inputItem in input)
-            {
                 if (inputItem != null && fmobillno != inputItem.FMOBillNo)
                 {
                     fmobillno = inputItem.FMOBillNo;
-                    var icmo = MRepository.GetAll().SingleOrDefault(p => p.FBillNo == fmobillno);
+                    var icmo = MRepository.GetAll().SingleOrDefault(p => p.任务单号 == fmobillno);
                     if (icmo != null)
                     {
-                        schedule = SRepository.GetAll().SingleOrDefault(p => p.FMOBillNo == fmobillno);
+                        schedule = GetOrCreateSchedule(icmo);
 
                         if (schedule == null)
                         {
-                            schedule = new ICMOSchedule()
+                            schedule = new ICMOSchedule
                             {
                                 FID = Guid.NewGuid().ToString(),
                                 FBillTime = DateTime.Now,
                                 FBillNo = "SC-" + fmobillno,
                                 FBiller = AbpSession.UserId.ToString(),
-                                FPlanAuxQty = 0
+                                FPlanAuxQty = icmo.计划生产数量,
+                                FItemID = icmo.产品编码,
+                                FItemModel = icmo.规格型号,
+                                FItemName = icmo.产品名称,
+                                FPlanBeginDate = icmo.计划开工日期,
+                                FPlanFinishDate = icmo.计划完工日期
+                                ,Dailies = new List<Entities.ICMODaily>()
                             };
                             //插入新的计划单
                             schedule = SRepository.Insert(schedule);
@@ -242,9 +256,6 @@ namespace JIT.DIME2Barcode.TaskAssignment
                         foreach (var dailyItem in inputItem.Dailies)
                         {
                             #region 暂时注掉不用
-
-
-
 
                             //var entity = dailyList.SingleOrDefault(p => p.FDate == dailyItem.FDate && p.FMachineID == dailyItem.FMachineID &&
                             //                                            p.FShift == dailyItem.FShift && p.FOperID == dailyItem.FOperID);
@@ -274,6 +285,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
                             //{
                             //    entity.FPlanAuxQty = dailyItem.FPlanAuxQty;
                             //}
+
                             #endregion
 
                             var entity = schedule.Dailies.SingleOrDefault(p =>
@@ -284,20 +296,21 @@ namespace JIT.DIME2Barcode.TaskAssignment
 
                             if (entity == null)
                             {
-                                entity = new Entities.ICMODaily()
+                                entity = new Entities.ICMODaily
                                 {
                                     FMachineID = dailyItem.FMachineID,
                                     FWorkCenterID = dailyItem.FWorkCenterID,
                                     FShift = dailyItem.FShift,
                                     FID = Guid.NewGuid().ToString(),
-                                    FBillNo = "DA" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + index,//任务计划单号
-                                    FMOInterID = icmo.FInterID,//任务单号
-                                    FMOBillNo = icmo.FBillNo,//任务单号
-                                    FBiller = this.AbpSession.UserId.ToString(),//当前登录用户
+                                    FBillNo = "DA" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + index, //任务计划单号
+                                    FMOInterID = icmo.FMOInterID, //任务单ID
+                                    FMOBillNo = icmo.任务单号, //任务单号
+                                    FBiller = AbpSession.UserId.ToString(), //当前登录用户
                                     FSrcID = schedule.FID,
                                     FPlanAuxQty = dailyItem.FPlanAuxQty,
-                                    FBillTime =  DateTime.Parse(DateTime.Now.ToString("yyyy-M-d dd HH:mm:ss")),
-                                    FDate = dailyItem.FDate.Date
+                                    FBillTime = DateTime.Now,
+                                    FDate = dailyItem.FDate.Date,
+                                    
                                 };
                                 //插入新的日计划单
                                 schedule.Dailies.Add(entity);
@@ -308,8 +321,8 @@ namespace JIT.DIME2Barcode.TaskAssignment
                                 entity.FPlanAuxQty = dailyItem.FPlanAuxQty;
                                 schedule.FPlanAuxQty += entity.FPlanAuxQty;
                             }
-
                         }
+
                         //更新计划单
                         SRepository.Update(schedule);
                     }
@@ -317,11 +330,40 @@ namespace JIT.DIME2Barcode.TaskAssignment
                     {
                         throw new AbpException($"任务单号：{0} 不存在" + fmobillno);
                     }
-
                 }
-            }
 
             return null;
+        }
+
+
+        [UnitOfWork]
+        protected  ICMOSchedule GetOrCreateSchedule(Entities.VW_MOBillList icmo)
+        {
+           var schedule = SRepository.GetAll().Include(p => p.Dailies).SingleOrDefault(p => p.FMOBillNo == icmo.任务单号);
+
+           if (schedule == null)
+           {
+               schedule = new ICMOSchedule
+               {
+                   FID = Guid.NewGuid().ToString(),
+                   FBillTime = DateTime.Now,
+                   FBillNo = "SC-" + icmo.任务单号,
+                   FBiller = AbpSession.UserId.ToString(),
+                   FPlanAuxQty = icmo.计划生产数量,
+                   FItemID = icmo.产品编码,
+                   FItemModel = icmo.规格型号,
+                   FItemName = icmo.产品名称,
+                   FPlanBeginDate = icmo.计划开工日期,
+                   FPlanFinishDate = icmo.计划完工日期
+                   ,
+                   Dailies = new List<Entities.ICMODaily>()
+               };
+               //插入新的计划单
+               schedule = SRepository.Insert(schedule);
+               UnitOfWorkManager.Current.SaveChanges();
+           }
+
+           return schedule;
         }
     }
 }
