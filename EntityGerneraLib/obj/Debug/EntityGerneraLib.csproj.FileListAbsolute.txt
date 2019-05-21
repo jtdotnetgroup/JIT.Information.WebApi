@@ -11,3 +11,17 @@ E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\obj\Debug\E
 E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\obj\Debug\EntityGerneraLib.csproj.CopyComplete
 E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\obj\Debug\EntityGerneraLib.dll
 E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\EntityGerneraLib\obj\Debug\EntityGerneraLib.pdb
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\bin\Debug\EntityGerneraLib.dll.config
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\bin\Debug\EntityGerneraLib.dll
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\bin\Debug\EntityGerneraLib.pdb
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\bin\Debug\EntityFramework.dll
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\bin\Debug\EntityFramework.SqlServer.dll
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\bin\Debug\EntityFramework.xml
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\bin\Debug\EntityFramework.SqlServer.xml
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\obj\Debug\EntityGerneraLib.csproj.CoreCompileInputs.cache
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\obj\Debug\EntityGerneraLib.csproj.CopyComplete
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\obj\Debug\EntityGerneraLib.dll
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\obj\Debug\EntityGerneraLib.pdb
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Net\JIT.Information.WebApi\EntityGerneraLib\obj\Debug\EntityGerneraLib.csprojAssemblyReference.cache

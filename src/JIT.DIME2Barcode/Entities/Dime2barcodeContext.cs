@@ -1,14 +1,11 @@
-﻿using System;
-using Abp.Dependency;
-using Abp.Domain.Repositories;
+﻿using Abp.Dependency;
 using Abp.EntityFrameworkCore;
-using JIT.DIME2Barcode.Entities.EFConfig;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+using System;
 
 namespace JIT.DIME2Barcode.Entities
 {
-    
+
     public partial class Dime2barcodeContext : AbpDbContext,ITransientDependency
     {
         public Dime2barcodeContext(DbContextOptions<Dime2barcodeContext> options)
@@ -16,37 +13,41 @@ namespace JIT.DIME2Barcode.Entities
         {
         }
 
-        public virtual DbSet<ICMODaily> ICMODaily { get; set; }
-        public virtual DbSet<BillStatus> BillStatus { get; set; }
-        public virtual DbSet<ICException> ICException { get; set; }
-        public virtual DbSet<ICMaterialPicking> ICMaterialPicking { get; set; }
-        public virtual DbSet<ICMO> ICMO { get; set; }
-        public virtual DbSet<ICMODispBill> ICMODispBill { get; set; }
-        public virtual DbSet<ICMOInspectBill> ICMOInspectBill { get; set; }
-        public virtual DbSet<ICMOSchedule> ICMOSchedule { get; set; }
-        public virtual DbSet<ICQualityRpt> ICQualityRpt { get; set; }
-        public virtual DbSet<ICBOM> ICBOM { get; set; }
-        public virtual DbSet<SEOrder> SEOrder { get; set; }
-        public virtual DbSet<t_Department> t_Department { get; set; }
-        public virtual DbSet<t_MeasureUnit> t_MeasureUnit { get; set; }
-        public virtual DbSet<T_PrintTemplate> T_PrintTemplate { get; set; }
-        public virtual DbSet<TB_BadItemRelation> TB_BadItemRelation { get; set; }
-        public virtual DbSet<t_ICItem> t_ICItem { get; set; }
-        public virtual DbSet<VW_MOBillList> VW_MOBillList { get; set; }
-        public virtual DbSet<VW_ICMODaily> VW_ICMODaily { get; set; }
-        public virtual DbSet<VW_ICMODispBill_By_Date> VW_ICMODispBill_By_Date { get; set; }
-        public virtual DbSet<VW_ICMOInspectBillList> VW_ICMOInspectBillList { get; set; }
+        public virtual Microsoft.EntityFrameworkCore.DbSet<VW_Group_ICMODaily> VW_Group_ICMODaily { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICMODaily> ICMODaily { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<BillStatus> BillStatus { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICException> ICException { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICMaterialPicking> ICMaterialPicking { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICMO> ICMO { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICMODispBill> ICMODispBill { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICMOInspectBill> ICMOInspectBill { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICMOSchedule> ICMOSchedule { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICQualityRpt> ICQualityRpt { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICBOM> ICBOM { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<SEOrder> SEOrder { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<t_Department> t_Department { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<t_MeasureUnit> t_MeasureUnit { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<T_PrintTemplate> T_PrintTemplate { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<TB_BadItemRelation> TB_BadItemRelation { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<t_ICItem> t_ICItem { get; set; }
+        public virtual Microsoft.EntityFrameworkCore.DbSet<VW_MOBillList> VW_MOBillList { get; set; }
+        public virtual Microsoft.EntityFrameworkCore.DbSet<VW_ICMODaily> VW_ICMODaily { get; set; }
+        public virtual Microsoft.EntityFrameworkCore.DbSet<VW_ICMODispBill_By_Date> VW_ICMODispBill_By_Date { get; set; }
+        public virtual Microsoft.EntityFrameworkCore.DbSet<VW_ICMOInspectBillList> VW_ICMOInspectBillList { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
             }
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
+
+            #region 不指定列类型
 
             modelBuilder.Entity<ICMODaily>(entity =>
             {
@@ -70,7 +71,9 @@ namespace JIT.DIME2Barcode.Entities
                     .HasMaxLength(200)
                     .IsUnicode(false);
 
-                entity.Property(e => e.FBillTime).HasColumnType("datetime");
+                entity.Property(e => e.FBillTime)
+                    .HasColumnType("datetime")
+                    .HasConversion(v => v, v =>v.HasValue? new DateTime(v.Value.Year, v.Value.Month, v.Value.Day, v.Value.Hour, v.Value.Minute, v.Value.Second):v); 
 
                 entity.Property(e => e.FBiller)
                     .HasMaxLength(200)
@@ -94,7 +97,9 @@ namespace JIT.DIME2Barcode.Entities
                     .HasColumnType("decimal(28, 8)")
                     .HasDefaultValueSql("((0))");
 
-                entity.Property(e => e.FDate).HasColumnType("datetime");
+                entity.Property(e => e.FDate).HasColumnType("datetime")
+                    .HasConversion(v=>v,v=>new DateTime(v.Year,v.Month,v.Day,v.Hour,v.Minute,v.Second));
+                    
 
                 entity.Property(e => e.FEntryID).HasDefaultValueSql("((1))");
 
@@ -141,6 +146,9 @@ namespace JIT.DIME2Barcode.Entities
                     .HasMaxLength(200)
                     .IsUnicode(false);
             });
+
+            #endregion
+
 
             OnModelCreatingPartial(modelBuilder);
         }

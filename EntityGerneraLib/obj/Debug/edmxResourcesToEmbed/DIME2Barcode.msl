@@ -235,6 +235,7 @@
     <EntitySetMapping Name="VW_ICMODaily">
       <EntityTypeMapping TypeName="DIME2Barcode.VW_ICMODaily">
         <MappingFragment StoreEntitySet="VW_ICMODaily">
+          <ScalarProperty Name="FID" ColumnName="FID" />
           <ScalarProperty Name="完成数量" ColumnName="完成数量" />
           <ScalarProperty Name="计划完工日期" ColumnName="计划完工日期" />
           <ScalarProperty Name="计划开工日期" ColumnName="计划开工日期" />
@@ -275,6 +276,23 @@
           <ScalarProperty Name="工序" ColumnName="工序" />
           <ScalarProperty Name="产品名称" ColumnName="产品名称" />
           <ScalarProperty Name="派工单号" ColumnName="派工单号" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_Group_ICMODaily">
+      <EntityTypeMapping TypeName="DIME2Barcode.VW_Group_ICMODaily">
+        <MappingFragment StoreEntitySet="VW_Group_ICMODaily">
+          <ScalarProperty Name="FMOInterID" ColumnName="FMOInterID" />
+          <ScalarProperty Name="FMOBillNo" ColumnName="FMOBillNo" />
+          <ScalarProperty Name="合格数量" ColumnName="合格数量" />
+          <ScalarProperty Name="完成数量" ColumnName="完成数量" />
+          <ScalarProperty Name="派工数量" ColumnName="派工数量" />
+          <ScalarProperty Name="计划数量" ColumnName="计划数量" />
+          <ScalarProperty Name="操作员" ColumnName="操作员" />
+          <ScalarProperty Name="班组" ColumnName="班组" />
+          <ScalarProperty Name="机台" ColumnName="机台" />
+          <ScalarProperty Name="日期" ColumnName="日期" />
+          <ScalarProperty Name="FSrcID" ColumnName="FSrcID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

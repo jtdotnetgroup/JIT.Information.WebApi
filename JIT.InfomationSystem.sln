@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JIT.InfomationSystem.Web.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JIT.InfomationSystem.EntityFrameworkCore", "src\JIT.InfomationSystem.EntityFrameworkCore\JIT.InfomationSystem.EntityFrameworkCore.csproj", "{E0580562-F8F2-4EBB-B07A-ABFC6F2C314F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JIT.DIME2Barcode", "src\JIT.DIME2Barcode\JIT.DIME2Barcode.csproj", "{8E1467F9-A283-4F33-AEBB-EA446B9011A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JIT.DIME2Barcode", "src\JIT.DIME2Barcode\JIT.DIME2Barcode.csproj", "{8E1467F9-A283-4F33-AEBB-EA446B9011A8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityGerneraLib", "EntityGerneraLib\EntityGerneraLib.csproj", "{4EEBF9DB-70D9-414D-A198-946F1BEC7472}"
 EndProject

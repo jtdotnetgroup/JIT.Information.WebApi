@@ -20,7 +20,7 @@ namespace JIT.DIME2Barcode.Entities
         public bool? FClosed { get; set; }
         public int? FMOInterID { get; set; }
         public string FMOBillNo { get; set; }
-        public DateTime FDate { get; set; }
+        public DateTime? FDate { get; set; }
         public int? FShift { get; set; }
         public int? FOperID { get; set; }
         public int? FWorkCenterID { get; set; }

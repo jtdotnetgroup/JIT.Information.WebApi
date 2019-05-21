@@ -7,6 +7,7 @@
     <OutputType>Exe</OutputType>
     <PackageId>JIT.InfomationSystem.Web.Host</PackageId>
     <UserSecretsId>JIT-InfomationSystem-56C2EF2F-ABD6-4EFC-AAF2-2E81C34E8FB1</UserSecretsId>
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="wwwroot\swagger\ui\index.html" />
@@ -25,10 +26,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JIT.DIME2Barcode\JIT.DIME2Barcode.csproj" />
     <ProjectReference Include="..\JIT.InfomationSystem.Web.Core\JIT.InfomationSystem.Web.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Abp" Version="4.5.0" />
+    <PackageReference Include="LogDashboard" Version="1.2.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.1">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>

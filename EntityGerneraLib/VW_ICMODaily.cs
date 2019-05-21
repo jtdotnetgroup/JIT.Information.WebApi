@@ -25,5 +25,6 @@ namespace EntityGerneraLib
         public Nullable<System.DateTime> 计划开工日期 { get; set; }
         public Nullable<System.DateTime> 计划完工日期 { get; set; }
         public decimal 完成数量 { get; set; }
+        public string FID { get; set; }
     }
 }

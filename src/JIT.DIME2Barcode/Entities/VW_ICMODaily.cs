@@ -9,7 +9,7 @@ namespace JIT.DIME2Barcode.Entities
     {
         [NotMapped]
         public override string Id { get; set; }
-        public System.DateTime 日期 { get; set; }
+        public System.DateTime? 日期 { get; set; }
         [Key]
         public string 计划单号 { get; set; }
         public string 任务单号 { get; set; }
@@ -21,5 +21,6 @@ namespace JIT.DIME2Barcode.Entities
         public Nullable<System.DateTime> 计划开工日期 { get; set; }
         public Nullable<System.DateTime> 计划完工日期 { get; set; }
         public decimal 完成数量 { get; set; }
+        public string FID { get; set; }
     }
 }

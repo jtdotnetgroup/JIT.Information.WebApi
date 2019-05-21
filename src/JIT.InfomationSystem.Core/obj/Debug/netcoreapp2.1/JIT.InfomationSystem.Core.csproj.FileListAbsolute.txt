@@ -7,3 +7,11 @@ E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.Cor
 E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.Core\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.dll
 E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.Core\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.pdb
 E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.InfomationSystem.Core\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.csprojAssemblyReference.cache
+D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Core\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.deps.json
+D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Core\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.dll
+D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Core\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.pdb
+D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Core\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.csproj.CoreCompileInputs.cache
+D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Core\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.AssemblyInfoInputs.cache
+D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Core\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.AssemblyInfo.cs
+D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Core\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.dll
+D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Core\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.pdb

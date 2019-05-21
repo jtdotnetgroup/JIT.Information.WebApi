@@ -6,6 +6,7 @@
     <EntitySet Name="VW_ICMODaily" EntityType="DIME2Barcode.VW_ICMODaily" />
     <EntitySet Name="VW_ICMODispBill_By_Date" EntityType="DIME2Barcode.VW_ICMODispBill_By_Date" />
     <EntitySet Name="VW_ICMOInspectBillList" EntityType="DIME2Barcode.VW_ICMOInspectBillList" />
+    <EntitySet Name="VW_Group_ICMODaily" EntityType="DIME2Barcode.VW_Group_ICMODaily" />
   </EntityContainer>
   <EntityType Name="t_ICItem">
     <Key>
@@ -247,6 +248,7 @@
     <Key>
       <PropertyRef Name="日期" />
       <PropertyRef Name="完成数量" />
+      <PropertyRef Name="FID" />
     </Key>
     <Property Name="日期" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="计划单号" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -259,6 +261,7 @@
     <Property Name="计划开工日期" Type="DateTime" Precision="3" />
     <Property Name="计划完工日期" Type="DateTime" Precision="3" />
     <Property Name="完成数量" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+    <Property Name="FID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="VW_ICMODispBill_By_Date">
     <Key>
@@ -292,5 +295,27 @@
     <Property Name="汇报数" Type="Decimal" Precision="28" Scale="8" />
     <Property Name="合格数" Type="Decimal" Precision="28" Scale="8" />
     <Property Name="不合格数" Type="Decimal" Precision="28" Scale="8" />
+  </EntityType>
+  <EntityType Name="VW_Group_ICMODaily">
+    <Key>
+      <PropertyRef Name="FSrcID" />
+      <PropertyRef Name="日期" />
+      <PropertyRef Name="操作员" />
+      <PropertyRef Name="计划数量" />
+      <PropertyRef Name="派工数量" />
+      <PropertyRef Name="完成数量" />
+      <PropertyRef Name="合格数量" />
+    </Key>
+    <Property Name="FSrcID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="日期" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="机台" Type="Int32" />
+    <Property Name="班组" Type="Int32" />
+    <Property Name="操作员" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="计划数量" Type="Decimal" Nullable="false" Precision="28" Scale="8" />
+    <Property Name="派工数量" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+    <Property Name="完成数量" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+    <Property Name="合格数量" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+    <Property Name="FMOBillNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FMOInterID" Type="Int32" />
   </EntityType>
 </Schema>

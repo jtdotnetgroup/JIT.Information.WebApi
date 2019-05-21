@@ -12,3 +12,17 @@ E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\bin\Deb
 E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csproj.CopyComplete
 E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\CommonTools.dll
 E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\CommonTools.pdb
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.deps.json
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.dll
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.pdb
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\CommonTools.dll
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.dll
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\CommonTools.pdb
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InfomationSystem.Core.pdb
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csprojAssemblyReference.cache
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csproj.CoreCompileInputs.cache
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.AssemblyInfoInputs.cache
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.AssemblyInfo.cs
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csproj.CopyComplete
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.dll
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.pdb

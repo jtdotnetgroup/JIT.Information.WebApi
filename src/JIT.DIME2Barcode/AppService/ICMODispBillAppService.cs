@@ -21,7 +21,7 @@ namespace JIT.DIME2Barcode.AppService
     public class ICMODispBillAppService:ApplicationService
     {
         public IRepository<VW_ICMODispBill_By_Date,string> VRepository { get; set; }
-        //public IRepository<ICMODaily,string> DRepository { get; set; }
+        public IRepository<ICMODaily, string> DRepository { get; set; }
         public IRepository<ICMODispBill,string> Repository { get; set; }
         //public IRepository<ICMOSchedule, string> SRepository { get; set; }
 
@@ -42,7 +42,7 @@ namespace JIT.DIME2Barcode.AppService
             try
             {
                 var data =await query.ToListAsync();
-                var list = data.MapTo(new List<ICMODispBillListDto>());
+                var list = data.MapTo<List<ICMODispBillListDto>>();
 
                 return new PagedResultDto<ICMODispBillListDto>(count, list);
             }
@@ -70,7 +70,10 @@ namespace JIT.DIME2Barcode.AppService
             foreach (var dispBillI in input.Details)
             {
                 var dailyFid = dispBillI.FSrcID;
-                var entity =await Repository.GetAll().SingleOrDefaultAsync(p => p.FSrcID == dailyFid);
+                var dispBillList =await Repository.GetAll().Where(p => p.FSrcID == dailyFid).ToListAsync();
+
+                var entity = dispBillList.SingleOrDefault(p => p.FID == dispBillI.FID);
+
                 if (entity == null)
                 {
                     /*
@@ -80,6 +83,7 @@ namespace JIT.DIME2Barcode.AppService
                     {
                         FID = Guid.NewGuid().ToString(),
                         FSrcID = dailyFid,
+                        FWorker = dispBillI.FWorker,
                         FWorkCenterID = dispBillI.FWorkCenterID,
                         FMachineID = dispBillI.FMachineID,
                         FMOBillNo = dispBillI.FMOBillNo,
@@ -87,6 +91,7 @@ namespace JIT.DIME2Barcode.AppService
                         FCommitAuxQty = dispBillI.FCommitAuxQty,
                         FBiller = AbpSession.UserId.ToString(),
                         FDate = DateTime.Now,
+                        FShift = dispBillI.FShift,
                         FBillNo = "DI"+DateTime.Now.ToString("yyyyMMddHHmmss")+new Random().Next(1,10).ToString()
                     };
 
@@ -105,7 +110,8 @@ namespace JIT.DIME2Barcode.AppService
                     entity.FCommitAuxQty = dispBillI.FCommitAuxQty;
                     entity.FMachineID = dispBillI.FMachineID;
                     entity.FDate = DateTime.Now;
-
+                    entity.FShift = dispBillI.FShift;
+                    entity.FMachineID = dispBillI.FMachineID;
                     await Repository.UpdateAsync(entity);
 
                     totalCommitQty += entity.FCommitAuxQty;
@@ -161,7 +167,7 @@ namespace JIT.DIME2Barcode.AppService
                         
                         a.FID, a.FSrcID,
                         设备 = a.FMachineID, 操作员 = a.FWorker, 班次 = a.FShift,
-                        派工数量 = a.FPlanAuxQty,
+                        派工数量 = a.FCommitAuxQty,
                         派工单号 = a.FBillNo,
                         派单时间 = a.FBillTime,
                         计划员 = a.FBiller,

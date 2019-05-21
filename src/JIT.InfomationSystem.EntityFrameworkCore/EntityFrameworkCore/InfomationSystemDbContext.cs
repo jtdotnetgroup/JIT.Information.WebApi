@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Abp.Zero.EntityFrameworkCore;
+using JIT.DIME2Barcode.Entities;
 using JIT.InfomationSystem.Authorization.Roles;
 using JIT.InfomationSystem.Authorization.Users;
 using JIT.InfomationSystem.MultiTenancy;
@@ -14,5 +15,8 @@ namespace JIT.InfomationSystem.EntityFrameworkCore
             : base(options)
         {
         }
+
+        
+       
     }
 }

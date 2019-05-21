@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using JIT.DIME2Barcode.Entities.EFConfig;
 
 namespace JIT.DIME2Barcode.Entities
 {
@@ -19,6 +20,7 @@ namespace JIT.DIME2Barcode.Entities
         public int? FMOInterID { get; set; }
         public string FMOBillNo { get; set; }
         public int FEntryID { get; set; }
+        [Column(TypeName = "datetime")]
         public DateTime FDate { get; set; }
         public int? FShift { get; set; }
         public int? FWorkCenterID { get; set; }
@@ -32,11 +34,17 @@ namespace JIT.DIME2Barcode.Entities
         public int? FOperID { get; set; }
         public string FOperNote { get; set; }
         public string FBiller { get; set; }
+        [Column(TypeName = "datetime")]
         public DateTime? FBillTime { get; set; }
         public string FChecker { get; set; }
+        [Column(TypeName = "datetime")]
         public DateTime? FCheckTime { get; set; }
         public string FCloser { get; set; }
+        [Column(TypeName = "datetime")]
         public DateTime? FCloseTime { get; set; }
         public string FNote { get; set; }
+
+        [ForeignKey("FSrcID")]
+        public ICMOSchedule Schedule { get; set; }
     }
 }

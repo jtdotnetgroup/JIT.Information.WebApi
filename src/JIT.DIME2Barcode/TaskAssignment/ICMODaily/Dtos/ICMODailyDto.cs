@@ -14,7 +14,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos
         public int? FMOInterID { get; set; }
         public string FMOBillNo { get; set; }
         public int FEntryID { get; set; }
-        public DateTime FDate { get; set; }
+        public DateTime? FDate { get; set; }
         public int? FShift { get; set; }
         public int? FWorkCenterID { get; set; }
         public int? FMachineID { get; set; }

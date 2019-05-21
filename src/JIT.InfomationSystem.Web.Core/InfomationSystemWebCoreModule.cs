@@ -9,6 +9,7 @@ using Abp.AspNetCore.SignalR;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Zero.Configuration;
+using JIT.DIME2Barcode;
 using JIT.InfomationSystem.Authentication.JwtBearer;
 using JIT.InfomationSystem.Configuration;
 using JIT.InfomationSystem.EntityFrameworkCore;
@@ -19,7 +20,8 @@ namespace JIT.InfomationSystem
     [DependsOn(
          typeof(InfomationSystemApplicationModule),
          typeof(InfomationSystemEntityFrameworkModule),
-         typeof(AbpAspNetCoreModule)
+         typeof(AbpAspNetCoreModule),
+         typeof(JITDIME2BarcodeModule)
         ,typeof(AbpAspNetCoreSignalRModule)
      )]
     public class InfomationSystemWebCoreModule : AbpModule

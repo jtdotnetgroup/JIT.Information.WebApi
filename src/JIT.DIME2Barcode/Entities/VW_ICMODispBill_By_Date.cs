@@ -12,7 +12,7 @@ namespace JIT.DIME2Barcode.Entities
 
         [Key]
         public string FSrcID { get; set; }
-        public System.DateTime 日期 { get; set; }
+        public System.DateTime? 日期 { get; set; }
         public int? 机台 { get; set; }
         public int? 班组 { get; set; }
         public string 操作员 { get; set; }

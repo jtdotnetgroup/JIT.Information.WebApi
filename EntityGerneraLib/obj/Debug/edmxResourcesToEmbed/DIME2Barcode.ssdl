@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="DIME2Barcode.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="DIME2Barcode.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <!--生成过程中发现错误:
 警告 6002: 表/视图“DIME2Barcode.dbo.t_ICItem”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
   <EntityType Name="t_ICItem">
@@ -211,11 +211,36 @@
     <Property Name="FExportRate" Type="decimal" Precision="28" Scale="10" />
   </EntityType>
   <!--生成过程中发现错误:
+警告 6002: 表/视图“DIME2Barcode.dbo.VW_Group_ICMODaily”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="VW_Group_ICMODaily">
+    <Key>
+      <PropertyRef Name="FSrcID" />
+      <PropertyRef Name="日期" />
+      <PropertyRef Name="操作员" />
+      <PropertyRef Name="计划数量" />
+      <PropertyRef Name="派工数量" />
+      <PropertyRef Name="完成数量" />
+      <PropertyRef Name="合格数量" />
+    </Key>
+    <Property Name="FSrcID" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="日期" Type="datetime" Nullable="false" />
+    <Property Name="机台" Type="int" />
+    <Property Name="班组" Type="int" />
+    <Property Name="操作员" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="计划数量" Type="decimal" Precision="28" Scale="8" Nullable="false" />
+    <Property Name="派工数量" Type="decimal" Precision="38" Scale="8" Nullable="false" />
+    <Property Name="完成数量" Type="decimal" Precision="38" Scale="8" Nullable="false" />
+    <Property Name="合格数量" Type="decimal" Precision="38" Scale="8" Nullable="false" />
+    <Property Name="FMOBillNo" Type="varchar" MaxLength="200" />
+    <Property Name="FMOInterID" Type="int" />
+  </EntityType>
+  <!--生成过程中发现错误:
 警告 6002: 表/视图“DIME2Barcode.dbo.VW_ICMODaily”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
   <EntityType Name="VW_ICMODaily">
     <Key>
       <PropertyRef Name="日期" />
       <PropertyRef Name="完成数量" />
+      <PropertyRef Name="FID" />
     </Key>
     <Property Name="日期" Type="datetime" Nullable="false" />
     <Property Name="计划单号" Type="varchar" MaxLength="200" />
@@ -228,6 +253,7 @@
     <Property Name="计划开工日期" Type="datetime" />
     <Property Name="计划完工日期" Type="datetime" />
     <Property Name="完成数量" Type="decimal" Precision="38" Scale="8" Nullable="false" />
+    <Property Name="FID" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <!--生成过程中发现错误:
 警告 6002: 表/视图“DIME2Barcode.dbo.VW_ICMODispBill_By_Date”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -503,6 +529,21 @@
     [t_ICItem].[FExportRate] AS [FExportRate]
     FROM [dbo].[t_ICItem] AS [t_ICItem]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="VW_Group_ICMODaily" EntityType="Self.VW_Group_ICMODaily" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_Group_ICMODaily].[FSrcID] AS [FSrcID], 
+    [VW_Group_ICMODaily].[日期] AS [日期], 
+    [VW_Group_ICMODaily].[机台] AS [机台], 
+    [VW_Group_ICMODaily].[班组] AS [班组], 
+    [VW_Group_ICMODaily].[操作员] AS [操作员], 
+    [VW_Group_ICMODaily].[计划数量] AS [计划数量], 
+    [VW_Group_ICMODaily].[派工数量] AS [派工数量], 
+    [VW_Group_ICMODaily].[完成数量] AS [完成数量], 
+    [VW_Group_ICMODaily].[合格数量] AS [合格数量], 
+    [VW_Group_ICMODaily].[FMOBillNo] AS [FMOBillNo], 
+    [VW_Group_ICMODaily].[FMOInterID] AS [FMOInterID]
+    FROM [dbo].[VW_Group_ICMODaily] AS [VW_Group_ICMODaily]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="VW_ICMODaily" EntityType="Self.VW_ICMODaily" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [VW_ICMODaily].[日期] AS [日期], 
@@ -515,7 +556,8 @@
     [VW_ICMODaily].[计划数量] AS [计划数量], 
     [VW_ICMODaily].[计划开工日期] AS [计划开工日期], 
     [VW_ICMODaily].[计划完工日期] AS [计划完工日期], 
-    [VW_ICMODaily].[完成数量] AS [完成数量]
+    [VW_ICMODaily].[完成数量] AS [完成数量], 
+    [VW_ICMODaily].[FID] AS [FID]
     FROM [dbo].[VW_ICMODaily] AS [VW_ICMODaily]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="VW_ICMODispBill_By_Date" EntityType="Self.VW_ICMODispBill_By_Date" store:Type="Views" store:Schema="dbo">

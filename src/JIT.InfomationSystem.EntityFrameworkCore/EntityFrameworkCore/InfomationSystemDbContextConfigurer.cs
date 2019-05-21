@@ -7,12 +7,12 @@ namespace JIT.InfomationSystem.EntityFrameworkCore
     {
         public static void Configure(DbContextOptionsBuilder<InfomationSystemDbContext> builder, string connectionString)
         {
-            builder.UseSqlServer(connectionString);
+            builder.UseMySql(connectionString);
         }
 
         public static void Configure(DbContextOptionsBuilder<InfomationSystemDbContext> builder, DbConnection connection)
         {
-            builder.UseSqlServer(connection);
+            builder.UseMySql(connection);
         }
     }
 }

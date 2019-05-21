@@ -17,6 +17,8 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
     [AutoMapTo(typeof(Entities.ICMODispBill))]
     public class DispBillCreateInput
     {
+        //派工单FID
+        public string FID { get; set; }
         //源单ID，即ICMODaily的FID
         public string FSrcID { get; set; }
         //班次
@@ -31,7 +33,6 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
         public string FWorker { get; set; }
         [Required]
         public string FMOBillNo { get; set; }
-        [Required]
         public int? FMOInterID { get; set; }
     }
 }

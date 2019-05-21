@@ -16,5 +16,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos
         public int FWorkCenterID { get; set; }
         //班次
         public int FShift { get; set; }
+
+        public int FOperID { get; set; }
     }
 }

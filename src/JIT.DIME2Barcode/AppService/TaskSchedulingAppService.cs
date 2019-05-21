@@ -33,7 +33,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.TaskScheduling
             var count = await query.CountAsync();
 
             query = string.IsNullOrEmpty(input.Sorting)
-                ? query.OrderBy(p => p.计划开工日期).PageBy(input)
+                ? query.OrderByDescending(p => p.FMOInterID).PageBy(input)
                 : query.OrderBy(input.Sorting).PageBy(input);
 
             var data = await query.ToListAsync();

@@ -17,8 +17,8 @@ namespace JIT.DIME2Barcode.TaskAssignment.VW_MOBillList.Dtos
         public string 批号 { get; set; }
         public float 计划生产数量 { get; set; }
         public float? 入库数量 { get; set; }
-        public DateTime 计划开工日期 { get; set; }
-        public DateTime 计划完工日期 { get; set; }
+        public DateTime? 计划开工日期 { get; set; }
+        public DateTime? 计划完工日期 { get; set; }
         public string FMOInterID { get; set; }
         public string FStatus { get; set; }
     }

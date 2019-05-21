@@ -35,5 +35,7 @@ namespace JIT.DIME2Barcode.Entities
         public string FCloser { get; set; }
         public DateTime? FCloseTime { get; set; }
         public string FNote { get; set; }
+
+        public List<ICMODaily> Dailies { get; set; }
     }
 }

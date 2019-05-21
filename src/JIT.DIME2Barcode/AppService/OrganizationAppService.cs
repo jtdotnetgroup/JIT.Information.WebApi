@@ -15,7 +15,9 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         {
         }
 
-
-
+        public override Task<OrganizationDto> Create(OrganizationCreateInput input)
+        {
+            return base.Create(input);
+        }
     }
 }

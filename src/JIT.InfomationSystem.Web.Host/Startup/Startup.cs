@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
@@ -16,6 +17,8 @@ using JIT.InfomationSystem.Configuration;
 using JIT.InfomationSystem.Identity;
 
 using Abp.AspNetCore.SignalR.Hubs;
+using LogDashboard;
+using LogDashboard.Extensions;
 
 namespace JIT.InfomationSystem.Web.Host.Startup
 {
@@ -25,8 +28,11 @@ namespace JIT.InfomationSystem.Web.Host.Startup
 
         private readonly IConfigurationRoot _appConfiguration;
 
+        private IHostingEnvironment _env;
+
         public Startup(IHostingEnvironment env)
         {
+            _env = env;
             _appConfiguration = env.GetAppConfiguration();
         }
 
@@ -75,6 +81,11 @@ namespace JIT.InfomationSystem.Web.Host.Startup
 
                 });
 
+            services.AddLogDashboard(opt =>
+            {
+                opt.SetRootPath(Path.Combine(_env.ContentRootPath, @"App_Data/Logs"));
+            });
+
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             services.AddSwaggerGen(options =>
             {
@@ -117,6 +128,8 @@ namespace JIT.InfomationSystem.Web.Host.Startup
             {
                 routes.MapHub<AbpCommonHub>("/signalr");
             });
+
+            app.UseLogDashboard();
 
             app.UseMvc(routes =>
             {

@@ -23,7 +23,7 @@ namespace JIT.DIME2Barcode.Entities
         public int? FCheckID { get; set; }
         public DateTime? FCheckDate { get; set; }
         public int? FOperatorID { get; set; }
-        public DateTime FEnterTime { get; set; }
+        public DateTime? FEnterTime { get; set; }
         public short FStatus { get; set; }
         public bool? FCancellation { get; set; }
         public int FTranType { get; set; }
