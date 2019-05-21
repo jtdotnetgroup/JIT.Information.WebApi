@@ -36,3 +36,7 @@ D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Migrator\obj\Debug\netcor
 D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Migrator\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Migrator.csproj.CopyComplete
 D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Migrator\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Migrator.dll
 D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Migrator\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Migrator.pdb
+D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Migrator\bin\Debug\netcoreapp2.1\CommonTools.dll
+D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Migrator\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.dll
+D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Migrator\bin\Debug\netcoreapp2.1\CommonTools.pdb
+D:\Net\JIT.Information.WebApi\src\JIT.InfomationSystem.Migrator\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.pdb

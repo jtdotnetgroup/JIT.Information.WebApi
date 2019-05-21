@@ -42,3 +42,7 @@ D:\Net\JIT.Information.WebApi\test\JIT.InfomationSystem.Tests\obj\Debug\netcorea
 D:\Net\JIT.Information.WebApi\test\JIT.InfomationSystem.Tests\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Tests.csproj.CopyComplete
 D:\Net\JIT.Information.WebApi\test\JIT.InfomationSystem.Tests\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Tests.dll
 D:\Net\JIT.Information.WebApi\test\JIT.InfomationSystem.Tests\obj\Debug\netcoreapp2.1\JIT.InfomationSystem.Tests.pdb
+D:\Net\JIT.Information.WebApi\test\JIT.InfomationSystem.Tests\bin\Debug\netcoreapp2.1\CommonTools.dll
+D:\Net\JIT.Information.WebApi\test\JIT.InfomationSystem.Tests\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.dll
+D:\Net\JIT.Information.WebApi\test\JIT.InfomationSystem.Tests\bin\Debug\netcoreapp2.1\CommonTools.pdb
+D:\Net\JIT.Information.WebApi\test\JIT.InfomationSystem.Tests\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.pdb

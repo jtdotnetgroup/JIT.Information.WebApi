@@ -26,11 +26,11 @@ namespace JIT.DIME2Barcode
             {
                 if (options.ExistingConnection != null)
                 {
-                    Dime2BarcodeContextConfig.Configure(options.DbContextOptions, options.ExistingConnection);
+                    Dime2BarcodeContextConfig.Configure<Dime2barcodeContext>(options.DbContextOptions, options.ExistingConnection);
                 }
                 else
                 {
-                    Dime2BarcodeContextConfig.Configure(options.DbContextOptions, options.ConnectionString);
+                    Dime2BarcodeContextConfig.Configure<Dime2barcodeContext>(options.DbContextOptions, options.ConnectionString);
                 }
             });
 
@@ -39,11 +39,11 @@ namespace JIT.DIME2Barcode
             {
                 if (options.ExistingConnection != null)
                 {
-                    Dime2BarcodeContextConfig.ConfigureMySql(options.DbContextOptions, options.ExistingConnection);
+                    Dime2BarcodeContextConfig.ConfigureMySql<ProductionPlanMySqlDbContext>(options.DbContextOptions, options.ExistingConnection);
                 }
                 else
                 {
-                    Dime2BarcodeContextConfig.ConfigureMySql(options.DbContextOptions, options.ConnectionString);
+                    Dime2BarcodeContextConfig.ConfigureMySql<ProductionPlanMySqlDbContext>(options.DbContextOptions, options.ConnectionString);
                 }
             });
 
