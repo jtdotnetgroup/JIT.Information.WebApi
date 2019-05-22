@@ -1,4 +1,5 @@
-﻿using Abp.AspNetCore.Configuration;
+﻿using System;
+using Abp.AspNetCore.Configuration;
 using Abp.AutoMapper;
 using Abp.Configuration.Startup;
 using Abp.Domain.Uow;
@@ -10,6 +11,7 @@ using JIT.DIME2Barcode.SystemSetting.Organization.Dtos;
 using System.Reflection;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.Entities.EFConfig;
+using JIT.DIME2Barcode.Localization;
 
 namespace JIT.DIME2Barcode
 {
@@ -61,6 +63,14 @@ namespace JIT.DIME2Barcode
                     .ForMember(o => o.CreatorUserId, op => op.Ignore())
                     .ForMember(o => o.Id, op => op.Ignore());
             });
+
+            Configuration.Caching.ConfigureAll(cache =>
+            {
+                cache.DefaultSlidingExpireTime = TimeSpan.FromHours(2);
+            });
+
+
+            ProductionPlanLocalizationConfigurer.Configure(Configuration.Localization);
         }
 
         public override void Initialize()

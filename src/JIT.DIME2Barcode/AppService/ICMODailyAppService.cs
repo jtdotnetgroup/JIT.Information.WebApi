@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Abp;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
@@ -52,6 +53,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize("")]
         public async Task<PagedResultDto<VW_ICMODailyDto>> GetAll(ICMODailyGetAllInput input)
         {
             var query = VRepository.GetAll();
