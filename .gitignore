@@ -252,3 +252,4 @@ paket-files/
 *.sln.iml
 *.txt
 src/JIT.InformationSystem.Web.Host/App_Data/Logs/Logs.txt
+*.txt
