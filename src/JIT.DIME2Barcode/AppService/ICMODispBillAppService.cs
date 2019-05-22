@@ -139,6 +139,24 @@ namespace JIT.DIME2Barcode.AppService
             return new PagedResultDto<VW_ICMODispBill_By_Date>(count,data);
         }
 
+        public async Task<bool> UpdateFFinishAuxQty(ICMODispBillUpdateFFinishAuxQtyInput input)
+        {
+            try
+            {
+                var entity = await Repository.GetAll().SingleOrDefaultAsync(p => p.FID == input.FID);
+                if (entity != null)
+                {
+                    entity.FFinishAuxQty = input.FFinishAuxQty;
+                    await Repository.UpdateAsync(entity);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
 
     }
 

@@ -41,6 +41,5 @@ namespace JIT.JIT.TaskAssignment.VW_MODispBillList.Dtos
         public string 操作者 { get; set; }
         public int FStatus { get; set; }
         public bool? FClosed { get; set; }
-
     }
 }

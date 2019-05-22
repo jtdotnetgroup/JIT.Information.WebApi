@@ -37,6 +37,8 @@ namespace JIT.DIME2Barcode.Entities
         public virtual DbSet<VW_ICMODispBill_By_Date> VW_ICMODispBill_By_Date { get; set; }
         public virtual DbSet<VW_ICMOInspectBillList> VW_ICMOInspectBillList { get; set; }
         public virtual DbSet<VW_MODispBillList> VW_MODispBillList { get; set; }
+        public virtual DbSet<VM_Inventory> VM_Inventory { get; set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
