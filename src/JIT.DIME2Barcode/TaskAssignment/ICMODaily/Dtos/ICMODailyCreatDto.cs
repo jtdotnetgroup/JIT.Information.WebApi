@@ -14,6 +14,8 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos
         [Required]
         public string FMOBillNo { get; set; }
 
+        public string FWorkCenterName { get; set; }
+
         
         
 

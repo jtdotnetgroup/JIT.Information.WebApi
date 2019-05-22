@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="SystemSetting\WorkingProcedure\" />
+    <Folder Include="BackgroudJobs\" />
   </ItemGroup>
 
 </Project>
