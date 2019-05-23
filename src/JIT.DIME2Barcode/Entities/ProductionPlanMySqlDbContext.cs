@@ -26,10 +26,14 @@ namespace JIT.DIME2Barcode.Entities
         public virtual DbSet<T_PrintTemplate> T_PrintTemplate { get; set; }
         public virtual DbSet<TB_BadItemRelation> TB_BadItemRelation { get; set; }
 
+        public virtual DbSet<OrganizationUnitsJT> OrganizationUnitsJts { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
+
+
         #region 视图
 
-        public virtual DbSet<VW_ICMODaily> VW_ICMODaily { get; set; }
-        public virtual DbSet<VW_MODispBillList> VW_MODispBillList { get; set; }
+        //public virtual DbSet<VW_ICMODaily> VW_ICMODaily { get; set; }
+        //public virtual DbSet<VW_MODispBillList> VW_MODispBillList { get; set; }
         #endregion
     }
 }

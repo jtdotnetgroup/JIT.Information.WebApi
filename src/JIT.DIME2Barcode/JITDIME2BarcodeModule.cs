@@ -49,17 +49,16 @@ namespace JIT.DIME2Barcode
 
             Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
             {
-                config.CreateMap<OrganizationCreateInput, OrganizationUnit>()
-                    .ForMember(o => o.Parent, option => option.Ignore())
-                    .ForMember(o => o.Children, option => option.Ignore())
-                    .ForMember(o => o.IsDeleted, option => option.Ignore())
-                    .ForMember(o => o.DeleterUserId, option => option.Ignore())
-                    .ForMember(o => o.DeletionTime, option => option.Ignore())
-                    .ForMember(o => o.LastModificationTime, option => option.Ignore())
-                    .ForMember(o => o.LastModifierUserId, op => op.Ignore())
-                    .ForMember(o => o.CreationTime, op => op.Ignore())
-                    .ForMember(o => o.CreatorUserId, op => op.Ignore())
-                    .ForMember(o => o.Id, op => op.Ignore());
+                config.CreateMap<OrganizationUnitsJT, OrganizationDto>()                
+                    .ForMember(o => o.Children, option => option.Ignore());
+                //.ForMember(o => o.IsDeleted, option => option.Ignore())
+                //.ForMember(o => o.DeleterUserId, option => option.Ignore())
+                //.ForMember(o => o.DeletionTime, option => option.Ignore())
+                //.ForMember(o => o.LastModificationTime, option => option.Ignore())
+                //.ForMember(o => o.LastModifierUserId, op => op.Ignore())
+                //.ForMember(o => o.CreationTime, op => op.Ignore())
+                //.ForMember(o => o.CreatorUserId, op => op.Ignore())
+                //.ForMember(o => o.Id, op => op.Ignore());
             });
         }
 
