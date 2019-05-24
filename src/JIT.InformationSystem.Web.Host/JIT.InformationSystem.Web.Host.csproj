@@ -28,7 +28,7 @@
     <ProjectReference Include="..\JIT.InformationSystem.Web.Core\JIT.InformationSystem.Web.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LogDashboard" Version="1.2.1" />
+    <PackageReference Include="LogDashboard" Version="1.2.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.1">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>

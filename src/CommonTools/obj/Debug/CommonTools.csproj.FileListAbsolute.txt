@@ -10,3 +10,9 @@ D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CoreC
 D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
 D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb
 D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.dll
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.pdb
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CoreCompileInputs.cache
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb

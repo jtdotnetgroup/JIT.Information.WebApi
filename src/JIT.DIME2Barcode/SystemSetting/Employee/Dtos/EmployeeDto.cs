@@ -22,5 +22,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Employee.Dtos
         public int FTenantId { get; set; }
         public int FOrganizationUnitId { get; set; }
 
+        public  string DisplayName { get; set; }
+
     }
 }

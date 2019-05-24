@@ -29,15 +29,14 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
         /// This is a unique code for a Tenant.
         /// It's changeable if OU hierarch is changed.
         /// </summary>
-        [Required]
+        //[Required]
         public virtual string Code { get; set; }
 
         /// <summary>
         /// Display name of this role.
         /// </summary>
-        [Required]
+       // [Required]
         public virtual string DisplayName { get; set; }
-
 
         public virtual int OrganizationType { get; set; }
         public virtual string DataBaseConnection { get; set; }
@@ -45,9 +44,15 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
         public virtual int ERPOrganization { get; set; }
         public virtual string Remark { get; set; }
 
-
-
         public  ICollection<OrganizationDto> Children { get; set; }
+
+    }
+
+    public class OrganizationDeleteDto:EntityDto
+    {
+        
+        
+        
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Abp.Domain.Entities;
 
@@ -13,8 +14,8 @@ namespace JIT.DIME2Barcode.Entities
         [Required]
         public  string Code { get; set; }
         public DateTime? CreationTime { get; set; }
-        public   int? CreatorUserId { get; set; }
-        public int? DeleterUserId { get; set; }
+        public   long? CreatorUserId { get; set; }
+        public long? DeleterUserId { get; set; }
         public DateTime DeletionTime { get; set; }
         [StringLength(100)]
         [Required]
@@ -30,7 +31,10 @@ namespace JIT.DIME2Barcode.Entities
         public int? ERPOrganization { get; set; }
         public string Remark { get; set; }
 
+        [ForeignKey("ParentId")]
+        public OrganizationUnitsJT Parent { get; set; }
 
+        public List<OrganizationUnitsJT> Children { get; set; }
 
     }
 }

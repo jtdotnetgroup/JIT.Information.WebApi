@@ -20,6 +20,10 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
         public virtual string title { get; set; }
         public virtual string key { get; set; }
 
+
+        public virtual string value { get; set; }
+        public virtual string  label { get; set; }
+
         public List<OrganizationDtoTest> children { get; set; }
 
 

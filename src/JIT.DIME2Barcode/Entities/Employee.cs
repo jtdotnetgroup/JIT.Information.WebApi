@@ -27,6 +27,8 @@ namespace JIT.DIME2Barcode.Entities
         public int FTenantId { get; set; }
         public int FOrganizationUnitId { get; set; }
 
+        public long FUserId { get; set; }
+        public bool IsDeleted { get; set; }
 
     }
 }
