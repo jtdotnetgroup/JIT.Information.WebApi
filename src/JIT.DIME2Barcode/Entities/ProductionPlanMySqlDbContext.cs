@@ -25,11 +25,18 @@ namespace JIT.DIME2Barcode.Entities
         public virtual DbSet<t_MeasureUnit> t_MeasureUnit { get; set; }
         public virtual DbSet<T_PrintTemplate> T_PrintTemplate { get; set; }
         public virtual DbSet<TB_BadItemRelation> TB_BadItemRelation { get; set; }
+        public virtual DbSet<Equipment> T_Equipment { get; set; }
 
         #region 视图
-
         public virtual DbSet<VW_ICMODaily> VW_ICMODaily { get; set; }
         public virtual DbSet<VW_MODispBillList> VW_MODispBillList { get; set; }
         #endregion
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Equipment>().HasIndex(p => p.FNumber).IsUnique();
+        }
     }
 }

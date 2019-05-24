@@ -98,6 +98,13 @@
     <text name="EditTenant">编辑租户</text>
 
     <text name="SystemSettings">系统设置</text>
+    <text name="Update">修改</text>
+    <text name="Get">查询</text>
+    <text name="Import">导入</text>
+    <text name="Export">导出</text>
+    <text name="TaskPlan">任务排产</text>
+    <text name="TaskDispatch">任务派工</text>
+
 
   </texts>
 </localizationDictionary>

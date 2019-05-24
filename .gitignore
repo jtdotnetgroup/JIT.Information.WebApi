@@ -251,5 +251,6 @@ paket-files/
 .idea/
 *.sln.iml
 *.txt
-src/JIT.InformationSystem.Web.Host/App_Data/Logs/Logs.txt
-*.txt
+
+App_Data/Logs/
+Logs.txt
