@@ -85,6 +85,15 @@ namespace JIT.DIME2Barcode
                     Dime2BarcodeContextConfig.ConfigureMySql(options.DbContextOptions, options.ConnectionString);
                 }
             });
+
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
+            {
+                config.CreateMap<OrganizationUnitsJT, OrganizationDto>()
+                    .ForMember(o => o.Children, option => option.Ignore());
+        
+            });
         }
+
+        
     }
 }

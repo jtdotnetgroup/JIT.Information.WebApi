@@ -3,14 +3,16 @@ using System;
 using JIT.DIME2Barcode.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JIT.DIME2Barcode.Migrations
 {
     [DbContext(typeof(ProductionPlanMySqlDbContext))]
-    partial class ProductionPlanMySqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190522072235_InitDb")]
+    partial class InitDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,44 +37,6 @@ namespace JIT.DIME2Barcode.Migrations
                     b.ToTable("BillStatus");
                 });
 
-            modelBuilder.Entity("JIT.DIME2Barcode.Entities.Equipment", b =>
-                {
-                    b.Property<int>("FInterID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreationTime");
-
-                    b.Property<long?>("CreatorUserId");
-
-                    b.Property<long?>("DeleterUserId");
-
-                    b.Property<DateTime?>("DeletionTime");
-
-                    b.Property<TimeSpan?>("FDayWorkHours");
-
-                    b.Property<TimeSpan?>("FMaxWorkHours");
-
-                    b.Property<string>("FName");
-
-                    b.Property<string>("FNumber");
-
-                    b.Property<int>("FStatus");
-
-                    b.Property<int>("FType");
-
-                    b.Property<int?>("FWorkCenterID");
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<string>("Note");
-
-                    b.HasKey("FInterID");
-
-                    b.HasIndex("FNumber")
-                        .IsUnique();
-
-                    b.ToTable("T_Equipment");
-                    
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.Employee", b =>
                 {
                     b.Property<int>("Id")
