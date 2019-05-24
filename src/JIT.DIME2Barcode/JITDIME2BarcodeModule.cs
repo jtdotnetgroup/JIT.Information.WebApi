@@ -1,5 +1,4 @@
-﻿using System;
-using Abp.AspNetCore.Configuration;
+﻿using Abp.AspNetCore.Configuration;
 using Abp.AutoMapper;
 using Abp.Configuration.Startup;
 using Abp.Domain.Uow;
@@ -7,11 +6,13 @@ using Abp.EntityFrameworkCore.Configuration;
 using Abp.Modules;
 using Abp.Organizations;
 using Abp.Reflection.Extensions;
-using JIT.DIME2Barcode.SystemSetting.Organization.Dtos;
-using System.Reflection;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.Entities.EFConfig;
-using JIT.DIME2Barcode.Localization;
+using JIT.DIME2Barcode.Permissions;
+using JIT.DIME2Barcode.SystemSetting.Organization.Dtos;
+using System;
+using System.Reflection;
+using JIT.InformationSystem.CommonClass;
 
 namespace JIT.DIME2Barcode
 {
@@ -20,10 +21,46 @@ namespace JIT.DIME2Barcode
         public override void PreInitialize()
         {
 
+            Configuration.Authorization.Providers.Add<ProductionPlanPermissionProvider>();
+
+            
+
             Configuration.ReplaceService<IConnectionStringResolver, Dime2BarcodeConnectionNameResolver>();
 
             Configuration.Modules.AbpAspNetCore().CreateControllersForAppServices(typeof(JITDIME2BarcodeModule).GetAssembly());
 
+            ConfigurDbContext();
+
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
+            {
+                config.CreateMap<OrganizationCreateInput, OrganizationUnit>()
+                    .ForMember(o => o.Parent, option => option.Ignore())
+                    .ForMember(o => o.Children, option => option.Ignore())
+                    .ForMember(o => o.IsDeleted, option => option.Ignore())
+                    .ForMember(o => o.DeleterUserId, option => option.Ignore())
+                    .ForMember(o => o.DeletionTime, option => option.Ignore())
+                    .ForMember(o => o.LastModificationTime, option => option.Ignore())
+                    .ForMember(o => o.LastModifierUserId, op => op.Ignore())
+                    .ForMember(o => o.CreationTime, op => op.Ignore())
+                    .ForMember(o => o.CreatorUserId, op => op.Ignore())
+                    .ForMember(o => o.Id, op => op.Ignore());
+            });
+            //设置缓存
+            Configuration.Caching.ConfigureAll(cache =>
+            {
+                cache.DefaultSlidingExpireTime = TimeSpan.FromHours(2);
+            });
+
+            
+        }
+
+        public override void Initialize()
+        {
+            IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
+        }
+
+        protected void ConfigurDbContext()
+        {
             Configuration.Modules.AbpEfCore().AddDbContext<Dime2barcodeContext>(options =>
             {
                 if (options.ExistingConnection != null)
@@ -48,34 +85,6 @@ namespace JIT.DIME2Barcode
                     Dime2BarcodeContextConfig.ConfigureMySql(options.DbContextOptions, options.ConnectionString);
                 }
             });
-
-            Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
-            {
-                config.CreateMap<OrganizationCreateInput, OrganizationUnit>()
-                    .ForMember(o => o.Parent, option => option.Ignore())
-                    .ForMember(o => o.Children, option => option.Ignore())
-                    .ForMember(o => o.IsDeleted, option => option.Ignore())
-                    .ForMember(o => o.DeleterUserId, option => option.Ignore())
-                    .ForMember(o => o.DeletionTime, option => option.Ignore())
-                    .ForMember(o => o.LastModificationTime, option => option.Ignore())
-                    .ForMember(o => o.LastModifierUserId, op => op.Ignore())
-                    .ForMember(o => o.CreationTime, op => op.Ignore())
-                    .ForMember(o => o.CreatorUserId, op => op.Ignore())
-                    .ForMember(o => o.Id, op => op.Ignore());
-            });
-
-            Configuration.Caching.ConfigureAll(cache =>
-            {
-                cache.DefaultSlidingExpireTime = TimeSpan.FromHours(2);
-            });
-
-
-            ProductionPlanLocalizationConfigurer.Configure(Configuration.Localization);
-        }
-
-        public override void Initialize()
-        {
-            IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
         }
     }
 }

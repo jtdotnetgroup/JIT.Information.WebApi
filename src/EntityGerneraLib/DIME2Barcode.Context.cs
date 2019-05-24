@@ -32,5 +32,6 @@ namespace EntityGerneraLib
         public virtual DbSet<VW_ICMOInspectBillList> VW_ICMOInspectBillList { get; set; }
         public virtual DbSet<VW_Group_ICMODaily> VW_Group_ICMODaily { get; set; }
         public virtual DbSet<VW_MODispBillList> VW_MODispBillList { get; set; }
+        public virtual DbSet<t_Resource> t_Resource { get; set; }
     }
 }

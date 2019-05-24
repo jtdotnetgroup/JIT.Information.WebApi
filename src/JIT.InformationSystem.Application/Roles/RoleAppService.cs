@@ -4,7 +4,9 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Authorization.Roles;
 using Abp.Domain.Repositories;
+using Abp.EntityFrameworkCore.Extensions;
 using Abp.Extensions;
 using Abp.IdentityFramework;
 using Abp.Linq.Extensions;
@@ -23,6 +25,8 @@ namespace JIT.InformationSystem.Roles
         private readonly RoleManager _roleManager;
         private readonly UserManager _userManager;
 
+        public IRepository<RolePermissionSetting, long> _rolePermissionSettingRepository { get; set; }
+
         public RoleAppService(IRepository<Role> repository, RoleManager roleManager, UserManager userManager)
             : base(repository)
         {
@@ -33,6 +37,8 @@ namespace JIT.InformationSystem.Roles
         public override async Task<RoleDto> Create(CreateRoleDto input)
         {
             CheckCreatePermission();
+
+
 
             var role = ObjectMapper.Map<Role>(input);
             role.SetNormalizedName();
@@ -104,6 +110,7 @@ namespace JIT.InformationSystem.Roles
             return Task.FromResult(new ListResultDto<PermissionDto>(
                 ObjectMapper.Map<List<PermissionDto>>(permissions)
             ));
+
         }
 
         protected override IQueryable<Role> CreateFilteredQuery(PagedRoleResultRequestDto input)
@@ -112,6 +119,8 @@ namespace JIT.InformationSystem.Roles
                 .WhereIf(!input.Keyword.IsNullOrWhiteSpace(), x => x.Name.Contains(input.Keyword)
                 || x.DisplayName.Contains(input.Keyword)
                 || x.Description.Contains(input.Keyword));
+
+
         }
 
         protected override async Task<Role> GetEntityByIdAsync(int id)
@@ -143,6 +152,35 @@ namespace JIT.InformationSystem.Roles
                 GrantedPermissionNames = grantedPermissions.Select(p => p.Name).ToList()
             };
         }
+
+        public override async Task<PagedResultDto<RoleDto>> GetAll(PagedRoleResultRequestDto input)
+        {
+            CheckGetAllPermission();
+
+            var rolePermissions= await _rolePermissionSettingRepository.GetAll().Where(p => p.IsGranted).ToListAsync();
+
+            var query = CreateFilteredQuery(input);
+
+            var totalCount = await AsyncQueryableExecuter.CountAsync(query);
+
+            query = ApplySorting(query, input);
+            query = ApplyPaging(query, input);
+
+            var entities = await AsyncQueryableExecuter.ToListAsync(query);
+
+            foreach (var role in entities)
+            {
+                var perList = rolePermissions.Where(p => p.RoleId == role.Id).ToList();
+                role.Permissions = perList;
+            }
+
+            return new PagedResultDto<RoleDto>(
+                totalCount,
+                entities.Select(MapToEntityDto).ToList()
+            );
+        }
+
+
     }
 }
 

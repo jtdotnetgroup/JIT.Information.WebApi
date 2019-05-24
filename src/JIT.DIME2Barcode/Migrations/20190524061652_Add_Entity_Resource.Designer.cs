@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JIT.DIME2Barcode.Migrations
 {
     [DbContext(typeof(ProductionPlanMySqlDbContext))]
-    [Migration("20190522031308_ICMODaily_Add_FWorkCenterName")]
-    partial class ICMODaily_Add_FWorkCenterName
+    [Migration("20190524061652_Add_Entity_Resource")]
+    partial class Add_Entity_Resource
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,45 @@ namespace JIT.DIME2Barcode.Migrations
                     b.HasKey("FTranType");
 
                     b.ToTable("BillStatus");
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.Equipment", b =>
+                {
+                    b.Property<int>("FInterID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<TimeSpan?>("FDayWorkHours");
+
+                    b.Property<TimeSpan?>("FMaxWorkHours");
+
+                    b.Property<string>("FName");
+
+                    b.Property<string>("FNumber");
+
+                    b.Property<int>("FStatus");
+
+                    b.Property<int>("FType");
+
+                    b.Property<int?>("FWorkCenterID");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<string>("Note");
+
+                    b.HasKey("FInterID");
+
+                    b.HasIndex("FNumber")
+                        .IsUnique();
+
+                    b.ToTable("T_Equipment");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.ICBOM", b =>
