@@ -3481,6 +3481,19 @@
           "bin/placeholder/CommonTools.dll": {}
         }
       },
+      "JIT.InformationSystem.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "JIT.InformationSystem.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/JIT.InformationSystem.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/JIT.InformationSystem.Application.dll": {}
+        }
+      },
       "JIT.InformationSystem.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
@@ -10322,6 +10335,11 @@
       "path": "../CommonTools/CommonTools.csproj",
       "msbuildProject": "../CommonTools/CommonTools.csproj"
     },
+    "JIT.InformationSystem.Application/1.0.0": {
+      "type": "project",
+      "path": "../JIT.InformationSystem.Application/JIT.InformationSystem.Application.csproj",
+      "msbuildProject": "../JIT.InformationSystem.Application/JIT.InformationSystem.Application.csproj"
+    },
     "JIT.InformationSystem.Core/1.0.0": {
       "type": "project",
       "path": "../JIT.InformationSystem.Core/JIT.InformationSystem.Core.csproj",
@@ -10334,6 +10352,7 @@
       "Abp.AspNetCore >= 4.5.0",
       "Abp.EntityFrameworkCore >= 4.5.0",
       "CommonTools >= 1.0.0",
+      "JIT.InformationSystem.Application >= 1.0.0",
       "JIT.InformationSystem.Core >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.4",
       "Microsoft.NETCore.App >= 2.1.0",
@@ -10375,6 +10394,9 @@
           "projectReferences": {
             "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj": {
               "projectPath": "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj"
+            },
+            "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj": {
+              "projectPath": "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj"
             },
             "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj": {
               "projectPath": "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj"
