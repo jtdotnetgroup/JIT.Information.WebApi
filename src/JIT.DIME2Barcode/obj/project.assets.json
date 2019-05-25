@@ -3481,6 +3481,19 @@
           "bin/placeholder/CommonTools.dll": {}
         }
       },
+      "JIT.InformationSystem.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "JIT.InformationSystem.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/JIT.InformationSystem.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/JIT.InformationSystem.Application.dll": {}
+        }
+      },
       "JIT.InformationSystem.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
@@ -4392,6 +4405,7 @@
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.rtf",
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.Analyzers.dll",
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.CSharp.Analyzers.dll",
@@ -6525,6 +6539,7 @@
       "path": "system.console/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -6780,6 +6795,7 @@
       "path": "system.diagnostics.fileversioninfo/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -6821,6 +6837,7 @@
       "path": "system.diagnostics.stacktrace/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -7048,6 +7065,7 @@
       "path": "system.dynamic.runtime/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -8118,6 +8136,7 @@
       "path": "system.reflection.metadata/1.4.2",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.1/System.Reflection.Metadata.dll",
@@ -8630,6 +8649,7 @@
       "path": "system.runtime.interopservices.runtimeinformation/4.0.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -8935,6 +8955,7 @@
       "path": "system.security.cryptography.algorithms/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -9228,6 +9249,7 @@
       "path": "system.security.cryptography.x509certificates/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -9948,6 +9970,7 @@
       "path": "system.threading.thread/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -9987,6 +10010,7 @@
       "path": "system.valuetuple/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/.xml",
@@ -10003,6 +10027,7 @@
       "path": "system.xml.readerwriter/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -10222,6 +10247,7 @@
       "path": "system.xml.xpath.xdocument/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -10322,6 +10348,11 @@
       "path": "../CommonTools/CommonTools.csproj",
       "msbuildProject": "../CommonTools/CommonTools.csproj"
     },
+    "JIT.InformationSystem.Application/1.0.0": {
+      "type": "project",
+      "path": "../JIT.InformationSystem.Application/JIT.InformationSystem.Application.csproj",
+      "msbuildProject": "../JIT.InformationSystem.Application/JIT.InformationSystem.Application.csproj"
+    },
     "JIT.InformationSystem.Core/1.0.0": {
       "type": "project",
       "path": "../JIT.InformationSystem.Core/JIT.InformationSystem.Core.csproj",
@@ -10334,6 +10365,7 @@
       "Abp.AspNetCore >= 4.5.0",
       "Abp.EntityFrameworkCore >= 4.5.0",
       "CommonTools >= 1.0.0",
+      "JIT.InformationSystem.Application >= 1.0.0",
       "JIT.InformationSystem.Core >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.4",
       "Microsoft.NETCore.App >= 2.1.0",
@@ -10373,6 +10405,9 @@
           "projectReferences": {
             "D:\\Net\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj": {
               "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj"
+            },
+            "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj": {
+              "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj"
             },
             "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj": {
               "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj"
@@ -10423,5 +10458,13 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "读取缓存文件 D:\\Net\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\obj\\JIT.DIME2Barcode.csproj.nuget.cache 时遇到问题: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

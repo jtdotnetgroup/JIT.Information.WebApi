@@ -18,13 +18,12 @@ namespace CommonTools
         }
 
         /// <summary>
-        /// 员工表职位
+        /// 员工表状态职位
         /// </summary>
-        public enum FSystemUser
+        public enum FWorkingState 
         {
             在职=1,
             离职=2
-
         }
 
         /// <summary>

@@ -21,8 +21,12 @@ namespace JIT.DIME2Barcode.SystemSetting.Employee.Dtos
         public int FERPOfficeClerk { get; set; }
         public int FTenantId { get; set; }
         public int FOrganizationUnitId { get; set; }
-
+        public long FUserId { get; set; }
+        public bool IsDeleted { get; set; }
         public  string DisplayName { get; set; }
+
+        //public  string UserName { get; set; }
+        //public string Password { get; set; }
 
     }
 }
