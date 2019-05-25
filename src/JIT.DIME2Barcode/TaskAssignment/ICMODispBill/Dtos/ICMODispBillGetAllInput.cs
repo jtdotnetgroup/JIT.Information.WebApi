@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 
@@ -11,7 +12,6 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
         [Required]
         public string FMOBillNo { get; set; }
         
-        [Required]
         public int FMOInterID { get; set; }
 
       
@@ -20,5 +20,13 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
     public class ICMODispBillGetAllInputTwo : PagedResultRequestDto
     {
         public string FSrcID { get; set; }
+    }
+
+    public class ICMODispBill_Daily_GetAllListInput
+    {
+        [Required]
+        public List<DateTime> DatelList { get; set; }
+        [Required]
+        public List<string> FMOBillNos { get; set; }
     }
 }

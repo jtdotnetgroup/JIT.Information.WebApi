@@ -9,3 +9,4 @@ D:\Net\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.pdb
 D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CoreCompileInputs.cache
 D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
 D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache

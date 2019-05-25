@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
+using CommonTools;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace JIT.DIME2Barcode.Entities
@@ -19,7 +20,7 @@ namespace JIT.DIME2Barcode.Entities
         //名称
         public string FName { get; set; }
         //类型
-        public int FType { get; set; }
+        public PublicEnum.EquipmentType FType { get; set; }
         //工作中心ID
         public Nullable<int> FWorkCenterID { get; set; }
         //状态
@@ -30,6 +31,23 @@ namespace JIT.DIME2Barcode.Entities
         public Nullable<TimeSpan> FMaxWorkHours { get; set; }
         //备注
         public string Note { get; set; }
+
+        //时间单位
+        public PublicEnum.TimeUnit FTimeUnit { get; set; }
+
+        //切换时间
+        public DateTime FSwichTime { get; set; }
+
+        //使用寿命
+        public int FLift { get; set; }
+        //剩余寿命
+        public int FResidualLife { get; set; }
+
+        //产能系数
+        public decimal FRunsRate { get; set; }
+
+        [ForeignKey("FWorkCenterID")]
+        public OrganizationUnit WorkCenter { get; set; }
 
 
         public bool IsDeleted { get; set; }

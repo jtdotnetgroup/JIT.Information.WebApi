@@ -3,13 +3,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
-using Abp.Organizations;
 using JIT.DIME2Barcode.Entities;
 
 namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
 {
 
-    [AutoMapTo(typeof(OrganizationUnitsJT))]
+    [AutoMapTo(typeof(OrganizationUnit))]
     public class OrganizationDto:EntityDto<long>
     {
         /// <summary>

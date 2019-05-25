@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
-using Abp.Application.Services;
+﻿using Abp.Application.Services;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
-using Abp.EntityFrameworkCore.Repositories;
-using Abp.Organizations;
 using CommonTools;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.SystemSetting.Organization.Dtos;
-using JIT.DIME2Barcode.TaskAssignment.VW_ICMOInspectBillList.Dtos;
-using JIT.JIT.TaskAssignment.ICMaterialPicking.Dtos;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
+using JIT.DIME2Barcode.SystemSetting.Organization.ISpecification;
 
 namespace JIT.DIME2Barcode.SystemSetting.Organization
 {
@@ -23,11 +18,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         //: AsyncCrudAppService<OrganizationUnit, OrganizationDto, long, OrganizationGetAllInput, OrganizationCreateInput, OrganizationDto, OrganizationDto, OrganizationDeleteInput>
     {
 
-        public IRepository<OrganizationUnitsJT, int> _repository { get; set; }
-        public IRepository<OrganizationUnit,long> _ORepository { get; set; }
-
-    
-
+        public IRepository<OrganizationUnit, int> _repository { get; set; }
 
         /// <summary>
         /// 根据父节点获取子节点
@@ -75,6 +66,20 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
             return TreeList;
         }
 
+
+        public async Task<List<OrganizationDtoTest>> GetAll(OrganizationGetAllInput input)
+        {
+            var query = _repository.GetAll();
+            if (input.OrganizationType.HasValue)
+            {
+                //过滤组织类型
+                OrganizationTypeSpecification wcsf=new OrganizationTypeSpecification(input.OrganizationType.Value);
+                query = query.Where(wcsf);
+            }
+
+            var data = await query.ToListAsync();
+            return data.MapTo<List<OrganizationDtoTest>>();
+        }
        
 
         /// <summary>
@@ -85,7 +90,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         public async Task<int> Create(OrganizationCreateInput input)
         {
             
-            var entity = new OrganizationUnitsJT()
+            var entity = new OrganizationUnit()
             {
                 Code = input.Code,
                 ParentId = int.Parse(input.ParentId.ToString()),
@@ -115,7 +120,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
             foreach (var e in Enum.GetValues(typeof(PublicEnum.OrganizationType)))//枚举转List
             {
                 SelectOptio s = new SelectOptio();
-                object[] objArr = e.GetType().GetField(e.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), true);
+                //object[] objArr = e.GetType().GetField(e.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), true);
                 s.Id = Convert.ToInt32(e);
                 s.Name = e.ToString();
                 list.Add(s);

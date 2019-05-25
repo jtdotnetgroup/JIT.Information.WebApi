@@ -3,14 +3,16 @@ using System;
 using JIT.DIME2Barcode.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JIT.DIME2Barcode.Migrations
 {
     [DbContext(typeof(ProductionPlanMySqlDbContext))]
-    partial class ProductionPlanMySqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190524082330_InitDB")]
+    partial class InitDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,23 +96,13 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<TimeSpan?>("FDayWorkHours");
 
-                    b.Property<int>("FLift");
-
                     b.Property<TimeSpan?>("FMaxWorkHours");
 
                     b.Property<string>("FName");
 
                     b.Property<string>("FNumber");
 
-                    b.Property<int>("FResidualLife");
-
-                    b.Property<decimal>("FRunsRate");
-
                     b.Property<int>("FStatus");
-
-                    b.Property<DateTime>("FSwichTime");
-
-                    b.Property<int>("FTimeUnit");
 
                     b.Property<int>("FType");
 
@@ -125,7 +117,7 @@ namespace JIT.DIME2Barcode.Migrations
                     b.HasIndex("FNumber")
                         .IsUnique();
 
-                    b.ToTable("t_equipment");
+                    b.ToTable("Equipment");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.ICBOM", b =>
@@ -768,54 +760,6 @@ namespace JIT.DIME2Barcode.Migrations
                     b.ToTable("ICQualityRpt");
                 });
 
-            modelBuilder.Entity("JIT.DIME2Barcode.Entities.OrganizationUnit", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<DateTime?>("CreationTime");
-
-                    b.Property<long?>("CreatorUserId");
-
-                    b.Property<string>("DataBaseConnection");
-
-                    b.Property<long?>("DeleterUserId");
-
-                    b.Property<DateTime>("DeletionTime");
-
-                    b.Property<string>("DisplayName")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<int?>("ERPOrganization");
-
-                    b.Property<int?>("ERPOrganizationLeader");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime");
-
-                    b.Property<int?>("LastModifierUserId");
-
-                    b.Property<int?>("OrganizationType");
-
-                    b.Property<int?>("ParentId");
-
-                    b.Property<string>("Remark");
-
-                    b.Property<int?>("TenantId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParentId");
-
-                    b.ToTable("T_OrganizationUnit");
-                });
-
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.SEOrder", b =>
                 {
                     b.Property<int>("FInterID")
@@ -1215,13 +1159,6 @@ namespace JIT.DIME2Barcode.Migrations
                     b.HasOne("JIT.DIME2Barcode.Entities.ICMOSchedule", "Schedule")
                         .WithMany("Dailies")
                         .HasForeignKey("FSrcID");
-                });
-
-            modelBuilder.Entity("JIT.DIME2Barcode.Entities.OrganizationUnit", b =>
-                {
-                    b.HasOne("JIT.DIME2Barcode.Entities.OrganizationUnit", "Parent")
-                        .WithMany("Children")
-                        .HasForeignKey("ParentId");
                 });
 #pragma warning restore 612, 618
         }

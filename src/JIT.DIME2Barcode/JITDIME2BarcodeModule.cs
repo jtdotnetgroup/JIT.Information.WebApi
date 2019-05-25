@@ -4,7 +4,6 @@ using Abp.Configuration.Startup;
 using Abp.Domain.Uow;
 using Abp.EntityFrameworkCore.Configuration;
 using Abp.Modules;
-using Abp.Organizations;
 using Abp.Reflection.Extensions;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.Entities.EFConfig;
@@ -12,7 +11,7 @@ using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.SystemSetting.Organization.Dtos;
 using System;
 using System.Reflection;
-using JIT.InformationSystem.CommonClass;
+using JIT.DIME2Barcode.BaseData.Equipment.Dtos;
 
 namespace JIT.DIME2Barcode
 {
@@ -23,28 +22,14 @@ namespace JIT.DIME2Barcode
 
             Configuration.Authorization.Providers.Add<ProductionPlanPermissionProvider>();
 
-            
-
             Configuration.ReplaceService<IConnectionStringResolver, Dime2BarcodeConnectionNameResolver>();
 
             Configuration.Modules.AbpAspNetCore().CreateControllersForAppServices(typeof(JITDIME2BarcodeModule).GetAssembly());
 
             ConfigurDbContext();
 
-            Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
-            {
-                config.CreateMap<OrganizationCreateInput, OrganizationUnit>()
-                    .ForMember(o => o.Parent, option => option.Ignore())
-                    .ForMember(o => o.Children, option => option.Ignore())
-                    .ForMember(o => o.IsDeleted, option => option.Ignore())
-                    .ForMember(o => o.DeleterUserId, option => option.Ignore())
-                    .ForMember(o => o.DeletionTime, option => option.Ignore())
-                    .ForMember(o => o.LastModificationTime, option => option.Ignore())
-                    .ForMember(o => o.LastModifierUserId, op => op.Ignore())
-                    .ForMember(o => o.CreationTime, op => op.Ignore())
-                    .ForMember(o => o.CreatorUserId, op => op.Ignore())
-                    .ForMember(o => o.Id, op => op.Ignore());
-            });
+            ConfigurAutoMapper();
+
             //设置缓存
             Configuration.Caching.ConfigureAll(cache =>
             {
@@ -88,12 +73,47 @@ namespace JIT.DIME2Barcode
 
             Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
             {
-                config.CreateMap<OrganizationUnitsJT, OrganizationDto>()
+                config.CreateMap<OrganizationUnit, OrganizationDto>()
                     .ForMember(o => o.Children, option => option.Ignore());
         
             });
         }
 
+        protected void ConfigurAutoMapper()
+        {
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
+            {
+                config.CreateMap<OrganizationCreateInput, OrganizationUnit>()
+                    .ForMember(o => o.Parent, option => option.Ignore())
+                    .ForMember(o => o.Children, option => option.Ignore())
+                    .ForMember(o => o.IsDeleted, option => option.Ignore())
+                    .ForMember(o => o.DeleterUserId, option => option.Ignore())
+                    .ForMember(o => o.DeletionTime, option => option.Ignore())
+                    .ForMember(o => o.LastModificationTime, option => option.Ignore())
+                    .ForMember(o => o.LastModifierUserId, op => op.Ignore())
+                    .ForMember(o => o.CreationTime, op => op.Ignore())
+                    .ForMember(o => o.CreatorUserId, op => op.Ignore())
+                    .ForMember(o => o.Id, op => op.Ignore());
+
+                config.CreateMap<OrganizationUnit, OrganizationDtoTest>()
+                    .ForMember(o => o.title, op => op.MapFrom(input => input.DisplayName))
+                    .ForMember(o => o.key, op => op.MapFrom(input => input.Code))
+                    .ForMember(o => o.value, op => op.Ignore())
+                    .ForMember(o => o.label, op => op.Ignore());
+
+
+                config.CreateMap<EquipmentDto, Equipment>()
+                    .ForMember(o => o.CreationTime, op => op.Ignore())
+                    .ForMember(o => o.CreatorUserId, op => op.Ignore())
+                    .ForMember(o => o.DeleterUserId, op => op.Ignore())
+                    .ForMember(o => o.DeletionTime, op => op.Ignore())
+                    .ForMember(o => o.Id, op => op.Ignore());
+
+                config.CreateMap<Equipment, EquipmentDto>()
+                    .ForMember(o => o.WorkCenter, op => op.MapFrom(input=>input.WorkCenter.DisplayName));
+            });
+
+            }
         
     }
 }

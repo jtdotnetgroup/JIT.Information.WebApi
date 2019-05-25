@@ -7,7 +7,7 @@ using Abp.Domain.Entities;
 
 namespace JIT.DIME2Barcode.Entities
 {
-    public partial class OrganizationUnitsJT:Entity<int>
+    public partial class OrganizationUnit:Entity<int>
     {
         
         [StringLength(100)]
@@ -32,9 +32,9 @@ namespace JIT.DIME2Barcode.Entities
         public string Remark { get; set; }
 
         [ForeignKey("ParentId")]
-        public OrganizationUnitsJT Parent { get; set; }
+        public OrganizationUnit Parent { get; set; }
 
-        public List<OrganizationUnitsJT> Children { get; set; }
+        public List<OrganizationUnit> Children { get; set; }
 
     }
 }

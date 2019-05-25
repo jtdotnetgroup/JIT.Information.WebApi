@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JIT.DIME2Barcode.Migrations
 {
     [DbContext(typeof(ProductionPlanMySqlDbContext))]
-    [Migration("20190522072235_InitDb")]
-    partial class InitDb
+    [Migration("20190524082637_Add_Entity")]
+    partial class Add_Entity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,11 +70,54 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<int>("FTenantId");
 
+                    b.Property<long>("FUserId");
+
                     b.Property<int?>("FWorkingState");
+
+                    b.Property<bool>("IsDeleted");
 
                     b.HasKey("Id");
 
                     b.ToTable("Employee");
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.Equipment", b =>
+                {
+                    b.Property<int>("FInterID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<TimeSpan?>("FDayWorkHours");
+
+                    b.Property<TimeSpan?>("FMaxWorkHours");
+
+                    b.Property<string>("FName");
+
+                    b.Property<string>("FNumber");
+
+                    b.Property<int>("FStatus");
+
+                    b.Property<int>("FType");
+
+                    b.Property<int?>("FWorkCenterID");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<string>("Note");
+
+                    b.HasKey("FInterID");
+
+                    b.HasIndex("FNumber")
+                        .IsUnique();
+
+                    b.ToTable("t_equipment");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.ICBOM", b =>
@@ -717,7 +760,7 @@ namespace JIT.DIME2Barcode.Migrations
                     b.ToTable("ICQualityRpt");
                 });
 
-            modelBuilder.Entity("JIT.DIME2Barcode.Entities.OrganizationUnitsJT", b =>
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.OrganizationUnit", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -728,11 +771,11 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<DateTime?>("CreationTime");
 
-                    b.Property<int?>("CreatorUserId");
+                    b.Property<long?>("CreatorUserId");
 
                     b.Property<string>("DataBaseConnection");
 
-                    b.Property<int?>("DeleterUserId");
+                    b.Property<long?>("DeleterUserId");
 
                     b.Property<DateTime>("DeletionTime");
 
@@ -760,7 +803,9 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrganizationUnitsJts");
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("T_OrganizationUnit");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.SEOrder", b =>
@@ -965,6 +1010,38 @@ namespace JIT.DIME2Barcode.Migrations
                     b.ToTable("T_PrintTemplate");
                 });
 
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.VW_ICMODaily", b =>
+                {
+                    b.Property<string>("计划单号")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FID");
+
+                    b.Property<string>("产品名称");
+
+                    b.Property<string>("产品编码");
+
+                    b.Property<string>("任务单号");
+
+                    b.Property<decimal?>("完成数量");
+
+                    b.Property<DateTime?>("日期");
+
+                    b.Property<string>("规格型号");
+
+                    b.Property<DateTime?>("计划完工日期");
+
+                    b.Property<DateTime?>("计划开工日期");
+
+                    b.Property<decimal?>("计划数量");
+
+                    b.Property<int>("车间");
+
+                    b.HasKey("计划单号");
+
+                    b.ToTable("VW_ICMODaily");
+                });
+
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.t_Department", b =>
                 {
                     b.Property<int>("FItemID")
@@ -1071,11 +1148,72 @@ namespace JIT.DIME2Barcode.Migrations
                     b.ToTable("t_MeasureUnit");
                 });
 
+            modelBuilder.Entity("JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.VW_MODispBillList", b =>
+                {
+                    b.Property<string>("FID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool?>("FClosed");
+
+                    b.Property<int?>("FItemID");
+
+                    b.Property<int>("FStatus");
+
+                    b.Property<int?>("FWorkCenterID");
+
+                    b.Property<string>("FsrcID");
+
+                    b.Property<decimal?>("不合格数量");
+
+                    b.Property<string>("产品代码");
+
+                    b.Property<string>("产品名称");
+
+                    b.Property<decimal?>("合格数量");
+
+                    b.Property<string>("工作中心");
+
+                    b.Property<string>("工序");
+
+                    b.Property<int>("打印次数");
+
+                    b.Property<string>("操作者");
+
+                    b.Property<decimal?>("汇报数量");
+
+                    b.Property<string>("派工单号");
+
+                    b.Property<decimal?>("派工数量");
+
+                    b.Property<int?>("班次");
+
+                    b.Property<string>("生产任务");
+
+                    b.Property<DateTime>("生产日期");
+
+                    b.Property<string>("规格型号");
+
+                    b.Property<decimal?>("计划数量");
+
+                    b.Property<string>("设备");
+
+                    b.HasKey("FID");
+
+                    b.ToTable("VW_MODispBillList");
+                });
+
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.ICMODaily", b =>
                 {
                     b.HasOne("JIT.DIME2Barcode.Entities.ICMOSchedule", "Schedule")
                         .WithMany("Dailies")
                         .HasForeignKey("FSrcID");
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.OrganizationUnit", b =>
+                {
+                    b.HasOne("JIT.DIME2Barcode.Entities.OrganizationUnit", "Parent")
+                        .WithMany("Children")
+                        .HasForeignKey("ParentId");
                 });
 #pragma warning restore 612, 618
         }

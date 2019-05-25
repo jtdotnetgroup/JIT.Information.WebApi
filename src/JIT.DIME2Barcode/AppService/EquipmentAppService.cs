@@ -54,11 +54,17 @@ namespace JIT.DIME2Barcode.AppService
 
             input.Sorting = string.IsNullOrEmpty(input.Sorting) ? "FInterID" : input.Sorting;
 
-            query = query.OrderBy(input.Sorting).PageBy(input);
+            query = query.OrderBy(input.Sorting).PageBy(input).Include(o=>o.WorkCenter);
 
             var data = await query.ToListAsync();
 
-            var list = data.MapTo<List<EquipmentDto>>();
+            var list = new List<EquipmentDto>();
+
+            foreach (var e in data)
+            {
+                var item = e.MapTo<EquipmentDto>();
+                list.Add(item);
+            }
 
             return new PagedResultDto<EquipmentDto>(count,list);
         }

@@ -1,4 +1,5 @@
 ﻿using Abp.EntityFrameworkCore;
+using JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,11 +26,13 @@ namespace JIT.DIME2Barcode.Entities
         public virtual DbSet<t_MeasureUnit> t_MeasureUnit { get; set; }
         public virtual DbSet<T_PrintTemplate> T_PrintTemplate { get; set; }
         public virtual DbSet<TB_BadItemRelation> TB_BadItemRelation { get; set; }
-        public virtual DbSet<Equipment> T_Equipment { get; set; }
+        public virtual DbSet<Equipment> t_equipment { get; set; }
 
-        public virtual DbSet<OrganizationUnitsJT> OrganizationUnitsJts { get; set; }
+        public virtual DbSet<OrganizationUnit> T_OrganizationUnit { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
 
+        public virtual DbSet<VW_ICMODaily_Group_By_Day> VW_ICMODaily_Group_By_Day { get; set; }
+        public virtual DbSet<VW_DispatchBill_List> VW_DispatchBill_List { get; set; }
 
         #region 视图
         public virtual DbSet<VW_ICMODaily> VW_ICMODaily { get; set; }
