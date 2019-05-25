@@ -254,3 +254,6 @@ paket-files/
 
 App_Data/Logs/
 Logs.txt
+*.json
+WebSite.zip
+*.dll

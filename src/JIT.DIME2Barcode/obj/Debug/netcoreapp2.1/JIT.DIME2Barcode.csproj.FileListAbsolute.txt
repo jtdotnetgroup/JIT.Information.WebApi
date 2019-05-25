@@ -56,3 +56,5 @@ F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src
 F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.pdb
 F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.Application.dll
 F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.Application.pdb
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.Application.dll
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.Application.pdb
