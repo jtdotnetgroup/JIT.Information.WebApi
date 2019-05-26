@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Abp.Domain.Entities;
+using CommonTools;
 
 namespace JIT.DIME2Barcode.Entities
 {
@@ -25,7 +26,7 @@ namespace JIT.DIME2Barcode.Entities
         public int? LastModifierUserId { get; set; }
         public int? ParentId { get; set; }
         public int? TenantId { get; set; }
-        public int? OrganizationType { get; set; }
+        public PublicEnum.OrganizationType? OrganizationType { get; set; }
         public string DataBaseConnection { get; set; }
         public int? ERPOrganizationLeader { get; set; }
         public int? ERPOrganization { get; set; }

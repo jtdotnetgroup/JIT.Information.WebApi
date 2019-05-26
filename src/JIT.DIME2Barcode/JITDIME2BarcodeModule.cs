@@ -111,6 +111,9 @@ namespace JIT.DIME2Barcode
 
                 config.CreateMap<Equipment, EquipmentDto>()
                     .ForMember(o => o.WorkCenter, op => op.MapFrom(input=>input.WorkCenter.DisplayName));
+
+                config.CreateMap<EqiupmentShift, EquipmentShiftDto>()
+                    .ForMember(o => o.EmployeeName, op => op.MapFrom(input => input.Employee.FName));
             });
 
             }

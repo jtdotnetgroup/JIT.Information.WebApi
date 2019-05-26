@@ -89,7 +89,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
             var icmo = MRepository.GetAll().SingleOrDefault(p => p.任务单号 == input.FMOBillNo);
 
             var equipmentList =await ERepository.GetAll().Where(p => p.FType == PublicEnum.EquipmentType.设备).ToListAsync();
-            var orgs = await ORepository.GetAll().Where(p => p.OrganizationType ==(int) PublicEnum.OrganizationType.车间).ToListAsync();
+            var orgs = await ORepository.GetAll().Where(p => p.OrganizationType == PublicEnum.OrganizationType.车间).ToListAsync();
 
             if (icmo != null)
             {

@@ -89,7 +89,9 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         /// <returns></returns>
         public async Task<int> Create(OrganizationCreateInput input)
         {
-            
+
+           
+
             var entity = new OrganizationUnit()
             {
                 Code = input.Code,
@@ -99,7 +101,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
                 CreatorUserId = this.AbpSession.UserId.HasValue ? this.AbpSession.UserId.Value : 0,
                 DisplayName = input.DisplayName,
                 IsDeleted = false,
-                OrganizationType = input.OrganizationType,//组织类型
+                OrganizationType = Enum.Parse<PublicEnum.OrganizationType>(input.OrganizationType.ToString()),//组织类型
                 DataBaseConnection = input.DataBaseConnection,//数据库连接
                 ERPOrganizationLeader = input.ERPOrganizationLeader,//组织负责人
                 ERPOrganization = input.ERPOrganization,
@@ -168,9 +170,33 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
             }
 
             return count;
-
-
         }
+
+        /// <summary>
+        /// 查找子点所在的公司或集团
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        protected  OrganizationUnit GetCompany(OrganizationUnit node,List<OrganizationUnit> treeList)
+        {
+            //最终返回的结果
+            OrganizationUnit result = null;
+            //判断传入的节点是否是公司，如果是则返回
+            if (node.OrganizationType == PublicEnum.OrganizationType.公司||node.OrganizationType==PublicEnum.OrganizationType.集团)
+            {
+                return node;
+            }
+            //判断传入节点是否有父节点，如果有，则执行递归
+            if (node.ParentId != null)
+            {
+                var parent = treeList.SingleOrDefault(p => p.Id == node.ParentId);
+
+                result = GetCompany(parent, treeList);
+            }
+
+            return result;
+        }
+
 
 
     }

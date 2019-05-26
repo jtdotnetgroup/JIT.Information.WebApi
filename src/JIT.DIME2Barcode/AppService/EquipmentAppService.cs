@@ -16,6 +16,8 @@ namespace JIT.DIME2Barcode.AppService
     public class EquipmentAppService:ApplicationService
     {
         private IRepository<Equipment,int> _repository { get; set; }
+        //设备班次仓储
+        public IRepository<EqiupmentShift,int> EsRepository { get; set; }
         public EquipmentAppService(IRepository<Equipment, int> repository)
         {
             _repository = repository;
@@ -67,6 +69,24 @@ namespace JIT.DIME2Barcode.AppService
             }
 
             return new PagedResultDto<EquipmentDto>(count,list);
+        }
+
+        public async Task<EquipmentShiftDto> CreateShift(EquipmentShiftCreateInput input)
+        {
+            var entity = input.MapTo<EqiupmentShift>();
+
+            entity = await EsRepository.InsertAsync(entity);
+
+            return entity.MapTo<EquipmentShiftDto>();
+        }
+
+        public async Task<List<EquipmentShiftDto>> GetShiftByEquipmentID(int Id)
+        {
+            var query = EsRepository.GetAllIncluding(p => p.Employee).Include(p => p.Equipment);
+
+            var list =await query.ToListAsync();
+
+            return list.MapTo<List<EquipmentShiftDto>>();
         }
     }
 }
