@@ -14,10 +14,10 @@ namespace JIT.DIME2Barcode.Entities
        [StringLength(10)]
         public string FName { get; set; }
         public int? FSex { get; set; }
-        public int? FDepartment { get; set; } //所属部门
+        public int? FDepartment { get; set; } //所属部门  子ID
         public int? FWorkingState { get; set; }//在职状态
         public int? FSystemUser { get; set; }//系统用户
-        public int? FParentId { get; set; }
+        public int? FParentId { get; set; }//上级主管  
         
         public string FPhone { get; set; }
         public   DateTime? FHiredate { get; set; }
@@ -25,10 +25,9 @@ namespace JIT.DIME2Barcode.Entities
         public int? FERPUser { get; set; }
         public int? FERPOfficeClerk { get; set; }
         public int FTenantId { get; set; }
-        public int FOrganizationUnitId { get; set; }
+        public int FOrganizationUnitId { get; set; }//组织单元父ID
 
         public long FUserId { get; set; }
         public bool IsDeleted { get; set; }
-
     }
 }

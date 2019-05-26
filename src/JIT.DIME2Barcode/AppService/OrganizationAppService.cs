@@ -55,6 +55,9 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         public async Task<List<OrganizationDtoTest>> GetTreeList(int ParentID)
         {
 
+
+
+
             List<OrganizationDtoTest> TreeList = new List<OrganizationDtoTest>();
             List<OrganizationDto> ModelList = await GetChildMenuList(ParentID);
             foreach (var item in ModelList)
@@ -88,7 +91,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
             var entity = new OrganizationUnitsJT()
             {
                 Code = input.Code,
-                ParentId = int.Parse(input.ParentId.ToString()),
+                ParentId = int.Parse(input.ParentId.ToString()==null?"0": input.ParentId.ToString()),
                 TenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0,
                 CreationTime = DateTime.Now,
                 CreatorUserId = this.AbpSession.UserId.HasValue ? this.AbpSession.UserId.Value : 0,
@@ -96,8 +99,8 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
                 IsDeleted = false,
                 OrganizationType = input.OrganizationType,//组织类型
                 DataBaseConnection = input.DataBaseConnection,//数据库连接
-                ERPOrganizationLeader = input.ERPOrganizationLeader,//组织负责人
-                ERPOrganization = input.ERPOrganization,
+                ERPOrganizationLeader = input.ERPOrganizationLeader == null ? 0 : input.ERPOrganizationLeader,//组织负责人
+                ERPOrganization = input.ERPOrganization == null ? 0 : input.ERPOrganization,
                 Remark =input.Remark,
             };
        
@@ -114,8 +117,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
             List<SelectOptio> list = new List<SelectOptio>();
             foreach (var e in Enum.GetValues(typeof(PublicEnum.OrganizationType)))//枚举转List
             {
-                SelectOptio s = new SelectOptio();
-                object[] objArr = e.GetType().GetField(e.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), true);
+                SelectOptio s = new SelectOptio();            
                 s.Id = Convert.ToInt32(e);
                 s.Name = e.ToString();
                 list.Add(s);
@@ -143,7 +145,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
             var query = _repository.GetAll().Where(p => p.Id == input.Id)
                 .Include(p => p.Children);
 
-            var entity = await query.SingleOrDefaultAsync(p=>true);
+            var entity = await query.SingleOrDefaultAsync(p => true);
 
             if (entity != null)
             {

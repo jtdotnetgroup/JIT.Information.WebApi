@@ -32,6 +32,8 @@ namespace JIT.DIME2Barcode.Entities
 
         #region 视图
 
+        public virtual DbSet<VW_Employee> VW_Employee { get; set; }
+
         //public virtual DbSet<VW_ICMODaily> VW_ICMODaily { get; set; }
         //public virtual DbSet<VW_MODispBillList> VW_MODispBillList { get; set; }
         #endregion

@@ -25,8 +25,9 @@ namespace JIT.DIME2Barcode.SystemSetting.Employee.Dtos
         public bool IsDeleted { get; set; }
         public  string DisplayName { get; set; }
 
-        //public  string UserName { get; set; }
-        //public string Password { get; set; }
+        //公司ID
+        public int Company { get; set; }
+
 
     }
 }
