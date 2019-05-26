@@ -27,7 +27,7 @@ namespace JIT.DIME2Barcode.Entities
         public virtual DbSet<T_PrintTemplate> T_PrintTemplate { get; set; }
         public virtual DbSet<TB_BadItemRelation> TB_BadItemRelation { get; set; }
         public virtual DbSet<Equipment> t_equipment { get; set; }
-        public virtual DbSet<OrganizationUnit> T_OrganizationUnit { get; set; }
+        public virtual DbSet<OrganizationUnit> Organizationunitsjts { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<VW_DispatchBill_List> VW_DispatchBill_List { get; set; }
         public virtual DbSet<EqiupmentShift> T_EquimentShift { get; set; }

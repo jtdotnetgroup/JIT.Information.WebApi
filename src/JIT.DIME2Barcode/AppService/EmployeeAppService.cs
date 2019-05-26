@@ -40,9 +40,9 @@ namespace JIT.DIME2Barcode.AppService
 
 
         //返回公司
-        protected OrganizationUnitsJT GetCompany(OrganizationUnitsJT node,List<OrganizationUnitsJT> terrList)
+        protected OrganizationUnit GetCompany(OrganizationUnit node,List<OrganizationUnit> terrList)
         {
-            OrganizationUnitsJT reslut = null;
+            OrganizationUnit reslut = null;
             if (node.OrganizationType == PublicEnum.OrganizationType.公司|| node.OrganizationType==PublicEnum.OrganizationType.集团)
             {
                 return node;
@@ -262,7 +262,7 @@ namespace JIT.DIME2Barcode.AppService
 
             entity.FTenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0;
             entity.FOrganizationUnitId = input.FOrganizationUnitId;
-
+           
             entity.FUserId = userid==0?input.FUserId: userid;
             entity.IsDeleted = false;
             var count= await _ERepository.UpdateAsync(entity);
@@ -315,10 +315,10 @@ namespace JIT.DIME2Barcode.AppService
             if (input.Id==0)
             {
                 var querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false);
-                var count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted );
-                var queryss = querys.ToList();
+                var count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted==false );
+       
 
-                var data = await querys.OrderBy(p => p.Id).ToListAsync();
+                var data = await querys.OrderBy(p => p.Id).Skip(input.SkipCount * input.MaxResultCount).Take(input.MaxResultCount).ToListAsync();
                 var list = data.MapTo<List<VWEmployeesDto>>();
                 return new PagedResultDto<VWEmployeesDto>(count, list);
             }
@@ -326,9 +326,9 @@ namespace JIT.DIME2Barcode.AppService
             {
                 var querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false && p.FDepartment == input.Id);
                 var count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted == false && p.FDepartment == input.Id);
-                var queryss = querys.ToList();
+  
 
-                var data = await querys.OrderBy(p => p.Id).ToListAsync();
+                var data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
                 var list = data.MapTo<List<VWEmployeesDto>>();
                 return new PagedResultDto<VWEmployeesDto>(count, list);
             }
