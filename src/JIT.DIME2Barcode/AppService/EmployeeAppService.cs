@@ -30,7 +30,7 @@ namespace JIT.DIME2Barcode.AppService
 
         public IRepository<Role, int> _UserRoleRepository { get; set; }
 
-        public IRepository<OrganizationUnitsJT, int> _Repository { get; set; }
+        public IRepository<OrganizationUnit, int> _Repository { get; set; }
 
         public IRepository<VW_Employee, int> _VwRepository { get; set; }
 

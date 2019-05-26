@@ -37,6 +37,16 @@ namespace CommonTools
             车间=4
         }
 
+        public enum EquipmentType
+        {
+            设备 = 1, 模具 = 2, 其它 = 999
+        }
+
+        public enum TimeUnit
+        {
+            小时=1,分钟=0,天=2
+        }
+
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
@@ -16,6 +17,8 @@ using JIT.InformationSystem.Configuration;
 using JIT.InformationSystem.Identity;
 
 using Abp.AspNetCore.SignalR.Hubs;
+using LogDashboard;
+using LogDashboard.Extensions;
 
 namespace JIT.InformationSystem.Web.Host.Startup
 {
@@ -25,9 +28,13 @@ namespace JIT.InformationSystem.Web.Host.Startup
 
         private readonly IConfigurationRoot _appConfiguration;
 
+        private IHostingEnvironment _env;
+
         public Startup(IHostingEnvironment env)
         {
             _appConfiguration = env.GetAppConfiguration();
+
+            _env = env;
         }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
@@ -41,6 +48,11 @@ namespace JIT.InformationSystem.Web.Host.Startup
             AuthConfigurer.Configure(services, _appConfiguration);
 
             services.AddSignalR();
+
+            services.AddLogDashboard(opt =>
+            {
+                opt.SetRootPath(Path.Combine(_env.ContentRootPath, @"App_Data/Logs"));
+            });
 
             // Configure CORS for angular2 UI
             //services.AddCors(
@@ -113,6 +125,8 @@ namespace JIT.InformationSystem.Web.Host.Startup
             {
                 routes.MapHub<AbpCommonHub>("/signalr");
             });
+
+            app.UseLogDashboard();
 
             app.UseMvc(routes =>
             {

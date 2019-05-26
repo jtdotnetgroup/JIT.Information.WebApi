@@ -5,6 +5,27 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DIME2Barcode.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="t_Resource">
+          <Key>
+            <PropertyRef Name="FInterID" />
+          </Key>
+          <Property Name="FInterID" Type="int" Nullable="false" />
+          <Property Name="FNumber" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FType" Type="int" Nullable="false" />
+          <Property Name="FWorkCenterID" Type="int" />
+          <Property Name="FUnitCost" Type="decimal" Precision="28" Scale="10" />
+          <Property Name="FKey" Type="bit" />
+          <Property Name="FRuns" Type="int" Nullable="false" />
+          <Property Name="FHours" Type="decimal" Precision="28" Scale="10" Nullable="false" />
+          <Property Name="FUseingRate" Type="decimal" Precision="28" Scale="10" />
+          <Property Name="FEfficiency" Type="decimal" Precision="28" Scale="10" />
+          <Property Name="FParentID" Type="int" />
+          <Property Name="FDeleted" Type="bit" />
+          <Property Name="FCalID" Type="int" Nullable="false" />
+          <Property Name="FDeviceID" Type="int" />
+          <Property Name="FEIProductivity" Type="decimal" Precision="28" Scale="10" />
+        </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“DIME2Barcode.dbo.t_ICItem”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="t_ICItem">
@@ -363,6 +384,7 @@
           <Property Name="FWorkCenterID" Type="int" />
         </EntityType>
         <EntityContainer Name="DIME2BarcodeStoreContainer">
+          <EntitySet Name="t_Resource" EntityType="Self.t_Resource" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ICItem" EntityType="Self.t_ICItem" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [t_ICItem].[FItemID] AS [FItemID], 
@@ -683,6 +705,7 @@
           <EntitySet Name="VW_ICMOInspectBillList" EntityType="DIME2Barcode.VW_ICMOInspectBillList" />
           <EntitySet Name="VW_Group_ICMODaily" EntityType="DIME2Barcode.VW_Group_ICMODaily" />
           <EntitySet Name="VW_MODispBillList" EntityType="DIME2Barcode.VW_MODispBillList" />
+          <EntitySet Name="t_Resource" EntityType="DIME2Barcode.t_Resource" />
         </EntityContainer>
         <EntityType Name="t_ICItem">
           <Key>
@@ -1029,6 +1052,27 @@
           <Property Name="FItemID" Type="Int32" />
           <Property Name="FWorkCenterID" Type="Int32" />
         </EntityType>
+        <EntityType Name="t_Resource">
+          <Key>
+            <PropertyRef Name="FInterID" />
+          </Key>
+          <Property Name="FInterID" Type="Int32" Nullable="false" />
+          <Property Name="FNumber" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FType" Type="Int32" Nullable="false" />
+          <Property Name="FWorkCenterID" Type="Int32" />
+          <Property Name="FUnitCost" Type="Decimal" Precision="28" Scale="10" />
+          <Property Name="FKey" Type="Boolean" />
+          <Property Name="FRuns" Type="Int32" Nullable="false" />
+          <Property Name="FHours" Type="Decimal" Nullable="false" Precision="28" Scale="10" />
+          <Property Name="FUseingRate" Type="Decimal" Precision="28" Scale="10" />
+          <Property Name="FEfficiency" Type="Decimal" Precision="28" Scale="10" />
+          <Property Name="FParentID" Type="Int32" />
+          <Property Name="FDeleted" Type="Boolean" />
+          <Property Name="FCalID" Type="Int32" Nullable="false" />
+          <Property Name="FDeviceID" Type="Int32" />
+          <Property Name="FEIProductivity" Type="Decimal" Precision="28" Scale="10" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1355,6 +1399,28 @@
                 <ScalarProperty Name="生产日期" ColumnName="生产日期" />
                 <ScalarProperty Name="工作中心" ColumnName="工作中心" />
                 <ScalarProperty Name="设备" ColumnName="设备" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Resource">
+            <EntityTypeMapping TypeName="DIME2Barcode.t_Resource">
+              <MappingFragment StoreEntitySet="t_Resource">
+                <ScalarProperty Name="FEIProductivity" ColumnName="FEIProductivity" />
+                <ScalarProperty Name="FDeviceID" ColumnName="FDeviceID" />
+                <ScalarProperty Name="FCalID" ColumnName="FCalID" />
+                <ScalarProperty Name="FDeleted" ColumnName="FDeleted" />
+                <ScalarProperty Name="FParentID" ColumnName="FParentID" />
+                <ScalarProperty Name="FEfficiency" ColumnName="FEfficiency" />
+                <ScalarProperty Name="FUseingRate" ColumnName="FUseingRate" />
+                <ScalarProperty Name="FHours" ColumnName="FHours" />
+                <ScalarProperty Name="FRuns" ColumnName="FRuns" />
+                <ScalarProperty Name="FKey" ColumnName="FKey" />
+                <ScalarProperty Name="FUnitCost" ColumnName="FUnitCost" />
+                <ScalarProperty Name="FWorkCenterID" ColumnName="FWorkCenterID" />
+                <ScalarProperty Name="FType" ColumnName="FType" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="FNumber" ColumnName="FNumber" />
+                <ScalarProperty Name="FInterID" ColumnName="FInterID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

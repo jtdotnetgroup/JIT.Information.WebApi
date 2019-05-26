@@ -7,6 +7,7 @@
     <OutputType>Exe</OutputType>
     <PackageId>JIT.InformationSystem.Web.Host</PackageId>
     <UserSecretsId>JIT-InformationSystem-56C2EF2F-ABD6-4EFC-AAF2-2E81C34E8FB1</UserSecretsId>
+    <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="wwwroot\swagger\ui\index.html" />

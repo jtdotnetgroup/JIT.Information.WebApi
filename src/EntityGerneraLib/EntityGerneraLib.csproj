@@ -69,6 +69,9 @@
     <Compile Include="t_ICItem.cs">
       <DependentUpon>DIME2Barcode.tt</DependentUpon>
     </Compile>
+    <Compile Include="t_Resource.cs">
+      <DependentUpon>DIME2Barcode.tt</DependentUpon>
+    </Compile>
     <Compile Include="VW_Group_ICMODaily.cs">
       <DependentUpon>DIME2Barcode.tt</DependentUpon>
     </Compile>

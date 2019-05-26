@@ -4,7 +4,7 @@ using Abp.Authorization;
 
 namespace JIT.InformationSystem.Roles.Dto
 {
-    [AutoMapFrom(typeof(Permission))]
+    [AutoMapFrom(typeof(Abp.Authorization.Permission))]
     public class PermissionDto : EntityDto<long>
     {
         public string Name { get; set; }
@@ -12,5 +12,6 @@ namespace JIT.InformationSystem.Roles.Dto
         public string DisplayName { get; set; }
 
         public string Description { get; set; }
+
     }
 }

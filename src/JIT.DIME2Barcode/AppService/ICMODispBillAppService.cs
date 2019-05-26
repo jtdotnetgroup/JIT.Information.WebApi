@@ -23,6 +23,7 @@ namespace JIT.DIME2Barcode.AppService
         public IRepository<VW_ICMODispBill_By_Date,string> VRepository { get; set; }
         public IRepository<ICMODaily, string> DRepository { get; set; }
         public IRepository<ICMODispBill,string> Repository { get; set; }
+        public IRepository<VW_DispatchBill_List,string> LRepository { get; set; }
         //public IRepository<ICMOSchedule, string> SRepository { get; set; }
 
         /// <summary>
@@ -186,6 +187,22 @@ namespace JIT.DIME2Barcode.AppService
 
         }
 
+
+
+        public async Task<PagedResultDto<VW_DispatchBill_List>> GetDailyDispatchList(ICMODispBill_Daily_GetAllListInput input)
+        {
+            var query = LRepository.GetAll();
+
+            query = from a in query
+                where input.FMOBillNos.Contains(a.FMOBillNo) && input.DatelList.Contains(a.FDate)
+                select a;
+
+        var count = await query.CountAsync();
+
+            var data = await query.ToListAsync();
+
+            return new PagedResultDto<VW_DispatchBill_List>(count,data);
+        }
 
     }
 
