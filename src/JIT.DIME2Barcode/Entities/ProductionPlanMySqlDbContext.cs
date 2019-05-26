@@ -36,6 +36,10 @@ namespace JIT.DIME2Barcode.Entities
         public virtual DbSet<VW_ICMODaily> VW_ICMODaily { get; set; }
         public virtual DbSet<VW_MODispBillList> VW_MODispBillList { get; set; }
         public virtual DbSet<VW_ICMODaily_Group_By_Day> VW_ICMODaily_Group_By_Day { get; set; }
+
+        public virtual DbSet<VW_Employee> VW_Employee { get; set; }
+
+
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
