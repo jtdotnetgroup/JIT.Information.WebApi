@@ -41,4 +41,5 @@ namespace JIT.DIME2Barcode.Entities
         public int FPrintCount { get; set; }
         public string FNote { get; set; }
     }
+    
 }

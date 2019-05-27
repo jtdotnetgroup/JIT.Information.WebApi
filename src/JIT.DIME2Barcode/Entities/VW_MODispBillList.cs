@@ -36,5 +36,6 @@ namespace JIT.DIME2Barcode.Entities
         public int FItemID { get; set; } 
         public Nullable<int> FWorkcenterID { get; set; }
         public string FsrcID { get; set; }
+        public int FOperID { get; set; }
     }
 }

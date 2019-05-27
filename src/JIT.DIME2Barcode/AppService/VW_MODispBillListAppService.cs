@@ -19,7 +19,7 @@ namespace JIT.JIT.TaskAssignment.VW_MODispBillList
         /// <summary>
         /// 列表
         /// </summary>
-        public PagedResultDto<VW_MODispBillListDto> GetAll(VW_MODispBillListGetAllInput input)
+        public PagedResultDto<DIME2Barcode.Entities.VW_MODispBillList> GetAll(VW_MODispBillListGetAllInput input)
         {
             var query = Repository.GetAll().Where(w => w.操作者 == AbpSession.UserId.ToString() && w.FStatus == input.FStatus);
             query = input.FStatus == 0 ? query.Where(p => p.FStatus == input.FStatus) : query.Where(p => p.FStatus > 0);
@@ -28,9 +28,9 @@ namespace JIT.JIT.TaskAssignment.VW_MODispBillList
             var data = query.OrderBy(input.Sorting).PageBy(input).ToList();
             var count = query.Count();
 
-            var list = data.MapTo<List<VW_MODispBillListDto>>();
+            var list = data.MapTo<List<DIME2Barcode.Entities.VW_MODispBillList>>();
 
-            return new PagedResultDto<VW_MODispBillListDto>(count, list);
+            return new PagedResultDto<DIME2Barcode.Entities.VW_MODispBillList>(count, list);
         }
     }
 }
