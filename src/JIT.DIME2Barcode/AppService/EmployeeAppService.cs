@@ -349,9 +349,7 @@ namespace JIT.DIME2Barcode.AppService
             if (input.Id==0)
             {
                 var querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false);
-                var count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted==false );
-       
-
+                var count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted==false );      
                 var data = await querys.OrderBy(p => p.Id).Skip(input.SkipCount * input.MaxResultCount).Take(input.MaxResultCount).ToListAsync();
                 var list = data.MapTo<List<VWEmployeesDto>>();
                 return new PagedResultDto<VWEmployeesDto>(count, list);
@@ -360,8 +358,6 @@ namespace JIT.DIME2Barcode.AppService
             {
                 var querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false && p.FDepartment == input.Id);
                 var count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted == false && p.FDepartment == input.Id);
-  
-
                 var data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
                 var list = data.MapTo<List<VWEmployeesDto>>();
                 return new PagedResultDto<VWEmployeesDto>(count, list);
@@ -394,11 +390,6 @@ namespace JIT.DIME2Barcode.AppService
             return FMpno;
         }
 
-
-
-        //public async Task<>
-
-
         /// <summary>
         /// 返回拼接的节点信息 上级主管
         /// </summary>
@@ -409,9 +400,7 @@ namespace JIT.DIME2Barcode.AppService
             List<OrganizationDtoTest> TreeList = new List<OrganizationDtoTest>();
            
             var quers = _ERepository.GetAll().Where(p => p.IsDeleted == false).ToList();
-            var result = quers.Where(x => x.FParentId == ParentID);
-           
-    
+            var result = quers.Where(x => x.FParentId == ParentID);       
             foreach (var item in result.ToList())
             {
                 OrganizationDtoTest m = new OrganizationDtoTest();

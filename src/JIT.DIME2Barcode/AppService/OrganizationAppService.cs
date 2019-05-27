@@ -46,9 +46,6 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         public async Task<List<OrganizationDtoTest>> GetTreeList(int ParentID)
         {
 
-
-
-
             List<OrganizationDtoTest> TreeList = new List<OrganizationDtoTest>();
             List<OrganizationDto> ModelList = await GetChildMenuList(ParentID);
             foreach (var item in ModelList)
@@ -62,7 +59,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
                 //m.Code = item.Code;
                 //m.DisplayName = item.DisplayName;
                 m.value = item.Id.ToString();
-                m.label = item.DisplayName;            
+                m.label = item.DisplayName;
                 m.children = await GetTreeList(int.Parse(item.Id.ToString()));
                 TreeList.Add(m);
             }
