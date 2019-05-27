@@ -12,6 +12,7 @@ using JIT.DIME2Barcode.SystemSetting.Organization.Dtos;
 using System;
 using System.Reflection;
 using JIT.DIME2Barcode.BaseData.Equipment.Dtos;
+using JIT.DIME2Barcode.SystemSetting.Employee.Dtos;
 
 namespace JIT.DIME2Barcode
 {
@@ -112,8 +113,13 @@ namespace JIT.DIME2Barcode
                 config.CreateMap<Equipment, EquipmentDto>()
                     .ForMember(o => o.WorkCenter, op => op.MapFrom(input=>input.WorkCenter.DisplayName));
 
-                config.CreateMap<EqiupmentShift, EquipmentShiftDto>()
-                    .ForMember(o => o.EmployeeName, op => op.MapFrom(input => input.Employee.FName));
+                config.CreateMap<EquipmentShiftDto, EqiupmentShift>()
+                    .ForMember(o => o.Employee, op => op.Ignore())
+                    .ForMember(o => o.Equipment, op => op.Ignore());
+                
+
+                config.CreateMap<EmployeeDto, Employee>()
+                    .ForMember(o => o.Department, op => op.Ignore());
             });
 
             }

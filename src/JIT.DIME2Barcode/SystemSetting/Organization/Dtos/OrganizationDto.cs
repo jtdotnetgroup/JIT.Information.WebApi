@@ -46,12 +46,4 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
         public  ICollection<OrganizationDto> Children { get; set; }
 
     }
-
-    public class OrganizationDeleteDto:EntityDto
-    {
-        
-        
-        
-
-    }
 }

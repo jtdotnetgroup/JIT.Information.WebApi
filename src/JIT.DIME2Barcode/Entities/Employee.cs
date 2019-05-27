@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Abp.Domain.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace JIT.DIME2Barcode.Entities
 {
@@ -29,5 +31,8 @@ namespace JIT.DIME2Barcode.Entities
 
         public long FUserId { get; set; }
         public bool IsDeleted { get; set; }
+
+        [ForeignKey("FDepartment")]
+        public OrganizationUnit Department { get; set; }
     }
 }

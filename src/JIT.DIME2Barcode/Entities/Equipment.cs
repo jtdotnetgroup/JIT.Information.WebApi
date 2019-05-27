@@ -26,9 +26,9 @@ namespace JIT.DIME2Barcode.Entities
         //状态
         public int FStatus { get; set; }
         //日工作时长
-        public Nullable<TimeSpan> FDayWorkHours { get; set; }
+        public int FDayWorkHours { get; set; }
         //最大工作时长
-        public Nullable<TimeSpan> FMaxWorkHours { get; set; }
+        public int FMaxWorkHours { get; set; }
         //备注
         public string Note { get; set; }
 
@@ -36,7 +36,7 @@ namespace JIT.DIME2Barcode.Entities
         public PublicEnum.TimeUnit FTimeUnit { get; set; }
 
         //切换时间
-        public DateTime FSwichTime { get; set; }
+        public int FSwichTime { get; set; }
 
         //使用寿命
         public int FLift { get; set; }
