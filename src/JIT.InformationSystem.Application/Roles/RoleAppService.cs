@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Abp.Application.Services;
+﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Authorization.Roles;
 using Abp.Domain.Repositories;
-using Abp.EntityFrameworkCore.Extensions;
 using Abp.Extensions;
 using Abp.IdentityFramework;
 using Abp.Linq.Extensions;
@@ -16,6 +12,10 @@ using JIT.InformationSystem.Authorization.Users;
 using JIT.InformationSystem.Roles.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Abp;
 
 namespace JIT.InformationSystem.Roles
 {
@@ -24,6 +24,8 @@ namespace JIT.InformationSystem.Roles
     {
         private readonly RoleManager _roleManager;
         private readonly UserManager _userManager;
+
+        public IRepository<User,long> URepository { get; set; }
 
         public IRepository<RolePermissionSetting, long> _rolePermissionSettingRepository { get; set; }
 

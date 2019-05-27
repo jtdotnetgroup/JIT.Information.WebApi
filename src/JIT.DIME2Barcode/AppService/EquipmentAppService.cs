@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
+using JIT.DIME2Barcode.BaseData.Equipment.ISpecification;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -52,6 +53,12 @@ namespace JIT.DIME2Barcode.AppService
         {
             var query = _repository.GetAll();
 
+            if (input.OrganizationID.HasValue)
+            {
+                var eos = new EquipmentOrgainzationSpecification(input.OrganizationID.Value);
+                query=query.Where(eos);
+            }
+
             var count = await query.CountAsync();
 
             input.Sorting = string.IsNullOrEmpty(input.Sorting) ? "FInterID" : input.Sorting;
@@ -71,14 +78,37 @@ namespace JIT.DIME2Barcode.AppService
             return new PagedResultDto<EquipmentDto>(count,list);
         }
 
-        public async Task<EquipmentShiftDto> CreateShift(EquipmentShiftCreateInput input)
+        public async Task<int> CreateOrUpdateShift(List<EquipmentShiftDto> input)
         {
-            var entity = input.MapTo<EqiupmentShift>();
+            int count = 0;
+            foreach (var dto in input)
+            {
+                EqiupmentShift entity = dto.MapTo<EqiupmentShift>();
+                if (entity.Id != 0)
+                {
+                    await EsRepository.UpdateAsync(entity);
+                }
+                else
+                {
+                    await EsRepository.InsertAsync(entity);
+                }
 
-            entity = await EsRepository.InsertAsync(entity);
+                count++;
+            }
 
-            return entity.MapTo<EquipmentShiftDto>();
+            return count;
         }
+
+        public async Task DeleteShift(EntityDto input)
+        {
+            var entity =await EsRepository.GetAsync(input.Id);
+
+            if (entity != null)
+            {
+               await EsRepository.DeleteAsync(entity);
+            }
+        }
+       
 
         public async Task<List<EquipmentShiftDto>> GetShiftByEquipmentID(int Id)
         {

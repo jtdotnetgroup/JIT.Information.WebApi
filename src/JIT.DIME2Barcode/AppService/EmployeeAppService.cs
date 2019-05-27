@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Abp.Application.Services;
+﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
-using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.EntityFrameworkCore.Repositories;
@@ -21,6 +15,10 @@ using JIT.InformationSystem.EntityFrameworkCore;
 using JIT.InformationSystem.Users;
 using JIT.InformationSystem.Users.Dto;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -58,40 +56,6 @@ namespace JIT.DIME2Barcode.AppService
 
             return reslut;
         }
-
-
-        //public List<OrganizationUnitsJT> listTree(int ParentId)
-        //{
-        //    List<OrganizationUnitsJT> result = new List<OrganizationUnitsJT>();
-        //    OrganizationUnitsJT resultjt = new OrganizationUnitsJT();
-        //    //查找公司的那条数据   
-        //    List<OrganizationUnitsJT> list = _Repository.GetAll().Where(p => p.Id == ParentId && p.IsDeleted == false).ToList();
-
-        //        if (list.Count > 0)
-        //        {
-        //            foreach (var itme in list)
-        //            {
-        //                if (itme.OrganizationType == PublicEnum.OrganizationType.公司)
-        //                {                      
-        //                resultjt.ParentId = itme.ParentId;
-        //                resultjt.Id = itme.Id;
-        //                resultjt.DisplayName = itme.DisplayName;
-        //                resultjt.OrganizationType = itme.OrganizationType;
-        //                resultjt.Code = itme.Code;
-        //                result.Add(resultjt);
-        //                break;
-        //                }
-        //                else
-        //                {
-        //                    listTree((int) itme.ParentId);
-        //                }       
-        //            }
-        //    }
-        //       return result;
-        //}
-
-
-
 
         /// <summary>
         /// 新增员工
@@ -339,10 +303,6 @@ namespace JIT.DIME2Barcode.AppService
 
         }
 
-       
-
-
-
         public async Task<PagedResultDto<VWEmployeesDto>> GetAllVW(VWEmployeesGetAllInputDto input)
         {
 
@@ -412,6 +372,24 @@ namespace JIT.DIME2Barcode.AppService
                 TreeList.Add(m);
             }
             return TreeList;
+        }
+
+        /// <summary>
+        /// 返回所有的车间员工
+        /// </summary>
+        /// <returns></returns>
+        public async Task<PagedResultDto<EmployeeDto>> GetAllWorkers()
+        {
+            var query = _ERepository.GetAllIncluding(p => p.Department)
+                .Where(p => p.Department.OrganizationType == PublicEnum.OrganizationType.车间);
+
+            var count = await query.CountAsync();
+
+            var data =await query.ToListAsync();
+
+            var list = data.MapTo<List<EmployeeDto>>();
+
+            return new  PagedResultDto<EmployeeDto>(count,list);
         }
 
 

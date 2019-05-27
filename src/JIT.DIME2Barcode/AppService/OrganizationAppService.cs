@@ -4,13 +4,12 @@ using Abp.Domain.Repositories;
 using CommonTools;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.SystemSetting.Organization.Dtos;
+using JIT.DIME2Barcode.SystemSetting.Organization.ISpecification;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using JIT.DIME2Barcode.SystemSetting.Organization.ISpecification;
 
 namespace JIT.DIME2Barcode.SystemSetting.Organization
 {
@@ -28,7 +27,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         public async Task<List<OrganizationDto>>  GetChildMenuList(int ParentID)
         {
      
-            var quers = _repository.GetAll().Where(p=> p.IsDeleted == false).ToList();         
+            var quers =await _repository.GetAll().Where(p=> p.IsDeleted == false).ToListAsync();         
             
             var list = quers.MapTo<List<OrganizationDto>>();  
 
@@ -45,7 +44,6 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         /// <returns></returns>
         public async Task<List<OrganizationDtoTest>> GetTreeList(int ParentID)
         {
-
             List<OrganizationDtoTest> TreeList = new List<OrganizationDtoTest>();
             List<OrganizationDto> ModelList = await GetChildMenuList(ParentID);
             foreach (var item in ModelList)
@@ -69,7 +67,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
 
         public async Task<List<OrganizationDtoTest>> GetAll(OrganizationGetAllInput input)
         {
-            var query = _repository.GetAll();
+            var query = _repository.GetAll().Where(p=>p.IsDeleted.HasValue&&!p.IsDeleted.Value);
             if (input.OrganizationType.HasValue)
             {
                 //过滤组织类型
@@ -116,13 +114,12 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         /// 返回枚举 组织类型 list集合
         /// </summary>
         /// <returns></returns>
-        public async Task<List<SelectOptio>> GetSelectOptio()
+        public  List<SelectOptio> GetSelectOptio()
         {
             List<SelectOptio> list = new List<SelectOptio>();
             foreach (var e in Enum.GetValues(typeof(PublicEnum.OrganizationType)))//枚举转List
             {
-                SelectOptio s = new SelectOptio();
-                //object[] objArr = e.GetType().GetField(e.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), true);
+                SelectOptio s = new SelectOptio();            
                 s.Id = Convert.ToInt32(e);
                 s.Name = e.ToString();
                 list.Add(s);
@@ -132,7 +129,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
      
         public async Task<List<OrganizationDto>>  GetCore(string Code)
         {
-            var entity = _repository.GetAll().Where(p => p.Code == Code && p.IsDeleted==false).ToList();
+            var entity =await _repository.GetAll().Where(p => p.Code == Code && p.IsDeleted==false).ToListAsync();
             return entity.MapTo<List<OrganizationDto>>();
 
         }
