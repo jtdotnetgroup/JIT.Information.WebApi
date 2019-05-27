@@ -8,6 +8,7 @@ using Abp.Application.Services.Dto;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using Abp.EntityFrameworkCore.Repositories;
 using Abp.Linq.Extensions;
 using CommonTools;
 using JIT.DIME2Barcode.Entities;
@@ -16,6 +17,7 @@ using JIT.DIME2Barcode.SystemSetting.Organization.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.VWEmployees;
 using JIT.InformationSystem.Authorization.Roles;
 using JIT.InformationSystem.Authorization.Users;
+using JIT.InformationSystem.EntityFrameworkCore;
 using JIT.InformationSystem.Users;
 using JIT.InformationSystem.Users.Dto;
 using Microsoft.EntityFrameworkCore;
@@ -192,6 +194,20 @@ namespace JIT.DIME2Barcode.AppService
                     userid = UserAppService.Create(UserDto).Result.Id;
 
                 }
+                else
+                {
+                    //不加查询条件去返回对象来更改会报错
+                    var entitys = await _UserRepository.GetAll()
+                        .SingleOrDefaultAsync(p => p.Id == input.FUserId );
+
+                    Console.WriteLine(entitys);
+                    if (entitys != null)
+                    {
+                        entitys.IsActive = true;
+                        await _UserRepository.UpdateAsync(entitys);
+                    }
+
+                }
                 #region 旧代码
                 //var entitys = await _UserRepository.GetAll()
                 //    .SingleOrDefaultAsync(p => p.Id == input.FUserId);
@@ -213,7 +229,7 @@ namespace JIT.DIME2Barcode.AppService
             }
             else
             {
-                //执行移除的操作
+                //执行移除的操作  只改变原有的启用状态否
                 if (input.FUserId > 0)
                 {
                     //不加查询条件去返回对象来更改会报错
@@ -221,8 +237,7 @@ namespace JIT.DIME2Barcode.AppService
                         .SingleOrDefaultAsync(p => p.Id == input.FUserId);
                     if (entitys != null)
                     {
-                        entitys.IsDeleted = true;
-                        entitys.LastModificationTime = DateTime.Now;
+                        entitys.IsActive = false;
                         await _UserRepository.UpdateAsync(entitys);
                     }
                 }
@@ -244,19 +259,38 @@ namespace JIT.DIME2Barcode.AppService
                 }
             }
             else
-            {
-                if (input.FUserId > 0)
+            {    
+               //在职状态的情况下  不是系统用户 
+                if (input.FSystemUser==2)
                 {
-                    //不加查询条件去返回对象来更改会报错
-                    var entitys = await _UserRepository.GetAll()
-                        .SingleOrDefaultAsync(p => p.Id == input.FUserId);
-                    if (entitys != null)
+                    if (input.FUserId > 0)
                     {
-                        entitys.IsActive = true;
-                        await _UserRepository.UpdateAsync(entitys);
+                        //不加查询条件去返回对象来更改会报错
+                        var entitys = await _UserRepository.GetAll()
+                            .SingleOrDefaultAsync(p => p.Id == input.FUserId);
+                        if (entitys != null)
+                        {
+                            entitys.IsActive = false;
+                            //entity.IsDeleted = false;
+                            await _UserRepository.UpdateAsync(entitys);
+                        }
                     }
                 }
-
+                else
+                {
+                    if (input.FUserId > 0)
+                    {
+                        //不加查询条件去返回对象来更改会报错
+                        var entitys = await _UserRepository.GetAll()
+                            .SingleOrDefaultAsync(p => p.Id == input.FUserId);
+                        if (entitys != null)
+                        {
+                            entitys.IsActive = true;
+                            //entity.IsDeleted = false;
+                            await _UserRepository.UpdateAsync(entitys);
+                        }
+                    }
+                }
             }
             
 
@@ -344,19 +378,19 @@ namespace JIT.DIME2Barcode.AppService
         public async Task<string> FMpno()
         {
 
-            var FMpno = "";
-            var enetity = _ERepository.Count(p=>p.IsDeleted==false);
-
-            //作废的单号
-            var enetitys = _ERepository.Count(p => p.IsDeleted == true);
-
-            FMpno = "YK0000" + (enetity + 1+ enetitys);
-
-            var querys = _ERepository.GetAll().SingleOrDefault(p => p.FMpno == FMpno);
-            if (querys!=null)
+            var FMpno = "";    
+            var enetity = _ERepository.GetAll().LastOrDefault();
+            if (enetity!=null)
             {
-                FMpno = "YK0000" + (enetity + 2+ enetitys);
+               string[] strFMpno=enetity.FMpno.Split("YK");
+
+               FMpno =  "YK0000" + (Convert.ToInt32(strFMpno[1]) + 1);
             }
+            else
+            {
+                FMpno = "YK00001";
+            }
+
             return FMpno;
         }
 

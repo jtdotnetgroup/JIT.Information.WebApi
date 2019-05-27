@@ -1034,6 +1034,22 @@
       "Microsoft.EntityFrameworkCore.Analyzers/2.2.4": {
         "type": "package"
       },
+      "Microsoft.EntityFrameworkCore.Design/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "Microsoft.EntityFrameworkCore.Relational": "2.2.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
+        },
+        "build": {
+          "build/netcoreapp2.0/_._": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/2.2.4": {
         "type": "package",
         "dependencies": {
@@ -1736,6 +1752,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/NUglify.dll": {}
+        }
+      },
+      "Pomelo.EntityFrameworkCore.Extensions.ToSql/2.0.0-rtm-10002": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Pomelo.EntityFrameworkCore.Extensions.ToSql.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Pomelo.EntityFrameworkCore.Extensions.ToSql.dll": {}
         }
       },
       "Pomelo.EntityFrameworkCore.MySql/2.2.0": {
@@ -3511,6 +3539,22 @@
         "runtime": {
           "bin/placeholder/JIT.InformationSystem.Core.dll": {}
         }
+      },
+      "JIT.InformationSystem.EntityFrameworkCore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "JIT.InformationSystem.Core": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Design": "2.2.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.1",
+          "Pomelo.EntityFrameworkCore.MySql": "2.2.0"
+        },
+        "compile": {
+          "bin/placeholder/JIT.InformationSystem.EntityFrameworkCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/JIT.InformationSystem.EntityFrameworkCore.dll": {}
+        }
       }
     }
   },
@@ -4581,6 +4625,23 @@
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
+    "Microsoft.EntityFrameworkCore.Design/2.2.1": {
+      "sha512": "fh9g2qB3bJoAO5CU2eI5HfBEsfAW+UcWqRIJptl0xmgo7dgUs05otFbqSUaV9QVQl4QzSuigN7TlSDDjO5X91g==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.design/2.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net461/Microsoft.EntityFrameworkCore.Design.props",
+        "build/netcoreapp2.0/Microsoft.EntityFrameworkCore.Design.props",
+        "lib/net461/Microsoft.EntityFrameworkCore.Design.dll",
+        "lib/net461/Microsoft.EntityFrameworkCore.Design.xml",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.xml",
+        "microsoft.entityframeworkcore.design.2.2.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.design.nuspec"
+      ]
+    },
     "Microsoft.EntityFrameworkCore.Relational/2.2.4": {
       "sha512": "Ga+kJhoSBNYv8C2gQl2sB5bTBkWsLFn92CPjZA5ql/MyxJTWri6lf44/GSYEcOQj0tqF5HhMAaB1HxQMiIPBcQ==",
       "type": "package",
@@ -5641,6 +5702,18 @@
         "lib/netstandard2.0/NUglify.xml",
         "nuglify.1.5.12.nupkg.sha512",
         "nuglify.nuspec"
+      ]
+    },
+    "Pomelo.EntityFrameworkCore.Extensions.ToSql/2.0.0-rtm-10002": {
+      "sha512": "rUJqIDNgOpv3JBW5NSUe7VNYh2ZAcTyInu6uv6x2GOXe0xfeLzLWRgYH/S4vwWX2H4nDeW7BDaqZA5I8a4hbHQ==",
+      "type": "package",
+      "path": "pomelo.entityframeworkcore.extensions.tosql/2.0.0-rtm-10002",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Pomelo.EntityFrameworkCore.Extensions.ToSql.dll",
+        "pomelo.entityframeworkcore.extensions.tosql.2.0.0-rtm-10002.nupkg.sha512",
+        "pomelo.entityframeworkcore.extensions.tosql.nuspec"
       ]
     },
     "Pomelo.EntityFrameworkCore.MySql/2.2.0": {
@@ -10357,6 +10430,11 @@
       "type": "project",
       "path": "../JIT.InformationSystem.Core/JIT.InformationSystem.Core.csproj",
       "msbuildProject": "../JIT.InformationSystem.Core/JIT.InformationSystem.Core.csproj"
+    },
+    "JIT.InformationSystem.EntityFrameworkCore/1.0.0": {
+      "type": "project",
+      "path": "../JIT.InformationSystem.EntityFrameworkCore/JIT.InformationSystem.EntityFrameworkCore.csproj",
+      "msbuildProject": "../JIT.InformationSystem.EntityFrameworkCore/JIT.InformationSystem.EntityFrameworkCore.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -10367,8 +10445,10 @@
       "CommonTools >= 1.0.0",
       "JIT.InformationSystem.Application >= 1.0.0",
       "JIT.InformationSystem.Core >= 1.0.0",
+      "JIT.InformationSystem.EntityFrameworkCore >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.4",
       "Microsoft.NETCore.App >= 2.1.0",
+      "Pomelo.EntityFrameworkCore.Extensions.ToSql >= 2.0.0-rtm-10002",
       "Pomelo.EntityFrameworkCore.MySql >= 2.2.0"
     ]
   },
@@ -10413,6 +10493,9 @@
             },
             "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj": {
               "projectPath": "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj"
+            },
+            "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.InformationSystem.EntityFrameworkCore\\JIT.InformationSystem.EntityFrameworkCore.csproj": {
+              "projectPath": "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.InformationSystem.EntityFrameworkCore\\JIT.InformationSystem.EntityFrameworkCore.csproj"
             }
           }
         }
@@ -10447,6 +10530,10 @@
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
+          },
+          "Pomelo.EntityFrameworkCore.Extensions.ToSql": {
+            "target": "Package",
+            "version": "[2.0.0-rtm-10002, )"
           },
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",

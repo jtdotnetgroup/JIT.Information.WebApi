@@ -9,6 +9,7 @@
     <PackageReference Include="Abp.AspNetCore" Version="4.5.0" />
     <PackageReference Include="Abp.EntityFrameworkCore" Version="4.5.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.Extensions.ToSql" Version="2.0.0-rtm-10002" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
   </ItemGroup>
 
@@ -16,6 +17,7 @@
     <ProjectReference Include="..\CommonTools\CommonTools.csproj" />
     <ProjectReference Include="..\JIT.InformationSystem.Application\JIT.InformationSystem.Application.csproj" />
     <ProjectReference Include="..\JIT.InformationSystem.Core\JIT.InformationSystem.Core.csproj" />
+    <ProjectReference Include="..\JIT.InformationSystem.EntityFrameworkCore\JIT.InformationSystem.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
