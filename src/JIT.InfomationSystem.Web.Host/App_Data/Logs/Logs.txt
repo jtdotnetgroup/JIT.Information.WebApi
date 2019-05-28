@@ -11743,3 +11743,83 @@ INFO  2019-05-28 15:33:23,246 [6    ] ore.Mvc.Internal.ControllerActionInvoker -
 INFO  2019-05-28 15:33:23,286 [22   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
 INFO  2019-05-28 15:33:23,289 [22   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.JIT.TaskAssignment.VW_MODispBillList.VW_MODispBillListAppService.GetAll (JIT.DIME2Barcode) in 15271.0598ms
 INFO  2019-05-28 15:33:23,293 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 15304.8081ms 200 application/json; charset=utf-8
+DEBUG 2019-05-28 15:36:38,017 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-28 15:36:38,047 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2019-05-28 15:36:38,068 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.Web.Host.Startup.InfomationSystemWebHostModule, JIT.InfomationSystem.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,070 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.InfomationSystemWebCoreModule, JIT.InfomationSystem.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,071 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.InfomationSystemApplicationModule, JIT.InfomationSystem.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,071 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.InfomationSystemCoreModule, JIT.InfomationSystem.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,071 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,071 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,071 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,072 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,072 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.InfomationSystem.EntityFrameworkCore.InfomationSystemEntityFrameworkModule, JIT.InfomationSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,072 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,072 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,072 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,073 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,073 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,073 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,073 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: JIT.DIME2Barcode.JITDIME2BarcodeModule, JIT.DIME2Barcode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,076 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2019-05-28 15:36:38,136 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 15:36:38,136 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 15:36:38,136 [1    ] o.Configuration.LanguageManagementConfig - Converted InfomationSystem (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 15:36:38,136 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 15:36:38,469 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: JIT.InfomationSystem.EntityFrameworkCore.InfomationSystemDbContext, JIT.InfomationSystem.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,552 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: JIT.DIME2Barcode.Entities.Dime2barcodeContext, JIT.DIME2Barcode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 15:36:38,984 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-28 15:36:39,106 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-28 15:36:39,155 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-28 15:36:39,192 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: InfomationSystem
+DEBUG 2019-05-28 15:36:39,223 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-28 15:36:39,275 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
+DEBUG 2019-05-28 15:36:39,324 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2019-05-28 15:36:39,324 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-28 15:36:39,332 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Users.Dto.CreateUserDto
+DEBUG 2019-05-28 15:36:39,333 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Users.Dto.UserDto
+DEBUG 2019-05-28 15:36:39,334 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-05-28 15:36:39,334 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-05-28 15:36:39,334 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Roles.Dto.CreateRoleDto
+DEBUG 2019-05-28 15:36:39,334 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Roles.Dto.PermissionDto
+DEBUG 2019-05-28 15:36:39,334 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.Roles.Dto.RoleDto
+DEBUG 2019-05-28 15:36:39,335 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-05-28 15:36:39,336 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.InfomationSystem.MultiTenancy.Dto.TenantDto
+DEBUG 2019-05-28 15:36:39,336 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.DispBillCreateInput
+DEBUG 2019-05-28 15:36:39,336 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - JIT.DIME2Barcode.TaskAssignment.TaskScheduling.Dtos.TaskSchedulingDto
+INFO  2019-05-28 15:36:44,015 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/VM_Inventory/GetAll?Sorting=%E4%BB%93%E5%BA%93&SkipCount=0&MaxResultCount=10  
+WARN  2019-05-28 15:36:44,068 [10   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-28 15:36:44,069 [10   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-28 15:36:44,120 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 108.8884ms 204 
+INFO  2019-05-28 15:37:25,918 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/VW_MODispBillList/GetAll?%E6%93%8D%E4%BD%9C%E8%80%85=1&FStatus=0&Sorting=FClosed&SkipCount=0&MaxResultCount=20  
+WARN  2019-05-28 15:37:25,918 [5    ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-28 15:37:25,918 [5    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-28 15:37:25,918 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5288ms 204 
+INFO  2019-05-28 15:37:25,940 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/VW_MODispBillList/GetAll?%E6%93%8D%E4%BD%9C%E8%80%85=1&FStatus=0&Sorting=FClosed&SkipCount=0&MaxResultCount=20  
+WARN  2019-05-28 15:37:25,940 [13   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-28 15:37:25,940 [13   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-28 15:37:26,216 [13   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-28 15:37:27,823 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "VW_MODispBillList"}. Executing action JIT.JIT.TaskAssignment.VW_MODispBillList.VW_MODispBillListAppService.GetAll (JIT.DIME2Barcode)
+WARN  2019-05-28 15:37:27,838 [9    ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-28 15:37:27,838 [9    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-28 15:37:28,080 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.JIT.TaskAssignment.VW_MODispBillList.VW_MODispBillListAppService.GetAll (JIT.DIME2Barcode) with arguments (JIT.JIT.TaskAssignment.VW_MODispBillList.Dtos.VW_MODispBillListGetAllInput) - Validation state: Valid
+INFO  2019-05-28 15:37:31,285 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.JIT.TaskAssignment.VW_MODispBillList.VW_MODispBillListAppService.GetAll (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3202.4131ms.
+INFO  2019-05-28 15:37:31,726 [13   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-28 15:37:31,845 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.JIT.TaskAssignment.VW_MODispBillList.VW_MODispBillListAppService.GetAll (JIT.DIME2Barcode) in 4018.5659ms
+INFO  2019-05-28 15:37:31,863 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5922.9857ms 200 application/json; charset=utf-8
+INFO  2019-05-28 15:38:20,977 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ICMaterialPicking/Get?FID=1&FSrcID=1  
+WARN  2019-05-28 15:38:20,978 [13   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-28 15:38:20,978 [13   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-28 15:38:20,978 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3104ms 204 
+INFO  2019-05-28 15:38:20,985 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ICMaterialPicking/Get?FID=1&FSrcID=1  
+WARN  2019-05-28 15:38:20,985 [17   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-28 15:38:20,985 [17   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-28 15:38:20,986 [17   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-28 15:38:20,993 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Get", controller = "ICMaterialPicking"}. Executing action JIT.JIT.TaskAssignment.ICMaterialPicking.ICMaterialPickingAppService.Get (JIT.DIME2Barcode)
+WARN  2019-05-28 15:38:20,993 [17   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-05-28 15:38:20,993 [17   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-05-28 15:38:21,078 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method JIT.JIT.TaskAssignment.ICMaterialPicking.ICMaterialPickingAppService.Get (JIT.DIME2Barcode) with arguments (JIT.JIT.TaskAssignment.ICMaterialPicking.Dtos.ICMaterialPickingGetDto) - Validation state: Valid
+INFO  2019-05-28 15:38:21,217 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method JIT.JIT.TaskAssignment.ICMaterialPicking.ICMaterialPickingAppService.Get (JIT.DIME2Barcode), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 139.0726ms.
+INFO  2019-05-28 15:38:21,260 [13   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-28 15:38:21,270 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action JIT.JIT.TaskAssignment.ICMaterialPicking.ICMaterialPickingAppService.Get (JIT.DIME2Barcode) in 277.2028ms
+INFO  2019-05-28 15:38:21,271 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 285.608ms 200 application/json; charset=utf-8

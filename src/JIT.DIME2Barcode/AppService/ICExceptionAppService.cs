@@ -73,7 +73,7 @@ namespace JIT.DIME2Barcode.AppService
                     {
                         FID = input.FID,
                         FSrcID = input.FSrcID,
-                        FBiller = input.FBiller,
+                        FBiller = AbpSession.UserId.ToString(),
                         FNote = input.FNote,
                         FTime = input.FTime,
                         FRemark = input.FRemark,
@@ -83,7 +83,7 @@ namespace JIT.DIME2Barcode.AppService
                 }
                 else
                 {
-                    entity.FBiller = input.FBiller;
+                    entity.FBiller = AbpSession.UserId.ToString();
                     entity.FNote = input.FNote;
                     entity.FTime = input.FTime;
                     entity.FRemark = input.FRemark;
