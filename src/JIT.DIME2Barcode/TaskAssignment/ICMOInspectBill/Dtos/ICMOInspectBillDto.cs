@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using JIT.DIME2Barcode.TaskAssignment.ICQualityRpt.Dtos;
 
 namespace JIT.DIME2Barcode.TaskAssignment.ICMOInspectBill.Dtos
 {
@@ -35,6 +36,30 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMOInspectBill.Dtos
     public class ICMODispBillDetailed
     {
         public Entities.ICMOInspectBill IcmoInspectBill { get; set; }
+        public List<ICQualityRptDto> IcQualityRptsList { get; set; }
+
+        //{
+        //    /// <summary>
+        //    /// 列
+        //    /// </summary>
+        //    public string Col { get; set; }
+        //    /// <summary>
+        //    /// 不良项目代码
+        //    /// </summary>
+        //    public string FNumber { get; set; }
+        //    /// <summary>
+        //    /// 项目名称
+        //    /// </summary>
+
+        //    public string ColName { get; set; }
+        //    /// 数量
+        //    /// </summary>
+        //    /// <summary>
+        //    public int ColNum { get; set; }
+    }
+    public class ICMODispBillDetaileds
+    {
+        public Entities.ICMOInspectBill IcmoInspectBill { get; set; }
         public List<Entities.ICQualityRpt> IcQualityRptsList { get; set; }
 
         //{
@@ -51,9 +76,9 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMOInspectBill.Dtos
         //    /// </summary>
 
         //    public string ColName { get; set; }
-        //    /// <summary>
         //    /// 数量
         //    /// </summary>
+        //    /// <summary>
         //    public int ColNum { get; set; }
-    } 
+    }
 }

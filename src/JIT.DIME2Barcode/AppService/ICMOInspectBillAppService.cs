@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
@@ -9,9 +10,11 @@ using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.TaskAssignment.ICMOInspectBill.Dtos;
+using JIT.DIME2Barcode.TaskAssignment.ICQualityRpt.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.VW_ICMOInspectBillList.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -20,6 +23,8 @@ namespace JIT.DIME2Barcode.AppService
         public IRepository<ICMOInspectBill,string> Repository { get; set; }
         public IRepository<VW_ICMOInspectBillList,string> VRepository { get; set; }
         public IRepository<DIME2Barcode.Entities.ICQualityRpt, string> IcRepository { get; set; }
+
+        public IRepository<DIME2Barcode.Entities.TB_BadItemRelation, int> tbRepository { get; set; }
         public async Task<PagedResultDto<VW_ICMOInspectBillListDto>> GetAll(VW_ICMOInspectBillListGetAllInput input)
         {
             var query = VRepository.GetAll().OrderBy(p=>p.派工单号);
@@ -38,23 +43,38 @@ namespace JIT.DIME2Barcode.AppService
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ICMODispBillDetailed> ICMOInspectBillDetailed(ICMODispBillDetailedInput input)
+        public async Task<ICMODispBillDetaileds> ICMOInspectBillDetailed(ICMODispBillDetailedInput input)
         {
-            ICMODispBillDetailed icmoDispBillDetaileds = new ICMODispBillDetailed();
+            ICMODispBillDetaileds icmoDispBillDetaileds = new ICMODispBillDetaileds();
+            // 
             icmoDispBillDetaileds.IcmoInspectBill =
                 await Repository.GetAll().FirstOrDefaultAsync(f =>
-                    f.FID == input.FID && f.FBillNo == input.FBillNo && f.FOperID == input.FOperID);
-            icmoDispBillDetaileds.IcQualityRptsList = IcRepository.GetAll()
-                .Where(w => w.FID == input.FID && w.FItemID == input.FItemID).ToList();
+                    f.FID == input.FID && f.FBillNo == input.FBillNo && f.FOperID == input.FOperID) ??
+                new ICMOInspectBill();
+            // 
+            //var tmp = tbRepository.GetAll()
+            //    .Join(IcRepository.GetAll(),c=>c.FID, p => p.FItemID, (c, p) => new {p.FID,p.FAuxQty,p.FItemID,p.FNote,p.FRemark,p.ICMOInspectBillID,c.FName,c.FDeleted})
+            //    .Where(w => (w.ICMOInspectBillID == input.FID || w.FDeleted == true)).Distinct().ToList();
+            //icmoDispBillDetaileds.IcQualityRptsList =  new List<ICQualityRptDto>();
+            //foreach (var item in tmp)
+            //{
+            //    var t = new ICQualityRptDto(){ FID = item.FID,FAuxQty = item.FAuxQty,FItemID = item.FItemID,FName = item.FName,FNote = item.FNote,FRemark = item.FRemark,ICMOInspectBillID = input.FID };
+            //    icmoDispBillDetaileds.IcQualityRptsList.Add(t);
+            //}
+            //
+
+            icmoDispBillDetaileds.IcQualityRptsList =
+                IcRepository.GetAll().Where(w => w.ICMOInspectBillID == input.FID).ToList();
             return icmoDispBillDetaileds;
         }
+
         /// <summary>
         /// 质检汇报明细保存
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
 
-        public async Task<bool> ICMODispBillSave(ICMODispBillDetailed input)
+        public async Task<bool> ICMODispBillSave(ICMODispBillDetaileds input)
         {
             try
             {
