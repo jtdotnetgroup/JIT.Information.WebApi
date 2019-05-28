@@ -49,24 +49,23 @@ namespace JIT.JIT.TaskAssignment.ICMaterialPicking
         /// </summary>
         /// <param name="input">条件</param>
         /// <returns></returns>
-        public async Task<bool> CreateOrUpdate(ICMaterialPickingCreateDto input)
+        public bool CreateOrUpdate(ICMaterialPickingCreateDto input)
         {
             try
             {
-                var entity = await Repository.GetAll()
-                    .Where(p => p.FID == input.FID && p.FSrcID == input.FSrcID).ToListAsync();
+                var entity = Repository.GetAll().Where(p => p.FSrcID == input.FSrcID);
                 foreach (var item in entity)
                 {
-                    await Repository.DeleteAsync(item);
+                     Repository.Delete(item);
                 }
 
-                List<DIME2Barcode.Entities.ICMaterialPicking>
-                    list = new List<DIME2Barcode.Entities.ICMaterialPicking>();
+                //List<DIME2Barcode.Entities.ICMaterialPicking>
+                //    list = new List<DIME2Barcode.Entities.ICMaterialPicking>();
                 foreach (var item in input.tmjx)
                 {
                     DIME2Barcode.Entities.ICMaterialPicking IcMaterialPicking = new DIME2Barcode.Entities.ICMaterialPicking()
                     {
-                        FID = input.FID,
+                        FID = Guid.NewGuid().ToString(),
                         FSrcID = input.FSrcID,
                         FEntryID = input.tmjx.IndexOf(item) + 1,
                         FItemID = item.FItemID,
@@ -77,14 +76,14 @@ namespace JIT.JIT.TaskAssignment.ICMaterialPicking
                         FDate = DateTime.Now,
                         FNote = input.FNote,
                     };
-                    await Repository.InsertAsync(IcMaterialPicking);
+                     Repository.Insert(IcMaterialPicking);
                 }
 
                 return true;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.Message);
                 return false;
             }
         }
@@ -110,10 +109,9 @@ namespace JIT.JIT.TaskAssignment.ICMaterialPicking
         /// </summary>
         /// <param name="input">条件</param>
         /// <returns></returns>
-        public async Task<List<DIME2Barcode.Entities.ICMaterialPicking>> Get(ICMaterialPickingGetDto input)
+        public List<DIME2Barcode.Entities.ICMaterialPicking> Get(ICMaterialPickingGetDto input)
         {
-            var entity = Repository.GetAll().SingleOrDefault(p => p.FID == input.FID && p.FSrcID == input.FSrcID);
-            return entity.MapTo<List<DIME2Barcode.Entities.ICMaterialPicking>>();
+            return Repository.GetAll().Where(p => p.FSrcID == input.FSrcID).ToList();
         }
         ///// <summary>
         ///// 删除
