@@ -39,9 +39,12 @@ namespace JIT.DIME2Barcode.TaskAssignment
 
         //任务计划单仓储
         public IRepository<ICMOSchedule, string> SRepository { get; set; }
-
+        //工序仓储
+        public IRepository<t_SubMessage,int> SUbRepository { get; set; }
         //日计划单视图仓储
         public IRepository<VW_ICMODaily, string> VRepository { get; set; }
+        //派工单仓储
+        public IRepository<Entities.ICMODispBill,string> DRepository { get; set; }
         public IRepository<Entities.VW_MOBillList, string> MRepository { get; set; }
         public IRepository<VW_ICMODaily_Group_By_Day,string> GRepository { get; set; }
         public IRepository<OrganizationUnit> ORepository { get; set; }//组织架构仓储
@@ -88,6 +91,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
         public async Task<int> Create(ICMODailyCreatDto input)
         {
             var icmo = MRepository.GetAll().SingleOrDefault(p => p.任务单号 == input.FMOBillNo);
+            var oplist = await SUbRepository.GetAll().Where(p => p.FTypeID == 61).ToListAsync();
 
             var equipmentList =await ERepository.GetAll().Where(p => p.FType == PublicEnum.EquipmentType.设备).ToListAsync();
             var orgs = await ORepository.GetAll().Where(p => p.OrganizationType == PublicEnum.OrganizationType.车间).ToListAsync();
@@ -111,6 +115,8 @@ namespace JIT.DIME2Barcode.TaskAssignment
                     var entity = schedule.Dailies.SingleOrDefault(p =>
                         p.FDate == dailyItem.FDate && p.FMachineID == equipment.FInterID &&
                         p.FShift == shift.Id);
+
+                    var op = oplist.SingleOrDefault(p => p.FName == dailyItem.FOperID);
 
                    
                     if (equipment == null)
@@ -136,7 +142,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
                             FPlanAuxQty = dailyItem.FPlanAuxQty,
                             FBillTime = DateTime.Now,
                             FDate = dailyItem.FDate.Date,
-                            //FOperID = dailyItem.FOperID,
+                            FOperID = op!=null?op.FInterID:0,
                             FWorkCenterName = icmo.车间,
                             FWorker = shift.FEmployeeID
                         };
@@ -274,7 +280,8 @@ namespace JIT.DIME2Barcode.TaskAssignment
                     FBillNo = "SC-" + icmo.任务单号,
                     FBiller = AbpSession.UserId.ToString(),
                     FPlanAuxQty = icmo.计划生产数量,
-                    FItemID = icmo.产品编码,
+                    FItemNumber = icmo.产品编码,
+                    FItemID = icmo.FItemID,
                     FItemModel = icmo.规格型号,
                     FItemName = icmo.产品名称,
                     FPlanBeginDate = icmo.计划开工日期,
@@ -307,6 +314,34 @@ namespace JIT.DIME2Barcode.TaskAssignment
 
             return new PagedResultDto<VW_ICMODaily_Group_By_Day>(count,data);
 
+        }
+
+        public async Task<MOBillPlanDetail> GetMOBillPlanDetail(ICMODailyGetAllInput input)
+        {
+            var header = Repository.GetAll().Where(p => p.FMOInterID == input.FMOInterID)
+                .GroupBy(p => p.FMOInterID).Select(g => new MOBillPlanDetail()
+                    {
+                        FMOInterID = g.Key.Value,
+                        TotalPlan = g.Sum(item=>item.FPlanAuxQty.Value)
+                    }
+                ).SingleOrDefault();
+
+            var context = Repository.GetDbContext() as ProductionPlanMySqlDbContext;
+
+            var details = await (from daily in context.ICMODaily
+                join disp in context.ICMODispBill on daily.FID equals disp.FSrcID into g1
+                where daily.FMOInterID==header.FMOInterID
+                group daily by daily.FDate
+                into s
+                select new MOBillPlanDay()
+                {
+                    FDate = s.Key, DayCommit = s.Sum(item => item.FCommitAuxQty.Value),
+                    DayPlan = s.Sum(item => item.FPlanAuxQty.Value)
+                }).ToListAsync();
+
+            header.Details = details;
+               
+            return header;
         }
     }
 }

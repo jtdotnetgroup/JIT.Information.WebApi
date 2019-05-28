@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "ef89f5ff89037dc9676425cd8110a6b2f245a218"
+    "signature": "5c245903f5f09c1ea2dc1cceffb32fe72fb7bdc4"
   },
   "compilationOptions": {},
   "targets": {
@@ -14,7 +14,7 @@
           "CommonTools": "1.0.0",
           "JIT.InformationSystem.Application": "1.0.0",
           "JIT.InformationSystem.Core": "1.0.0",
-          "JIT.InformationSystem.EntityFrameworkCore": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Design": "2.2.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
           "Pomelo.EntityFrameworkCore.Extensions.ToSql": "2.0.0-rtm-10002",
           "Pomelo.EntityFrameworkCore.MySql": "2.2.0"
@@ -960,15 +960,15 @@
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/2.2.4": {},
-      "Microsoft.EntityFrameworkCore.Design/2.2.1": {
+      "Microsoft.EntityFrameworkCore.Design/2.2.4": {
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
           "Microsoft.EntityFrameworkCore.Relational": "2.2.4"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {
-            "assemblyVersion": "2.2.1.0",
-            "fileVersion": "2.2.1.18346"
+            "assemblyVersion": "2.2.4.0",
+            "fileVersion": "2.2.4.19081"
           }
         }
       },
@@ -3139,12 +3139,12 @@
       "path": "microsoft.entityframeworkcore.analyzers/2.2.4",
       "hashPath": "microsoft.entityframeworkcore.analyzers.2.2.4.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Design/2.2.1": {
+    "Microsoft.EntityFrameworkCore.Design/2.2.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-fh9g2qB3bJoAO5CU2eI5HfBEsfAW+UcWqRIJptl0xmgo7dgUs05otFbqSUaV9QVQl4QzSuigN7TlSDDjO5X91g==",
-      "path": "microsoft.entityframeworkcore.design/2.2.1",
-      "hashPath": "microsoft.entityframeworkcore.design.2.2.1.nupkg.sha512"
+      "sha512": "sha512-4SfnD7wYxr+OzcPOZYlzPtKtL1cdXk+a8g4bKc8QcgaGhpvVOTK5ROTZaOe10tmvFXFEJVZSGtXpFAbgiDFtjg==",
+      "path": "microsoft.entityframeworkcore.design/2.2.4",
+      "hashPath": "microsoft.entityframeworkcore.design.2.2.4.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Relational/2.2.4": {
       "type": "package",

@@ -61,3 +61,5 @@ D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.D
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csproj.CopyComplete
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.dll
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.pdb
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.runtimeconfig.json
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.runtimeconfig.dev.json

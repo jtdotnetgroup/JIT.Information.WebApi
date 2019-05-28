@@ -715,11 +715,13 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<DateTime?>("FFinishDate");
 
-                    b.Property<string>("FItemID");
+                    b.Property<int>("FItemID");
 
                     b.Property<string>("FItemModel");
 
                     b.Property<string>("FItemName");
+
+                    b.Property<string>("FItemNumber");
 
                     b.Property<string>("FMOBillNo");
 
@@ -786,6 +788,8 @@ namespace JIT.DIME2Barcode.Migrations
                     b.Property<string>("FNote");
 
                     b.Property<string>("FRemark");
+
+                    b.Property<string>("ICMOInspectBillID");
 
                     b.HasKey("FID");
 
@@ -1154,6 +1158,62 @@ namespace JIT.DIME2Barcode.Migrations
                     b.ToTable("VW_ICMODaily");
                 });
 
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.VW_MODispBillList", b =>
+                {
+                    b.Property<string>("FID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool?>("FClosed");
+
+                    b.Property<int>("FItemID");
+
+                    b.Property<int>("FOperID");
+
+                    b.Property<int>("FStatus");
+
+                    b.Property<int?>("FWorkcenterID");
+
+                    b.Property<string>("FsrcID");
+
+                    b.Property<decimal?>("不合格数量");
+
+                    b.Property<string>("产品代码");
+
+                    b.Property<string>("产品名称");
+
+                    b.Property<decimal?>("合格数量");
+
+                    b.Property<string>("工作中心");
+
+                    b.Property<string>("工序");
+
+                    b.Property<int>("打印次数");
+
+                    b.Property<string>("操作者");
+
+                    b.Property<decimal?>("汇报数量");
+
+                    b.Property<string>("派工单号");
+
+                    b.Property<decimal?>("派工数量");
+
+                    b.Property<int?>("班次");
+
+                    b.Property<string>("生产任务");
+
+                    b.Property<DateTime>("生产日期");
+
+                    b.Property<string>("规格型号");
+
+                    b.Property<decimal?>("计划数量");
+
+                    b.Property<string>("设备");
+
+                    b.HasKey("FID");
+
+                    b.ToTable("VW_MODispBillList");
+                });
+
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.t_Department", b =>
                 {
                     b.Property<int>("FItemID")
@@ -1318,60 +1378,6 @@ namespace JIT.DIME2Barcode.Migrations
                     b.HasKey("FID");
 
                     b.ToTable("VW_DispatchBill_List");
-                });
-
-            modelBuilder.Entity("JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.VW_MODispBillList", b =>
-                {
-                    b.Property<string>("FID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool?>("FClosed");
-
-                    b.Property<int?>("FItemID");
-
-                    b.Property<int>("FStatus");
-
-                    b.Property<int?>("FWorkCenterID");
-
-                    b.Property<string>("FsrcID");
-
-                    b.Property<decimal?>("不合格数量");
-
-                    b.Property<string>("产品代码");
-
-                    b.Property<string>("产品名称");
-
-                    b.Property<decimal?>("合格数量");
-
-                    b.Property<string>("工作中心");
-
-                    b.Property<string>("工序");
-
-                    b.Property<int>("打印次数");
-
-                    b.Property<string>("操作者");
-
-                    b.Property<decimal?>("汇报数量");
-
-                    b.Property<string>("派工单号");
-
-                    b.Property<decimal?>("派工数量");
-
-                    b.Property<int?>("班次");
-
-                    b.Property<string>("生产任务");
-
-                    b.Property<DateTime>("生产日期");
-
-                    b.Property<string>("规格型号");
-
-                    b.Property<decimal?>("计划数量");
-
-                    b.Property<string>("设备");
-
-                    b.HasKey("FID");
-
-                    b.ToTable("VW_MODispBillList");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.Employee", b =>

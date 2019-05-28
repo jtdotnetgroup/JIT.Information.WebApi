@@ -31,8 +31,9 @@ namespace JIT.DIME2Barcode.Entities
         //public virtual Microsoft.EntityFrameworkCore.DbSet<TB_BadItemRelation> TB_BadItemRelation { get; set; }
         //public virtual Microsoft.EntityFrameworkCore.DbSet<t_ICItem> t_ICItem { get; set; }
         public virtual Microsoft.EntityFrameworkCore.DbSet<VW_MOBillList> VW_MOBillList { get; set; }
-        public virtual Microsoft.EntityFrameworkCore.DbSet<VW_ICMODispBill_By_Date> VW_ICMODispBill_By_Date { get; set; }
-        public virtual Microsoft.EntityFrameworkCore.DbSet<VW_ICMOInspectBillList> VW_ICMOInspectBillList { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<VW_ICMODispBill_By_Date> VW_ICMODispBill_By_Date { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<VW_ICMOInspectBillList> VW_ICMOInspectBillList { get; set; }
+        public virtual DbSet<VM_Inventory> VM_Inventory { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
