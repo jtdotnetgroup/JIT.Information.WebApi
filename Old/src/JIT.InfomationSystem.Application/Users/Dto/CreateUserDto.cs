@@ -22,9 +22,9 @@ namespace JIT.InfomationSystem.Users.Dto
         [StringLength(AbpUserBase.MaxSurnameLength)]
         public string Surname { get; set; }
 
-        [Required]
-        [EmailAddress]
-        [StringLength(AbpUserBase.MaxEmailAddressLength)]
+        [Required(ErrorMessage = "邮箱是必填的")]
+        [EmailAddress(ErrorMessage="邮箱不正确")]
+        [StringLength(AbpUserBase.MaxEmailAddressLength, ErrorMessage="邮箱长度不正确！")]
         public string EmailAddress { get; set; }
 
         public bool IsActive { get; set; }

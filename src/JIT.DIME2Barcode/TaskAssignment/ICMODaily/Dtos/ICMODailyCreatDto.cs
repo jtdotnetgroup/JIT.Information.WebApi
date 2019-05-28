@@ -9,7 +9,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos
     {
         [NotMapped]
         public new string Id { get; set; }
-        [Required]
+        
         public int FMOInterID { get; set; }
         [Required]
         public string FMOBillNo { get; set; }

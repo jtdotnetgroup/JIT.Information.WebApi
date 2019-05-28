@@ -1,4 +1,5 @@
-﻿using Abp.AutoMapper;
+﻿using System;
+using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using JIT.InfomationSystem.Authorization;
@@ -11,7 +12,7 @@ namespace JIT.InfomationSystem
     public class InfomationSystemApplicationModule : AbpModule
     {
         public override void PreInitialize()
-        {
+        { 
             Configuration.Authorization.Providers.Add<InfomationSystemAuthorizationProvider>();
         }
 

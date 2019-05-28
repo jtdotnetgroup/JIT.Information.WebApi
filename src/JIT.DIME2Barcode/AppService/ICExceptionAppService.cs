@@ -1,14 +1,15 @@
-﻿using Abp.Application.Services;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using JIT.DIME2Barcode.TaskAssignment.ICException.Dtos;
+using Microsoft.EntityFrameworkCore;
 
 namespace JIT.DIME2Barcode.AppService
 {

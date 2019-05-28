@@ -8,6 +8,7 @@ using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using Castle.DynamicProxy.Generators.Emitters;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos;
@@ -19,7 +20,7 @@ namespace JIT.DIME2Barcode.AppService
     /// <summary>
     /// 派工单接口服务
     /// </summary>
-    public class ICMODispBillAppService:ApplicationService
+    public class ICMODispBillAppService : ApplicationService
     {
         public IRepository<VW_ICMODispBill_By_Date,string> VRepository { get; set; }
         public IRepository<ICMODaily, string> DRepository { get; set; }
@@ -32,13 +33,13 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public  async  Task<PagedResultDto<ICMODispBillListDto>> GetAll(ICMODispBillGetAllInput input)
+        public async Task<PagedResultDto<ICMODispBillListDto>> GetAll(ICMODispBillGetAllInput input)
         {
 
             var query = VRepository.GetAll()
                 .Where(p => p.FMOBillNo == input.FMOBillNo && p.FMOInterID == input.FMOInterID);
 
-            query =input.FDate==null?query: query.Where(p=>p.日期==input.FDate);
+            query = input.FDate == null ? query : query.Where(p => p.日期 == input.FDate);
 
             var count = await query.CountAsync();
             try
@@ -53,14 +54,15 @@ namespace JIT.DIME2Barcode.AppService
                 Console.WriteLine(e);
                 throw;
             }
-           
+
         }
+
         /// <summary>
         /// 日计划单生成或更新派工单
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public  async Task<ICMODispBillListDto> Create(ICMODispBillCreateInput input)
+        public async Task<ICMODispBillListDto> Create(ICMODispBillCreateInput input)
         {
             decimal? totalCommitQty = 0;
 
@@ -107,8 +109,7 @@ namespace JIT.DIME2Barcode.AppService
 
                     await  Repository.InsertAsync(entity);
 
-                }
-                else
+                foreach (var dispBillI in input.Details)
                 {
                     /*
                      *派工单已存在，更新派工单信息
@@ -132,7 +133,7 @@ namespace JIT.DIME2Barcode.AppService
                 await DRepository.UpdateAsync(icmodaily);
             }
 
-            return null;
+                return null;
             }
             catch (Exception e)
             {
@@ -156,9 +157,29 @@ namespace JIT.DIME2Barcode.AppService
 
             var data = await query.OrderBy(p => p.日期).PageBy(input).ToListAsync();
 
-            return new PagedResultDto<VW_ICMODispBill_By_Date>(count,data);
+            return new PagedResultDto<VW_ICMODispBill_By_Date>(count, data);
         }
 
+        public async Task<bool> UpdateFFinishAuxQty(ICMODispBillUpdateFFinishAuxQtyInput input)
+        {
+            try
+            {
+                var entity = await Repository.GetAll().SingleOrDefaultAsync(p => p.FID == input.FID);
+                if (entity != null)
+                {
+                    entity.FFinishAuxQty = input.FFinishAuxQty;
+                    await Repository.UpdateAsync(entity);
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+        
 
 
         /// <summary>
@@ -217,5 +238,5 @@ namespace JIT.DIME2Barcode.AppService
 
     }
 
-    
+
 }

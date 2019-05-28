@@ -6,7 +6,7 @@ using Abp.Domain.Entities;
 
 namespace JIT.DIME2Barcode.Entities
 {
-    public partial class ICMOSchedule:Entity<string>
+    public class ICMOSchedule:Entity<string>
     {
         [NotMapped]
         public override string Id { get; set; }
