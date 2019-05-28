@@ -335,7 +335,7 @@ namespace JIT.DIME2Barcode.AppService
         {
 
             var FMpno = "";    
-            var enetity = _ERepository.GetAll().LastOrDefault();
+            var enetity = _ERepository.GetAll().LastOrDefault(p=>p.IsDeleted==false);
             if (enetity!=null)
             {
                string[] strFMpno=enetity.FMpno.Split("YK");

@@ -136,7 +136,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
                             FPlanAuxQty = dailyItem.FPlanAuxQty,
                             FBillTime = DateTime.Now,
                             FDate = dailyItem.FDate.Date,
-                            FOperID = dailyItem.FOperID,
+                            //FOperID = dailyItem.FOperID,
                             FWorkCenterName = icmo.车间,
                             FWorker = shift.FEmployeeID
                         };

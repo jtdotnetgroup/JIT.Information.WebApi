@@ -21,6 +21,6 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos
 
         public string fid { get; set; }
 
-        public int FOperID { get; set; }
+        public string FOperID { get; set; }
     }
 }
