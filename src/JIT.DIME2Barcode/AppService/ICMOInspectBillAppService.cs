@@ -23,7 +23,7 @@ namespace JIT.DIME2Barcode.AppService
         public IRepository<ICMOInspectBill,string> Repository { get; set; }
         public IRepository<VW_ICMOInspectBillList,string> VRepository { get; set; }
         public IRepository<DIME2Barcode.Entities.ICQualityRpt, string> IcRepository { get; set; }
-
+        public IRepository<ICMODispBill, string>icmodispbillRepository { get; set; }
         public IRepository<DIME2Barcode.Entities.TB_BadItemRelation, int> tbRepository { get; set; }
         public async Task<PagedResultDto<VW_ICMOInspectBillListDto>> GetAll(VW_ICMOInspectBillListGetAllInput input)
         {
@@ -122,6 +122,13 @@ namespace JIT.DIME2Barcode.AppService
                     item.FID = Guid.NewGuid().ToString();
                     await IcRepository.InsertAsync(item);
                 }
+
+                var query1 = await icmodispbillRepository.GetAll().Where(w => w.FID == input.IcmoInspectBill.FID)
+                    .FirstOrDefaultAsync();
+                query1.FFInspectAuxQty = input.IcmoInspectBill.FCheckAuxQty;
+                query1.FFinishAuxQty = input.IcmoInspectBill.FAuxQty;
+                query1.FFailAuxQty = input.IcmoInspectBill.FFailAuxQty;
+                query1.FPassAuxQty = input.IcmoInspectBill.FPassAuxQty;
 
                 return true;
             }

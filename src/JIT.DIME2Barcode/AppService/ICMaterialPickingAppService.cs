@@ -8,6 +8,7 @@ using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Castle.Components.DictionaryAdapter;
+using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.TaskAssignment.ICException.Dtos;
 using JIT.JIT.TaskAssignment.ICMaterialPicking.Dtos;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,7 @@ namespace JIT.JIT.TaskAssignment.ICMaterialPicking
     public class ICMaterialPickingAppService : ApplicationService
     { 
         public IRepository<DIME2Barcode.Entities.ICMaterialPicking, string> Repository { get; set; }
-
+        public IRepository<ICMODispBill, string> icRepository { get; set; }
         //DIME2BarcodeContext context =new DIME2BarcodeContext();
         ///// <summary>
         ///// 获取全部数据
@@ -78,7 +79,9 @@ namespace JIT.JIT.TaskAssignment.ICMaterialPicking
                     };
                      Repository.Insert(IcMaterialPicking);
                 }
-
+                var query = icRepository.GetAll().SingleOrDefault(s => s.FID == input.FID);
+                query.FStatus = 1;
+                icRepository.UpdateAsync(query);
                 return true;
             }
             catch (Exception e)

@@ -8,6 +8,7 @@ using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.TaskAssignment.ICException.Dtos;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +25,7 @@ namespace JIT.DIME2Barcode.AppService
         //}
         //DIME2BarcodeContext context = new DIME2BarcodeContext();
         public IRepository<DIME2Barcode.Entities.ICException, string> Repository { get; set; }
+        public IRepository<Employee,int> ERepository { get; set; }
 
         /// <summary>
         /// 获取明细
@@ -67,13 +69,15 @@ namespace JIT.DIME2Barcode.AppService
             {
                 var entity = await Repository.GetAll()
                     .SingleOrDefaultAsync(p => p.FID == input.FID && p.FSrcID == input.FSrcID);
+
+                var emp = await ERepository.SingleAsync(p => p.FUserId == AbpSession.UserId);
                 if (entity == null)
                 {
                     entity = new DIME2Barcode.Entities.ICException()
                     {
                         FID = input.FID,
                         FSrcID = input.FSrcID,
-                        FBiller = input.FBiller,
+                        FBiller = emp.FName,
                         FNote = input.FNote,
                         FTime = input.FTime,
                         FRemark = input.FRemark,
@@ -83,7 +87,7 @@ namespace JIT.DIME2Barcode.AppService
                 }
                 else
                 {
-                    entity.FBiller = input.FBiller;
+                    entity.FBiller = emp.FName;
                     entity.FNote = input.FNote;
                     entity.FTime = input.FTime;
                     entity.FRemark = input.FRemark;

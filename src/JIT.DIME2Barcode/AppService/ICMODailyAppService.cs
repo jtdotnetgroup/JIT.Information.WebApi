@@ -326,16 +326,22 @@ namespace JIT.DIME2Barcode.TaskAssignment
                     }
                 ).SingleOrDefault();
 
-            var dispList = DRepository.GetAll().Where(p => p.FMOInterID == header.FMOInterID).ToList();
+            var context = Repository.GetDbContext() as ProductionPlanMySqlDbContext;
 
-            //var details= dispList.GroupBy(p => p.FDate).Select(g => new MOBillPlanDay()
-            //{
-            //    FDate = g.Key.Value,
-            //    DayCommit = g.Sum(item=>item.FCommitAuxQty);
-            //});
+            var details = await (from daily in context.ICMODaily
+                join disp in context.ICMODispBill on daily.FID equals disp.FSrcID into g1
+                where daily.FMOInterID==header.FMOInterID
+                group daily by daily.FDate
+                into s
+                select new MOBillPlanDay()
+                {
+                    FDate = s.Key, DayCommit = s.Sum(item => item.FCommitAuxQty.Value),
+                    DayPlan = s.Sum(item => item.FPlanAuxQty.Value)
+                }).ToListAsync();
 
-
-
+            header.Details = details;
+               
+            return header;
         }
     }
 }
