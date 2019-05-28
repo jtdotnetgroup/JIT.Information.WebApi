@@ -45,6 +45,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
         public IRepository<Entities.VW_MOBillList, string> MRepository { get; set; }
         public IRepository<VW_ICMODaily_Group_By_Day,string> GRepository { get; set; }
         public IRepository<OrganizationUnit> ORepository { get; set; }//组织架构仓储
+        public IRepository<EqiupmentShift,int> EsRepository { get; set; }
 
         //设备档案仓储
         public IRepository<Equipment,int > ERepository { get; set; }
@@ -91,6 +92,8 @@ namespace JIT.DIME2Barcode.TaskAssignment
             var equipmentList =await ERepository.GetAll().Where(p => p.FType == PublicEnum.EquipmentType.设备).ToListAsync();
             var orgs = await ORepository.GetAll().Where(p => p.OrganizationType == PublicEnum.OrganizationType.车间).ToListAsync();
 
+            var eqShifts = await EsRepository.GetAll().ToListAsync();
+
             if (icmo != null)
             {
                 var schedule = GetOrCreateSchedule(icmo);
@@ -100,27 +103,30 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 foreach (var dailyItem in input.Dailies)
                 {
 
-                    var entity = schedule.Dailies.SingleOrDefault(p =>
-                        p.FDate == dailyItem.FDate && p.FMachineID == dailyItem.FMachineID &&
-                        p.FShift == dailyItem.FShift && p.FOperID == dailyItem.FOperID);
-
                     var equipment = equipmentList.SingleOrDefault(e => e.FName == dailyItem.FMachineName);
+
+                    var shift = eqShifts.SingleOrDefault(p =>
+                        p.FEqiupmentID == equipment.FInterID && p.FShift == dailyItem.FShift);
+
+                    var entity = schedule.Dailies.SingleOrDefault(p =>
+                        p.FDate == dailyItem.FDate && p.FMachineID == equipment.FInterID &&
+                        p.FShift == shift.Id);
+
+                   
                     if (equipment == null)
                     {
                         throw  new AbpValidationException($"设备:{dailyItem.FMachineName}不存在");
                     }
 
-
-
                     var index = (schedule.Dailies.Count + 1).ToString("000");
 
-                    if (entity == null)
+                    if (entity == null&&dailyItem.FPlanAuxQty>0)
                     {
                         entity = new Entities.ICMODaily
                         {
                             FMachineID = equipment.FInterID,
                             FWorkCenterID = org.Id,
-                            FShift = dailyItem.FShift,
+                            FShift = shift.Id,
                             FID = Guid.NewGuid().ToString(),
                             FBillNo = "DA" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + index, //任务计划单号
                             FMOInterID = icmo.FMOInterID, //任务单ID
@@ -132,12 +138,12 @@ namespace JIT.DIME2Barcode.TaskAssignment
                             FDate = dailyItem.FDate.Date,
                             FOperID = dailyItem.FOperID,
                             FWorkCenterName = icmo.车间,
-                            
+                            FWorker = shift.FEmployeeID
                         };
                         //插入新的日计划单
                         schedule.Dailies.Add(entity);
                     }
-                    else
+                    else if(dailyItem.FPlanAuxQty>0)
                     {
                         schedule.FPlanAuxQty -= entity.FPlanAuxQty;
                         entity.FPlanAuxQty = dailyItem.FPlanAuxQty;
@@ -210,7 +216,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<List<VW_Group_ICMODailyDto>> GetDailyListByFMOInterID(ICMODailyGetAllInput input)
+        public async Task<List<VW_Group_ICMODaily>> GetDailyListByFMOInterID(ICMODailyGetAllInput input)
         {
             try
             {
@@ -218,7 +224,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
 
                 var data = await query.ToListAsync();
 
-                return data.MapTo<List<VW_Group_ICMODailyDto>>();
+                return data;
             }
             catch (Exception e)
             {

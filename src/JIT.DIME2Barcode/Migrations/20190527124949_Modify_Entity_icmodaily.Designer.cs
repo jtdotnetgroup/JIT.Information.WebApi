@@ -3,14 +3,16 @@ using System;
 using JIT.DIME2Barcode.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JIT.DIME2Barcode.Migrations
 {
     [DbContext(typeof(ProductionPlanMySqlDbContext))]
-    partial class ProductionPlanMySqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190527124949_Modify_Entity_icmodaily")]
+    partial class Modify_Entity_icmodaily
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -623,7 +625,7 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<int?>("FWorkCenterID");
 
-                    b.Property<int>("FWorker");
+                    b.Property<string>("FWorker");
 
                     b.HasKey("FID");
 
@@ -1305,11 +1307,7 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<int>("FMachineID");
 
-                    b.Property<string>("FShift");
-
-                    b.Property<int>("FShiftID");
-
-                    b.Property<int>("FWorkerID");
+                    b.Property<int?>("FShift");
 
                     b.Property<string>("Machine");
 

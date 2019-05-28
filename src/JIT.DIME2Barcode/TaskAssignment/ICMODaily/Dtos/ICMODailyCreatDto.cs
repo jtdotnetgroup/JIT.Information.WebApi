@@ -16,9 +16,6 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos
 
         public string FWorkCenterName { get; set; }
 
-        
-        
-
         public DailyDto[] Dailies { get; set; }
     }
 }

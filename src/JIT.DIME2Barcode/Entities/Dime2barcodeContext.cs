@@ -13,7 +13,7 @@ namespace JIT.DIME2Barcode.Entities
         {
         }
 
-        public virtual Microsoft.EntityFrameworkCore.DbSet<VW_Group_ICMODaily> VW_Group_ICMODaily { get; set; }
+        //public virtual Microsoft.EntityFrameworkCore.DbSet<VW_Group_ICMODaily> VW_Group_ICMODaily { get; set; }
         //public virtual Microsoft.EntityFrameworkCore.DbSet<ICMODaily> ICMODaily { get; set; }
         //public virtual Microsoft.EntityFrameworkCore.DbSet<BillStatus> BillStatus { get; set; }
         //public virtual Microsoft.EntityFrameworkCore.DbSet<ICException> ICException { get; set; }
