@@ -13,8 +13,8 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos
         public DateTime FDate { get; set; }
         public string FMOBillNo { get; set; }
         public string DisplayName { get; set; }
-        public string FItemID { get; set; }
-
+        public int FItemID { get; set; }
+        public string FItemNumber { get; set; }
         public string FItemName { get; set; }
 
         public string FItemModel { get; set; }

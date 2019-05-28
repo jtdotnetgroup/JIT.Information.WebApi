@@ -36,7 +36,8 @@ namespace JIT.DIME2Barcode.Entities
         public DateTime? FCloseTime { get; set; }
         public string FNote { get; set; }
 
-        public string FItemID { get; set; } //产品编码
+        public int FItemID { get; set; } //物料ID
+        public string FItemNumber { get; set; }//产品编码
         public string FItemName { get; set; } //产品名称
         public string FItemModel { get; set; } //规格型号
 

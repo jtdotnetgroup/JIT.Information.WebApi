@@ -36,5 +36,6 @@ namespace JIT.DIME2Barcode.Entities
         public Nullable<System.DateTime> 计划完工日期 { get; set; }
         public int FMOInterID { get; set; }
         public short FStatus { get; set; }
+        public int FItemID { get; set; }
     }
 }

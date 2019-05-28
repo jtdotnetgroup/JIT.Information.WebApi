@@ -20,7 +20,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos
         public string FShift { get; set; }
 
         public string fid { get; set; }
-
-        public int FOperID { get; set; }
+        //工序名称
+        public string FOperID { get; set; }
     }
 }

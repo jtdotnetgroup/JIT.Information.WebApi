@@ -18,7 +18,7 @@ namespace JIT.DIME2Barcode.Entities
         public Nullable<int> 班次 { get; set; }
         public string 生产任务 { get; set; }
         public string 派工单号 { get; set; }
-        public string 操作者 { get; set; }
+        public long 操作者 { get; set; }
         public string 产品代码 { get; set; }
         public string 产品名称 { get; set; }
         public string 规格型号 { get; set; }
@@ -37,5 +37,8 @@ namespace JIT.DIME2Barcode.Entities
         public Nullable<int> FWorkcenterID { get; set; }
         public string FsrcID { get; set; }
         public int FOperID { get; set; }
+
+        public DateTime 计划开工日期 { get; set; }
+        public DateTime 计划完工日期 { get; set; }
     }
 }

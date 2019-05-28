@@ -26,7 +26,8 @@ namespace JIT.DIME2Barcode.AppService
         public IRepository<ICMODaily, string> DRepository { get; set; }
         public IRepository<ICMODispBill,string> Repository { get; set; }
         public IRepository<VW_DispatchBill_List,string> LRepository { get; set; }
-        //public IRepository<ICMOSchedule, string> SRepository { get; set; }
+        //员工仓储
+        //public IRepository<Employee, int> ERepository { get; set; }
 
         /// <summary>
         /// 任务派工界面数据
@@ -91,48 +92,55 @@ namespace JIT.DIME2Barcode.AppService
                     {
                         FID = Guid.NewGuid().ToString(),
                         FSrcID = dailyFid,
-                        FWorker =dispBillI.FWorker,
-                        FWorkCenterID = dispBillI.FWorkCenterID,
+                        FWorker = dispBillI.FWorker,
+                        FWorkCenterID = icmodaily.FWorkCenterID,
                         FMachineID = dispBillI.FMachineID,
                         FMOBillNo = dispBillI.FMOBillNo,
-                        FMOInterID =dispBillI.FMOInterID,
+                        FMOInterID = dispBillI.FMOInterID,
                         FCommitAuxQty = dispBillI.FCommitAuxQty,
                         FBiller = AbpSession.UserId.ToString(),
-                        FDate =DateTime.Now .Date,
+                        FDate = DateTime.Now.Date,
                         FShift = dispBillI.FShift,
-                        FBillNo = "DI"+DateTime.Now.ToString("yyyyMMddHHmmss")+new Random().Next(1,10).ToString(),
+                        FBillNo = "DI" + DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(1, 10).ToString(),
                         FBillTime = DateTime.Now
+
                     };
 
                     //totalCommitQty += dispBillI.FCommitAuxQty;
                     icmodaily.FCommitAuxQty += dispBillI.FCommitAuxQty;
 
-                    await  Repository.InsertAsync(entity);
-
-                foreach (var dispBillI in input.Details)
+                    await Repository.InsertAsync(entity);
+                }
+                else
                 {
-                    /*
+                        /*
                      *派工单已存在，更新派工单信息
                      */
-                    icmodaily.FCommitAuxQty -= entity.FCommitAuxQty;
+                        icmodaily.FCommitAuxQty -= entity.FCommitAuxQty;
 
-                    entity.FWorkCenterID = dispBillI.FWorkCenterID;
-                    entity.FWorker = dispBillI.FWorker;
-                    entity.FCommitAuxQty = dispBillI.FCommitAuxQty;
-                    entity.FMachineID = dispBillI.FMachineID;
-                    entity.FDate = DateTime.Now;
-                    entity.FShift = dispBillI.FShift;
-                    entity.FMachineID = dispBillI.FMachineID;
-                    await Repository.UpdateAsync(entity);
+                        entity.FWorkCenterID = icmodaily.FWorkCenterID;
+                        entity.FWorker = dispBillI.FWorker;
+                        entity.FCommitAuxQty = dispBillI.FCommitAuxQty;
+                        entity.FMachineID = dispBillI.FMachineID;
+                        entity.FDate = DateTime.Now;
+                        entity.FShift = dispBillI.FShift;
+                        entity.FMachineID = dispBillI.FMachineID;
+                        entity.FMOBillNo = dispBillI.FMOBillNo;
+                        entity.FMOInterID = dispBillI.FMOInterID;
+                        await Repository.UpdateAsync(entity);
 
-                    icmodaily.FCommitAuxQty += entity.FCommitAuxQty;
+                        icmodaily.FCommitAuxQty += entity.FCommitAuxQty;
+                    }
+
+                    icmodaily.FWorker = dispBillI.FWorker;
+
+                    await DRepository.UpdateAsync(icmodaily);
                 }
 
-                icmodaily.FWorker = dispBillI.FWorker;
-
-                await DRepository.UpdateAsync(icmodaily);
-            }
-
+                    //foreach (var dispBillI in input.Details)
+                    //{
+                    //    
+                
                 return null;
             }
             catch (Exception e)

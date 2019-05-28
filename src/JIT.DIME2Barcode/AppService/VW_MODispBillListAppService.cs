@@ -21,7 +21,7 @@ namespace JIT.JIT.TaskAssignment.VW_MODispBillList
         /// </summary>
         public PagedResultDto<DIME2Barcode.Entities.VW_MODispBillList> GetAll(VW_MODispBillListGetAllInput input)
         {
-            var query = Repository.GetAll().Where(w => w.操作者 == AbpSession.UserId.ToString() && w.FStatus == input.FStatus);
+            var query = Repository.GetAll().Where(w => w.操作者 == AbpSession.UserId && w.FStatus == input.FStatus);
             query = input.FStatus == 0 ? query.Where(p => p.FStatus == input.FStatus) : query.Where(p => p.FStatus > 0);
             query = input.FClosed.HasValue ? query.Where(p => p.FClosed == input.FClosed) : query;
 

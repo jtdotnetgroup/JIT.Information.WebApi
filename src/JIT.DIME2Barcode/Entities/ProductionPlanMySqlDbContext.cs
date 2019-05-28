@@ -19,7 +19,7 @@ namespace JIT.DIME2Barcode.Entities
         public virtual DbSet<ICMODispBill> ICMODispBill { get; set; }
         public virtual DbSet<ICMOInspectBill> ICMOInspectBill { get; set; }
         public virtual DbSet<ICMOSchedule> ICMOSchedule { get; set; }
-        public virtual DbSet<ICQualityRpt> ICQualityRpt { get; set; }
+        public virtual DbSet<ICQualityRpt> ICMOQualityRpt { get; set; }
         public virtual DbSet<ICBOM> ICBOM { get; set; }
         public virtual DbSet<SEOrder> SEOrder { get; set; }
         public virtual DbSet<t_Department> t_Department { get; set; }
@@ -31,6 +31,7 @@ namespace JIT.DIME2Barcode.Entities
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<VW_DispatchBill_List> VW_DispatchBill_List { get; set; }
         public virtual DbSet<EqiupmentShift> T_EquimentShift { get; set; }
+        public virtual DbSet<t_SubMessage> t_SubMessage { get; set; }
 
         #region 视图
         public virtual DbSet<VW_ICMODaily> VW_ICMODaily { get; set; }
@@ -38,7 +39,7 @@ namespace JIT.DIME2Barcode.Entities
         public virtual DbSet<VW_ICMODaily_Group_By_Day> VW_ICMODaily_Group_By_Day { get; set; }
         public virtual DbSet<VW_Employee> VW_Employee { get; set; }
         public virtual DbSet<VW_Group_ICMODaily> VW_Group_ICMODaily { get; set; }
-
+        
 
         #endregion
 
