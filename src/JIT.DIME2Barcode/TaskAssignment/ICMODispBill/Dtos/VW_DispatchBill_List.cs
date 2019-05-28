@@ -20,8 +20,11 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
         public  string Machine { get; set; }
         public int FMachineID { get; set; }
         public string Worker { get; set; }
-        public int? FShift { get; set; }
+        public int FWorkerID { get; set; }
+        public string FShift { get; set; }
         public decimal? FCommitAuxQty { get; set; }
         public string FBiller { get; set; }
+
+        public int FShiftID { get; set; }
     }
 }

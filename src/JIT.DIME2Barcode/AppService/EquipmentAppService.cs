@@ -112,7 +112,8 @@ namespace JIT.DIME2Barcode.AppService
 
         public async Task<List<EquipmentShiftDto>> GetShiftByEquipmentID(int Id)
         {
-            var query = EsRepository.GetAllIncluding(p => p.Employee).Include(p => p.Equipment);
+            var query = EsRepository.GetAll().Where(p => p.FEqiupmentID == Id).Include(p => p.Employee)
+                .Include(p => p.Equipment);
 
             var list =await query.ToListAsync();
 

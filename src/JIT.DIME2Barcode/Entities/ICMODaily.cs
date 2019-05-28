@@ -25,7 +25,7 @@ namespace JIT.DIME2Barcode.Entities
         public int? FShift { get; set; }
         public int? FWorkCenterID { get; set; }
         public int? FMachineID { get; set; }
-        public string FWorker { get; set; }
+        public int? FWorker { get; set; }
         public decimal? FPlanAuxQty { get; set; }
         public decimal? FCommitAuxQty { get; set; }
         public decimal? FFinishAuxQty { get; set; }

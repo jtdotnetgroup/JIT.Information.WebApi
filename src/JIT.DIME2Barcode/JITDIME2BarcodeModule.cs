@@ -116,9 +116,11 @@ namespace JIT.DIME2Barcode
                 config.CreateMap<EquipmentShiftDto, EqiupmentShift>()
                     .ForMember(o => o.Employee, op => op.Ignore())
                     .ForMember(o => o.Equipment, op => op.Ignore());
-                
 
                 config.CreateMap<EmployeeDto, Employee>()
+                    .ForMember(o => o.Department, op => op.Ignore());
+
+                config.CreateMap<EmployeeEdit, Employee>()
                     .ForMember(o => o.Department, op => op.Ignore());
             });
 
