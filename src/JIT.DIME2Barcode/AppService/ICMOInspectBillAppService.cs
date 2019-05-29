@@ -123,9 +123,7 @@ namespace JIT.DIME2Barcode.AppService
                     await IcRepository.InsertAsync(item);
                 }
                 // 
-                var query1 = ICMODispBillRepository.GetAll().Where(w => w.FID == input.IcmoInspectBill.FID)??new ICMODispBill();
-                query1.FStatus = 3;
-                await Repository.UpdateAsync(query1);
+                
                 return true;
             }
             catch (Exception e)
