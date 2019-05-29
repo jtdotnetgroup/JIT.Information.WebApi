@@ -122,7 +122,6 @@ namespace JIT.DIME2Barcode.AppService
                     item.FID = Guid.NewGuid().ToString();
                     await IcRepository.InsertAsync(item);
                 }
-                // 
                 
                 return true;
             }
