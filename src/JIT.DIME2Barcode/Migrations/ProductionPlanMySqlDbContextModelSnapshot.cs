@@ -35,6 +35,123 @@ namespace JIT.DIME2Barcode.Migrations
                     b.ToTable("BillStatus");
                 });
 
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("FDepartment");
+
+                    b.Property<int?>("FERPOfficeClerk");
+
+                    b.Property<int?>("FERPUser");
+
+                    b.Property<string>("FEmailAddress");
+
+                    b.Property<DateTime?>("FHiredate");
+
+                    b.Property<string>("FMpno")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("FName")
+                        .HasMaxLength(10);
+
+                    b.Property<int>("FOrganizationUnitId");
+
+                    b.Property<int?>("FParentId");
+
+                    b.Property<string>("FPhone");
+
+                    b.Property<int?>("FSex");
+
+                    b.Property<int?>("FSystemUser");
+
+                    b.Property<int>("FTenantId");
+
+                    b.Property<long>("FUserId");
+
+                    b.Property<int?>("FWorkingState");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FDepartment");
+
+                    b.ToTable("Employee");
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.EqiupmentShift", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("FEmployeeID");
+
+                    b.Property<int>("FEqiupmentID");
+
+                    b.Property<string>("FShift");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FEmployeeID");
+
+                    b.HasIndex("FEqiupmentID");
+
+                    b.ToTable("T_EquimentShift");
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.Equipment", b =>
+                {
+                    b.Property<int>("FInterID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<int>("FDayWorkHours");
+
+                    b.Property<int>("FLift");
+
+                    b.Property<int>("FMaxWorkHours");
+
+                    b.Property<string>("FName");
+
+                    b.Property<string>("FNumber");
+
+                    b.Property<int>("FResidualLife");
+
+                    b.Property<decimal>("FRunsRate");
+
+                    b.Property<int>("FStatus");
+
+                    b.Property<int>("FSwichTime");
+
+                    b.Property<int>("FTimeUnit");
+
+                    b.Property<int>("FType");
+
+                    b.Property<int?>("FWorkCenterID");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<string>("Note");
+
+                    b.HasKey("FInterID");
+
+                    b.HasIndex("FNumber")
+                        .IsUnique();
+
+                    b.HasIndex("FWorkCenterID");
+
+                    b.ToTable("t_equipment");
+                });
+
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.ICBOM", b =>
                 {
                     b.Property<int>("FInterID")
@@ -440,7 +557,7 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<string>("FWorkCenterName");
 
-                    b.Property<string>("FWorker");
+                    b.Property<int?>("FWorker");
 
                     b.HasKey("FID");
 
@@ -506,7 +623,7 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<int?>("FWorkCenterID");
 
-                    b.Property<string>("FWorker");
+                    b.Property<int>("FWorker");
 
                     b.HasKey("FID");
 
@@ -598,11 +715,13 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<DateTime?>("FFinishDate");
 
-                    b.Property<string>("FItemID");
+                    b.Property<int>("FItemID");
 
                     b.Property<string>("FItemModel");
 
                     b.Property<string>("FItemName");
+
+                    b.Property<string>("FItemNumber");
 
                     b.Property<string>("FMOBillNo");
 
@@ -670,9 +789,59 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<string>("FRemark");
 
+                    b.Property<string>("ICMOInspectBillID");
+
                     b.HasKey("FID");
 
                     b.ToTable("ICQualityRpt");
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.OrganizationUnit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<DateTime?>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<string>("DataBaseConnection");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime>("DeletionTime");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<int?>("ERPOrganization");
+
+                    b.Property<int?>("ERPOrganizationLeader");
+
+                    b.Property<bool?>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<int?>("LastModifierUserId");
+
+                    b.Property<int?>("OrganizationType");
+
+                    b.Property<int?>("ParentId");
+
+                    b.Property<string>("Remark");
+
+                    b.Property<int?>("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("T_OrganizationUnit");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.SEOrder", b =>
@@ -877,6 +1046,86 @@ namespace JIT.DIME2Barcode.Migrations
                     b.ToTable("T_PrintTemplate");
                 });
 
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.VW_Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("FDepartment");
+
+                    b.Property<int>("FERPOfficeClerk");
+
+                    b.Property<int>("FERPUser");
+
+                    b.Property<string>("FEmailAddress");
+
+                    b.Property<DateTime>("FHiredate");
+
+                    b.Property<string>("FMpno");
+
+                    b.Property<string>("FName");
+
+                    b.Property<int>("FOrganizationUnitId");
+
+                    b.Property<int>("FParentId");
+
+                    b.Property<string>("FPhone");
+
+                    b.Property<int>("FSex");
+
+                    b.Property<int>("FSystemUser");
+
+                    b.Property<int>("FTenantId");
+
+                    b.Property<long>("FUserId");
+
+                    b.Property<int>("FWorkingState");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<string>("fatherName");
+
+                    b.Property<string>("remark");
+
+                    b.Property<string>("rolename");
+
+                    b.Property<string>("zsonName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VW_Employee");
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.VW_Group_ICMODaily", b =>
+                {
+                    b.Property<string>("FID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FMOBillNo");
+
+                    b.Property<int?>("FMOInterID");
+
+                    b.Property<decimal?>("合格数量");
+
+                    b.Property<decimal?>("完成数量");
+
+                    b.Property<string>("操作员");
+
+                    b.Property<DateTime?>("日期");
+
+                    b.Property<string>("机台");
+
+                    b.Property<decimal?>("派工数量");
+
+                    b.Property<string>("班次");
+
+                    b.Property<decimal>("计划数量");
+
+                    b.HasKey("FID");
+
+                    b.ToTable("VW_Group_ICMODaily");
+                });
+
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.VW_ICMODaily", b =>
                 {
                     b.Property<string>("计划单号")
@@ -907,6 +1156,62 @@ namespace JIT.DIME2Barcode.Migrations
                     b.HasKey("计划单号");
 
                     b.ToTable("VW_ICMODaily");
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.VW_MODispBillList", b =>
+                {
+                    b.Property<string>("FID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool?>("FClosed");
+
+                    b.Property<int>("FItemID");
+
+                    b.Property<int>("FOperID");
+
+                    b.Property<int>("FStatus");
+
+                    b.Property<int?>("FWorkcenterID");
+
+                    b.Property<string>("FsrcID");
+
+                    b.Property<decimal?>("不合格数量");
+
+                    b.Property<string>("产品代码");
+
+                    b.Property<string>("产品名称");
+
+                    b.Property<decimal?>("合格数量");
+
+                    b.Property<string>("工作中心");
+
+                    b.Property<string>("工序");
+
+                    b.Property<int>("打印次数");
+
+                    b.Property<string>("操作者");
+
+                    b.Property<decimal?>("汇报数量");
+
+                    b.Property<string>("派工单号");
+
+                    b.Property<decimal?>("派工数量");
+
+                    b.Property<int?>("班次");
+
+                    b.Property<string>("生产任务");
+
+                    b.Property<DateTime>("生产日期");
+
+                    b.Property<string>("规格型号");
+
+                    b.Property<decimal?>("计划数量");
+
+                    b.Property<string>("设备");
+
+                    b.HasKey("FID");
+
+                    b.ToTable("VW_MODispBillList");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.t_Department", b =>
@@ -1015,58 +1320,91 @@ namespace JIT.DIME2Barcode.Migrations
                     b.ToTable("t_MeasureUnit");
                 });
 
-            modelBuilder.Entity("JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.VW_MODispBillList", b =>
+            modelBuilder.Entity("JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos.VW_ICMODaily_Group_By_Day", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("DisplayName");
+
+                    b.Property<DateTime>("FDate");
+
+                    b.Property<string>("FItemID");
+
+                    b.Property<string>("FItemModel");
+
+                    b.Property<string>("FItemName");
+
+                    b.Property<string>("FMOBillNo");
+
+                    b.Property<decimal>("TotalPlanAuxQty");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VW_ICMODaily_Group_By_Day");
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos.VW_DispatchBill_List", b =>
                 {
                     b.Property<string>("FID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool?>("FClosed");
+                    b.Property<string>("FBillNo");
 
-                    b.Property<int?>("FItemID");
+                    b.Property<DateTime?>("FBillTime");
 
-                    b.Property<int>("FStatus");
+                    b.Property<string>("FBiller");
 
-                    b.Property<int?>("FWorkCenterID");
+                    b.Property<decimal?>("FCommitAuxQty");
 
-                    b.Property<string>("FsrcID");
+                    b.Property<DateTime>("FDate");
 
-                    b.Property<decimal?>("不合格数量");
+                    b.Property<string>("FMOBillNo");
 
-                    b.Property<string>("产品代码");
+                    b.Property<int>("FMOInterID");
 
-                    b.Property<string>("产品名称");
+                    b.Property<int>("FMachineID");
 
-                    b.Property<decimal?>("合格数量");
+                    b.Property<string>("FShift");
 
-                    b.Property<string>("工作中心");
+                    b.Property<int>("FShiftID");
 
-                    b.Property<string>("工序");
+                    b.Property<int>("FWorkerID");
 
-                    b.Property<int>("打印次数");
+                    b.Property<string>("Machine");
 
-                    b.Property<string>("操作者");
-
-                    b.Property<decimal?>("汇报数量");
-
-                    b.Property<string>("派工单号");
-
-                    b.Property<decimal?>("派工数量");
-
-                    b.Property<int?>("班次");
-
-                    b.Property<string>("生产任务");
-
-                    b.Property<DateTime>("生产日期");
-
-                    b.Property<string>("规格型号");
-
-                    b.Property<decimal?>("计划数量");
-
-                    b.Property<string>("设备");
+                    b.Property<string>("Worker");
 
                     b.HasKey("FID");
 
-                    b.ToTable("VW_MODispBillList");
+                    b.ToTable("VW_DispatchBill_List");
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.Employee", b =>
+                {
+                    b.HasOne("JIT.DIME2Barcode.Entities.OrganizationUnit", "Department")
+                        .WithMany()
+                        .HasForeignKey("FDepartment");
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.EqiupmentShift", b =>
+                {
+                    b.HasOne("JIT.DIME2Barcode.Entities.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("FEmployeeID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("JIT.DIME2Barcode.Entities.Equipment", "Equipment")
+                        .WithMany()
+                        .HasForeignKey("FEqiupmentID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.Equipment", b =>
+                {
+                    b.HasOne("JIT.DIME2Barcode.Entities.OrganizationUnit", "WorkCenter")
+                        .WithMany()
+                        .HasForeignKey("FWorkCenterID");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.ICMODaily", b =>
@@ -1074,6 +1412,13 @@ namespace JIT.DIME2Barcode.Migrations
                     b.HasOne("JIT.DIME2Barcode.Entities.ICMOSchedule", "Schedule")
                         .WithMany("Dailies")
                         .HasForeignKey("FSrcID");
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.OrganizationUnit", b =>
+                {
+                    b.HasOne("JIT.DIME2Barcode.Entities.OrganizationUnit", "Parent")
+                        .WithMany("Children")
+                        .HasForeignKey("ParentId");
                 });
 #pragma warning restore 612, 618
         }

@@ -29,7 +29,7 @@
     <text name="UserProfile" >用户资料</text>
     <text name="Users" >用户</text>
     <text name="Roles" >角色</text>
-    <text name="Tenants" >租户</text>
+    <text name="Tenants" >帐套</text>
     <text name="Logout" >注销</text>
     <text name="ManageMenu" >菜单</text>
     <text name="LabelOptions" >页签操作</text>
@@ -96,8 +96,16 @@
     <text name="DefaultPasswordIs">默认密码为：{0}</text>
     <text name="DeleteTenantConfirm">确认删除该租户？</text>
     <text name="EditTenant">编辑租户</text>
-    
-    
+
+    <text name="SystemSettings">系统设置</text>
+    <text name="Update">修改</text>
+    <text name="Get">查询</text>
+    <text name="Import">导入</text>
+    <text name="Export">导出</text>
+    <text name="TaskPlan">任务排产</text>
+    <text name="TaskDispatch">任务派工</text>
+
+
   </texts>
 </localizationDictionary>
 

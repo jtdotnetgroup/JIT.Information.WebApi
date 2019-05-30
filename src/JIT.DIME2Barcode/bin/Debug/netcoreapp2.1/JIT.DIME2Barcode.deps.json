@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "a5498c9f7c5c3007a571439229cf60fdd10da1fa"
+    "signature": "5c245903f5f09c1ea2dc1cceffb32fe72fb7bdc4"
   },
   "compilationOptions": {},
   "targets": {
@@ -12,7 +12,9 @@
           "Abp.AspNetCore": "4.5.0",
           "Abp.EntityFrameworkCore": "4.5.0",
           "CommonTools": "1.0.0",
+          "JIT.InformationSystem.Application": "1.0.0",
           "JIT.InformationSystem.Core": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Design": "2.2.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
           "Pomelo.EntityFrameworkCore.MySql": "2.2.0"
         },
@@ -957,6 +959,18 @@
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/2.2.4": {},
+      "Microsoft.EntityFrameworkCore.Design/2.2.4": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "Microsoft.EntityFrameworkCore.Relational": "2.2.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {
+            "assemblyVersion": "2.2.4.0",
+            "fileVersion": "2.2.4.19081"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/2.2.4": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "2.2.4"
@@ -2569,6 +2583,14 @@
           "CommonTools.dll": {}
         }
       },
+      "JIT.InformationSystem.Application/1.0.0": {
+        "dependencies": {
+          "JIT.InformationSystem.Core": "1.0.0"
+        },
+        "runtime": {
+          "JIT.InformationSystem.Application.dll": {}
+        }
+      },
       "JIT.InformationSystem.Core/1.0.0": {
         "dependencies": {
           "Abp.AutoMapper": "4.3.0",
@@ -3093,6 +3115,13 @@
       "sha512": "sha512-7rejM6oRqUqNrj1BK4ico0Fb6XMADNn6lqPgYGYg49vJqA0NWxbavLUkMPzcPR0AYznPbHFQPuNHqT6JfCM+kA==",
       "path": "microsoft.entityframeworkcore.analyzers/2.2.4",
       "hashPath": "microsoft.entityframeworkcore.analyzers.2.2.4.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Design/2.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4SfnD7wYxr+OzcPOZYlzPtKtL1cdXk+a8g4bKc8QcgaGhpvVOTK5ROTZaOe10tmvFXFEJVZSGtXpFAbgiDFtjg==",
+      "path": "microsoft.entityframeworkcore.design/2.2.4",
+      "hashPath": "microsoft.entityframeworkcore.design.2.2.4.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Relational/2.2.4": {
       "type": "package",
@@ -4152,6 +4181,11 @@
       "hashPath": "timezoneconverter.2.5.1.nupkg.sha512"
     },
     "CommonTools/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "JIT.InformationSystem.Application/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

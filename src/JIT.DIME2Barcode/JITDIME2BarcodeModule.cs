@@ -4,12 +4,15 @@ using Abp.Configuration.Startup;
 using Abp.Domain.Uow;
 using Abp.EntityFrameworkCore.Configuration;
 using Abp.Modules;
-using Abp.Organizations;
 using Abp.Reflection.Extensions;
-using JIT.DIME2Barcode.SystemSetting.Organization.Dtos;
-using System.Reflection;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.Entities.EFConfig;
+using JIT.DIME2Barcode.Permissions;
+using JIT.DIME2Barcode.SystemSetting.Organization.Dtos;
+using System;
+using System.Reflection;
+using JIT.DIME2Barcode.BaseData.Equipment.Dtos;
+using JIT.DIME2Barcode.SystemSetting.Employee.Dtos;
 
 namespace JIT.DIME2Barcode
 {
@@ -17,11 +20,38 @@ namespace JIT.DIME2Barcode
     {
         public override void PreInitialize()
         {
+            Configuration.Caching.ConfigureAll(cache =>
+            {
+                cache.DefaultSlidingExpireTime = TimeSpan.FromMinutes(1);
+            });
+
+
+            Configuration.Authorization.Providers.Add<ProductionPlanPermissionProvider>();
 
             Configuration.ReplaceService<IConnectionStringResolver, Dime2BarcodeConnectionNameResolver>();
 
             Configuration.Modules.AbpAspNetCore().CreateControllersForAppServices(typeof(JITDIME2BarcodeModule).GetAssembly());
 
+            ConfigurDbContext();
+
+            ConfigurAutoMapper();
+
+            //设置缓存
+            Configuration.Caching.ConfigureAll(cache =>
+            {
+                cache.DefaultSlidingExpireTime = TimeSpan.FromHours(2);
+            });
+
+            
+        }
+
+        public override void Initialize()
+        {
+            IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
+        }
+
+        protected void ConfigurDbContext()
+        {
             Configuration.Modules.AbpEfCore().AddDbContext<Dime2barcodeContext>(options =>
             {
                 if (options.ExistingConnection != null)
@@ -33,6 +63,7 @@ namespace JIT.DIME2Barcode
                     Dime2BarcodeContextConfig.Configure(options.DbContextOptions, options.ConnectionString);
                 }
             });
+            
 
 
             Configuration.Modules.AbpEfCore().AddDbContext<ProductionPlanMySqlDbContext>(options =>
@@ -49,6 +80,16 @@ namespace JIT.DIME2Barcode
 
             Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
             {
+                config.CreateMap<OrganizationUnit, OrganizationDto>()
+                    .ForMember(o => o.Children, option => option.Ignore());
+        
+            });
+        }
+
+        protected void ConfigurAutoMapper()
+        {
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
+            {
                 config.CreateMap<OrganizationCreateInput, OrganizationUnit>()
                     .ForMember(o => o.Parent, option => option.Ignore())
                     .ForMember(o => o.Children, option => option.Ignore())
@@ -60,12 +101,36 @@ namespace JIT.DIME2Barcode
                     .ForMember(o => o.CreationTime, op => op.Ignore())
                     .ForMember(o => o.CreatorUserId, op => op.Ignore())
                     .ForMember(o => o.Id, op => op.Ignore());
-            });
-        }
 
-        public override void Initialize()
-        {
-            IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
-        }
+                config.CreateMap<OrganizationUnit, OrganizationDtoTest>()
+                    .ForMember(o => o.title, op => op.MapFrom(input => input.DisplayName))
+                    .ForMember(o => o.key, op => op.MapFrom(input => input.Code))
+                    .ForMember(o => o.value, op => op.Ignore())
+                    .ForMember(o => o.label, op => op.Ignore());
+
+
+                config.CreateMap<EquipmentDto, Equipment>()
+                    .ForMember(o => o.CreationTime, op => op.Ignore())
+                    .ForMember(o => o.CreatorUserId, op => op.Ignore())
+                    .ForMember(o => o.DeleterUserId, op => op.Ignore())
+                    .ForMember(o => o.DeletionTime, op => op.Ignore())
+                    .ForMember(o => o.Id, op => op.Ignore());
+
+                config.CreateMap<Equipment, EquipmentDto>()
+                    .ForMember(o => o.WorkCenter, op => op.MapFrom(input=>input.WorkCenter.DisplayName));
+
+                config.CreateMap<EquipmentShiftDto, EqiupmentShift>()
+                    .ForMember(o => o.Employee, op => op.Ignore())
+                    .ForMember(o => o.Equipment, op => op.Ignore());
+
+                config.CreateMap<EmployeeDto, Employee>()
+                    .ForMember(o => o.Department, op => op.Ignore());
+
+                config.CreateMap<EmployeeEdit, Employee>()
+                    .ForMember(o => o.Department, op => op.Ignore());
+            });
+
+            }
+        
     }
 }

@@ -7,6 +7,7 @@
     <OutputType>Exe</OutputType>
     <PackageId>JIT.InformationSystem.Web.Host</PackageId>
     <UserSecretsId>JIT-InformationSystem-56C2EF2F-ABD6-4EFC-AAF2-2E81C34E8FB1</UserSecretsId>
+    <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="wwwroot\swagger\ui\index.html" />
@@ -28,7 +29,7 @@
     <ProjectReference Include="..\JIT.InformationSystem.Web.Core\JIT.InformationSystem.Web.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LogDashboard" Version="1.2.1" />
+    <PackageReference Include="LogDashboard" Version="1.2.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.1">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>

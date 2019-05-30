@@ -251,8 +251,13 @@ paket-files/
 .idea/
 *.sln.iml
 *.txt
+
+App_Data/Logs/
+Logs.txt
 *.json
-*.txt
-*.json
-*.txt
-*.json
+WebSite.zips
+*.dll
+src/JIT.DIME2Barcode/bin/Debug/netcoreapp2.1/JIT.DIME2Barcode.dll
+src/JIT.DIME2Barcode/bin/Debug/netcoreapp2.1/JIT.DIME2Barcode.pdb
+*.pdb
+*.dll
