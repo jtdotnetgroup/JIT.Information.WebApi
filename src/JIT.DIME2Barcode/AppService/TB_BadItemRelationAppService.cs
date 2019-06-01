@@ -170,7 +170,7 @@ namespace JIT.DIME2Barcode.AppService
         /// <returns></returns>
         public async Task<List<t_ICItem>> GetICItem(string  FName )
         {
-            var query = ICItemRepository.GetAll().Where(p => p.FName.Contains(FName)).OrderBy(p=>p.FName).Take(20).ToList();
+            var query = ICItemRepository.GetAll().Where(p => p.FName.Contains(FName)).OrderBy(p=>p.FName).Take(10).ToList();
 
             return query.MapTo<List<t_ICItem>>();
         }
