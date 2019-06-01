@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
@@ -16,7 +17,13 @@ namespace JIT.DIME2Barcode.Entities
         public int FOperID { get; set; }
         public string FNumber { get; set; }
         public string FName { get; set; }
-        public bool? FDeleted { get; set; }
+
+        [DefaultValue(false)]//设置默认值
+        public bool FDeleted { get; set; }
         public string FRemark { get; set; }
+
+       // public string FItemName { get; set; }//产品名称
+
+
     }
 }

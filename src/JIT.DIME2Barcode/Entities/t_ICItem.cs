@@ -8,14 +8,18 @@
 //------------------------------------------------------------------------------
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Abp.Domain.Entities;
 
 namespace JIT.DIME2Barcode.Entities
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class t_ICItem
+    public partial class t_ICItem: Entity<int>
     {
+        [NotMapped]
+        public override int Id { get; set; }
         [Key]
         public int FItemID { get; set; }
         public string FModel { get; set; }

@@ -80,7 +80,7 @@ namespace JIT.DIME2Barcode
 
             Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
             {
-                config.CreateMap<OrganizationUnit, OrganizationDto>()
+                config.CreateMap<t_OrganizationUnit, OrganizationDto>()
                     .ForMember(o => o.Children, option => option.Ignore());
         
             });
@@ -90,7 +90,7 @@ namespace JIT.DIME2Barcode
         {
             Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
             {
-                config.CreateMap<OrganizationCreateInput, OrganizationUnit>()
+                config.CreateMap<OrganizationCreateInput, t_OrganizationUnit>()
                     .ForMember(o => o.Parent, option => option.Ignore())
                     .ForMember(o => o.Children, option => option.Ignore())
                     .ForMember(o => o.IsDeleted, option => option.Ignore())
@@ -102,7 +102,7 @@ namespace JIT.DIME2Barcode
                     .ForMember(o => o.CreatorUserId, op => op.Ignore())
                     .ForMember(o => o.Id, op => op.Ignore());
 
-                config.CreateMap<OrganizationUnit, OrganizationDtoTest>()
+                config.CreateMap<t_OrganizationUnit, OrganizationDtoTest>()
                     .ForMember(o => o.title, op => op.MapFrom(input => input.DisplayName))
                     .ForMember(o => o.key, op => op.MapFrom(input => input.Code))
                     .ForMember(o => o.value, op => op.Ignore())

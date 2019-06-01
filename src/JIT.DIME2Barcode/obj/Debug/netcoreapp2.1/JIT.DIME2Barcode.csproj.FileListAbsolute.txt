@@ -63,3 +63,5 @@ D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.D
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.pdb
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.runtimeconfig.json
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.runtimeconfig.dev.json
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.runtimeconfig.json
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.runtimeconfig.dev.json

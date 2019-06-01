@@ -30,7 +30,7 @@ namespace JIT.DIME2Barcode.AppService
 
         public IRepository<Role, int> _UserRoleRepository { get; set; }
 
-        public IRepository<OrganizationUnit, int> _Repository { get; set; }
+        public IRepository<t_OrganizationUnit, int> _Repository { get; set; }
 
         public IRepository<VW_Employee, int> _VwRepository { get; set; }
 
@@ -40,9 +40,9 @@ namespace JIT.DIME2Barcode.AppService
 
 
         //返回公司
-        protected OrganizationUnit GetCompany(OrganizationUnit node,List<OrganizationUnit> terrList)
+        protected t_OrganizationUnit GetCompany(t_OrganizationUnit node,List<t_OrganizationUnit> terrList)
         {
-            OrganizationUnit reslut = null;
+            t_OrganizationUnit reslut = null;
             if (node.OrganizationType == PublicEnum.OrganizationType.公司|| node.OrganizationType==PublicEnum.OrganizationType.集团)
             {
                 return node;
@@ -68,19 +68,19 @@ namespace JIT.DIME2Barcode.AppService
             long userid = 0;
             var companyId = 0;
             
-
             if (input.FSystemUser == 1)
             {
-              // var  User= input.User;
+               var CreateUserDto = input.User;
+
                var UserDto = new CreateUserDto
                {
-                   UserName = input.FMpno,
+                   UserName = CreateUserDto.UserName==""?input.FMpno: CreateUserDto.UserName,
                    Name = input.FName,
                    Surname = input.FName,
                    EmailAddress = input.FEmailAddress,
                    IsActive=true,
                    RoleNames= null, 
-                   Password = User.DefaultPassword
+                   Password = CreateUserDto.Password
                };
 
                 #region 旧代码
@@ -145,15 +145,16 @@ namespace JIT.DIME2Barcode.AppService
             {
                 if (input.FUserId == 0)
                 {
+                    var CreateUserDto = input.User;
                     var UserDto = new CreateUserDto
                     {
-                        UserName = input.FMpno,
+                        UserName = CreateUserDto.UserName == "" ? input.FMpno : CreateUserDto.UserName,
                         Name = input.FName,
                         Surname = input.FName,
                         EmailAddress = input.FEmailAddress,
                         IsActive = true,
                         RoleNames = null,
-                        Password = User.DefaultPassword
+                        Password = CreateUserDto.Password
                     };              
                     userid = UserAppService.Create(UserDto).Result.Id;
 
@@ -322,9 +323,6 @@ namespace JIT.DIME2Barcode.AppService
                 var list = data.MapTo<List<VWEmployeesDto>>();
                 return new PagedResultDto<VWEmployeesDto>(count, list);
             }
-
-            
-
         }
 
         /// <summary>
@@ -335,12 +333,19 @@ namespace JIT.DIME2Barcode.AppService
         {
 
             var FMpno = "";    
-            var enetity = _ERepository.GetAll().LastOrDefault(p=>p.IsDeleted==false);
+            //查询最后一条没有别删除的编号
+            var enetity = _ERepository.GetAll().LastOrDefault();
             if (enetity!=null)
             {
-               string[] strFMpno=enetity.FMpno.Split("YK");
+                //如果存在这个编号就在原来基础上增加
+                string[] strFMpno = enetity.FMpno.Split("YK");
+                FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 1);
 
-               FMpno =  "YK0000" + (Convert.ToInt32(strFMpno[1]) + 1);
+                var quers = _ERepository.GetAll().SingleOrDefault(p => p.FMpno == FMpno);
+                if (quers!=null)
+                {
+                    FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 2);
+                }
             }
             else
             {

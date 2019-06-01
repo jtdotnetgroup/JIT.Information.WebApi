@@ -5,7 +5,7 @@ using Abp.Domain.Entities;
 namespace JIT.DIME2Barcode.Entities
 {
 
-    public class t_SubMessage:Entity
+    public class t_SubMessage : Entity
     {
         [NotMapped]
         public override int Id { get; set; }

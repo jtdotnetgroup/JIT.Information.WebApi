@@ -23,9 +23,11 @@ namespace JIT.DIME2Barcode.Entities
         public int FOrganizationUnitId { get; set; }
         public long FUserId { get; set; }
         public bool IsDeleted { get; set; }
-        public string fatherName { get; set; }
-        public string zsonName { get; set; }
-        public string rolename { get; set; }
+        public string fatherName { get; set; }//公司名称
+        public string zsonName { get; set; }//部门名称
+        public string rolename { get; set; }//角色名称
         public string remark { get; set; }
+        public string UserName { get; set; }//用户账号
+        public string Password { get; set; }//密码 用户绑定显示
     }
 }

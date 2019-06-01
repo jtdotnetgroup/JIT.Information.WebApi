@@ -30,7 +30,11 @@ namespace JIT.DIME2Barcode.TaskAssignment.VWEmployees
         public string rolename { get; set; }
 
         public string remark { get; set; }
-        
+
+        public string UserName { get; set; }//用户账号
+        public string Password { get; set; }//密码 用户绑定显示
+
+
     }
 
 

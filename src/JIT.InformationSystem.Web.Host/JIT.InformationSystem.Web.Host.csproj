@@ -26,9 +26,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JIT.InformationSystem.Web.Core\JIT.InformationSystem.Web.Core.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="LogDashboard" Version="1.2.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.1">
       <PrivateAssets>All</PrivateAssets>
@@ -48,5 +45,8 @@
     <EmbeddedResource Include="wwwroot\swagger\ui\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JIT.InformationSystem.Web.Core\JIT.InformationSystem.Web.Core.csproj" />
   </ItemGroup>
 </Project>

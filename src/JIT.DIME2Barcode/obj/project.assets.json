@@ -10507,13 +10507,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "读取缓存文件 F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\obj\\JIT.DIME2Barcode.csproj.nuget.cache 时遇到问题: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
