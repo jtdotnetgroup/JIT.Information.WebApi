@@ -793,7 +793,7 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.HasKey("FID");
 
-                    b.ToTable("ICQualityRpt");
+                    b.ToTable("ICMOQualityRpt");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.OrganizationUnit", b =>
@@ -1189,7 +1189,7 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<int>("打印次数");
 
-                    b.Property<string>("操作者");
+                    b.Property<long>("操作者");
 
                     b.Property<decimal?>("汇报数量");
 
@@ -1204,6 +1204,10 @@ namespace JIT.DIME2Barcode.Migrations
                     b.Property<DateTime>("生产日期");
 
                     b.Property<string>("规格型号");
+
+                    b.Property<DateTime>("计划完工日期");
+
+                    b.Property<DateTime>("计划开工日期");
 
                     b.Property<decimal?>("计划数量");
 
@@ -1320,6 +1324,38 @@ namespace JIT.DIME2Barcode.Migrations
                     b.ToTable("t_MeasureUnit");
                 });
 
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.t_SubMessage", b =>
+                {
+                    b.Property<int>("FInterID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FBrNo");
+
+                    b.Property<int>("FDeleted");
+
+                    b.Property<int>("FDetail");
+
+                    b.Property<string>("FID");
+
+                    b.Property<byte[]>("FModifyTime");
+
+                    b.Property<string>("FName");
+
+                    b.Property<int>("FParentID");
+
+                    b.Property<string>("FSpec");
+
+                    b.Property<int>("FSystemType");
+
+                    b.Property<int>("FTypeID");
+
+                    b.Property<string>("UUID");
+
+                    b.HasKey("FInterID");
+
+                    b.ToTable("t_SubMessage");
+                });
+
             modelBuilder.Entity("JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos.VW_ICMODaily_Group_By_Day", b =>
                 {
                     b.Property<string>("Id")
@@ -1329,11 +1365,13 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<DateTime>("FDate");
 
-                    b.Property<string>("FItemID");
+                    b.Property<int>("FItemID");
 
                     b.Property<string>("FItemModel");
 
                     b.Property<string>("FItemName");
+
+                    b.Property<string>("FItemNumber");
 
                     b.Property<string>("FMOBillNo");
 

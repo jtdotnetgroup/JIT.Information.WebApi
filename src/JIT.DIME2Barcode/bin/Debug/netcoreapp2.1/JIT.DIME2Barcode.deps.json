@@ -3119,7 +3119,7 @@
     "Microsoft.EntityFrameworkCore.Design/2.2.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4SfnD7wYxr+OzcPOZYlzPtKtL1cdXk+a8g4bKc8QcgaGhpvVOTK5ROTZaOe10tmvFXFEJVZSGtXpFAbgiDFtjg==",
+      "sha512": "sha512-A/erLygjDeavpkI0W5cqbfIqhm3qz34x1ObW3GQMatxyBEBzmja3P2JNvErWkdiHkojNTxDQADXVuf0YeMotUg==",
       "path": "microsoft.entityframeworkcore.design/2.2.4",
       "hashPath": "microsoft.entityframeworkcore.design.2.2.4.nupkg.sha512"
     },

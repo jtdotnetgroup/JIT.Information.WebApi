@@ -4598,7 +4598,7 @@
       ]
     },
     "Microsoft.EntityFrameworkCore.Design/2.2.4": {
-      "sha512": "4SfnD7wYxr+OzcPOZYlzPtKtL1cdXk+a8g4bKc8QcgaGhpvVOTK5ROTZaOe10tmvFXFEJVZSGtXpFAbgiDFtjg==",
+      "sha512": "A/erLygjDeavpkI0W5cqbfIqhm3qz34x1ObW3GQMatxyBEBzmja3P2JNvErWkdiHkojNTxDQADXVuf0YeMotUg==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.design/2.2.4",
       "files": [
@@ -10440,6 +10440,9 @@
           "projectReferences": {
             "E:\\捷特\\源码\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj": {
               "projectPath": "E:\\捷特\\源码\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj"
+            },
+            "E:\\捷特\\源码\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj": {
+              "projectPath": "E:\\捷特\\源码\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj"
             },
             "E:\\捷特\\源码\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj": {
               "projectPath": "E:\\捷特\\源码\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj"

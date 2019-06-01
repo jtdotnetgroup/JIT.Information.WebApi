@@ -52,11 +52,15 @@ D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\Commo
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.Application.pdb
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.Core.pdb
 E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.deps.json
+E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.runtimeconfig.json
+E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.runtimeconfig.dev.json
 E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.dll
 E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.pdb
 E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\CommonTools.dll
+E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.Application.dll
 E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.Core.dll
 E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\CommonTools.pdb
+E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.Application.pdb
 E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.Core.pdb
 E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csprojAssemblyReference.cache
 E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csproj.CoreCompileInputs.cache

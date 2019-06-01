@@ -138,5 +138,14 @@ namespace JIT.DIME2Barcode.AppService
                 return false;
             }
         }
+        /// <summary>
+        /// 根据任务单号ID查询回所有检验单号
+        /// </summary>
+        /// <param name="ICMODispBillID"></param>
+        /// <returns></returns>
+        public async Task<List<Entities.ICMOInspectBill>> GetList(string ICMODispBillID)
+        {
+            return await Repository.GetAll().Where(w => w.ICMODispBillID == ICMODispBillID).ToListAsync();
+        }
     }
 }
