@@ -3788,7 +3788,7 @@
       ]
     },
     "Abp.Quartz/4.5.0": {
-      "sha512": "k7C/0qfZatzT4EHv1qAoBFiUD63ikBcfRKaOw3JKkb9vfy6ujf+w4Bbd/djAq0tnN3PikQdBdCSWImWM0RDrUw==",
+      "sha512": "qdn8XLFFbUpBMIIuaa3FGbWjVjsAr9A2qrDph+abkjithray2UkhO0hfm+mbcC496IuOiuAsddF3O6WB8N5HNg==",
       "type": "package",
       "path": "abp.quartz/4.5.0",
       "files": [
@@ -5911,7 +5911,7 @@
       ]
     },
     "Quartz/3.0.7": {
-      "sha512": "jnHuMwRprkqpmnKZU5xwEB95v1bF4JQWes82p2IPTAEGcBsZ5CSEQ4Pu1StCyD64JIm71C5/i7kuroZEHx5iwA==",
+      "sha512": "3vCJ/eJQzEne1ZocNftmPBjuA0vFHs8rOG3bQcSsB9fbQuZpmkrmOH+0Iq7mlibSbR9f1VV4TUMnkkbPUd7Kqw==",
       "type": "package",
       "path": "quartz/3.0.7",
       "files": [
@@ -8042,7 +8042,7 @@
       ]
     },
     "System.Net.NameResolution/4.3.0": {
-      "sha512": "9gpp1lZD47ulhGrOUT2G+Xuvb2KPNlDB3ac5syDEXj2R0+sB2r5V1mXty4FFZTihRwPPn0flQYWnLInoW4ODgg==",
+      "sha512": "AFYl08R7MrsrEjqpQWTZWBadqXyTzNDaWpMqyxhb0d6sGhV6xMDKueuBXlLL30gz+DIRY6MpdgnHWlCh5wmq9w==",
       "type": "package",
       "path": "system.net.nameresolution/4.3.0",
       "files": [
@@ -8088,7 +8088,6 @@
       "path": "system.net.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -10355,7 +10354,6 @@
       "path": "system.threading.tasks.parallel/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -10641,7 +10639,7 @@
       ]
     },
     "System.Xml.XmlSerializer/4.3.0": {
-      "sha512": "02zOeMrtQrYF5wGUNohMcfzYiwZ9YsAFEpuMgFRxuQJ97wfQrcTYHSzjKhRjvyB95fWsKkDp1PF5zSBQ3fiEjg==",
+      "sha512": "MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "type": "package",
       "path": "system.xml.xmlserializer/4.3.0",
       "files": [
@@ -10986,5 +10984,13 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "读取缓存文件 E:\\捷特\\源码\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\obj\\JIT.DIME2Barcode.csproj.nuget.cache 时遇到问题: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
