@@ -16,6 +16,7 @@ using Abp.Linq.Extensions;
 using Abp.Runtime.Validation;
 using CommonTools;
 using JIT.DIME2Barcode.Entities;
+using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICMODaily.EventsAndEventHandlers;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +35,8 @@ namespace JIT.DIME2Barcode.TaskAssignment
         }
 
         public IEventBus EventBus { get; set; }
+
+        public string getpermission { get; set; }
 
         //任务单仓储
 
@@ -316,18 +319,40 @@ namespace JIT.DIME2Barcode.TaskAssignment
 
         }
 
+
         public async Task<MOBillPlanDetail> GetMOBillPlanDetail(ICMODailyGetAllInput input)
         {
-            var header = Repository.GetAll().Where(p => p.FMOInterID == input.FMOInterID)
-                .GroupBy(p => p.FMOInterID).Select(g => new MOBillPlanDetail()
-                    {
-                        FMOInterID = g.Key.Value,
-                        TotalPlan = g.Sum(item=>item.FPlanAuxQty.Value)
-                    }
-                ).SingleOrDefault();
-
             var context = Repository.GetDbContext() as ProductionPlanMySqlDbContext;
 
+            //var query = await (from daily in context.ICMODaily
+            //    join disp in context.ICMODispBill on daily.FID equals disp.FSrcID into s1
+            //    where daily.FMOInterID == input.FMOInterID
+            //    from a in s1.DefaultIfEmpty()
+            //                   select a
+            //    ).ToListAsync();
+
+            //var header = (from g in query
+            //    group g by g.FMOInterID
+            //    into g1
+            //    select new MOBillPlanDetail()
+            //    {
+            //        FMOInterID = g1.Key
+            //    }).SingleOrDefault();
+
+            //按FMOInterID汇总计划排产数和派工数
+            var header = await (from daily in context.ICMODaily
+                                join disp in context.ICMODispBill on daily.FID equals disp.FSrcID into g1
+                                where daily.FMOInterID == input.FMOInterID
+                                group daily by daily.FMOInterID
+                    into s
+                                select new MOBillPlanDetail()
+                                {
+                                    FMOInterID = s.Key.Value,
+                                    TotalCommit = s.Sum(item => item.FCommitAuxQty),
+                                    TotalPlan = s.Sum(item => item.FPlanAuxQty)
+                                }).SingleOrDefaultAsync();
+
+            //按天汇总排产计划数和派工数
             var details = await (from daily in context.ICMODaily
                 join disp in context.ICMODispBill on daily.FID equals disp.FSrcID into g1
                 where daily.FMOInterID==header.FMOInterID
@@ -335,8 +360,8 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 into s
                 select new MOBillPlanDay()
                 {
-                    FDate = s.Key, DayCommit = s.Sum(item => item.FCommitAuxQty.Value),
-                    DayPlan = s.Sum(item => item.FPlanAuxQty.Value)
+                    FDate = s.Key, DayCommit = s.Sum(item => item.FCommitAuxQty),
+                    DayPlan = s.Sum(item => item.FPlanAuxQty)
                 }).ToListAsync();
 
             header.Details = details;
