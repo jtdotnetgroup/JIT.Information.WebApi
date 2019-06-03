@@ -37,5 +37,6 @@ namespace JIT.DIME2Barcode.Entities
         public int FMOInterID { get; set; }
         public short FStatus { get; set; }
         public int FItemID { get; set; }
+
     }
 }

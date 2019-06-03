@@ -5,7 +5,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos
 {
     public class MOBillPlanDetail
     {
-        public int FMOInterID { get; set; }
+        public int? FMOInterID { get; set; }
         public decimal? TotalPlan { get; set; }
         public decimal? TotalCommit { get; set; }
 

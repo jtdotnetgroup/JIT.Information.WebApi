@@ -14,5 +14,6 @@ namespace JIT.InformationSystem.EntityFrameworkCore
             : base(options)
         {
         }
+
     }
 }

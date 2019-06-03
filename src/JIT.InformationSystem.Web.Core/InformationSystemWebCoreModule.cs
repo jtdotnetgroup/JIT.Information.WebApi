@@ -48,6 +48,8 @@ namespace JIT.InformationSystem
                      typeof(InformationSystemApplicationModule).GetAssembly()
                  );
 
+            Configuration.Modules.AbpAspNetCore().CreateControllersForAppServices(typeof(JITDIME2BarcodeModule).GetAssembly());
+
             ConfigureTokenAuth();
         }
 

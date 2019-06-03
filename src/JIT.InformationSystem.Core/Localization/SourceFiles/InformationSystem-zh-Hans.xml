@@ -105,6 +105,13 @@
     <text name="TaskPlan">任务排产</text>
     <text name="TaskDispatch">任务派工</text>
 
+    <text name="TouchPad">触屏端</text>
+    <text name="DispatchedWork">派工任务</text>
+    <text name="IPQC">质量检验</text>
+    <text name="Stock">库存查询</text>
+    <text name="BarCode">条码打印</text>
+
+
 
   </texts>
 </localizationDictionary>
