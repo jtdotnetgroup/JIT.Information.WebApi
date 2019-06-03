@@ -50,6 +50,9 @@ D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.I
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.Core.dll
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\CommonTools.pdb
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.Application.pdb
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.EntityFrameworkCore.dll
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.EntityFrameworkCore.pdb
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.EntityFrameworkCore.dll.config
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.Core.pdb
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csprojAssemblyReference.cache
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csproj.CoreCompileInputs.cache
@@ -60,3 +63,5 @@ D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.D
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.pdb
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.runtimeconfig.json
 D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.runtimeconfig.dev.json
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.runtimeconfig.json
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.runtimeconfig.dev.json

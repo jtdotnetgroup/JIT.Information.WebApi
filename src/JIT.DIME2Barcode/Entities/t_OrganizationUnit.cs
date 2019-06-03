@@ -8,7 +8,7 @@ using CommonTools;
 
 namespace JIT.DIME2Barcode.Entities
 {
-    public partial class OrganizationUnit:Entity<int>
+    public partial class t_OrganizationUnit:Entity<int>
     {
         
         [StringLength(100)]
@@ -17,13 +17,13 @@ namespace JIT.DIME2Barcode.Entities
         public DateTime? CreationTime { get; set; }
         public   long? CreatorUserId { get; set; }
         public long? DeleterUserId { get; set; }
-        public DateTime DeletionTime { get; set; }
+        public DateTime? DeletionTime { get; set; }
         [StringLength(100)]
         [Required]
         public string DisplayName { get; set; }
         public   bool? IsDeleted { get; set; }
         public DateTime? LastModificationTime { get; set; }
-        public int? LastModifierUserId { get; set; }
+        public long ? LastModifierUserId { get; set; }
         public int? ParentId { get; set; }
         public int? TenantId { get; set; }
         public PublicEnum.OrganizationType? OrganizationType { get; set; }
@@ -32,10 +32,11 @@ namespace JIT.DIME2Barcode.Entities
         public int? ERPOrganization { get; set; }
         public string Remark { get; set; }
 
-        [ForeignKey("ParentId")]
-        public OrganizationUnit Parent { get; set; }
+        public int FWorkshopType { get; set; } //车间类型的ID
 
-        public List<OrganizationUnit> Children { get; set; }
+        [ForeignKey("ParentId")]
+        public t_OrganizationUnit Parent { get; set; }
+        public List<t_OrganizationUnit> Children { get; set; }
 
     }
 }

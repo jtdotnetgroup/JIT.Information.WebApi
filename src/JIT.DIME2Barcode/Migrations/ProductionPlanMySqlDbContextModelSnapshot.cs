@@ -1225,7 +1225,7 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<long?>("DeleterUserId");
 
-                    b.Property<DateTime>("DeletionTime");
+                    b.Property<DateTime?>("DeletionTime");
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
@@ -1235,11 +1235,13 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<int?>("ERPOrganizationLeader");
 
+                    b.Property<int>("FWorkshopType");
+
                     b.Property<bool?>("IsDeleted");
 
                     b.Property<DateTime?>("LastModificationTime");
 
-                    b.Property<int?>("LastModifierUserId");
+                    b.Property<long?>("LastModifierUserId");
 
                     b.Property<int?>("OrganizationType");
 
@@ -1253,7 +1255,7 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("T_OrganizationUnit");
+                    b.ToTable("Organizationunit");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.SEOrder", b =>
@@ -1510,6 +1512,10 @@ namespace JIT.DIME2Barcode.Migrations
                     b.Property<int>("FWorkingState");
 
                     b.Property<bool>("IsDeleted");
+
+                    b.Property<string>("Password");
+
+                    b.Property<string>("UserName");
 
                     b.Property<string>("fatherName");
 

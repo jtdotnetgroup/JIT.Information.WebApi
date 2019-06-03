@@ -1767,6 +1767,18 @@
           "lib/netstandard2.0/NUglify.dll": {}
         }
       },
+      "Pomelo.EntityFrameworkCore.Extensions.ToSql/2.0.0-rtm-10002": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Pomelo.EntityFrameworkCore.Extensions.ToSql.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Pomelo.EntityFrameworkCore.Extensions.ToSql.dll": {}
+        }
+      },
       "Pomelo.EntityFrameworkCore.MySql/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -3684,6 +3696,22 @@
         },
         "runtime": {
           "bin/placeholder/JIT.InformationSystem.Core.dll": {}
+        }
+      },
+      "JIT.InformationSystem.EntityFrameworkCore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "JIT.InformationSystem.Core": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Design": "2.2.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.1",
+          "Pomelo.EntityFrameworkCore.MySql": "2.2.0"
+        },
+        "compile": {
+          "bin/placeholder/JIT.InformationSystem.EntityFrameworkCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/JIT.InformationSystem.EntityFrameworkCore.dll": {}
         }
       }
     }
@@ -5846,6 +5874,18 @@
         "lib/netstandard2.0/NUglify.xml",
         "nuglify.1.5.12.nupkg.sha512",
         "nuglify.nuspec"
+      ]
+    },
+    "Pomelo.EntityFrameworkCore.Extensions.ToSql/2.0.0-rtm-10002": {
+      "sha512": "rUJqIDNgOpv3JBW5NSUe7VNYh2ZAcTyInu6uv6x2GOXe0xfeLzLWRgYH/S4vwWX2H4nDeW7BDaqZA5I8a4hbHQ==",
+      "type": "package",
+      "path": "pomelo.entityframeworkcore.extensions.tosql/2.0.0-rtm-10002",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Pomelo.EntityFrameworkCore.Extensions.ToSql.dll",
+        "pomelo.entityframeworkcore.extensions.tosql.2.0.0-rtm-10002.nupkg.sha512",
+        "pomelo.entityframeworkcore.extensions.tosql.nuspec"
       ]
     },
     "Pomelo.EntityFrameworkCore.MySql/2.2.0": {
@@ -10869,6 +10909,11 @@
       "type": "project",
       "path": "../JIT.InformationSystem.Core/JIT.InformationSystem.Core.csproj",
       "msbuildProject": "../JIT.InformationSystem.Core/JIT.InformationSystem.Core.csproj"
+    },
+    "JIT.InformationSystem.EntityFrameworkCore/1.0.0": {
+      "type": "project",
+      "path": "../JIT.InformationSystem.EntityFrameworkCore/JIT.InformationSystem.EntityFrameworkCore.csproj",
+      "msbuildProject": "../JIT.InformationSystem.EntityFrameworkCore/JIT.InformationSystem.EntityFrameworkCore.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -10879,9 +10924,11 @@
       "CommonTools >= 1.0.0",
       "JIT.InformationSystem.Application >= 1.0.0",
       "JIT.InformationSystem.Core >= 1.0.0",
+      "JIT.InformationSystem.EntityFrameworkCore >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 2.2.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.4",
       "Microsoft.NETCore.App >= 2.1.0",
+      "Pomelo.EntityFrameworkCore.Extensions.ToSql >= 2.0.0-rtm-10002",
       "Pomelo.EntityFrameworkCore.MySql >= 2.2.0"
     ]
   },
@@ -10924,6 +10971,9 @@
             },
             "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj": {
               "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj"
+            },
+            "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.EntityFrameworkCore\\JIT.InformationSystem.EntityFrameworkCore.csproj": {
+              "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.EntityFrameworkCore\\JIT.InformationSystem.EntityFrameworkCore.csproj"
             }
           }
         }
@@ -10963,6 +11013,10 @@
             "version": "[2.1.0, )",
             "autoReferenced": true
           },
+          "Pomelo.EntityFrameworkCore.Extensions.ToSql": {
+            "target": "Package",
+            "version": "[2.0.0-rtm-10002, )"
+          },
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
             "version": "[2.2.0, )"
@@ -10975,5 +11029,13 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "读取缓存文件 D:\\Net\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\obj\\JIT.DIME2Barcode.csproj.nuget.cache 时遇到问题: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

@@ -8,7 +8,7 @@ using JIT.DIME2Barcode.Entities;
 namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
 {
 
-    [AutoMapTo(typeof(OrganizationUnit))]
+    [AutoMapTo(typeof(t_OrganizationUnit))]
     public class OrganizationDto:EntityDto<long>
     {
         /// <summary>
@@ -17,7 +17,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
         public virtual int? TenantId { get; set; }
 
         /// <summary>
-        /// Parent <see cref="OrganizationUnit"/> Id.
+        /// Parent <see cref="t_OrganizationUnit"/> Id.
         /// Null, if this OU is root.
         /// </summary>
         public virtual long? ParentId { get; set; }
@@ -42,7 +42,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
         public virtual int ERPOrganizationLeader { get; set; }
         public virtual int ERPOrganization { get; set; }
         public virtual string Remark { get; set; }
-
+        public int FWorkshopType { get; set; } //车间类型的ID
         public  ICollection<OrganizationDto> Children { get; set; }
 
     }

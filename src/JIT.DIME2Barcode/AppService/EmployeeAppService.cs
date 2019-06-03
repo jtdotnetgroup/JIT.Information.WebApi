@@ -2,6 +2,8 @@
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using Abp.EntityFrameworkCore.Repositories;
+using Abp.Linq.Extensions;
 using CommonTools;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.SystemSetting.Employee.Dtos;
@@ -9,6 +11,7 @@ using JIT.DIME2Barcode.SystemSetting.Organization.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.VWEmployees;
 using JIT.InformationSystem.Authorization.Roles;
 using JIT.InformationSystem.Authorization.Users;
+using JIT.InformationSystem.EntityFrameworkCore;
 using JIT.InformationSystem.Users;
 using JIT.InformationSystem.Users.Dto;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +30,7 @@ namespace JIT.DIME2Barcode.AppService
 
         public IRepository<Role, int> _UserRoleRepository { get; set; }
 
-        public IRepository<OrganizationUnit, int> _Repository { get; set; }
+        public IRepository<t_OrganizationUnit, int> _Repository { get; set; }
 
         public IRepository<VW_Employee, int> _VwRepository { get; set; }
 
@@ -37,9 +40,9 @@ namespace JIT.DIME2Barcode.AppService
 
 
         //返回公司
-        protected OrganizationUnit GetCompany(OrganizationUnit node,List<OrganizationUnit> terrList)
+        protected t_OrganizationUnit GetCompany(t_OrganizationUnit node,List<t_OrganizationUnit> terrList)
         {
-            OrganizationUnit reslut = null;
+            t_OrganizationUnit reslut = null;
             if (node.OrganizationType == PublicEnum.OrganizationType.公司|| node.OrganizationType==PublicEnum.OrganizationType.集团)
             {
                 return node;
@@ -65,19 +68,19 @@ namespace JIT.DIME2Barcode.AppService
             long userid = 0;
             var companyId = 0;
             
-
             if (input.FSystemUser == 1)
             {
-              // var  User= input.User;
+               var CreateUserDto = input.User;
+
                var UserDto = new CreateUserDto
                {
-                   UserName = input.FMpno,
+                   UserName = CreateUserDto.UserName==""?input.FMpno: CreateUserDto.UserName,
                    Name = input.FName,
                    Surname = input.FName,
                    EmailAddress = input.FEmailAddress,
                    IsActive=true,
                    RoleNames= null, 
-                   Password = User.DefaultPassword
+                   Password = CreateUserDto.Password
                };
 
                 #region 旧代码
@@ -142,17 +145,32 @@ namespace JIT.DIME2Barcode.AppService
             {
                 if (input.FUserId == 0)
                 {
+                    var CreateUserDto = input.User;
                     var UserDto = new CreateUserDto
                     {
-                        UserName = input.FMpno,
+                        UserName = CreateUserDto.UserName == "" ? input.FMpno : CreateUserDto.UserName,
                         Name = input.FName,
                         Surname = input.FName,
                         EmailAddress = input.FEmailAddress,
                         IsActive = true,
                         RoleNames = null,
-                        Password = User.DefaultPassword
+                        Password = CreateUserDto.Password
                     };              
                     userid = UserAppService.Create(UserDto).Result.Id;
+
+                }
+                else
+                {
+                    //不加查询条件去返回对象来更改会报错
+                    var entitys = await _UserRepository.GetAll()
+                        .SingleOrDefaultAsync(p => p.Id == input.FUserId );
+
+                    Console.WriteLine(entitys);
+                    if (entitys != null)
+                    {
+                        entitys.IsActive = true;
+                        await _UserRepository.UpdateAsync(entitys);
+                    }
 
                 }
                 #region 旧代码
@@ -176,7 +194,7 @@ namespace JIT.DIME2Barcode.AppService
             }
             else
             {
-                //执行移除的操作
+                //执行移除的操作  只改变原有的启用状态否
                 if (input.FUserId > 0)
                 {
                     //不加查询条件去返回对象来更改会报错
@@ -184,8 +202,7 @@ namespace JIT.DIME2Barcode.AppService
                         .SingleOrDefaultAsync(p => p.Id == input.FUserId);
                     if (entitys != null)
                     {
-                        entitys.IsDeleted = true;
-                        entitys.LastModificationTime = DateTime.Now;
+                        entitys.IsActive = false;
                         await _UserRepository.UpdateAsync(entitys);
                     }
                 }
@@ -207,25 +224,44 @@ namespace JIT.DIME2Barcode.AppService
                 }
             }
             else
-            {
-                if (input.FUserId > 0)
+            {    
+               //在职状态的情况下  不是系统用户 
+                if (input.FSystemUser==2)
                 {
-                    //不加查询条件去返回对象来更改会报错
-                    var entitys = await _UserRepository.GetAll()
-                        .SingleOrDefaultAsync(p => p.Id == input.FUserId);
-                    if (entitys != null)
+                    if (input.FUserId > 0)
                     {
-                        entitys.IsActive = true;
-                        await _UserRepository.UpdateAsync(entitys);
+                        //不加查询条件去返回对象来更改会报错
+                        var entitys = await _UserRepository.GetAll()
+                            .SingleOrDefaultAsync(p => p.Id == input.FUserId);
+                        if (entitys != null)
+                        {
+                            entitys.IsActive = false;
+                            //entity.IsDeleted = false;
+                            await _UserRepository.UpdateAsync(entitys);
+                        }
                     }
                 }
-
+                else
+                {
+                    if (input.FUserId > 0)
+                    {
+                        //不加查询条件去返回对象来更改会报错
+                        var entitys = await _UserRepository.GetAll()
+                            .SingleOrDefaultAsync(p => p.Id == input.FUserId);
+                        if (entitys != null)
+                        {
+                            entitys.IsActive = true;
+                            //entity.IsDeleted = false;
+                            await _UserRepository.UpdateAsync(entitys);
+                        }
+                    }
+                }
             }
             
 
             entity.FTenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0;
             entity.FOrganizationUnitId = input.FOrganizationUnitId;
-
+           
             entity.FUserId = userid==0?input.FUserId: userid;
             entity.IsDeleted = false;
             var count= await _ERepository.UpdateAsync(entity);
@@ -274,10 +310,8 @@ namespace JIT.DIME2Barcode.AppService
             if (input.Id==0)
             {
                 var querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false);
-                var count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted );
-                var queryss = querys.ToList();
-
-                var data = await querys.OrderBy(p => p.Id).ToListAsync();
+                var count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted==false );      
+                var data = await querys.OrderBy(p => p.Id).Skip(input.SkipCount * input.MaxResultCount).Take(input.MaxResultCount).ToListAsync();
                 var list = data.MapTo<List<VWEmployeesDto>>();
                 return new PagedResultDto<VWEmployeesDto>(count, list);
             }
@@ -285,15 +319,10 @@ namespace JIT.DIME2Barcode.AppService
             {
                 var querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false && p.FDepartment == input.Id);
                 var count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted == false && p.FDepartment == input.Id);
-                var queryss = querys.ToList();
-
-                var data = await querys.OrderBy(p => p.Id).ToListAsync();
+                var data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
                 var list = data.MapTo<List<VWEmployeesDto>>();
                 return new PagedResultDto<VWEmployeesDto>(count, list);
             }
-
-            
-
         }
 
         /// <summary>
@@ -303,24 +332,28 @@ namespace JIT.DIME2Barcode.AppService
         public async Task<string> FMpno()
         {
 
-            var FMpno = "";
-            var enetity =await _ERepository.CountAsync(p=>p.IsDeleted==false);
-
-            //作废的单号
-            var enetitys =await _ERepository.CountAsync(p => p.IsDeleted == true);
-
-            FMpno = "YK0000" + (enetity + 1+ enetitys);
-
-            var querys = await _ERepository.GetAll().SingleOrDefaultAsync(p => p.FMpno == FMpno);
-            if (querys!=null)
+            var FMpno = "";    
+            //查询最后一条没有别删除的编号
+            var enetity = _ERepository.GetAll().LastOrDefault();
+            if (enetity!=null)
             {
-                FMpno = "YK0000" + (enetity + 2+ enetitys);
+                //如果存在这个编号就在原来基础上增加
+                string[] strFMpno = enetity.FMpno.Split("YK");
+                FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 1);
+
+                var quers = _ERepository.GetAll().SingleOrDefault(p => p.FMpno == FMpno);
+                if (quers!=null)
+                {
+                    FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 2);
+                }
             }
+            else
+            {
+                FMpno = "YK00001";
+            }
+
             return FMpno;
         }
-
-        //public async Task<>
-
 
         /// <summary>
         /// 返回拼接的节点信息 上级主管
@@ -332,19 +365,17 @@ namespace JIT.DIME2Barcode.AppService
             List<OrganizationDtoTest> TreeList = new List<OrganizationDtoTest>();
            
             var quers = _ERepository.GetAll().Where(p => p.IsDeleted == false).ToList();
-            var result = quers.Where(x => x.FParentId == ParentID);
-           
-    
-            //foreach (var item in result.ToList())
-            //{
-            //    OrganizationDtoTest m = new OrganizationDtoTest();
-            //    m.Id = item.Id;    
-            //    m.ParentId = item.FParentId;
-            //    m.value = item.Id.ToString();
-            //    m.label = item.FName;
-            //    m.children = await GetTreeList(int.Parse(item.Id.ToString()));
-            //    TreeList.Add(m);
-            //}
+            var result = quers.Where(x => x.FParentId == ParentID);       
+            foreach (var item in result.ToList())
+            {
+                OrganizationDtoTest m = new OrganizationDtoTest();
+                m.Id = item.Id;    
+                m.ParentId = item.FParentId;
+                m.value = item.Id.ToString();
+                m.label = item.FName;
+                m.children = await GetTreeList(int.Parse(item.Id.ToString()));
+                TreeList.Add(m);
+            }
             return TreeList;
         }
 

@@ -47,7 +47,7 @@ namespace JIT.DIME2Barcode.Entities
         public decimal FRunsRate { get; set; }
 
         [ForeignKey("FWorkCenterID")]
-        public OrganizationUnit WorkCenter { get; set; }
+        public t_OrganizationUnit WorkCenter { get; set; }
 
 
         public bool IsDeleted { get; set; }

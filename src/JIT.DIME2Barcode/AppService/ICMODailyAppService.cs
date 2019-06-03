@@ -50,7 +50,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
         public IRepository<Entities.ICMODispBill,string> DRepository { get; set; }
         public IRepository<Entities.VW_MOBillList, string> MRepository { get; set; }
         public IRepository<VW_ICMODaily_Group_By_Day,string> GRepository { get; set; }
-        public IRepository<OrganizationUnit> ORepository { get; set; }//组织架构仓储
+        public IRepository<t_OrganizationUnit> ORepository { get; set; }//组织架构仓储
         public IRepository<EqiupmentShift,int> EsRepository { get; set; }
 
         //设备档案仓储
@@ -360,8 +360,9 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 into s
                 select new MOBillPlanDay()
                 {
-                    FDate = s.Key, DayCommit = s.Sum(item => item.FCommitAuxQty),
-                    DayPlan = s.Sum(item => item.FPlanAuxQty)
+                    FDate = s.Key,
+                    DayCommit = s.Sum(item => item.FCommitAuxQty.Value),
+                    DayPlan = s.Sum(item => item.FPlanAuxQty.Value)
                 }).ToListAsync();
 
             header.Details = details;
