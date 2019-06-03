@@ -3788,7 +3788,7 @@
       ]
     },
     "Abp.Quartz/4.5.0": {
-      "sha512": "qdn8XLFFbUpBMIIuaa3FGbWjVjsAr9A2qrDph+abkjithray2UkhO0hfm+mbcC496IuOiuAsddF3O6WB8N5HNg==",
+      "sha512": "k7C/0qfZatzT4EHv1qAoBFiUD63ikBcfRKaOw3JKkb9vfy6ujf+w4Bbd/djAq0tnN3PikQdBdCSWImWM0RDrUw==",
       "type": "package",
       "path": "abp.quartz/4.5.0",
       "files": [
@@ -5911,7 +5911,7 @@
       ]
     },
     "Quartz/3.0.7": {
-      "sha512": "3vCJ/eJQzEne1ZocNftmPBjuA0vFHs8rOG3bQcSsB9fbQuZpmkrmOH+0Iq7mlibSbR9f1VV4TUMnkkbPUd7Kqw==",
+      "sha512": "jnHuMwRprkqpmnKZU5xwEB95v1bF4JQWes82p2IPTAEGcBsZ5CSEQ4Pu1StCyD64JIm71C5/i7kuroZEHx5iwA==",
       "type": "package",
       "path": "quartz/3.0.7",
       "files": [
@@ -8575,8 +8575,8 @@
         "system.reflection.primitives.nuspec"
       ]
     },
-    "System.Reflection.TypeExtensions/4.3.0": {
-      "sha512": "7u6ulLcZbyxB5Gq0nMkQttcdBTx57ibzw+4IOXEfR+sXYQoHvjW5LTLyNr8O22UIMrqYbchJQJnos4eooYzYJA==",
+    "System.Reflection.TypeExtensions/4.5.0": {
+      "sha512": "dYSKm+jBVh/I9RQP6AaBiyd92Y6Ml9vEEcTSougcAMSt9X9QQHTGJo0p/uH4uSgODZe+5cuOkgg8wg02NuM0VQ==",
       "type": "package",
       "path": "system.reflection.typeextensions/4.5.0",
       "files": [
@@ -10984,13 +10984,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "读取缓存文件 E:\\捷特\\源码\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\obj\\JIT.DIME2Barcode.csproj.nuget.cache 时遇到问题: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
