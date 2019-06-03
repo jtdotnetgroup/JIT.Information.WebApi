@@ -244,6 +244,25 @@ namespace JIT.DIME2Barcode.AppService
             return new PagedResultDto<VW_DispatchBill_List>(count,data);
         }
 
+        /// <summary>
+        /// 更改派工单状态
+        /// </summary>
+        public async Task<bool> UpdateFStatus(string FID,int FStates)
+        {
+            try
+            {
+                var query = await Repository.GetAll().Where(s => s.FID == FID).SingleOrDefaultAsync();
+                query.FStatus = FStates;
+                await Repository.UpdateAsync(query);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+           
+        }
     }
 
 
