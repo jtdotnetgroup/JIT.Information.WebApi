@@ -11,6 +11,8 @@ using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.SystemSetting.Organization.Dtos;
 using System;
 using System.Reflection;
+using Abp.Dependency;
+using JIT.DIME2Barcode.BackgroudJobs;
 using JIT.DIME2Barcode.BaseData.Equipment.Dtos;
 using JIT.DIME2Barcode.SystemSetting.Employee.Dtos;
 
@@ -30,11 +32,12 @@ namespace JIT.DIME2Barcode
 
             Configuration.ReplaceService<IConnectionStringResolver, Dime2BarcodeConnectionNameResolver>();
 
-            Configuration.Modules.AbpAspNetCore().CreateControllersForAppServices(typeof(JITDIME2BarcodeModule).GetAssembly());
+            
 
             ConfigurDbContext();
 
             ConfigurAutoMapper();
+            ConfigurSyncJobs();
 
             //设置缓存
             Configuration.Caching.ConfigureAll(cache =>
@@ -131,6 +134,11 @@ namespace JIT.DIME2Barcode
             });
 
             }
+
+        protected void ConfigurSyncJobs()
+        {
+            var success= IocManager.RegisterIfNot(typeof(SyncItemJob));
+        }
         
     }
 }

@@ -22,10 +22,10 @@ namespace JIT.DIME2Barcode.AppService
     /// </summary>
     public class ICMODispBillAppService : ApplicationService
     {
-        public IRepository<VW_ICMODispBill_By_Date,string> VRepository { get; set; }
+        public IRepository<VW_ICMODispBill_By_Date, string> VRepository { get; set; }
         public IRepository<ICMODaily, string> DRepository { get; set; }
-        public IRepository<ICMODispBill,string> Repository { get; set; }
-        public IRepository<VW_DispatchBill_List,string> LRepository { get; set; }
+        public IRepository<ICMODispBill, string> Repository { get; set; }
+        public IRepository<VW_DispatchBill_List, string> LRepository { get; set; }
         //员工仓储
         //public IRepository<Employee, int> ERepository { get; set; }
 
@@ -45,7 +45,7 @@ namespace JIT.DIME2Barcode.AppService
             var count = await query.CountAsync();
             try
             {
-                var data =await query.ToListAsync();
+                var data = await query.ToListAsync();
                 var list = data.MapTo<List<ICMODispBillListDto>>();
 
                 return new PagedResultDto<ICMODispBillListDto>(count, list);
@@ -70,49 +70,49 @@ namespace JIT.DIME2Barcode.AppService
             try
             {
 
-            foreach (var dispBillI in input.Details)
-            {
-                var dailyFid = dispBillI.FID;
-                var dispBillList =await Repository.GetAll().Where(p => p.FSrcID == dailyFid).ToListAsync();
-                var icmodaily = await DRepository.GetAll().SingleOrDefaultAsync(p => p.FID == dailyFid);
-                  
-                if (icmodaily == null)
+                foreach (var dispBillI in input.Details)
                 {
-                    throw new AbpException("日计划单不存在");
-                }
+                    var dailyFid = dispBillI.FID;
+                    var dispBillList = await Repository.GetAll().Where(p => p.FSrcID == dailyFid).ToListAsync();
+                    var icmodaily = await DRepository.GetAll().SingleOrDefaultAsync(p => p.FID == dailyFid);
 
-                var entity = dispBillList.SingleOrDefault(p => p.FSrcID == dispBillI.FID);
-
-                if (entity == null)
-                {
-                    /*
-                     *派工单不存在，插入新派工单
-                     */
-                    entity = new ICMODispBill()
+                    if (icmodaily == null)
                     {
-                        FID = Guid.NewGuid().ToString(),
-                        FSrcID = dailyFid,
-                        FWorker = dispBillI.FWorker,
-                        FWorkCenterID = icmodaily.FWorkCenterID,
-                        FMachineID = dispBillI.FMachineID,
-                        FMOBillNo = dispBillI.FMOBillNo,
-                        FMOInterID = dispBillI.FMOInterID,
-                        FCommitAuxQty = dispBillI.FCommitAuxQty,
-                        FBiller = AbpSession.UserId.ToString(),
-                        FDate = DateTime.Now.Date,
-                        FShift = dispBillI.FShift,
-                        FBillNo = "DI" + DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(1, 10).ToString(),
-                        FBillTime = DateTime.Now
+                        throw new AbpException("日计划单不存在");
+                    }
 
-                    };
+                    var entity = dispBillList.SingleOrDefault(p => p.FSrcID == dispBillI.FID);
 
-                    //totalCommitQty += dispBillI.FCommitAuxQty;
-                    icmodaily.FCommitAuxQty += dispBillI.FCommitAuxQty;
+                    if (entity == null)
+                    {
+                        /*
+                         *派工单不存在，插入新派工单
+                         */
+                        entity = new ICMODispBill()
+                        {
+                            FID = Guid.NewGuid().ToString(),
+                            FSrcID = dailyFid,
+                            FWorker = dispBillI.FWorker,
+                            FWorkCenterID = icmodaily.FWorkCenterID,
+                            FMachineID = dispBillI.FMachineID,
+                            FMOBillNo = dispBillI.FMOBillNo,
+                            FMOInterID = dispBillI.FMOInterID,
+                            FCommitAuxQty = dispBillI.FCommitAuxQty,
+                            FBiller = AbpSession.UserId.ToString(),
+                            FDate = DateTime.Now.Date,
+                            FShift = dispBillI.FShift,
+                            FBillNo = "DI" + DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(1, 10).ToString(),
+                            FBillTime = DateTime.Now
 
-                    await Repository.InsertAsync(entity);
-                }
-                else
-                {
+                        };
+
+                        //totalCommitQty += dispBillI.FCommitAuxQty;
+                        icmodaily.FCommitAuxQty += dispBillI.FCommitAuxQty;
+
+                        await Repository.InsertAsync(entity);
+                    }
+                    else
+                    {
                         /*
                      *派工单已存在，更新派工单信息
                      */
@@ -137,10 +137,10 @@ namespace JIT.DIME2Barcode.AppService
                     await DRepository.UpdateAsync(icmodaily);
                 }
 
-                    //foreach (var dispBillI in input.Details)
-                    //{
-                    //    
-                
+                //foreach (var dispBillI in input.Details)
+                //{
+                //    
+
                 return null;
             }
             catch (Exception e)
@@ -188,7 +188,7 @@ namespace JIT.DIME2Barcode.AppService
                 return false;
             }
         }
-        
+
 
 
         /// <summary>
@@ -206,18 +206,21 @@ namespace JIT.DIME2Barcode.AppService
             {
                 var data = await query.ToListAsync();
                 var list = from a in data
-                    select new
-                    {   
-                        
-                        a.FID, a.FSrcID,
-                        设备 = a.FMachineID, 操作员 = a.FWorker, 班次 = a.FShift,
-                        派工数量 = a.FCommitAuxQty,
-                        派工单号 = a.FBillNo,
-                        派单时间 = a.FBillTime,
-                        计划员 = a.FBiller,
-                        备注=a.FNote,
-                        日期=a.FDate
-                    };
+                           select new
+                           {
+
+                               a.FID,
+                               a.FSrcID,
+                               设备 = a.FMachineID,
+                               操作员 = a.FWorker,
+                               班次 = a.FShift,
+                               派工数量 = a.FCommitAuxQty,
+                               派工单号 = a.FBillNo,
+                               派单时间 = a.FBillTime,
+                               计划员 = a.FBiller,
+                               备注 = a.FNote,
+                               日期 = a.FDate
+                           };
 
                 return list.ToArray();
 
@@ -235,14 +238,14 @@ namespace JIT.DIME2Barcode.AppService
             var query = LRepository.GetAll();
 
             query = from a in query
-                where input.FMOBillNos.Contains(a.FMOBillNo) && input.DatelList.Contains(a.FDate)
-                select a;
+                    where input.FMOBillNos.Contains(a.FMOBillNo) && input.DatelList.Contains(a.FDate)
+                    select a;
 
-        var count = await query.CountAsync();
+            var count = await query.CountAsync();
 
             var data = await query.ToListAsync();
 
-            return new PagedResultDto<VW_DispatchBill_List>(count,data);
+            return new PagedResultDto<VW_DispatchBill_List>(count, data);
         }
 
         /// <summary>

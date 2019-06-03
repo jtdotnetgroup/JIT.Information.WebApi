@@ -13,29 +13,8 @@ namespace JIT.DIME2Barcode.Entities
         {
         }
 
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<VW_Group_ICMODaily> VW_Group_ICMODaily { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICMODaily> ICMODaily { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<BillStatus> BillStatus { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICException> ICException { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICMaterialPicking> ICMaterialPicking { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICMO> ICMO { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICMODispBill> ICMODispBill { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICMOInspectBill> ICMOInspectBill { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICMOSchedule> ICMOSchedule { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICQualityRpt> ICQualityRpt { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<ICBOM> ICBOM { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<SEOrder> SEOrder { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<t_Department> t_Department { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<t_MeasureUnit> t_MeasureUnit { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<T_PrintTemplate> T_PrintTemplate { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<TB_BadItemRelation> TB_BadItemRelation { get; set; }
-
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<t_SubMesType> t_SubMesType { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<t_SubMessage> t_SubMessage { get; set; }
-        public virtual Microsoft.EntityFrameworkCore.DbSet<t_ICItem> t_ICItem { get; set; }
-        public virtual Microsoft.EntityFrameworkCore.DbSet<VW_MOBillList> VW_MOBillList { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<VW_ICMODispBill_By_Date> VW_ICMODispBill_By_Date { get; set; }
-        //public virtual Microsoft.EntityFrameworkCore.DbSet<VW_ICMOInspectBillList> VW_ICMOInspectBillList { get; set; }
+        public virtual DbSet<t_ICItem> t_ICItem_Sync { get; set; }
+        public virtual DbSet<VW_MOBillList> VW_MOBillList { get; set; }
         public virtual DbSet<VM_Inventory> VM_Inventory { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

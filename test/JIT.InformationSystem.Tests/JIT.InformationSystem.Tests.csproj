@@ -11,6 +11,7 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\JIT.DIME2Barcode\JIT.DIME2Barcode.csproj" />
     <ProjectReference Include="..\..\src\JIT.InformationSystem.Application\JIT.InformationSystem.Application.csproj" />
     <ProjectReference Include="..\..\src\JIT.InformationSystem.EntityFrameworkCore\JIT.InformationSystem.EntityFrameworkCore.csproj" />
   </ItemGroup>

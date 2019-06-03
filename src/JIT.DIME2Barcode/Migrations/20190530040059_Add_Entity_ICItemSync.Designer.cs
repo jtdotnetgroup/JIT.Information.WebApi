@@ -3,14 +3,16 @@ using System;
 using JIT.DIME2Barcode.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JIT.DIME2Barcode.Migrations
 {
     [DbContext(typeof(ProductionPlanMySqlDbContext))]
-    partial class ProductionPlanMySqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190530040059_Add_Entity_ICItemSync")]
+    partial class Add_Entity_ICItemSync
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1225,7 +1227,7 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<long?>("DeleterUserId");
 
-                    b.Property<DateTime?>("DeletionTime");
+                    b.Property<DateTime>("DeletionTime");
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
@@ -1235,13 +1237,11 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<int?>("ERPOrganizationLeader");
 
-                    b.Property<int>("FWorkshopType");
-
                     b.Property<bool?>("IsDeleted");
 
                     b.Property<DateTime?>("LastModificationTime");
 
-                    b.Property<long?>("LastModifierUserId");
+                    b.Property<int?>("LastModifierUserId");
 
                     b.Property<int?>("OrganizationType");
 
@@ -1255,7 +1255,7 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("Organizationunit");
+                    b.ToTable("T_OrganizationUnit");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.SEOrder", b =>
@@ -1421,8 +1421,6 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<DateTime>("LastSyncTime");
 
-                    b.Property<int>("MaxRowVersion");
-
                     b.Property<string>("TableName");
 
                     b.HasKey("Id");
@@ -1512,10 +1510,6 @@ namespace JIT.DIME2Barcode.Migrations
                     b.Property<int>("FWorkingState");
 
                     b.Property<bool>("IsDeleted");
-
-                    b.Property<string>("Password");
-
-                    b.Property<string>("UserName");
 
                     b.Property<string>("fatherName");
 

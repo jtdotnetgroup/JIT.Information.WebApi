@@ -15,11 +15,17 @@ namespace JIT.DIME2Barcode.Entities
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class t_ICItem: Entity<int>
+    /// <summary>
+    /// 金蝶K3 t_ICItem视图
+    /// </summary>
+    public partial class t_ICItem:Entity
     {
         [NotMapped]
         public override int Id { get; set; }
+
+        //最后更新时间
+        public int FRowVersion { get; set; }
+
         [Key]
         public int FItemID { get; set; }
         public string FModel { get; set; }

@@ -1,10 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using JIT.InformationSystem.Users;
+using JIT.InformationSystem.Users.Dto;
 using Microsoft.EntityFrameworkCore;
 using Shouldly;
+using System.Threading.Tasks;
 using Xunit;
-using Abp.Application.Services.Dto;
-using JIT.InformationSystem.Users;
-using JIT.InformationSystem.Users.Dto;
 
 namespace JIT.InformationSystem.Tests.Users
 {

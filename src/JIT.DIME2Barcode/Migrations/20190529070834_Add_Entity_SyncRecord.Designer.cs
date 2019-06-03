@@ -3,14 +3,16 @@ using System;
 using JIT.DIME2Barcode.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JIT.DIME2Barcode.Migrations
 {
     [DbContext(typeof(ProductionPlanMySqlDbContext))]
-    partial class ProductionPlanMySqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190529070834_Add_Entity_SyncRecord")]
+    partial class Add_Entity_SyncRecord
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -252,418 +254,6 @@ namespace JIT.DIME2Barcode.Migrations
                     b.HasKey("FID");
 
                     b.ToTable("ICException");
-                });
-
-            modelBuilder.Entity("JIT.DIME2Barcode.Entities.ICItem_Sync", b =>
-                {
-                    b.Property<int>("FItemID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("FABCCls");
-
-                    b.Property<int?>("FAPAcctID");
-
-                    b.Property<int?>("FARAcctID");
-
-                    b.Property<int?>("FAcctID");
-
-                    b.Property<int?>("FAdminAcctID");
-
-                    b.Property<string>("FAlias");
-
-                    b.Property<string>("FApproveNo");
-
-                    b.Property<int?>("FAuxClassID");
-
-                    b.Property<int?>("FBackFlushSPID");
-
-                    b.Property<int?>("FBackFlushStockID");
-
-                    b.Property<decimal?>("FBatChangeEconomy");
-
-                    b.Property<decimal?>("FBatFixEconomy");
-
-                    b.Property<decimal?>("FBatchAppendQty");
-
-                    b.Property<bool?>("FBatchManager");
-
-                    b.Property<double?>("FBatchQty");
-
-                    b.Property<int?>("FBeforeExpire");
-
-                    b.Property<bool?>("FBookPlan");
-
-                    b.Property<string>("FBrNo");
-
-                    b.Property<int?>("FCAVAcctID");
-
-                    b.Property<int?>("FCBAppendProject");
-
-                    b.Property<decimal?>("FCBAppendRate");
-
-                    b.Property<int?>("FCBBmStandardID");
-
-                    b.Property<int?>("FCBRestore");
-
-                    b.Property<int?>("FCBRouting");
-
-                    b.Property<int?>("FCUUnitID");
-
-                    b.Property<int?>("FCharSourceItemID");
-
-                    b.Property<string>("FChartNumber");
-
-                    b.Property<int?>("FCheckCycUnit");
-
-                    b.Property<int?>("FCheckCycle");
-
-                    b.Property<decimal?>("FChgFeeRate");
-
-                    b.Property<bool?>("FClass");
-
-                    b.Property<decimal?>("FConsumeTaxRate");
-
-                    b.Property<string>("FContainerName");
-
-                    b.Property<int?>("FCostAcctID");
-
-                    b.Property<int?>("FCostBomID");
-
-                    b.Property<double?>("FCostDiffRate");
-
-                    b.Property<int?>("FCostProject");
-
-                    b.Property<int?>("FCtrlStraregy");
-
-                    b.Property<int?>("FCtrlType");
-
-                    b.Property<int?>("FCubageDecimal");
-
-                    b.Property<int?>("FCubicMeasure");
-
-                    b.Property<decimal?>("FDailyConsume");
-
-                    b.Property<int?>("FDaysPer");
-
-                    b.Property<int?>("FDefaultLoc");
-
-                    b.Property<int?>("FDefaultRoutingID");
-
-                    b.Property<int?>("FDefaultWorkTypeID");
-
-                    b.Property<short?>("FDeleted");
-
-                    b.Property<int?>("FDepartment");
-
-                    b.Property<string>("FEquipmentNum");
-
-                    b.Property<int?>("FErpClsID");
-
-                    b.Property<decimal?>("FExportRate");
-
-                    b.Property<string>("FFirstUnit");
-
-                    b.Property<decimal?>("FFirstUnitRate");
-
-                    b.Property<float?>("FFixLeadTime");
-
-                    b.Property<bool?>("FForSale");
-
-                    b.Property<string>("FFullName");
-
-                    b.Property<int?>("FGoodSpec");
-
-                    b.Property<decimal?>("FGrossWeight");
-
-                    b.Property<int?>("FHSNumber");
-
-                    b.Property<decimal?>("FHeight");
-
-                    b.Property<string>("FHelpCode");
-
-                    b.Property<decimal?>("FHighLimit");
-
-                    b.Property<bool?>("FISKFPeriod");
-
-                    b.Property<int?>("FIdentifier");
-
-                    b.Property<decimal?>("FImpostTaxRate");
-
-                    b.Property<decimal?>("FInHighLimit");
-
-                    b.Property<decimal?>("FInLowLimit");
-
-                    b.Property<int?>("FInspectionLevel");
-
-                    b.Property<int?>("FInspectionProject");
-
-                    b.Property<int?>("FIsBackFlush");
-
-                    b.Property<int?>("FIsCharSourceItem");
-
-                    b.Property<bool?>("FIsEquipment");
-
-                    b.Property<bool?>("FIsKeyItem");
-
-                    b.Property<int?>("FIsListControl");
-
-                    b.Property<bool?>("FIsManage");
-
-                    b.Property<bool?>("FIsSale");
-
-                    b.Property<bool?>("FIsSnManage");
-
-                    b.Property<bool?>("FIsSparePart");
-
-                    b.Property<bool?>("FIsSpecialTax");
-
-                    b.Property<decimal?>("FKFPeriod");
-
-                    b.Property<int?>("FKanBanCapability");
-
-                    b.Property<DateTime?>("FLastCheckDate");
-
-                    b.Property<float?>("FLeadTime");
-
-                    b.Property<int?>("FLenDecimal");
-
-                    b.Property<decimal?>("FLength");
-
-                    b.Property<decimal?>("FLowLimit");
-
-                    b.Property<int?>("FLowestBomCode");
-
-                    b.Property<int?>("FMCVAcctID");
-
-                    b.Property<bool?>("FMRPCon");
-
-                    b.Property<bool?>("FMRPOrder");
-
-                    b.Property<int?>("FManageType");
-
-                    b.Property<int?>("FMaund");
-
-                    b.Property<string>("FModel");
-
-                    b.Property<string>("FModelEn");
-
-                    b.Property<byte[]>("FModifyTime");
-
-                    b.Property<string>("FName");
-
-                    b.Property<string>("FNameEn");
-
-                    b.Property<decimal?>("FNetWeight");
-
-                    b.Property<string>("FNote");
-
-                    b.Property<string>("FNumber");
-
-                    b.Property<decimal?>("FOIHighLimit");
-
-                    b.Property<decimal?>("FOILowLimit");
-
-                    b.Property<short?>("FOmortize");
-
-                    b.Property<short?>("FOmortizeScale");
-
-                    b.Property<int?>("FOrderInterVal");
-
-                    b.Property<int?>("FOrderMethod");
-
-                    b.Property<decimal?>("FOrderPoint");
-
-                    b.Property<double?>("FOrderPrice");
-
-                    b.Property<int?>("FOrderRector");
-
-                    b.Property<int?>("FOrderTrategy");
-
-                    b.Property<int?>("FOrderUnitID");
-
-                    b.Property<int?>("FOtherChkMde");
-
-                    b.Property<decimal?>("FOutMachFee");
-
-                    b.Property<int?>("FOutMachFeeProject");
-
-                    b.Property<int?>("FPCVAcctID");
-
-                    b.Property<int?>("FPIVAcctID");
-
-                    b.Property<int?>("FPOHghPrcMnyType");
-
-                    b.Property<decimal?>("FPOHighPrice");
-
-                    b.Property<int?>("FPOVAcctID");
-
-                    b.Property<int?>("FPackType");
-
-                    b.Property<int?>("FParentID");
-
-                    b.Property<double?>("FPerWastage");
-
-                    b.Property<decimal?>("FPickHighLimit");
-
-                    b.Property<decimal?>("FPickLowLimit");
-
-                    b.Property<decimal?>("FPieceRate");
-
-                    b.Property<short?>("FPlanClass");
-
-                    b.Property<int?>("FPlanMode");
-
-                    b.Property<int?>("FPlanPoint");
-
-                    b.Property<decimal?>("FPlanPrice");
-
-                    b.Property<short?>("FPlanPriceMethod");
-
-                    b.Property<int?>("FPlanTrategy");
-
-                    b.Property<int?>("FPlanner");
-
-                    b.Property<int?>("FPreDeadLine");
-
-                    b.Property<short?>("FPriceDecimal");
-
-                    b.Property<int?>("FPriceFixingType");
-
-                    b.Property<int?>("FProChkMde");
-
-                    b.Property<int?>("FProductPrincipal");
-
-                    b.Property<int?>("FProductUnitID");
-
-                    b.Property<decimal?>("FProfitRate");
-
-                    b.Property<bool?>("FPutInteger");
-
-                    b.Property<short?>("FQtyDecimal");
-
-                    b.Property<decimal?>("FQtyMax");
-
-                    b.Property<decimal?>("FQtyMin");
-
-                    b.Property<short?>("FRP");
-
-                    b.Property<int?>("FRequirePoint");
-
-                    b.Property<int?>("FSLAcctID");
-
-                    b.Property<int?>("FSOChkMde");
-
-                    b.Property<decimal?>("FSOHighLimit");
-
-                    b.Property<decimal?>("FSOLowLimit");
-
-                    b.Property<decimal?>("FSOLowPrc");
-
-                    b.Property<int?>("FSOLowPrcMnyType");
-
-                    b.Property<int?>("FSPID");
-
-                    b.Property<int?>("FSaleAcctID");
-
-                    b.Property<decimal?>("FSalePrice");
-
-                    b.Property<int?>("FSalePriceFixingType");
-
-                    b.Property<int?>("FSaleTaxAcctID");
-
-                    b.Property<int?>("FSaleUnitID");
-
-                    b.Property<decimal?>("FSecCoefficient");
-
-                    b.Property<decimal?>("FSecInv");
-
-                    b.Property<int?>("FSecUnitDecimal");
-
-                    b.Property<int?>("FSecUnitID");
-
-                    b.Property<string>("FSecondUnit");
-
-                    b.Property<decimal?>("FSecondUnitRate");
-
-                    b.Property<int?>("FSerialClassID");
-
-                    b.Property<string>("FShortNumber");
-
-                    b.Property<decimal?>("FSize");
-
-                    b.Property<int?>("FSource");
-
-                    b.Property<double?>("FStaCost");
-
-                    b.Property<decimal?>("FStandardCost");
-
-                    b.Property<decimal?>("FStandardManHour");
-
-                    b.Property<decimal?>("FStdBatchQty");
-
-                    b.Property<decimal?>("FStdFixFeeRate");
-
-                    b.Property<decimal?>("FStdPayRate");
-
-                    b.Property<int?>("FStkChkAlrm");
-
-                    b.Property<int?>("FStkChkMde");
-
-                    b.Property<int?>("FStkChkPrd");
-
-                    b.Property<decimal?>("FStockPrice");
-
-                    b.Property<bool?>("FStockTime");
-
-                    b.Property<int?>("FStoreUnitID");
-
-                    b.Property<int?>("FTaxRate");
-
-                    b.Property<int?>("FTopID");
-
-                    b.Property<int?>("FTotalTQQ");
-
-                    b.Property<int?>("FTrack");
-
-                    b.Property<int?>("FTypeID");
-
-                    b.Property<int?>("FUnitGroupID");
-
-                    b.Property<int?>("FUnitID");
-
-                    b.Property<int?>("FUseState");
-
-                    b.Property<string>("FVersion");
-
-                    b.Property<int?>("FWWChkMde");
-
-                    b.Property<decimal?>("FWWHghPrc");
-
-                    b.Property<int?>("FWWHghPrcMnyType");
-
-                    b.Property<int?>("FWeightDecimal");
-
-                    b.Property<decimal?>("FWidth");
-
-                    b.Property<int?>("FWthDrwChkMde");
-
-                    b.Property<double?>("F_102");
-
-                    b.Property<double?>("F_103");
-
-                    b.Property<string>("F_104");
-
-                    b.Property<int?>("F_105");
-
-                    b.Property<int?>("F_106");
-
-                    b.Property<string>("F_107");
-
-                    b.Property<int?>("F_108");
-
-                    b.HasKey("FItemID");
-
-                    b.ToTable("t_ICItem");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.ICMO", b =>
@@ -1225,7 +815,7 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<long?>("DeleterUserId");
 
-                    b.Property<DateTime?>("DeletionTime");
+                    b.Property<DateTime>("DeletionTime");
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
@@ -1235,13 +825,11 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<int?>("ERPOrganizationLeader");
 
-                    b.Property<int>("FWorkshopType");
-
                     b.Property<bool?>("IsDeleted");
 
                     b.Property<DateTime?>("LastModificationTime");
 
-                    b.Property<long?>("LastModifierUserId");
+                    b.Property<int?>("LastModifierUserId");
 
                     b.Property<int?>("OrganizationType");
 
@@ -1255,7 +843,7 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("Organizationunit");
+                    b.ToTable("T_OrganizationUnit");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.SEOrder", b =>
@@ -1421,8 +1009,6 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<DateTime>("LastSyncTime");
 
-                    b.Property<int>("MaxRowVersion");
-
                     b.Property<string>("TableName");
 
                     b.HasKey("Id");
@@ -1512,10 +1098,6 @@ namespace JIT.DIME2Barcode.Migrations
                     b.Property<int>("FWorkingState");
 
                     b.Property<bool>("IsDeleted");
-
-                    b.Property<string>("Password");
-
-                    b.Property<string>("UserName");
 
                     b.Property<string>("fatherName");
 
