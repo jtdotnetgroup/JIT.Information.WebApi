@@ -175,6 +175,7 @@ namespace JIT.DIME2Barcode.AppService
                 var entity = await Repository.GetAll().SingleOrDefaultAsync(p => p.FID == input.FID);
                 if (entity != null)
                 {
+                    entity.FStatus = 2;
                     entity.FFinishAuxQty = input.FFinishAuxQty;
                     await Repository.UpdateAsync(entity);
                 }
