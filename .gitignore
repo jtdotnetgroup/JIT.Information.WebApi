@@ -261,3 +261,5 @@ src/JIT.DIME2Barcode/bin/Debug/netcoreapp2.1/JIT.DIME2Barcode.dll
 src/JIT.DIME2Barcode/bin/Debug/netcoreapp2.1/JIT.DIME2Barcode.pdb
 *.pdb
 *.dll
+*.cache
+*.zip
