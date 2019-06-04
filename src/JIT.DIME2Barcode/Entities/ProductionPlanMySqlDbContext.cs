@@ -38,7 +38,7 @@ namespace JIT.DIME2Barcode.Entities
 
         public virtual DbSet<t_SubMesType> t_SubMesType { get; set; }
 
-        public virtual DbSet<t_ICItem> t_ICItem { get; set; }
+        //public virtual DbSet<t_ICItem> t_ICItem { get; set; }
 
 
         #region 视图

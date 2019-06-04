@@ -32,7 +32,7 @@ namespace JIT.DIME2Barcode.Entities
         public int? ERPOrganization { get; set; }
         public string Remark { get; set; }
 
-        public int FWorkshopType { get; set; } //车间类型的ID
+        public bool FWorkshopType { get; set; } //车间类型的ID
 
         [ForeignKey("ParentId")]
         public t_OrganizationUnit Parent { get; set; }

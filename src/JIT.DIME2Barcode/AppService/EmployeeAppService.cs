@@ -74,7 +74,7 @@ namespace JIT.DIME2Barcode.AppService
 
                var UserDto = new CreateUserDto
                {
-                   UserName = CreateUserDto.UserName==""?input.FMpno: CreateUserDto.UserName,
+                   UserName = string.IsNullOrEmpty(CreateUserDto.UserName)?input.FMpno: CreateUserDto.UserName,
                    Name = input.FName,
                    Surname = input.FName,
                    EmailAddress = input.FEmailAddress,
@@ -386,7 +386,7 @@ namespace JIT.DIME2Barcode.AppService
         public async Task<PagedResultDto<EmployeeDto>> GetAllWorkers()
         {
             var query = _ERepository.GetAllIncluding(p => p.Department)
-                .Where(p => p.Department.OrganizationType == PublicEnum.OrganizationType.车间);
+                .Where(p => p.Department.FWorkshopType == true);
 
             var count = await query.CountAsync();
 

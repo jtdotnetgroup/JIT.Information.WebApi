@@ -101,7 +101,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
                 ERPOrganizationLeader = input.ERPOrganizationLeader == null ? 0 : input.ERPOrganizationLeader,//组织负责人
                 ERPOrganization = input.ERPOrganization == null ? 0 : input.ERPOrganization,
                 Remark =input.Remark,
-                FWorkshopType = input.FWorkshopType
+                FWorkshopType =bool.Parse(input.FWorkshopType.ToString())
                 
             };
        

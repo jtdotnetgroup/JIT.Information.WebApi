@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JIT.DIME2Barcode.Migrations
 {
     [DbContext(typeof(ProductionPlanMySqlDbContext))]
-    [Migration("20190530082804_Modify_Entity_SyncRecord")]
-    partial class Modify_Entity_SyncRecord
+    [Migration("20190603114526_Meger_ZHL")]
+    partial class Meger_ZHL
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,6 +79,9 @@ namespace JIT.DIME2Barcode.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FDepartment");
+
+                    b.HasIndex("FMpno")
+                        .IsUnique();
 
                     b.ToTable("Employee");
                 });
@@ -1095,6 +1098,8 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<string>("FWorker");
 
+                    b.Property<string>("ICMODispBillID");
+
                     b.HasKey("FID");
 
                     b.ToTable("ICMOInspectBill");
@@ -1208,54 +1213,6 @@ namespace JIT.DIME2Barcode.Migrations
                     b.HasKey("FID");
 
                     b.ToTable("ICMOQualityRpt");
-                });
-
-            modelBuilder.Entity("JIT.DIME2Barcode.Entities.OrganizationUnit", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<DateTime?>("CreationTime");
-
-                    b.Property<long?>("CreatorUserId");
-
-                    b.Property<string>("DataBaseConnection");
-
-                    b.Property<long?>("DeleterUserId");
-
-                    b.Property<DateTime>("DeletionTime");
-
-                    b.Property<string>("DisplayName")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<int?>("ERPOrganization");
-
-                    b.Property<int?>("ERPOrganizationLeader");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime");
-
-                    b.Property<int?>("LastModifierUserId");
-
-                    b.Property<int?>("OrganizationType");
-
-                    b.Property<int?>("ParentId");
-
-                    b.Property<string>("Remark");
-
-                    b.Property<int?>("TenantId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParentId");
-
-                    b.ToTable("T_OrganizationUnit");
                 });
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.SEOrder", b =>
@@ -1414,28 +1371,12 @@ namespace JIT.DIME2Barcode.Migrations
                     b.ToTable("SEOrder");
                 });
 
-            modelBuilder.Entity("JIT.DIME2Barcode.Entities.SyncRecord", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("LastSyncTime");
-
-                    b.Property<int>("MaxRowVersion");
-
-                    b.Property<string>("TableName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("t_SyncRecord");
-                });
-
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.TB_BadItemRelation", b =>
                 {
                     b.Property<int>("FID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool?>("FDeleted");
+                    b.Property<bool>("FDeleted");
 
                     b.Property<int?>("FItemID");
 
@@ -1512,6 +1453,10 @@ namespace JIT.DIME2Barcode.Migrations
                     b.Property<int>("FWorkingState");
 
                     b.Property<bool>("IsDeleted");
+
+                    b.Property<string>("Password");
+
+                    b.Property<string>("UserName");
 
                     b.Property<string>("fatherName");
 
@@ -1754,6 +1699,78 @@ namespace JIT.DIME2Barcode.Migrations
                     b.ToTable("t_MeasureUnit");
                 });
 
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.t_OrganizationUnit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<DateTime?>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<string>("DataBaseConnection");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<int?>("ERPOrganization");
+
+                    b.Property<int?>("ERPOrganizationLeader");
+
+                    b.Property<int>("FWorkshopType");
+
+                    b.Property<bool?>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<int?>("OrganizationType");
+
+                    b.Property<int?>("ParentId");
+
+                    b.Property<string>("Remark");
+
+                    b.Property<int?>("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("t_Organizationunit");
+                });
+
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.t_SubMesType", b =>
+                {
+                    b.Property<int>("FTypeID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("FDetail");
+
+                    b.Property<int>("FGRType");
+
+                    b.Property<byte[]>("FModifyTime");
+
+                    b.Property<string>("FName");
+
+                    b.Property<int>("FType");
+
+                    b.Property<string>("UUID");
+
+                    b.HasKey("FTypeID");
+
+                    b.ToTable("t_SubMesType");
+                });
+
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.t_SubMessage", b =>
                 {
                     b.Property<int>("FInterID")
@@ -1848,9 +1865,25 @@ namespace JIT.DIME2Barcode.Migrations
                     b.ToTable("VW_DispatchBill_List");
                 });
 
+            modelBuilder.Entity("JIT.InformationSystem.SyncRecord", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("LastSyncTime");
+
+                    b.Property<int>("MaxRowVersion");
+
+                    b.Property<string>("TableName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("t_SyncRecord");
+                });
+
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.Employee", b =>
                 {
-                    b.HasOne("JIT.DIME2Barcode.Entities.OrganizationUnit", "Department")
+                    b.HasOne("JIT.DIME2Barcode.Entities.t_OrganizationUnit", "Department")
                         .WithMany()
                         .HasForeignKey("FDepartment");
                 });
@@ -1870,7 +1903,7 @@ namespace JIT.DIME2Barcode.Migrations
 
             modelBuilder.Entity("JIT.DIME2Barcode.Entities.Equipment", b =>
                 {
-                    b.HasOne("JIT.DIME2Barcode.Entities.OrganizationUnit", "WorkCenter")
+                    b.HasOne("JIT.DIME2Barcode.Entities.t_OrganizationUnit", "WorkCenter")
                         .WithMany()
                         .HasForeignKey("FWorkCenterID");
                 });
@@ -1882,9 +1915,9 @@ namespace JIT.DIME2Barcode.Migrations
                         .HasForeignKey("FSrcID");
                 });
 
-            modelBuilder.Entity("JIT.DIME2Barcode.Entities.OrganizationUnit", b =>
+            modelBuilder.Entity("JIT.DIME2Barcode.Entities.t_OrganizationUnit", b =>
                 {
-                    b.HasOne("JIT.DIME2Barcode.Entities.OrganizationUnit", "Parent")
+                    b.HasOne("JIT.DIME2Barcode.Entities.t_OrganizationUnit", "Parent")
                         .WithMany("Children")
                         .HasForeignKey("ParentId");
                 });

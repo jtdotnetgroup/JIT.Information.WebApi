@@ -97,7 +97,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
             var oplist = await SUbRepository.GetAll().Where(p => p.FTypeID == 61).ToListAsync();
 
             var equipmentList =await ERepository.GetAll().Where(p => p.FType == PublicEnum.EquipmentType.设备).ToListAsync();
-            var orgs = await ORepository.GetAll().Where(p => p.OrganizationType == PublicEnum.OrganizationType.车间).ToListAsync();
+            var orgs = await ORepository.GetAll().Where(p => p.FWorkshopType).ToListAsync();
 
             var eqShifts = await EsRepository.GetAll().ToListAsync();
 
@@ -352,6 +352,11 @@ namespace JIT.DIME2Barcode.TaskAssignment
                                     TotalPlan = s.Sum(item => item.FPlanAuxQty)
                                 }).SingleOrDefaultAsync();
 
+            if (header == null)
+            {
+                return new MOBillPlanDetail() { FMOInterID = input.FMOInterID,TotalCommit = 0,TotalPlan = 0};
+            }
+
             //按天汇总排产计划数和派工数
             var details = await (from daily in context.ICMODaily
                 join disp in context.ICMODispBill on daily.FID equals disp.FSrcID into g1
@@ -361,9 +366,9 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 select new MOBillPlanDay()
                 {
                     FDate = s.Key,
-                    DayCommit = s.Sum(item => item.FCommitAuxQty.Value),
-                    DayPlan = s.Sum(item => item.FPlanAuxQty.Value)
-                }).ToListAsync();
+                    DayCommit = s.Sum(item => item.FCommitAuxQty),
+                    DayPlan = s.Sum(item => item.FPlanAuxQty)
+                }).OrderBy(p=>p.FDate).ToListAsync();
 
             header.Details = details;
                
