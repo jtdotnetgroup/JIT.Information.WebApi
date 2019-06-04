@@ -57,28 +57,27 @@ namespace JIT.JIT.TaskAssignment.ICMaterialPicking
                 var entity = Repository.GetAll().Where(p => p.FSrcID == input.FSrcID);
                 foreach (var item in entity)
                 {
-                    Repository.Delete(item);
+                     Repository.Delete(item);
                 }
 
                 //List<DIME2Barcode.Entities.ICMaterialPicking>
                 //    list = new List<DIME2Barcode.Entities.ICMaterialPicking>();
                 foreach (var item in input.tmjx)
                 {
-                    DIME2Barcode.Entities.ICMaterialPicking IcMaterialPicking =
-                        new DIME2Barcode.Entities.ICMaterialPicking()
-                        {
-                            FID = Guid.NewGuid().ToString(),
-                            FSrcID = input.FSrcID,
-                            FEntryID = input.tmjx.IndexOf(item) + 1,
-                            FItemID = item.FItemID,
-                            FUnitID = item.FUnitID,
-                            FBatchNo = item.FBatchNo,
-                            FAuxQty = 0,
-                            FBiller = AbpSession.UserId.ToString(),
-                            FDate = DateTime.Now,
-                            FNote = input.FNote,
-                        };
-                    Repository.Insert(IcMaterialPicking);
+                    DIME2Barcode.Entities.ICMaterialPicking IcMaterialPicking = new DIME2Barcode.Entities.ICMaterialPicking()
+                    {
+                        FID = Guid.NewGuid().ToString(),
+                        FSrcID = input.FSrcID,
+                        FEntryID = input.tmjx.IndexOf(item) + 1,
+                        FItemID = item.FItemID,
+                        FUnitID = item.FUnitID,
+                        FBatchNo = item.FBatchNo,
+                        FAuxQty = 0,
+                        FBiller = AbpSession.UserId.ToString(),
+                        FDate = DateTime.Now,
+                        FNote = input.FNote,
+                    };
+                     Repository.Insert(IcMaterialPicking);
                 }
                 var query = icRepository.GetAll().SingleOrDefault(s => s.FID == input.FID);
                 query.FStatus = 1;
