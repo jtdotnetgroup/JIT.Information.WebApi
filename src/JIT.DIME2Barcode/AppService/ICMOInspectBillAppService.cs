@@ -52,7 +52,7 @@ namespace JIT.DIME2Barcode.AppService
             // 
             icmoDispBillDetaileds.IcmoInspectBill =
                 await Repository.GetAll().FirstOrDefaultAsync(f =>
-                    f.FID == input.FID && f.FBillNo == input.FBillNo && f.FOperID == input.FOperID) ??
+                    f.FID == input.FID && f.FOperID == input.FOperID) ??
                 new ICMOInspectBill();
             // 
             //var tmp = tbRepository.GetAll()
@@ -76,7 +76,6 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-
         public async Task<bool> ICMODispBillSave(ICMODispBillDetaileds input)
         {
             try
@@ -225,15 +224,15 @@ namespace JIT.DIME2Barcode.AppService
         }
 
 
-        /// <summary>
-        /// 根据任务单号ID查询回所有检验单号
-        /// </summary>
-        /// <param name="ICMODispBillID"></param>
-        /// <returns></returns>
-        public async Task<List<Entities.ICMOInspectBill>> GetList(string ICMODispBillID)
-        {
-            return await Repository.GetAll().Where(w => w.ICMODispBillID == ICMODispBillID).ToListAsync();
-        }
+        ///// <summary>
+        ///// 根据任务单号ID查询回所有检验单号
+        ///// </summary>
+        ///// <param name="ICMODispBillID"></param>
+        ///// <returns></returns>
+        //public async Task<List<Entities.ICMOInspectBill>> GetList(string ICMODispBillID)
+        //{
+        //    return await Repository.GetAll().Where(w => w.ICMODispBillID == ICMODispBillID).ToListAsync();
+        //}
 
     }
 }

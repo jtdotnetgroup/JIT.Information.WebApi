@@ -17,7 +17,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JIT.DIME2Barcode.AppService
 {
-    /// <summary>
+    /// <summary>ICMOInspectBillDetailed
     /// 派工单接口服务
     /// </summary>
     public class ICMODispBillAppService : ApplicationService
