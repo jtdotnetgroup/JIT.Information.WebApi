@@ -42,8 +42,8 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
 
         public virtual PublicEnum.OrganizationType OrganizationType { get; set; }
         public virtual string DataBaseConnection { get; set; }
-        public virtual int ERPOrganizationLeader { get; set; }
-        public virtual int ERPOrganization { get; set; }
+        public virtual int? ERPOrganizationLeader { get; set; }
+        public virtual int? ERPOrganization { get; set; }
         public virtual string Remark { get; set; }
     }
 }

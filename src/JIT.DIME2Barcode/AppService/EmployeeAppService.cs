@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Castle.Components.DictionaryAdapter;
+using Microsoft.AspNetCore.Identity;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -35,7 +36,7 @@ namespace JIT.DIME2Barcode.AppService
 
         public IRepository<VW_Employee, int> _VwRepository { get; set; }
 
-
+        public IPasswordHasher<User> PasswordHasher { get; set; }
 
         public IUserAppService UserAppService { get; set; }
 
@@ -68,20 +69,26 @@ namespace JIT.DIME2Barcode.AppService
             var entity = input.MapTo<Employee>();
             long userid = 0;
             var companyId = 0;
-            
+
+            var count = _UserRepository.Count()+1;
+
+            //指定默认邮箱
+            //input.FEmailAddress = string.IsNullOrEmpty(input.FEmailAddress) ? $"test{count}@jit.com" : input.FEmailAddress;
+
             if (input.FSystemUser == 1)
             {
                var CreateUserDto = input.User;
 
                var UserDto = new CreateUserDto
                {
-                   UserName = string.IsNullOrEmpty(CreateUserDto.UserName) ? input.FMpno: CreateUserDto.UserName,
+                   UserName = string.IsNullOrEmpty(CreateUserDto.UserName)?input.FMpno: CreateUserDto.UserName,
                    Name = input.FName,
                    Surname = input.FName,
                    EmailAddress = input.FEmailAddress,
                    IsActive=true,
                    RoleNames= null, 
-                   Password = CreateUserDto.Password
+                   //默认用户密码
+                   Password = string.IsNullOrEmpty( CreateUserDto.Password)?User.DefaultPassword:CreateUserDto.Password
                };
 
                 #region 旧代码
@@ -108,6 +115,12 @@ namespace JIT.DIME2Barcode.AppService
 
                 #endregion
                 userid = UserAppService.Create(UserDto).Result.Id;
+
+                //User u = UserDto.MapTo<User>();
+                //u.NormalizedUserName = u.UserName.ToUpper();
+                //u.Password = PasswordHasher.HashPassword(u, u.Password);
+
+                //userid = await _UserRepository.InsertAndGetIdAsync(u);
             }
             if (input.FDepartment > 0) //部门ID
             {
@@ -157,14 +170,25 @@ namespace JIT.DIME2Barcode.AppService
                         RoleNames = null,
                         Password = CreateUserDto.Password
                     };              
+
                     userid = UserAppService.Create(UserDto).Result.Id;
 
                 }
                 else
                 {
                     //不加查询条件去返回对象来更改会报错
-                    var entitys = await _UserRepository.GetAll()
-                        .SingleOrDefaultAsync(p => p.Id == input.FUserId );
+                    User entitys = null;
+                    try
+                    {
+                         entitys = await _UserRepository.GetAll()
+                            .SingleOrDefaultAsync(p => p.Id == input.FUserId);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                    
 
                     Console.WriteLine(entitys);
                     if (entitys != null)
@@ -281,15 +305,8 @@ namespace JIT.DIME2Barcode.AppService
 
                 if (entity.FUserId!=0)
                 {
-                    var entitys = await _UserRepository.GetAll()
-                        .SingleOrDefaultAsync(p => p.Id == entity.FUserId && p.IsDeleted == false);
-                    if (entitys != null)
-                    {
-                        entitys.IsDeleted = true;
-                        entitys.LastModificationTime = DateTime.Now;
-                        await _UserRepository.UpdateAsync(entitys);
-                    }
-                   
+                    await _UserRepository.DeleteAsync(entity.FUserId);
+
                 }
 
                entity.IsDeleted = true;
@@ -409,27 +426,50 @@ namespace JIT.DIME2Barcode.AppService
         /// <returns></returns>
         public async Task<string> FMpno()
         {
-            var FMpno = "";    
-            //查询最后一条没有别删除的编号
-            var enetity = _ERepository.GetAll().LastOrDefault();
-            if (enetity!=null)
-            {
-                //如果存在这个编号就在原来基础上增加
-                string[] strFMpno = enetity.FMpno.Split("YK");
-                FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 1);
+            // var FMpno = "";    
+            // //查询最后一条没有别删除的编号
+            // var enetity = _ERepository.GetAll().LastOrDefault();
+            // if (enetity!=null)
+            // {
+            //     //如果存在这个编号就在原来基础上增加
+            //     string[] strFMpno = enetity.FMpno.Split("YK");
+            //     FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 1);
 
-                var quers = _ERepository.GetAll().SingleOrDefault(p => p.FMpno == FMpno);
-                if (quers!=null)
-                {
-                    FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 2);
-                }
-            }
-            else
-            {
-                FMpno = "YK00001";
-            }
+            //     var quers = _ERepository.GetAll().SingleOrDefault(p => p.FMpno == FMpno);
+            //     if (quers!=null)
+            //     {
+            //         FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 2);
+            //     }
+            // }
+            // else
+            // {
+            //     FMpno = "YK00001";
+            // }
 
-            return FMpno;
+            // return FMpno;
+
+            //var FMpno = "";    
+            ////查询最后一条没有别删除的编号
+            //var enetity = _ERepository.GetAll().LastOrDefault();
+            //if (enetity!=null)
+            //{
+            //    //如果存在这个编号就在原来基础上增加
+            //    string[] strFMpno = enetity.FMpno.Split("YK");
+            //    FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 1);
+
+            //    var quers = _ERepository.GetAll().SingleOrDefault(p => p.FMpno == FMpno);
+            //    if (quers!=null)
+            //    {
+            //        FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 2);
+            //    }
+            //}
+            //else
+            //{
+            //    FMpno = "YK00001";
+            //}
+
+            //return FMpno;
+            return "";
         }
 
         /// <summary>
@@ -463,7 +503,7 @@ namespace JIT.DIME2Barcode.AppService
         public async Task<PagedResultDto<EmployeeDto>> GetAllWorkers()
         {
             var query = _ERepository.GetAllIncluding(p => p.Department)
-                .Where(p => p.Department.OrganizationType == PublicEnum.OrganizationType.车间);
+                .Where(p => p.Department.FWorkshopType == true);
 
             var count = await query.CountAsync();
 

@@ -19,6 +19,9 @@ namespace JIT.DIME2Barcode.AppService
         private IRepository<Equipment,int> _repository { get; set; }
         //设备班次仓储
         public IRepository<EqiupmentShift,int> EsRepository { get; set; }
+
+        public IRepository<t_OrganizationUnit> ORepository { get;set; }
+
         public EquipmentAppService(IRepository<Equipment, int> repository)
         {
             _repository = repository;
@@ -57,6 +60,12 @@ namespace JIT.DIME2Barcode.AppService
             {
                 var eos = new EquipmentOrgainzationSpecification(input.OrganizationID.Value);
                 query=query.Where(eos);
+            }
+
+            if (!string.IsNullOrEmpty(input.OrganizationCode))
+            {
+                var org = await ORepository.GetAll().Where(p => p.Code == input.OrganizationCode).SingleOrDefaultAsync();
+                query = query.Where(p => p.FWorkCenterID == org.Id);
             }
 
             var count = await query.CountAsync();

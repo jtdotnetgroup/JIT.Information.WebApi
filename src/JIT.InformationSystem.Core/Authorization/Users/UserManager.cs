@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -10,6 +11,7 @@ using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
 using Abp.Organizations;
 using Abp.Runtime.Caching;
+using Abp.UI;
 using JIT.InformationSystem.Authorization.Roles;
 
 namespace JIT.InformationSystem.Authorization.Users
@@ -53,6 +55,27 @@ namespace JIT.InformationSystem.Authorization.Users
                 organizationUnitSettings, 
                 settingManager)
         {
+        }
+
+        public override async Task<IdentityResult> CheckDuplicateUsernameOrEmailAddressAsync(long? expectedUserId, string userName, string emailAddress)
+        {
+            var user = (await FindByNameAsync(userName));
+            if (user != null && user.Id != expectedUserId)
+            {
+                throw new UserFriendlyException(string.Format(L("Identity.DuplicateUserName"), userName));
+            }
+
+            if (!string.IsNullOrEmpty(emailAddress))
+            {
+                user = (await FindByEmailAsync(emailAddress));
+                if (user != null && user.Id != expectedUserId)
+                {
+                    throw new UserFriendlyException(string.Format(L("Identity.DuplicateEmail"), emailAddress));
+                }
+            }
+
+            return IdentityResult.Success;
+          
         }
     }
 }

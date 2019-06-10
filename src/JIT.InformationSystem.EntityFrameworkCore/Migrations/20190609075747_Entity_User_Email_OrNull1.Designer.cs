@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JIT.InformationSystem.Migrations
 {
     [DbContext(typeof(InformationSystemDbContext))]
-    [Migration("20190522073733_Add_system")]
-    partial class Add_system
+    [Migration("20190609075747_Entity_User_Email_OrNull1")]
+    partial class Entity_User_Email_OrNull1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -937,7 +937,9 @@ namespace JIT.InformationSystem.Migrations
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
-                        .HasMaxLength(256);
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(256)
+                        .HasDefaultValue("");
 
                     b.Property<string>("EmailConfirmationCode")
                         .HasMaxLength(328);
@@ -966,7 +968,9 @@ namespace JIT.InformationSystem.Migrations
 
                     b.Property<string>("NormalizedEmailAddress")
                         .IsRequired()
-                        .HasMaxLength(256);
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(256)
+                        .HasDefaultValue("");
 
                     b.Property<string>("NormalizedUserName")
                         .IsRequired()

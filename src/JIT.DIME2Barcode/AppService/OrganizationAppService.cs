@@ -33,7 +33,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
      
             var quers =await _repository.GetAll().Where(p=> p.IsDeleted == false).ToListAsync();         
             
-            var list = quers.MapTo<List<OrganizationDto>>();  
+            var list = quers.MapTo<List<OrganizationDto>>();
 
             var result = list.Where(x => x.ParentId == ParentID);
             return result.ToList();
@@ -91,25 +91,34 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         /// <returns></returns>
         public async Task<int> Create(OrganizationCreateInput input)
         {
-            var entity = new t_OrganizationUnit()
+            try
             {
-                Code = input.Code,
-                ParentId = int.Parse(input.ParentId.ToString()==null?"0": input.ParentId.ToString()),
-                TenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0,
-                CreationTime = DateTime.Now,
-                CreatorUserId = this.AbpSession.UserId.HasValue ? this.AbpSession.UserId.Value : 0,
-                DisplayName = input.DisplayName,
-                IsDeleted = false,
-                OrganizationType = Enum.Parse<PublicEnum.OrganizationType>(input.OrganizationType.ToString()),//组织类型
-                DataBaseConnection = input.DataBaseConnection,//数据库连接
-                ERPOrganizationLeader = input.ERPOrganizationLeader == null ? 0 : input.ERPOrganizationLeader,//组织负责人
-                ERPOrganization = input.ERPOrganization == null ? 0 : input.ERPOrganization,
-                Remark =input.Remark,
-                FWorkshopType = input.FWorkshopType
-                
-            };
-       
-            return await _repository.InsertAndGetIdAsync(entity);
+                var entity = new t_OrganizationUnit()
+                {
+                    Code = input.Code,
+                    ParentId = int.Parse(input.ParentId.ToString() == null ? "0" : input.ParentId.ToString()),
+                    TenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0,
+                    CreationTime = DateTime.Now,
+                    CreatorUserId = this.AbpSession.UserId.HasValue ? this.AbpSession.UserId.Value : 0,
+                    DisplayName = input.DisplayName,
+                    IsDeleted = false,
+                    OrganizationType = Enum.Parse<PublicEnum.OrganizationType>(input.OrganizationType.ToString()),//组织类型
+                    DataBaseConnection = input.DataBaseConnection,//数据库连接
+                    ERPOrganizationLeader = input.ERPOrganizationLeader == null ? 0 : input.ERPOrganizationLeader,//组织负责人
+                    ERPOrganization = input.ERPOrganization == null ? 0 : input.ERPOrganization,
+                    Remark = input.Remark,
+                    FWorkshopType = input.FWorkshopType
+
+                };
+
+                return await _repository.InsertAndGetIdAsync(entity);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return 0;
 
         }
 
