@@ -173,7 +173,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="ICMODispBillID">任务单号ID</param>
         /// <param name="FAuxQty">汇报数</param>
-        public bool Create(string ICMODispBillID, decimal FAuxQty)
+        public bool Create(string ICMODispBillID, decimal FAuxQty,string BatchNum)
         {
             try
             {
@@ -202,7 +202,8 @@ namespace JIT.DIME2Barcode.AppService
                     FBiller = AbpSession.UserId.ToString(),
                     FBillTime = DateTime.Now,
                     ICMODispBillID = ICMODispBillID,
-                    FYSQty = 0
+                    FYSQty = 0,
+                    BatchNum = BatchNum
                 };
                 Repository.InsertOrUpdate(icm);
                 // 所有汇报

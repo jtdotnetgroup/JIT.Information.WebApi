@@ -45,9 +45,9 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICException.Dtos
         public string FID { get; set; }
         public string FSrcID { get; set; }
     }
-    public class ICExceptionGetAllInput : PagedResultRequestDto
+    public class ICExceptionGetAllInput  
     {
-
+        public string FID { get; set; }
     }
     public class ICExceptionGetAllOutput : PagedResultDto<List<ICExceptionDto>>
     {

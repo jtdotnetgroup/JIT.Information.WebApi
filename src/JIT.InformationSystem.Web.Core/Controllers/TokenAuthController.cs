@@ -65,7 +65,10 @@ namespace JIT.InformationSystem.Controllers
                 AccessToken = accessToken,
                 EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),
                 ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds,
-                UserId = loginResult.User.Id
+                UserId = loginResult.User.Id,
+                Name = loginResult.User.Name,
+                UserName = loginResult.User.UserName,
+                EmailAddress = loginResult.User.EmailAddress
             };
         }
 

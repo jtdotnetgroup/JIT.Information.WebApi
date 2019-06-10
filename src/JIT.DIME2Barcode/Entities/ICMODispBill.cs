@@ -40,8 +40,6 @@ namespace JIT.DIME2Barcode.Entities
         public DateTime? FCloseTime { get; set; }
         public int FPrintCount { get; set; }
         public string FNote { get; set; }
-
-        //开工时间
         public DateTime? FStartTime { get; set; }
     }
     

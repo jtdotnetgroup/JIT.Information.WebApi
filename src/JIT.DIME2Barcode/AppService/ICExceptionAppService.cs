@@ -18,15 +18,8 @@ namespace JIT.DIME2Barcode.AppService
     /// <summary>
     /// 派工异常记录
     /// </summary>
-    public class ICExceptionAppService : ApplicationService
-    {
-        //public ICExceptionAppService(IRepository<ICException, string> repository) : base(repository)
-        //{
-        //}
-        //DIME2BarcodeContext context = new DIME2BarcodeContext();
-        public IRepository<DIME2Barcode.Entities.ICException, string> Repository { get; set; }
-        public IRepository<Employee,int> ERepository { get; set; }
-
+    public class ICExceptionAppService : BaseAppService
+    { 
         /// <summary>
         /// 获取明细
         /// </summary>
@@ -34,7 +27,7 @@ namespace JIT.DIME2Barcode.AppService
         /// <returns></returns>
         public async Task<ICExceptionDto> Get(ICExceptionInput input)
         {
-            var entity = await Repository.GetAll()
+            var entity = await JIT_ICException.GetAll()
                 .SingleOrDefaultAsync(p => p.FID == input.FID && p.FSrcID == input.FSrcID);
             return entity.MapTo<ICExceptionDto>();
         }
@@ -43,19 +36,11 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<PagedResultDto<ICExceptionDto>> GetAll(ICExceptionGetAllInput input)
+        public async Task<List<Entities.ICException>> GetAll(ICExceptionGetAllInput input)
         { 
-
-            var query = Repository.GetAll().OrderBy(p => p.FID).PageBy(input);
-
-            var count = await Repository.GetAll().CountAsync();
-
-            var data = await query.ToListAsync();
-
-            var list = data.MapTo<List<ICExceptionDto>>();
-
-            return new PagedResultDto<ICExceptionDto>(count, list);
-
+            var query = JIT_ICException.GetAll().Where(w=>w.FSrcID==input.FID); 
+            var data = await query.ToListAsync(); 
+            return data; 
         }
 
         /// <summary>
@@ -67,15 +52,15 @@ namespace JIT.DIME2Barcode.AppService
         {
             try
             {
-                var entity = await Repository.GetAll()
+                var entity = await JIT_ICException.GetAll()
                     .SingleOrDefaultAsync(p => p.FID == input.FID && p.FSrcID == input.FSrcID);
 
-                var emp = await ERepository.SingleAsync(p => p.FUserId == AbpSession.UserId);
+                var emp = await JIT_Employee.SingleAsync(p => p.FUserId == AbpSession.UserId);
                 if (entity == null)
                 {
                     entity = new DIME2Barcode.Entities.ICException()
                     {
-                        FID = input.FID,
+                        FID =  Guid.NewGuid().ToString(),
                         FSrcID = input.FSrcID,
                         FBiller = emp.FName,
                         FNote = input.FNote,
@@ -83,7 +68,7 @@ namespace JIT.DIME2Barcode.AppService
                         FRemark = input.FRemark,
                         FRecoverTime = input.FRecoverTime
                     };
-                    await Repository.InsertAsync(entity);
+                    await JIT_ICException.InsertAsync(entity);
                 }
                 else
                 {
@@ -93,7 +78,7 @@ namespace JIT.DIME2Barcode.AppService
                     entity.FRemark = input.FRemark;
                     entity.FRecoverTime = input.FRecoverTime;
 
-                    await Repository.UpdateAsync(entity);
+                    await JIT_ICException.UpdateAsync(entity);
                 }
 
                 return true;
@@ -115,9 +100,9 @@ namespace JIT.DIME2Barcode.AppService
             try
             {
                 var entity =
-                    await Repository.GetAll().SingleOrDefaultAsync(p =>
+                    await JIT_ICException.GetAll().SingleOrDefaultAsync(p =>
                         p.FID == input.FID);
-                await Repository.DeleteAsync(entity);
+                await JIT_ICException.DeleteAsync(entity);
                 return true;
             }
             catch (Exception e)

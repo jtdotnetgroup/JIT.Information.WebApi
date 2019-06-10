@@ -16,15 +16,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JIT.DIME2Barcode.AppService
 {
-    public class VM_InventoryAppService : ApplicationService
-    {
-        public IRepository<DIME2Barcode.Entities.VM_Inventory,int> Repository { get; set; }
+    /// <summary>
+    /// 库存查询
+    /// </summary>
+    public class VM_InventoryAppService : BaseAppService
+    { 
         /// <summary>
         /// 列表
         /// </summary>
         public async Task<PagedResultDto<VM_Inventory>> GetAll(VM_InventoryGetAllInput input)
         {
-            var query = Repository.GetAll();
+            var query = JIT_VM_Inventory.GetAll();
             var data = await query.OrderBy(input.Sorting).PageBy(input).ToListAsync();
             var list = data.MapTo<List<VM_Inventory>>();
             return new PagedResultDto<VM_Inventory>(query.Count(), list);
