@@ -70,21 +70,23 @@ namespace JIT.DIME2Barcode.AppService
 
             var context = Repository.GetDbContext() as ProductionPlanMySqlDbContext;
 
-            var query = from item in context.t_ICItem
-                        join b in context.TB_BadItemRelation on item.FItemID equals b.FItemID 
-                        join c in context.t_SubMessage on b.FOperID equals c.FInterID                       
-                        select new TB_BadItemRelationDto()
-                        {
-                            FID=b.FID,
-                            FItemName = item.FName,//产品名称
-                            FItemID=b.FItemID,//产品Id
-                            FOperID=b.FOperID,//工序ID
-                            FNumber=b.FNumber,//不良项目代码
-                            FName=b.FName,//不良项目名称
-                            FDeleted=b.FDeleted, //是否禁用
-                            FRemark=b.FRemark,//备注
-                            FOperName= c.FName
-                        };
+            var query = from a in context.TB_BadItemRelation
+                join b in context.t_ICItem on a.FItemID equals b.FItemID into ab
+                from a1 in ab.DefaultIfEmpty()
+                join c in context.t_SubMessage on a.FOperID equals c.FInterID into ac
+                from a2 in ac.DefaultIfEmpty()
+                select new TB_BadItemRelationDto()
+                {
+                    FID = a.FID,
+                    FItemName = a1.FName,//产品名称
+                    FItemID = a1.FItemID,//产品Id
+                    FOperID = a.FOperID,//工序ID
+                    FNumber = a.FNumber,//不良项目代码
+                    FName = a.FName,//不良项目名称
+                    FDeleted = a.FDeleted, //是否禁用
+                    FRemark = a.FRemark,//备注
+                    FOperName = a2.FName
+                };
 
             if (input.FOperID == 0)
             {

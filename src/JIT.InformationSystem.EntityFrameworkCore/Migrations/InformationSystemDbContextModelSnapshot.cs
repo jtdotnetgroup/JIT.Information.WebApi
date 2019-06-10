@@ -935,7 +935,9 @@ namespace JIT.InformationSystem.Migrations
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
-                        .HasMaxLength(256);
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(256)
+                        .HasDefaultValue("");
 
                     b.Property<string>("EmailConfirmationCode")
                         .HasMaxLength(328);
@@ -964,7 +966,9 @@ namespace JIT.InformationSystem.Migrations
 
                     b.Property<string>("NormalizedEmailAddress")
                         .IsRequired()
-                        .HasMaxLength(256);
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(256)
+                        .HasDefaultValue("");
 
                     b.Property<string>("NormalizedUserName")
                         .IsRequired()

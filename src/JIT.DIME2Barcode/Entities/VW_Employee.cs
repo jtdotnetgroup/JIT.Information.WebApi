@@ -15,7 +15,7 @@ namespace JIT.DIME2Barcode.Entities
         public int FSystemUser { get; set; }//系统用户
         public int FParentId { get; set; }
         public string FPhone { get; set; }
-        public DateTime FHiredate { get; set; }
+        public DateTime? FHiredate { get; set; }
         public string FEmailAddress { get; set; }
         public int FERPUser { get; set; }
         public int FERPOfficeClerk { get; set; }

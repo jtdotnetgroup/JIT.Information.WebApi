@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "e327bb8df0034545661309d2efdc1288ca4008d4"
+    "signature": "f209eaba1474dd9317d4a983fe66c3f24253ae2b"
   },
   "compilationOptions": {
     "defines": [
@@ -2528,6 +2528,20 @@
           "lib/netstandard2.0/NUglify.dll": {}
         }
       },
+      "Pomelo.EntityFrameworkCore.Extensions.ToSql/2.0.0-rtm-10002": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "2.2.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Pomelo.EntityFrameworkCore.Extensions.ToSql.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Pomelo.EntityFrameworkCore.Extensions.ToSql.dll": {}
+        }
+      },
       "Pomelo.EntityFrameworkCore.MySql/2.2.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "2.2.4",
@@ -4250,8 +4264,10 @@
           "CommonTools": "1.0.0",
           "JIT.InformationSystem.Application": "1.0.0",
           "JIT.InformationSystem.Core": "1.0.0",
+          "JIT.InformationSystem.EntityFrameworkCore": "1.0.0",
           "Microsoft.EntityFrameworkCore.Design": "2.2.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
+          "Pomelo.EntityFrameworkCore.Extensions.ToSql": "2.0.0-rtm-10002",
           "Pomelo.EntityFrameworkCore.MySql": "2.2.0"
         },
         "runtime": {
@@ -5589,6 +5605,13 @@
       "sha512": "sha512-2KnRumXfaQ6uJ38gmSkztetvtJNVedCeLDJG70ZmFbb+bgf3B8c5UJ1yaKK75Px2k99keZtRGRgSBPYOa8hxpA==",
       "path": "nuglify/1.5.12",
       "hashPath": "nuglify.1.5.12.nupkg.sha512"
+    },
+    "Pomelo.EntityFrameworkCore.Extensions.ToSql/2.0.0-rtm-10002": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rUJqIDNgOpv3JBW5NSUe7VNYh2ZAcTyInu6uv6x2GOXe0xfeLzLWRgYH/S4vwWX2H4nDeW7BDaqZA5I8a4hbHQ==",
+      "path": "pomelo.entityframeworkcore.extensions.tosql/2.0.0-rtm-10002",
+      "hashPath": "pomelo.entityframeworkcore.extensions.tosql.2.0.0-rtm-10002.nupkg.sha512"
     },
     "Pomelo.EntityFrameworkCore.MySql/2.2.0": {
       "type": "package",

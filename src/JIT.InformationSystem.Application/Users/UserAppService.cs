@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.AutoMapper;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
@@ -33,6 +34,7 @@ namespace JIT.InformationSystem.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
+
 
         public UserAppService(
             IRepository<User, long> repository,
@@ -219,6 +221,20 @@ namespace JIT.InformationSystem.Users
             return true;
         }
 
+        public override async Task<PagedResultDto<UserDto>> GetAll(PagedUserResultRequestDto input)
+        {
+            CheckGetAllPermission();
+
+            var query = Repository.GetAll();
+            var count = await query.CountAsync();
+
+            var data = await query.OrderBy(u => u.UserName).PageBy(input).ToListAsync();
+
+            var list = data.MapTo<List<UserDto>>();
+
+
+            return new PagedResultDto<UserDto>(count,list);
+        }
     }
 }
 

@@ -1032,6 +1032,8 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<string>("FSrcID");
 
+                    b.Property<DateTime?>("FStartTime");
+
                     b.Property<int>("FStatus");
 
                     b.Property<int>("FTranType");
@@ -1095,6 +1097,8 @@ namespace JIT.DIME2Barcode.Migrations
                     b.Property<int?>("FWorkcenterID");
 
                     b.Property<string>("FWorker");
+
+                    b.Property<decimal>("FYSQty");
 
                     b.Property<string>("ICMODispBillID");
 
@@ -1546,6 +1550,8 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<int?>("FWorkcenterID");
 
+                    b.Property<double>("F_102");
+
                     b.Property<string>("FsrcID");
 
                     b.Property<decimal?>("不合格数量");
@@ -1724,7 +1730,7 @@ namespace JIT.DIME2Barcode.Migrations
 
                     b.Property<int?>("ERPOrganizationLeader");
 
-                    b.Property<int>("FWorkshopType");
+                    b.Property<bool>("FWorkshopType");
 
                     b.Property<bool?>("IsDeleted");
 

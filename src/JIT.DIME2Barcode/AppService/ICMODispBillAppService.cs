@@ -233,7 +233,7 @@ namespace JIT.DIME2Barcode.AppService
 
         }
 
-        public async Task<PagedResultDto<VW_DispatchBill_List>> GetDailyDispatchList(ICMODispBill_Daily_GetAllListInput input)
+        public async Task<PagedResultDto<VW_DispatchBill_List>> Post_GetDailyDispatchList(ICMODispBill_Daily_GetAllListInput input)
         {
             var query = LRepository.GetAll();
 
