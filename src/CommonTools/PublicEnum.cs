@@ -46,8 +46,17 @@ namespace CommonTools
         {
             小时=1,分钟=0,天=2
         }
+        /// <summary>
+        /// 任务单号状态
+        /// </summary>
+        public enum ICMODispBillState
+        {
+            待开工= 1,
+            待汇报 = 2,
+            已检验 = 3
+        }
 
-
+        
 
     }
 }

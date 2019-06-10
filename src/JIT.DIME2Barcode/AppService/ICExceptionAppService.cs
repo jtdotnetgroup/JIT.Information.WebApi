@@ -36,19 +36,11 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<PagedResultDto<ICExceptionDto>> GetAll(ICExceptionGetAllInput input)
+        public async Task<List<Entities.ICException>> GetAll(ICExceptionGetAllInput input)
         { 
-
-            var query = JIT_ICException.GetAll().OrderBy(p => p.FID).PageBy(input);
-
-            var count = await JIT_ICException.GetAll().CountAsync();
-
-            var data = await query.ToListAsync();
-
-            var list = data.MapTo<List<ICExceptionDto>>();
-
-            return new PagedResultDto<ICExceptionDto>(count, list);
-
+            var query = JIT_ICException.GetAll().Where(w=>w.FSrcID==input.FID); 
+            var data = await query.ToListAsync(); 
+            return data; 
         }
 
         /// <summary>
@@ -68,7 +60,7 @@ namespace JIT.DIME2Barcode.AppService
                 {
                     entity = new DIME2Barcode.Entities.ICException()
                     {
-                        FID = input.FID,
+                        FID =  Guid.NewGuid().ToString(),
                         FSrcID = input.FSrcID,
                         FBiller = emp.FName,
                         FNote = input.FNote,
