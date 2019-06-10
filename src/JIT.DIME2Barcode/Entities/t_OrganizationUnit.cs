@@ -24,7 +24,7 @@ namespace JIT.DIME2Barcode.Entities
         public   bool? IsDeleted { get; set; }
         public DateTime? LastModificationTime { get; set; }
         public long ? LastModifierUserId { get; set; }
-        public int? ParentId { get; set; }
+        public int ParentId { get; set; }
         public int? TenantId { get; set; }
         public PublicEnum.OrganizationType? OrganizationType { get; set; }
         public string DataBaseConnection { get; set; }
@@ -32,7 +32,7 @@ namespace JIT.DIME2Barcode.Entities
         public int? ERPOrganization { get; set; }
         public string Remark { get; set; }
 
-        public int FWorkshopType { get; set; } //车间类型的ID
+        public bool FWorkshopType { get; set; } //车间类型的ID
 
         [ForeignKey("ParentId")]
         public t_OrganizationUnit Parent { get; set; }

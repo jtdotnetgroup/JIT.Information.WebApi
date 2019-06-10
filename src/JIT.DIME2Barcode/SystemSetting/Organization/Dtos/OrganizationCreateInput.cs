@@ -34,7 +34,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
         [Required]
         public virtual string DisplayName { get; set; }
 
-        public  virtual  int FWorkshopType { get; set; }
+        public  virtual  bool FWorkshopType { get; set; }
 
         public DateTime CreationTime { get; set; }
 
