@@ -45,13 +45,13 @@ namespace JIT.DIME2Barcode.AppService
             List<TreeSubMessageDto> list = new List<TreeSubMessageDto>();
             var query = from a in Context.t_SubMessage
                         join b in Context.t_SubMesType on a.FTypeID equals b.FTypeID into bd
-                        from ac in bd
+                        from ac in bd.DefaultIfEmpty()
                 where ac.FName=="工序"
                 select new
                 {
                     a.FInterID,
                     a.FID,
-                    ac.FName
+                    a.FName
                 };
 
             foreach (var item in query.ToList())
