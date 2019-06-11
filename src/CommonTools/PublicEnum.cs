@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,9 +51,9 @@ namespace CommonTools
         /// </summary>
         public enum ICMODispBillState
         {
-            待开工= 1,
-            待汇报 = 2,
-            已检验 = 3
+            待开工= 0,
+            待汇报 = 1,
+            已检验 = 2
         }
 
         
