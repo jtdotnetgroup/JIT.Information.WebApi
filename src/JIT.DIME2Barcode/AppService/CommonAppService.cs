@@ -54,7 +54,7 @@ namespace JIT.DIME2Barcode.AppService
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.质量检验.ToDescription().Replace(",", ""),
-                    Total = JIT_VW_MODispBillList.GetAll().Where(w => w.操作者 == AbpSession.UserId && w.FStatus == 1).Count(),
+                    Total = JIT_VW_MODispBillList.GetAll().Where(w =>w.FStatus == 1).Count(),
                     BZ = "质量检验待检验数量"
                 };
                 listTaskQty.Add(tmpTaskQty);
@@ -87,8 +87,9 @@ namespace JIT.DIME2Barcode.AppService
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.派工任务待开工.ToDescription().Replace(",", ""),
-                    Total = 0,
-                    BZ = ""
+                    Total = JIT_VW_MODispBillList.GetAll()
+                        .Where(w => w.操作者 == AbpSession.UserId && w.FStatus == 0).Count(),
+                    BZ = "派工任务待开工"
                 };
                 listTaskQty.Add(tmpTaskQty);
             }
@@ -109,8 +110,8 @@ namespace JIT.DIME2Barcode.AppService
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.质量检验待检验.ToDescription().Replace(",", ""),
-                    Total = 0,
-                    BZ = ""
+                    Total = JIT_VW_MODispBillList.GetAll().Where(w => w.FStatus == 1).Count(),
+                    BZ = "质量检验待检验"
                 };
                 listTaskQty.Add(tmpTaskQty);
             }
@@ -120,8 +121,8 @@ namespace JIT.DIME2Barcode.AppService
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.质量检验已检验.ToDescription().Replace(",", ""),
-                    Total = 0,
-                    BZ = ""
+                    Total = JIT_VW_MODispBillList.GetAll().Where(w => w.FStatus == 2).Count(),
+                    BZ = "质量检验已检验"
                 };
                 listTaskQty.Add(tmpTaskQty);
             }

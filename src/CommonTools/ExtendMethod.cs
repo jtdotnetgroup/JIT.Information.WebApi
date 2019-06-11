@@ -49,6 +49,25 @@ namespace CommonTools
             return attribs.Length > 0 ? attribs[0].Description : obj.ToString();
         }
         /// <summary>
+        /// 枚举获取(int)值
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static int EnumToInt(this Enum obj)
+        {
+            return Convert.ToInt32(obj);
+        }
+        /// <summary>
+        /// 枚举获取(string)值
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string EnumToString(this Enum obj)
+        {
+            return Convert.ToString(obj);
+        }
+
+        /// <summary>
         /// 总和
         /// </summary>
         /// <param name="str"></param>

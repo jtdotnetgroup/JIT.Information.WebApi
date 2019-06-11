@@ -42,8 +42,6 @@ namespace JIT.DIME2Barcode.Entities
         public DateTime 计划完工日期 { get; set; }
 
         public double F_102 { get; set; }
-
-        public  int FWorker { get; set; }
-
+        public int FWorker { get; set; }
     }
 }
