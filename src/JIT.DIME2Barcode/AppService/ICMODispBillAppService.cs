@@ -199,11 +199,11 @@ namespace JIT.DIME2Barcode.AppService
         {
             try
             {
-                var entity = await Repository.GetAll()
-                    .SingleOrDefaultAsync(p => p.FID == input.FID && p.FWorker == AbpSession.UserId);
+                var entity = await Repository.GetAll().Include(p=>p.employee)
+                    .SingleOrDefaultAsync(p => p.FID == input.FID && p.employee.FUserId == AbpSession.UserId);
                 if (entity != null)
                 {
-                    entity.FStatus = PublicEnum.ICMODispBillState.待汇报.ToString().ToInt();
+                    entity.FStatus = PublicEnum.ICMODispBillState.待汇报.EnumToInt();
                     entity.FStartTime = DateTime.Now;
                     await Repository.UpdateAsync(entity);
                 }
