@@ -25,8 +25,8 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
     public class ICMODispBill_Daily_GetAllListInput
     {
         [Required]
-        public List<DateTime> DatelList { get; set; }
+        public DateTime[] DatelList { get; set; }
         [Required]
-        public List<string> FMOBillNos { get; set; }
+        public string[] FMOBillNos { get; set; }
     }
 }

@@ -26,6 +26,7 @@ namespace JIT.JIT.TaskAssignment.VW_MODispBillList
             query = input.FClosed.HasValue ? query.Where(p => p.FClosed == input.FClosed) : query;
 
             var data = query.OrderBy(input.Sorting).PageBy(input).ToList();
+          
             var count = query.Count();
 
             var list = data.MapTo<List<DIME2Barcode.Entities.VW_MODispBillList>>();

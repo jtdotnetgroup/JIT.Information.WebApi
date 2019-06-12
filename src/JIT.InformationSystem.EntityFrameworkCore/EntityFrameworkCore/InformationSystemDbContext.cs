@@ -15,5 +15,12 @@ namespace JIT.InformationSystem.EntityFrameworkCore
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().Property(a => a.EmailAddress).HasDefaultValue("");
+            modelBuilder.Entity<User>().Property(a => a.NormalizedEmailAddress).HasDefaultValue("");
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

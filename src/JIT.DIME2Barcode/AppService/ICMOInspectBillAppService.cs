@@ -76,7 +76,6 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-
         public async Task<bool> ICMODispBillSave(ICMODispBillDetaileds input)
         {
             try

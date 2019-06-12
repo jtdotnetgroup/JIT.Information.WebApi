@@ -31,8 +31,8 @@ namespace JIT.DIME2Barcode.Entities
 
         public long FUserId { get; set; }
         public bool IsDeleted { get; set; }
-
+    
         [ForeignKey("FDepartment")]
-        public OrganizationUnit Department { get; set; }
+        public t_OrganizationUnit Department { get; set; }
     }
 }

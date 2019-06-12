@@ -15,9 +15,9 @@ namespace JIT.DIME2Barcode.SystemSetting.Employee.Dtos
         public int FSystemUser { get; set; }
         public int FParentId { get; set; }
         public string FPhone { get; set; }
-        public DateTime FHiredate { get; set; }
+        public DateTime? FHiredate { get; set; }
 
-        public OrganizationUnit Department { get; set; }
+        public t_OrganizationUnit Department { get; set; }
 
 
     }

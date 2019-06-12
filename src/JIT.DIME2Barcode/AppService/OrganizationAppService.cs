@@ -17,7 +17,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         //: AsyncCrudAppService<OrganizationUnit, OrganizationDto, long, OrganizationGetAllInput, OrganizationCreateInput, OrganizationDto, OrganizationDto, OrganizationDeleteInput>
     {
 
-        public IRepository<OrganizationUnit, int> _repository { get; set; }
+        public IRepository<t_OrganizationUnit, int> _repository { get; set; }
 
         /// <summary>
         /// 根据父节点获取子节点
@@ -29,7 +29,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
      
             var quers =await _repository.GetAll().Where(p=> p.IsDeleted == false).ToListAsync();         
             
-            var list = quers.MapTo<List<OrganizationDto>>();  
+            var list = quers.MapTo<List<OrganizationDto>>();
 
             var result = list.Where(x => x.ParentId == ParentID);
             return result.ToList();
@@ -57,7 +57,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
                 //m.Code = item.Code;
                 //m.DisplayName = item.DisplayName;
                 m.value = item.Id.ToString();
-                m.label = item.DisplayName;            
+                m.label = item.DisplayName;
                 m.children = await GetTreeList(int.Parse(item.Id.ToString()));
                 TreeList.Add(m);
             }
@@ -87,28 +87,51 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         /// <returns></returns>
         public async Task<int> Create(OrganizationCreateInput input)
         {
-
-           
-
-            var entity = new OrganizationUnit()
+            try
             {
-                Code = input.Code,
-                ParentId = int.Parse(input.ParentId.ToString()==null?"0": input.ParentId.ToString()),
-                TenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0,
-                CreationTime = DateTime.Now,
-                CreatorUserId = this.AbpSession.UserId.HasValue ? this.AbpSession.UserId.Value : 0,
-                DisplayName = input.DisplayName,
-                IsDeleted = false,
-                OrganizationType = Enum.Parse<PublicEnum.OrganizationType>(input.OrganizationType.ToString()),//组织类型
-                DataBaseConnection = input.DataBaseConnection,//数据库连接
-                ERPOrganizationLeader = input.ERPOrganizationLeader == null ? 0 : input.ERPOrganizationLeader,//组织负责人
-                ERPOrganization = input.ERPOrganization == null ? 0 : input.ERPOrganization,
-                Remark =input.Remark,
-            };
-       
-            return await _repository.InsertAndGetIdAsync(entity);
+                var entity = new t_OrganizationUnit()
+                {
+                    Code = input.Code,
+                    ParentId = int.Parse(input.ParentId.ToString() == null ? "0" : input.ParentId.ToString()),
+                    TenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0,
+                    CreationTime = DateTime.Now,
+                    CreatorUserId = this.AbpSession.UserId.HasValue ? this.AbpSession.UserId.Value : 0,
+                    DisplayName = input.DisplayName,
+                    IsDeleted = false,
+                    OrganizationType = Enum.Parse<PublicEnum.OrganizationType>(input.OrganizationType.ToString()),//组织类型
+                    DataBaseConnection = input.DataBaseConnection,//数据库连接
+                    ERPOrganizationLeader = input.ERPOrganizationLeader == null ? 0 : input.ERPOrganizationLeader,//组织负责人
+                    ERPOrganization = input.ERPOrganization == null ? 0 : input.ERPOrganization,
+                    Remark = input.Remark,
+                    FWorkshopType = input.FWorkshopType
+
+                };
+
+                return await _repository.InsertAndGetIdAsync(entity);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return 0;
 
         }
+
+        //修改组织
+        public async Task<t_OrganizationUnit> Update(OrganizationCreateInput input)
+        {
+            var entity = input.MapTo<t_OrganizationUnit>();
+            entity.Id = input.Id;
+            entity.TenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0;
+            entity.IsDeleted = false;
+            entity.LastModificationTime=DateTime.Now;
+            entity.LastModifierUserId = this.AbpSession.UserId.HasValue ? this.AbpSession.UserId.Value : 0;
+            entity.CreationTime = input.CreationTime;
+            entity.CreatorUserId = input.CreatorUserId;
+            return await _repository.UpdateAsync(entity); ;
+        }
+
 
         /// <summary>
         /// 返回枚举 组织类型 list集合
@@ -126,15 +149,17 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
             }
             return  list;
         }
-     
-        public async Task<List<OrganizationDto>>  GetCore(string Code)
+
+        /// <summary>
+        /// 通过当前节点去获取节点信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<t_OrganizationUnit> Get(OrganizationDeleteDto input)
         {
-            var entity =await _repository.GetAll().Where(p => p.Code == Code && p.IsDeleted==false).ToListAsync();
-            return entity.MapTo<List<OrganizationDto>>();
-
+            var entity = await _repository.GetAll().SingleOrDefaultAsync(p => p.Id == input.Id && p.IsDeleted == false);
+            return entity.MapTo<t_OrganizationUnit>();
         }
-
-
 
         /// <summary>
         /// 删除
@@ -174,10 +199,10 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        protected  OrganizationUnit GetCompany(OrganizationUnit node,List<OrganizationUnit> treeList)
+        protected  t_OrganizationUnit GetCompany(t_OrganizationUnit node,List<t_OrganizationUnit> treeList)
         {
             //最终返回的结果
-            OrganizationUnit result = null;
+            t_OrganizationUnit result = null;
             //判断传入的节点是否是公司，如果是则返回
             if (node.OrganizationType == PublicEnum.OrganizationType.公司||node.OrganizationType==PublicEnum.OrganizationType.集团)
             {

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Abp.Authorization.Users;
 using Abp.Extensions;
+using JIT.InformationSystem.CommonClass;
 
 namespace JIT.InformationSystem.Authorization.Users
 {
@@ -30,5 +32,11 @@ namespace JIT.InformationSystem.Authorization.Users
 
             return user;
         }
+
+        [Email]
+        public override string NormalizedEmailAddress { get; set; }
+
+        [Email]
+        public override string EmailAddress { get; set; }
     }
 }
