@@ -9,6 +9,7 @@ using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Castle.DynamicProxy.Generators.Emitters;
+using CommonTools;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos;
@@ -189,6 +190,32 @@ namespace JIT.DIME2Barcode.AppService
             }
         }
 
+        /// <summary>
+        /// 开工
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<bool> OpenWork(ICMODispBillOpenWorkInput input)
+        {
+            try
+            {
+                var entity = await Repository.GetAll().Include(p=>p.employee)
+                    .SingleOrDefaultAsync(p => p.FID == input.FID && p.employee.FUserId == AbpSession.UserId);
+                if (entity != null)
+                {
+                    entity.FStatus = PublicEnum.ICMODispBillState.待汇报.EnumToInt();
+                    entity.FStartTime = DateTime.Now;
+                    await Repository.UpdateAsync(entity);
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
 
 
         /// <summary>

@@ -30,11 +30,10 @@ namespace JIT.InformationSystem.Users
     {
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
-        private readonly IRepository<Role> _roleRepository;
+        private readonly IRepository<Role> _roleRepository; 
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
-
 
         public UserAppService(
             IRepository<User, long> repository,
@@ -231,8 +230,12 @@ namespace JIT.InformationSystem.Users
             var data = await query.OrderBy(u => u.UserName).PageBy(input).ToListAsync();
 
             var list = data.MapTo<List<UserDto>>();
-
-
+            foreach (var tmp in list)
+            {
+                tmp.RoleNames = _roleRepository.GetAll()
+                    .Where(w => GetEntityByIdAsync(tmp.Id).Result.Roles.Select(s => s.RoleId).Contains(w.Id))
+                    .Select(s => s.NormalizedName).ToArray();
+            }
             return new PagedResultDto<UserDto>(count,list);
         }
     }

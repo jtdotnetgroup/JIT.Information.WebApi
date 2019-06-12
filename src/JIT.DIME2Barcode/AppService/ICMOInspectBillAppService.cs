@@ -52,7 +52,7 @@ namespace JIT.DIME2Barcode.AppService
             // 
             icmoDispBillDetaileds.IcmoInspectBill =
                 await Repository.GetAll().FirstOrDefaultAsync(f =>
-                    f.FID == input.FID && f.FOperID == input.FOperID) ??
+                    f.FID == input.FID  && f.FOperID == input.FOperID) ??
                 new ICMOInspectBill();
             // 
             //var tmp = tbRepository.GetAll()
@@ -157,6 +157,25 @@ namespace JIT.DIME2Barcode.AppService
                 return false;
             }
         }
+        /// <summary>
+        ///  删除质检单
+        /// </summary>
+        /// <param name="FID"></param>
+        /// <returns></returns>
+        public async Task<bool> Delete(string FID)
+        {
+            try
+            {
+                var result = await Repository.GetAll().Where(w => w.FID == FID).FirstOrDefaultAsync();
+                Repository.DeleteAsync(result);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
 
         /// <summary>
         /// 根据任务单号ID查询回所有检验单号
@@ -173,7 +192,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="ICMODispBillID">任务单号ID</param>
         /// <param name="FAuxQty">汇报数</param>
-        public bool Create(string ICMODispBillID, decimal FAuxQty)
+        public bool Create(string ICMODispBillID, decimal FAuxQty,string BatchNum)
         {
             try
             {
@@ -202,7 +221,8 @@ namespace JIT.DIME2Barcode.AppService
                     FBiller = AbpSession.UserId.ToString(),
                     FBillTime = DateTime.Now,
                     ICMODispBillID = ICMODispBillID,
-                    FYSQty = 0
+                    FYSQty = 0,
+                    BatchNum = BatchNum
                 };
                 Repository.InsertOrUpdate(icm);
                 // 所有汇报
@@ -223,16 +243,34 @@ namespace JIT.DIME2Barcode.AppService
             }
         }
 
+        /// <summary>
+        /// 更改汇报数
+        /// </summary>
+        public async Task<bool> UpdateFAuxQty(string FID,decimal FAuxQty, string BatchNum)
+        {
+            try
+            {
+                var entity = await Repository.GetAll().SingleOrDefaultAsync(s => s.FID == FID);
+                entity.FAuxQty = FAuxQty;
+                entity.BatchNum = BatchNum;
+                await  Repository.UpdateAsync(entity);
+                // 
+                var icmopispBillList = await Repository.GetAll().Where(w => w.ICMODispBillID == entity.ICMODispBillID).ToListAsync();
+                var query1 = await icmodispbillRepository.GetAll().Where(w => w.FID == entity.ICMODispBillID).SingleOrDefaultAsync();
+                query1.FFInspectAuxQty = icmopispBillList.Sum(s => s.FFailAuxQty);
+                query1.FFinishAuxQty = icmopispBillList.Sum(s => s.FAuxQty);
+                query1.FFailAuxQty = icmopispBillList.Sum(s => s.FFailAuxQty);
+                query1.FPassAuxQty = icmopispBillList.Sum(s => s.FPassAuxQty);
+                await icmodispbillRepository.UpdateAsync(query1);
 
-        ///// <summary>
-        ///// 根据任务单号ID查询回所有检验单号
-        ///// </summary>
-        ///// <param name="ICMODispBillID"></param>
-        ///// <returns></returns>
-        //public async Task<List<Entities.ICMOInspectBill>> GetList(string ICMODispBillID)
-        //{
-        //    return await Repository.GetAll().Where(w => w.ICMODispBillID == ICMODispBillID).ToListAsync();
-        //}
-
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            
+        }
     }
 }
