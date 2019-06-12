@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
+using Abp;
+using Abp.Runtime.Validation;
 using JIT.DIME2Barcode.BaseData.Equipment.ISpecification;
 
 namespace JIT.DIME2Barcode.AppService
@@ -30,6 +32,13 @@ namespace JIT.DIME2Barcode.AppService
         public async Task<EquipmentDto> Create(EquipmentDto input)
         {
             var entity = input.MapTo<Equipment>();
+
+            var count =await  _repository.CountAsync(p => p.FNumber == input.FNumber);
+
+            if (count > 0)
+            {
+                throw new AbpValidationException($"设备代码{input.FNumber}已存在，不能重复");
+            }
 
             entity =await  _repository.InsertAsync(entity);
 

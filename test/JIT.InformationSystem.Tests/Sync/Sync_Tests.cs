@@ -21,17 +21,7 @@ namespace JIT.InformationSystem.Tests.Sync
         [Fact]
         public async Task Sync_Item()
         {
-            var jobs= typeFinder.Find(t =>
-            {
-                var type = t.GetTypeInfo();
-                //反射所有公共的、非抽象类、且实现了ISyncJob的类
-                return type.IsPublic 
-                       && !type.IsAbstract 
-                       && type.IsClass 
-                       && typeof(ISyncJob).IsAssignableFrom(type);
-            });
-
-            Console.WriteLine(jobs.Length);
+           
         }
     }
 }

@@ -40,5 +40,7 @@ namespace JIT.DIME2Barcode.Entities
         public string ICMODispBillID { get; set; }
         public decimal FYSQty { get; set; }
         
+
+
     }
 }
