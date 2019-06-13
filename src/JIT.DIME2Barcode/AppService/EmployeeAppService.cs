@@ -201,7 +201,7 @@ namespace JIT.DIME2Barcode.AppService
                     var CreateUserDto = input.User;
                     var UserDto = new CreateUserDto
                     {
-                        UserName = CreateUserDto.UserName == "" ? input.FMpno : CreateUserDto.UserName,
+                        UserName = string.IsNullOrEmpty(CreateUserDto.UserName)? input.FMpno : CreateUserDto.UserName,
                         Name = input.FName,
                         Surname = input.FName,
                         EmailAddress = input.FEmailAddress,
@@ -344,13 +344,90 @@ namespace JIT.DIME2Barcode.AppService
             }
             else
             {
-                var querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false && p.FDepartment == input.Id);
-                var count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted == false && p.FDepartment == input.Id);
-                var data = await querys.OrderBy(p => p.Id).PageBy(input).ToListAsync();
-                var list = data.MapTo<List<VWEmployeesDto>>();
+
+                var Querybufid = _Repository.GetAll().SingleOrDefault(p => p.Id == input.Id);
+                IQueryable<VW_Employee> querys;
+                int count = 0;
+                List<VW_Employee> data=new EditableList<VW_Employee>();
+                List<VWEmployeesDto> list=new List<VWEmployeesDto>();
+
+                if (Querybufid.ParentId==0&& Querybufid.OrganizationType==PublicEnum.OrganizationType.集团)
+                {
+                    //querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false);
+                    //count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted == false);
+                    //data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
+                    //list = data.MapTo<List<VWEmployeesDto>>();
+
+
+                    int[] FDepartmentIDArr = GetOneselfAndJunior(new int[] { input.Id });
+
+                    querys = from a in _VwRepository.GetAll()
+                        where (FDepartmentIDArr).Contains(a.FDepartment)
+                        select a;
+
+                    count = await _ERepository.GetAll().CountAsync(p =>
+                        p.IsDeleted == false && FDepartmentIDArr.Contains(p.FDepartment));
+                    data = await querys.Where(p => p.IsDeleted == false).OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
+                    list = data.MapTo<List<VWEmployeesDto>>();
+
+                }
+                else if (Querybufid.OrganizationType== PublicEnum.OrganizationType.公司)
+                {
+                    querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false && p.FOrganizationUnitId == input.Id);
+                    count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted == false && p.FOrganizationUnitId == input.Id);
+                    data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
+                    list = data.MapTo<List<VWEmployeesDto>>();
+                }
+                else if(Querybufid.OrganizationType==PublicEnum.OrganizationType.部门)
+                {
+
+                    int[] FDepartmentIDArr = GetOneselfAndJunior(new int[] {input.Id});
+
+                    querys = from a in _VwRepository.GetAll()
+                             where (FDepartmentIDArr).Contains(a.FDepartment)
+                             select a;
+
+                    count = await _ERepository.GetAll().CountAsync(p =>
+                        p.IsDeleted == false && FDepartmentIDArr.Contains(p.FDepartment));
+                    data = await querys.Where(p=>p.IsDeleted==false).OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
+                    list = data.MapTo<List<VWEmployeesDto>>();
+                }
+
+
                 return new PagedResultDto<VWEmployeesDto>(count, list);
             }
         }
+
+
+        /// <summary>
+        /// 取自己以及下级部门所有人
+        /// </summary>
+        /// <param name="ArrParentID"></param>
+        /// <returns></returns>
+        public int[] GetOneselfAndJunior(int[] ArrParentID)
+        {
+            try
+            {
+                //if (ArrParentID.Length == 0)
+                //{
+                //    return ArrParentID;
+                //}
+                int[] ArrJunior = _Repository.GetAll().Where(p => p.IsDeleted == false && ArrParentID.Contains(p.ParentId))
+                    .Select(s => s.Id).ToArray();
+                if (ArrJunior.Length == 0)
+                {
+                    return ArrParentID;
+                }
+
+                return ArrJunior.Union(GetOneselfAndJunior(ArrJunior)).Union(ArrParentID).ToArray();
+            }
+            catch (Exception e)
+            {           
+                return ArrParentID;
+            }
+             
+        }
+
 
         /// <summary>
         /// 员工编号
@@ -358,6 +435,27 @@ namespace JIT.DIME2Barcode.AppService
         /// <returns></returns>
         public async Task<string> FMpno()
         {
+            // var FMpno = "";    
+            // //查询最后一条没有别删除的编号
+            // var enetity = _ERepository.GetAll().LastOrDefault();
+            // if (enetity!=null)
+            // {
+            //     //如果存在这个编号就在原来基础上增加
+            //     string[] strFMpno = enetity.FMpno.Split("YK");
+            //     FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 1);
+
+            //     var quers = _ERepository.GetAll().SingleOrDefault(p => p.FMpno == FMpno);
+            //     if (quers!=null)
+            //     {
+            //         FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 2);
+            //     }
+            // }
+            // else
+            // {
+            //     FMpno = "YK00001";
+            // }
+
+            // return FMpno;
 
             //var FMpno = "";    
             ////查询最后一条没有别删除的编号

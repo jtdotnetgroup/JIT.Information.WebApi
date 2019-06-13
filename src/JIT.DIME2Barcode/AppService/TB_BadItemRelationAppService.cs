@@ -44,8 +44,9 @@ namespace JIT.DIME2Barcode.AppService
 
             List<TreeSubMessageDto> list = new List<TreeSubMessageDto>();
             var query = from a in Context.t_SubMessage
-                        join b in Context.t_SubMesType on a.FTypeID equals b.FTypeID
-                where b.FName=="工序"
+                        join b in Context.t_SubMesType on a.FTypeID equals b.FTypeID into bd
+                        from ac in bd.DefaultIfEmpty()
+                where ac.FName=="工序"
                 select new
                 {
                     a.FInterID,
@@ -71,28 +72,49 @@ namespace JIT.DIME2Barcode.AppService
             var context = Repository.GetDbContext() as ProductionPlanMySqlDbContext;
 
             var query = from a in context.TB_BadItemRelation
-                join b in context.t_ICItem on a.FItemID equals b.FItemID into ab
-                from a1 in ab.DefaultIfEmpty()
-                join c in context.t_SubMessage on a.FOperID equals c.FInterID into ac
-                from a2 in ac.DefaultIfEmpty()
-                select new TB_BadItemRelationDto()
-                {
-                    FID = a.FID,
-                    FItemName = a1.FName,//产品名称
-                    FItemID = a1.FItemID,//产品Id
-                    FOperID = a.FOperID,//工序ID
-                    FNumber = a.FNumber,//不良项目代码
-                    FName = a.FName,//不良项目名称
-                    FDeleted = a.FDeleted, //是否禁用
-                    FRemark = a.FRemark,//备注
-                    FOperName = a2.FName
-                };
+                        join b in context.t_ICItem on a.FItemID equals b.FItemID into  ab
+                        from a1 in ab.DefaultIfEmpty()
+                        join c in context.t_SubMessage on a.FOperID equals c.FInterID into ac
+                        from a2 in ac.DefaultIfEmpty()
+                        select new TB_BadItemRelationDto()
+                        {
+                            FID = a.FID,
+                            FItemName = a1.FName,//产品名称
+                            FItemID = a1.FItemID,//产品Id
+                            FOperID = a.FOperID,//工序ID
+                            FNumber = a.FNumber,//不良项目代码
+                            FName = a.FName,//不良项目名称
+                            FDeleted = a.FDeleted, //是否禁用
+                            FRemark = a.FRemark,//备注
+                            FOperName = a2.FName
+                        };
+
+            #region 旧代码
+            //var query = from item in context.t_ICItem
+            //            join b in context.TB_BadItemRelation on item.FItemID equals b.FItemID 
+            //            join c in context.t_SubMessage on b.FOperID equals c.FInterID                       
+            //            select new TB_BadItemRelationDto()
+            //            {
+            //                FID=b.FID,
+            //                FItemName = item.FName,//产品名称
+            //                FItemID=b.FItemID,//产品Id
+            //                FOperID=b.FOperID,//工序ID
+            //                FNumber=b.FNumber,//不良项目代码
+            //                FName=b.FName,//不良项目名称
+            //                FDeleted=b.FDeleted, //是否禁用
+            //                FRemark=b.FRemark,//备注
+            //                FOperName= c.FName
+            //            };
+
+
+            #endregion
+
 
             if (input.FOperID == 0)
             {
                 var count = Repository.GetAll().Count();
 
-                var data = query.OrderBy(p => p.FID).Skip(input.SkipCount * input.MaxResultCount).Take(input.MaxResultCount).ToList();
+                var data = query.OrderBy(p => p.FID).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToList();
 
                 var list = data.MapTo<List<TB_BadItemRelationDto>>();
                 return new PagedResultDto<TB_BadItemRelationDto>(count, list);

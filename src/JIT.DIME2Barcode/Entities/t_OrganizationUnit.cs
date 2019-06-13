@@ -24,7 +24,7 @@ namespace JIT.DIME2Barcode.Entities
         public   bool? IsDeleted { get; set; }
         public DateTime? LastModificationTime { get; set; }
         public long ? LastModifierUserId { get; set; }
-        public int? ParentId { get; set; }
+        public int ParentId { get; set; }
         public int? TenantId { get; set; }
         public PublicEnum.OrganizationType? OrganizationType { get; set; }
         public string DataBaseConnection { get; set; }
