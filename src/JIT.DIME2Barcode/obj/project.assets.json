@@ -6031,7 +6031,7 @@
       ]
     },
     "runtime.native.System.Net.Http/4.3.0": {
-      "sha512": "3ftl4qgNuPXuFvo2DNQrVA3REdwonQzPloUKp7j+oiYrC7wZbXlxz0zWDiXCaH+/9Z4A09nxaE82wY4VY8nOig==",
+      "sha512": "guqHgQOK2eUgtJae2VKjNawBn1xjC0hfOt5wASHa60XHbIdCsQlqtvMsFG+3hy7yp88V+gi9fZCjubuDkeakcQ==",
       "type": "package",
       "path": "runtime.native.system.net.http/4.3.0",
       "files": [
@@ -6096,7 +6096,7 @@
       ]
     },
     "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple/4.3.0": {
-      "sha512": "nMKsh4PNCa/beGq0xod7sKfI013juHe7C9vPyfltY0CDNVw41VYB9TW+wpIgY5U541pkaDvjV+1FWhMm+3gGPQ==",
+      "sha512": "Kh9W4agE0r/hK8AX1LvyQI2NrKHBL8pO0gRoDTdDb0LL6Ta1Z2OtFx3lOaAE0ZpCUc/dt9Wzs3rA7a3IsKdOVA==",
       "type": "package",
       "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple/4.3.0",
       "files": [
@@ -6500,7 +6500,7 @@
       ]
     },
     "System.Collections.Specialized/4.3.0": {
-      "sha512": "R1Wi8WjjWoBR2xrVIVrzOFd8BqyZeXs/LREdjCme3iRpIS7l8rd/6Hpvj3+PN4ahsIH4HXcwF3Cq8gs/8QMcSw==",
+      "sha512": "NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
       "type": "package",
       "path": "system.collections.specialized/4.3.0",
       "files": [
@@ -10933,23 +10933,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DQ\\.nuget\\packages\\": {},
+    "C:\\Users\\HL\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\JIT.DIME2Barcode.csproj",
+      "projectUniqueName": "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\JIT.DIME2Barcode.csproj",
       "projectName": "JIT.DIME2Barcode",
-      "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\JIT.DIME2Barcode.csproj",
-      "packagesPath": "C:\\Users\\DQ\\.nuget\\packages\\",
-      "outputPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\obj\\",
+      "projectPath": "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\JIT.DIME2Barcode.csproj",
+      "packagesPath": "C:\\Users\\HL\\.nuget\\packages\\",
+      "outputPath": "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\DQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.1.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10957,23 +10958,24 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "E:\\DownLoads\\VS2017": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "D:\\DEV\\Components\\System\\Components\\Packages": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\Net\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj": {
-              "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj"
+            "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj": {
+              "projectPath": "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj"
+            },
+            "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj": {
+              "projectPath": "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj"
             },
             "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj": {
               "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj"
             },
-            "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj": {
-              "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj"
-            },
-            "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.EntityFrameworkCore\\JIT.InformationSystem.EntityFrameworkCore.csproj": {
-              "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.EntityFrameworkCore\\JIT.InformationSystem.EntityFrameworkCore.csproj"
+            "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.InformationSystem.EntityFrameworkCore\\JIT.InformationSystem.EntityFrameworkCore.csproj": {
+              "projectPath": "F:\\捷特科技公司\\捷特开发项目\\Server备份\\JIT.Information.WebApi\\src\\JIT.InformationSystem.EntityFrameworkCore\\JIT.InformationSystem.EntityFrameworkCore.csproj"
             }
           }
         }

@@ -16,7 +16,7 @@ namespace JIT.DIME2Barcode.Entities
        [StringLength(10)]
         public string FName { get; set; }
         public int? FSex { get; set; }
-        public int? FDepartment { get; set; } //所属部门  子ID
+        public int FDepartment { get; set; } //所属部门  子ID
         public int? FWorkingState { get; set; }//在职状态
         public int? FSystemUser { get; set; }//系统用户
         public int? FParentId { get; set; }//上级主管  

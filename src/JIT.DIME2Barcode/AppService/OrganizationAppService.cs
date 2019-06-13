@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JIT.DIME2Barcode.AppService;
+using JIT.DIME2Barcode.SystemSetting.Employee.Dtos;
 
 namespace JIT.DIME2Barcode.SystemSetting.Organization
 {
@@ -18,6 +20,8 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
     {
 
         public IRepository<t_OrganizationUnit, int> _repository { get; set; }
+
+        public  EmployeeAppService EmployeeApp { get; set; }
 
         /// <summary>
         /// 根据父节点获取子节点
@@ -179,8 +183,25 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
 
             var entity = await query.SingleOrDefaultAsync(p => true);
 
+         
+
+            var ORByID = _repository.GetAll().SingleOrDefault(p => p.Id == entity.ParentId).Id;
+
+            var EmployeeByID = EmployeeApp.GetOneselfAndJunior(new int[] {input.Id});
+
+            var EmployeeList = EmployeeApp._ERepository.GetAll()
+                .Where(p => p.IsDeleted == false && EmployeeByID.Contains(p.FDepartment)).ToList();
+
+
             if (entity != null)
             {
+
+                foreach (var e in EmployeeList)
+                {
+                  e.FDepartment = ORByID;
+                  EmployeeApp._ERepository.Update(e);
+                }
+
                 entity.IsDeleted = true;
                 entity.DeletionTime = DateTime.Now;
                 entity.DeleterUserId = this.AbpSession.UserId.HasValue ? this.AbpSession.UserId.Value : 0;
@@ -198,6 +219,10 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
 
             return count;
         }
+
+
+       
+
 
         /// <summary>
         /// 查找子点所在的公司或集团
