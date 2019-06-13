@@ -43,5 +43,7 @@ namespace JIT.DIME2Barcode.Entities
 
         public double F_102 { get; set; }
         public int FWorker { get; set; }
+
+        //public string WorkName { get; set; }
     }
 }
