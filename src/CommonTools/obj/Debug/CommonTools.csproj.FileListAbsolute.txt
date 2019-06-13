@@ -16,3 +16,9 @@ F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src
 F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
 F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb
 F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
+E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.dll
+E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.pdb
+E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
+E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CoreCompileInputs.cache
+E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
+E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb

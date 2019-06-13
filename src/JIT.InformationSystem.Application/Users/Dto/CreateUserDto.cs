@@ -31,7 +31,7 @@ namespace JIT.InformationSystem.Users.Dto
 
         public string[] RoleNames { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "ÃÜÂë²»ÄÜÎª¿Õ")]
         [StringLength(AbpUserBase.MaxPlainPasswordLength)]
         [DisableAuditing]
         public string Password { get; set; }

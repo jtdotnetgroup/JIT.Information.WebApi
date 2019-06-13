@@ -39,7 +39,7 @@ namespace JIT.DIME2Barcode.AppService
         {
 
             var query = VRepository.GetAll()
-                .Where(p => p.FMOBillNo == input.FMOBillNo && p.FMOInterID == input.FMOInterID);
+                .Where(p => p.FMOBillNo == input.FMOBillNo );
 
             query = input.FDate == null ? query : query.Where(p => p.日期 == input.FDate);
 
@@ -270,7 +270,7 @@ namespace JIT.DIME2Barcode.AppService
 
             var count = await query.CountAsync();
 
-            var data = await query.ToListAsync();
+            var data = await query.OrderBy(a=>a.FDate).ToListAsync();
 
             return new PagedResultDto<VW_DispatchBill_List>(count, data);
         }

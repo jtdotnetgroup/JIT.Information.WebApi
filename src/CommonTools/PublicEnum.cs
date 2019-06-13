@@ -53,7 +53,7 @@ namespace CommonTools
         {
             待开工= 0,
             待汇报 = 1,
-            已检验 = 2
+            已检验 = 2,
         }
 
         

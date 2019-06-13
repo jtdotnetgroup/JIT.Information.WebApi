@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="BaseData\Shitfs\Dtos\" />
     <Folder Include="SystemSetting\WorkingProcedure\" />
   </ItemGroup>
 

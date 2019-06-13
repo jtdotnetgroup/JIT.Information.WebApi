@@ -52,7 +52,7 @@ namespace JIT.DIME2Barcode.AppService
             // 
             icmoDispBillDetaileds.IcmoInspectBill =
                 await Repository.GetAll().FirstOrDefaultAsync(f =>
-                    f.FID == input.FID && f.FOperID == input.FOperID) ??
+                    f.FID == input.FID  && f.FOperID == input.FOperID) ??
                 new ICMOInspectBill();
             // 
             //var tmp = tbRepository.GetAll()

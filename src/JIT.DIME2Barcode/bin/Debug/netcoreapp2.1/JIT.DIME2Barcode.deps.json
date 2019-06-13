@@ -2797,7 +2797,7 @@
     "Abp.Quartz/4.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-qdn8XLFFbUpBMIIuaa3FGbWjVjsAr9A2qrDph+abkjithray2UkhO0hfm+mbcC496IuOiuAsddF3O6WB8N5HNg==",
+      "sha512": "sha512-k7C/0qfZatzT4EHv1qAoBFiUD63ikBcfRKaOw3JKkb9vfy6ujf+w4Bbd/djAq0tnN3PikQdBdCSWImWM0RDrUw==",
       "path": "abp.quartz/4.5.0",
       "hashPath": "abp.quartz.4.5.0.nupkg.sha512"
     },
@@ -3574,7 +3574,7 @@
     "Quartz/3.0.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3vCJ/eJQzEne1ZocNftmPBjuA0vFHs8rOG3bQcSsB9fbQuZpmkrmOH+0Iq7mlibSbR9f1VV4TUMnkkbPUd7Kqw==",
+      "sha512": "sha512-jnHuMwRprkqpmnKZU5xwEB95v1bF4JQWes82p2IPTAEGcBsZ5CSEQ4Pu1StCyD64JIm71C5/i7kuroZEHx5iwA==",
       "path": "quartz/3.0.7",
       "hashPath": "quartz.3.0.7.nupkg.sha512"
     },
@@ -3980,7 +3980,7 @@
     "System.Net.NameResolution/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-AFYl08R7MrsrEjqpQWTZWBadqXyTzNDaWpMqyxhb0d6sGhV6xMDKueuBXlLL30gz+DIRY6MpdgnHWlCh5wmq9w==",
+      "sha512": "sha512-9gpp1lZD47ulhGrOUT2G+Xuvb2KPNlDB3ac5syDEXj2R0+sB2r5V1mXty4FFZTihRwPPn0flQYWnLInoW4ODgg==",
       "path": "system.net.nameresolution/4.3.0",
       "hashPath": "system.net.nameresolution.4.3.0.nupkg.sha512"
     },
@@ -4351,7 +4351,7 @@
     "System.Xml.XmlSerializer/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
+      "sha512": "sha512-02zOeMrtQrYF5wGUNohMcfzYiwZ9YsAFEpuMgFRxuQJ97wfQrcTYHSzjKhRjvyB95fWsKkDp1PF5zSBQ3fiEjg==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },

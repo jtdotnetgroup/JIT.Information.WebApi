@@ -79,6 +79,11 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
                 query = query.Where(wcsf);
             }
 
+            if (input.isWorkCenter)
+            {
+                query = query.Where(p => p.FWorkshopType);
+            }
+
             var data = await query.ToListAsync();
             return data.MapTo<List<OrganizationDtoTest>>();
         }
@@ -243,6 +248,32 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
 
             return result;
         }
+
+        /// <summary>
+        /// 通过父节点ID获取所有子节点
+        /// </summary>
+        /// <param name="parentId"></param>
+        /// <returns></returns>
+        //public async Task<List<t_OrganizationUnit>> GetChildren(int parentId)
+        //{
+        //    var list =await  _repository.GetAllListAsync();
+
+        //    var result = list.Where(p => p.ParentId == parentId||p.Id==parentId);
+
+
+
+        //}
+
+        /// <summary>
+        /// 通过父节点查出所有子节点
+        /// </summary>
+        /// <param name="node">父节点</param>
+        /// <param name="list">结果</param>
+        /// <returns></returns>
+        //protected List<t_OrganizationUnit> GetChildrent(t_OrganizationUnit parent, List<t_OrganizationUnit> list)
+        //{
+            
+        //}
 
 
 
