@@ -131,6 +131,11 @@ namespace JIT.DIME2Barcode
 
                 config.CreateMap<EmployeeEdit, Employee>()
                     .ForMember(o => o.Department, op => op.Ignore());
+
+                config.CreateMap<ICMODispBill, ICMODispBillRecord>()
+                    .ForMember(o => o.CreateTime, op => op.Ignore())
+                    .ForMember(o => o.CreateUserID, op => op.Ignore());
+
             });
 
             }
