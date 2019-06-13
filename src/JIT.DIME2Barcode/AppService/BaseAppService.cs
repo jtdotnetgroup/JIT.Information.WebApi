@@ -15,6 +15,9 @@ namespace JIT.DIME2Barcode.AppService
         public IRepository<DIME2Barcode.Entities.VW_MODispBillList, string> JIT_VW_MODispBillList { get; set; }
         public IRepository<DIME2Barcode.Entities.VM_Inventory, int> JIT_VM_Inventory { get; set; }
         public IRepository<DIME2Barcode.Entities.ICException, string> JIT_ICException { get; set; }
+        public IRepository<DIME2Barcode.Entities.ICMODispBill, string> JIT_ICMODispBill { get; set; }
+        public IRepository<DIME2Barcode.Entities.ICMODispBillRecord, string> JIT_ICMODispBillRecord { get; set; }
+        
         public IRepository<Employee, int> JIT_Employee { get; set; }
 
     }
