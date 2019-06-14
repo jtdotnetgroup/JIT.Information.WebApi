@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp;
+using Castle.Components.DictionaryAdapter;
 using Microsoft.AspNetCore.Identity;
 
 namespace JIT.DIME2Barcode.AppService
