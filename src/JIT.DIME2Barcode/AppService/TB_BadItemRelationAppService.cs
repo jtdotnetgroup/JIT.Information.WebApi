@@ -9,6 +9,7 @@ using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.EntityFrameworkCore.Repositories;
+using Abp.Linq.Extensions;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.TaskAssignment.TB_BadItemRelation.Dtos;
 using Microsoft.EntityFrameworkCore;
@@ -19,8 +20,8 @@ namespace JIT.DIME2Barcode.AppService
     {
 
         public IRepository<TB_BadItemRelation,int> Repository { get; set; }
-        public IRepository<t_SubMesType,int> SubMesTypeRepository { get; set; }//辅助资料表
-        public IRepository<t_SubMessage,int> SubMessageRepository { get; set; }//辅助资料类型表
+        public IRepository<t_SubMesType_Sync,int> SubMesTypeRepository { get; set; }//辅助资料表
+        public IRepository<t_SubMessage_Sync,int> SubMessageRepository { get; set; }//辅助资料类型表
         public IRepository<t_ICItem,int> ICItemRepository { get; set; }
 
 
@@ -40,7 +41,7 @@ namespace JIT.DIME2Barcode.AppService
         /// <returns></returns>
         public async Task<List<TreeSubMessageDto>> GetTree()
         {
-            var Context = SubMessageRepository.GetDbContext() as ProductionPlanMySqlDbContext;
+            var Context = SubMessageRepository.GetDbContext() as Dime2barcodeContext;
 
             List<TreeSubMessageDto> list = new List<TreeSubMessageDto>();
             var query = from a in Context.t_SubMessage
@@ -68,27 +69,29 @@ namespace JIT.DIME2Barcode.AppService
 
         public async  Task<PagedResultDto<TB_BadItemRelationDto>> GetAllBadItemRelation(TB_BadItemRelationGetAllInput input)
         {
+            #region 暂时不用，因为数据还没同步过来
 
-            var context = Repository.GetDbContext() as ProductionPlanMySqlDbContext;
+            //var context = Repository.GetDbContext() as ProductionPlanMySqlDbContext;
 
-            var query = from a in context.TB_BadItemRelation
-                        join b in context.t_ICItem on a.FItemID equals b.FItemID into  ab
-                        from a1 in ab.DefaultIfEmpty()
-                        join c in context.t_SubMessage on a.FOperID equals c.FInterID into ac
-                        from a2 in ac.DefaultIfEmpty()
-                        select new TB_BadItemRelationDto()
-                        {
-                            FID = a.FID,
-                            FItemName = a1.FName,//产品名称
-                            FItemID = a1.FItemID,//产品Id
-                            FOperID = a.FOperID,//工序ID
-                            FNumber = a.FNumber,//不良项目代码
-                            FName = a.FName,//不良项目名称
-                            FDeleted = a.FDeleted, //是否禁用
-                            FRemark = a.FRemark,//备注
-                            FOperName = a2.FName
-                        };
+            //var query = from a in context.TB_BadItemRelation
+            //            join b in context.t_ICItem on a.FItemID equals b.FItemID into ab
+            //            from a1 in ab.DefaultIfEmpty()
+            //            join c in context.t_SubMessage on a.FOperID equals c.FInterID into ac
+            //            from a2 in ac.DefaultIfEmpty()
+            //            select new TB_BadItemRelationDto()
+            //            {
+            //                FID = a.FID,
+            //                FItemName = a1.FName,//产品名称
+            //                FItemID = a1.FItemID,//产品Id
+            //                FOperID = a.FOperID,//工序ID
+            //                FNumber = a.FNumber,//不良项目代码
+            //                FName = a.FName,//不良项目名称
+            //                FDeleted = a.FDeleted, //是否禁用
+            //                FRemark = a.FRemark,//备注
+            //                FOperName = a2.FName
+            //            };
 
+            #endregion
             #region 旧代码
             //var query = from item in context.t_ICItem
             //            join b in context.TB_BadItemRelation on item.FItemID equals b.FItemID 
@@ -109,12 +112,17 @@ namespace JIT.DIME2Barcode.AppService
 
             #endregion
 
+            var process = SubMessageRepository.GetAll().Include(p => p.SubMessageType)
+                .Where(p => p.SubMessageType.FName.Contains("工序"));
+
+            var query = Repository.GetAll();
+
 
             if (input.FOperID == 0)
             {
                 var count = Repository.GetAll().Count();
 
-                var data = query.OrderBy(p => p.FID).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToList();
+                var data = query.OrderBy(p => p.FID).PageBy(input).ToList();
 
                 var list = data.MapTo<List<TB_BadItemRelationDto>>();
                 return new PagedResultDto<TB_BadItemRelationDto>(count, list);
@@ -123,7 +131,9 @@ namespace JIT.DIME2Barcode.AppService
             {
                 var count = Repository.GetAll().Count(p => p.FOperID == input.FOperID);
 
-                var data = query.Where(p => p.FOperID == input.FOperID).OrderBy(p => p.FID).Skip(input.SkipCount * input.MaxResultCount).Take(input.MaxResultCount).ToList();
+
+
+                var data = query.Where(p => p.FOperID == input.FOperID).OrderBy(p => p.FID).PageBy(input).ToList();
 
                 var list = data.MapTo<List<TB_BadItemRelationDto>>();
                 return new PagedResultDto<TB_BadItemRelationDto>(count, list);

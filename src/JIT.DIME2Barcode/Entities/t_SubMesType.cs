@@ -22,4 +22,10 @@ namespace JIT.DIME2Barcode.Entities
            public byte[] FModifyTime { get; set; }
            public string UUID { get; set; }
     }
+
+    //此类用于同步
+    public class t_SubMesType_Sync : t_SubMesType
+    {
+
+    }
 }

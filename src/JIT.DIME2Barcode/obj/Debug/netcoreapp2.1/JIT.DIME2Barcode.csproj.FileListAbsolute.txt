@@ -38,3 +38,6 @@ F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src
 F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.EntityFrameworkCore.pdb
 F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.EntityFrameworkCore.dll.config
 F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csproj.CopyComplete
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.EntityFrameworkCore.pdb
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.InformationSystem.EntityFrameworkCore.dll.config
+D:\Net\JIT.Information.WebApi\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\CommonTools.dll.config
