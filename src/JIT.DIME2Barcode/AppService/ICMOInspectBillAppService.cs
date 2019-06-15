@@ -55,7 +55,7 @@ namespace JIT.DIME2Barcode.AppService
             // 
             icmoDispBillDetaileds.IcmoInspectBill =
                 await JIT_ICMOInspectBill.GetAll().FirstOrDefaultAsync(f =>
-                    f.FID == input.FID && f.FOperID == input.FOperID) ??
+                    f.FID == input.FID  && f.FOperID == input.FOperID) ??
                 new ICMOInspectBill();
             // 
             //var tmp = tbRepository.GetAll()
@@ -146,7 +146,7 @@ namespace JIT.DIME2Barcode.AppService
                 query1.FFinishAuxQty = FAuxQty;
                 query1.FFailAuxQty = FFailAuxQty;
                 query1.FPassAuxQty = FPassAuxQty;
-
+                
                 await JIT_ICMODispBill.UpdateAsync(query1);
 
                 // 没有异常返回 true
@@ -195,7 +195,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="ICMODispBillID">任务单号ID</param>
         /// <param name="FAuxQty">汇报数</param>
-        public bool Create(string ICMODispBillID, decimal FAuxQty, string BatchNum)
+        public bool Create(string ICMODispBillID, decimal FAuxQty,string BatchNum)
         {
             try
             {
@@ -249,14 +249,14 @@ namespace JIT.DIME2Barcode.AppService
         /// <summary>
         /// 更改汇报数
         /// </summary>
-        public async Task<bool> UpdateFAuxQty(string FID, decimal FAuxQty, string BatchNum)
+        public async Task<bool> UpdateFAuxQty(string FID,decimal FAuxQty, string BatchNum)
         {
             try
             {
                 var entity = await JIT_ICMOInspectBill.GetAll().SingleOrDefaultAsync(s => s.FID == FID);
                 entity.FAuxQty = FAuxQty;
                 entity.BatchNum = BatchNum;
-                await JIT_ICMOInspectBill.UpdateAsync(entity);
+                await  JIT_ICMOInspectBill.UpdateAsync(entity);
                 // 
                 var icmopispBillList = await JIT_ICMOInspectBill.GetAll().Where(w => w.ICMODispBillID == entity.ICMODispBillID).ToListAsync();
                 var query1 = await JIT_ICMODispBill.GetAll().Where(w => w.FID == entity.ICMODispBillID).SingleOrDefaultAsync();
@@ -273,7 +273,7 @@ namespace JIT.DIME2Barcode.AppService
                 Console.WriteLine(e);
                 return false;
             }
-
+            
         }
         /// <summary>
         /// 返回余数
@@ -283,18 +283,13 @@ namespace JIT.DIME2Barcode.AppService
             var query = JIT_ICMODispBill.GetAll().Join(JIT_ICMOInspectBill.GetAll(), A => A.FID, B => B.ICMODispBillID,
                 (A, B) => new
                 {
-                    A.FBillNo,
-                    A.FBiller,
-                    A.FDate,
-                    FBillNo2 = B.FBillNo,
-                    B.BatchNum,
-                    B.FYSQty,
-                    B.FInspector,
+                    A.FBillNo, A.FBiller, A.FDate,
+                    FBillNo2 = B.FBillNo, B.BatchNum, B.FYSQty, B.FInspector,
                     B.FInspectTime,
                     A.employee.FName,
                     //
                     A.FStatus
-                }).Where(A => A.FStatus >= PublicEnum.ICMODispBillState.已检验.EnumToInt() && A.FYSQty > 0);
+                }).Where(A => A.FStatus >= PublicEnum.ICMODispBillState.已检验.EnumToInt() && A.FYSQty > 0); 
             var data = await query.PageBy(input).ToListAsync();
             var list = data.MapTo<List<DIME2Barcode.Entities.VW_YSQty>>();
             return new PagedResultDto<DIME2Barcode.Entities.VW_YSQty>(query.Count(), list);

@@ -38,7 +38,6 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICException.Dtos
         public string FRemark { get; set; }
         public DateTime? FRecoverTime { get; set; }
         public string FNote { get; set; }
-         
     }
     public class ICExceptionInput  
     { 

@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using JIT.DIME2Barcode.Model;
 using CommonTools;
+using Microsoft.EntityFrameworkCore;
+
 namespace JIT.DIME2Barcode.AppService
 {
     /// <summary>
@@ -25,13 +28,14 @@ namespace JIT.DIME2Barcode.AppService
             [Description(",PGRWDKG,")] 派工任务待开工,
             [Description(",PGRWDHB,")] 派工任务待汇报,
             [Description(",ZLJYDJY,")] 质量检验待检验,
-            [Description(",ZLJYYJY,")] 质量检验已检验
+            [Description(",ZLJYYJY,")] 质量检验已检验,
+            [Description(",BZYS,")] 包装余数
         }
 
         /// <summary>
         /// 查询任务数量
         /// </summary>
-        public List<TaskQty> GetTaskQty(string StrKey)
+        public async Task<List<TaskQty>> GetTaskQty(string StrKey)
         {
             string isAll = StrKey;
             StrKey = "," + StrKey + ",";
@@ -42,8 +46,8 @@ namespace JIT.DIME2Barcode.AppService
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.派工任务.ToDescription().Replace(",", ""),
-                    Total = JIT_VW_MODispBillList.GetAll()
-                        .Where(w => w.操作者 == AbpSession.UserId && w.FStatus == 0).Count(),
+                    Total = await JIT_VW_MODispBillList.GetAll()
+                        .Where(w => w.操作者 == AbpSession.UserId && w.FStatus == 0).CountAsync(),
                     BZ = "待开工任务数量"
                 };
                 listTaskQty.Add(tmpTaskQty);
@@ -54,7 +58,7 @@ namespace JIT.DIME2Barcode.AppService
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.质量检验.ToDescription().Replace(",", ""),
-                    Total = JIT_VW_MODispBillList.GetAll().Where(w =>w.FStatus == 1).Count(),
+                    Total = await JIT_VW_MODispBillList.GetAll().Where(w =>w.FStatus == 1).CountAsync(),
                     BZ = "质量检验待检验数量"
                 };
                 listTaskQty.Add(tmpTaskQty);
@@ -65,7 +69,7 @@ namespace JIT.DIME2Barcode.AppService
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.库存查询.ToDescription().Replace(",", ""),
-                    Total = JIT_VM_Inventory.GetAll().Count(),
+                    Total = await JIT_VM_Inventory.GetAll().CountAsync(),
                     BZ = "库存查询数量"
                 };
                 listTaskQty.Add(tmpTaskQty);
@@ -87,8 +91,8 @@ namespace JIT.DIME2Barcode.AppService
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.派工任务待开工.ToDescription().Replace(",", ""),
-                    Total = JIT_VW_MODispBillList.GetAll()
-                        .Where(w => w.操作者 == AbpSession.UserId && w.FStatus == 0).Count(),
+                    Total = await JIT_VW_MODispBillList.GetAll()
+                        .Where(w => w.操作者 == AbpSession.UserId && w.FStatus == 0).CountAsync(),
                     BZ = "派工任务待开工"
                 };
                 listTaskQty.Add(tmpTaskQty);
@@ -99,7 +103,7 @@ namespace JIT.DIME2Barcode.AppService
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.派工任务待汇报.ToDescription().Replace(",", ""),
-                    Total = JIT_VW_MODispBillList.GetAll().Where(w => w.操作者 == AbpSession.UserId && w.FStatus == 1).Count(),
+                    Total = await JIT_VW_MODispBillList.GetAll().Where(w => w.操作者 == AbpSession.UserId && w.FStatus == 1).CountAsync(),
                     BZ = "派工任务待汇报"
                 };
                 listTaskQty.Add(tmpTaskQty);
@@ -110,7 +114,7 @@ namespace JIT.DIME2Barcode.AppService
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.质量检验待检验.ToDescription().Replace(",", ""),
-                    Total = JIT_VW_MODispBillList.GetAll().Where(w => w.FStatus == 1).Count(),
+                    Total = await JIT_VW_MODispBillList.GetAll().Where(w => w.FStatus == 1).CountAsync(),
                     BZ = "质量检验待检验"
                 };
                 listTaskQty.Add(tmpTaskQty);
@@ -121,21 +125,45 @@ namespace JIT.DIME2Barcode.AppService
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.质量检验已检验.ToDescription().Replace(",", ""),
-                    Total = JIT_VW_MODispBillList.GetAll().Where(w => w.FStatus == 2).Count(),
+                    Total = await JIT_VW_MODispBillList.GetAll().Where(w => w.FStatus == 2).CountAsync(),
                     BZ = "质量检验已检验"
                 };
                 listTaskQty.Add(tmpTaskQty);
             }
-            // 所有枚举信息
-            string[] ListTaskType = new string[Enum.GetValues(typeof(TaskType)).Length];
-            int i = 0;
-            foreach (TaskType TY in Enum.GetValues(typeof(TaskType)))
+            if (isAll == "*" || StrKey.Contains(TaskType.包装余数.ToDescription()))
             {
-                ListTaskType[i] = TY.ToDescription();
+                TaskQty tmpTaskQty = new TaskQty()
+                {
+                    StrKey = TaskType.包装余数.ToDescription().Replace(",", ""),
+                    Total = await JIT_ICMODispBill.GetAll().Join(JIT_ICMOInspectBill.GetAll(), A => A.FID, B => B.ICMODispBillID,
+                        (A, B) => new
+                        {
+                            A.FBillNo,
+                            A.FBiller,
+                            A.FDate,
+                            FBillNo2 = B.FBillNo,
+                            B.BatchNum,
+                            B.FYSQty,
+                            B.FInspector,
+                            B.FInspectTime,
+                            A.employee.FName,
+                            //
+                            A.FStatus
+                        }).Where(A => A.FStatus >= PublicEnum.ICMODispBillState.已检验.EnumToInt() && A.FYSQty > 0).CountAsync(),
+                    BZ = "包装余数"
+                };
+                listTaskQty.Add(tmpTaskQty);
+            }
+            // 所有枚举信息
+            string[] listTaskType = new string[Enum.GetValues(typeof(TaskType)).Length];
+            int i = 0;
+            foreach (TaskType ty in Enum.GetValues(typeof(TaskType)))
+            {
+                listTaskType[i] = ty.ToDescription();
                 i++;
             }
 
-            if (isAll != "*" && !ListTaskType.Contains(StrKey))
+            if (isAll != "*" && !listTaskType.Contains(StrKey))
             {
                 TaskQty tmpTaskQty = new TaskQty()
                 {

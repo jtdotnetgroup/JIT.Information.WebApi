@@ -7,6 +7,7 @@ using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using Abp.Extensions;
 using Abp.Linq.Extensions;
 using Castle.DynamicProxy.Generators.Emitters;
 using CommonTools;
@@ -89,9 +90,10 @@ namespace JIT.DIME2Barcode.AppService
                         /*
                          *派工单不存在，插入新派工单
                          */
+                        string fid = Guid.NewGuid().ToString();
                         entity = new ICMODispBill()
                         {
-                            FID = Guid.NewGuid().ToString(),
+                            FID = fid,
                             FSrcID = dailyFid,
                             FWorker = dispBillI.FWorker,
                             FWorkCenterID = icmodaily.FWorkCenterID,
@@ -102,7 +104,7 @@ namespace JIT.DIME2Barcode.AppService
                             FBiller = AbpSession.UserId.ToString(),
                             FDate = DateTime.Now.Date,
                             FShift = dispBillI.FShift,
-                            FBillNo = "DI" + DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(1, 10).ToString(),
+                            FBillNo = "DI" + DateTime.Now.ToString("yyyyMMddHHmmss") +fid.Right(4) ,
                             FBillTime = DateTime.Now
 
                         };
