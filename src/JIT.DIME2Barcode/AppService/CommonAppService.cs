@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
+using Abp.AutoMapper;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using JIT.DIME2Barcode.Model;
 using CommonTools;
+using JIT.InformationSystem.Authorization.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace JIT.DIME2Barcode.AppService
@@ -58,7 +62,7 @@ namespace JIT.DIME2Barcode.AppService
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.质量检验.ToDescription().Replace(",", ""),
-                    Total = await JIT_VW_MODispBillList.GetAll().Where(w =>w.FStatus == 1).CountAsync(),
+                    Total = await JIT_VW_MODispBillList.GetAll().Where(w => w.FStatus == 1).CountAsync(),
                     BZ = "质量检验待检验数量"
                 };
                 listTaskQty.Add(tmpTaskQty);
@@ -178,5 +182,37 @@ namespace JIT.DIME2Barcode.AppService
         }
 
         #endregion
+
+        public async void Test(int RoleId)
+        {
+            var r = ABP_UserRole.GetAll().ToList();
+            // 全部
+            var result = await ABP_User.GetAll()
+                .GroupJoin(ABP_UserRole.GetAll(), A => A.Id, B => B.UserId,
+                    (A, B) => new UserRole
+                    {
+                        UserId = A.Id,
+                        RoleId = B.FirstOrDefault().RoleId
+                    })
+                .Where(w => w.RoleId == RoleId || w.RoleId == null)
+                .ToListAsync();
+            // 是角色
+            var result1 = await ABP_User.GetAll()
+                .Join(ABP_UserRole.GetAll(), A => A.Id, B => B.UserId,
+                    (A, B) => new UserRole {UserId = A.Id, RoleId = B.RoleId})
+                .Where(w => w.RoleId == RoleId)
+                .ToListAsync();
+            // 不是角色
+            var result2 = await ABP_User.GetAll()
+                .Where(w => !ABP_UserRole.GetAll().Where(q => q.RoleId == RoleId).Select(s => s.UserId)
+                    .Contains(w.Id))
+                .Select(s => new UserRole {UserId = s.Id, RoleId = (int?) null})
+                .ToListAsync();
+
+            var list = result.MapTo<List<UserRole>>();
+            var list1 = result1.MapTo<List<UserRole>>();
+            var list2 = result2.MapTo<List<UserRole>>();
+        }
     }
+
 }

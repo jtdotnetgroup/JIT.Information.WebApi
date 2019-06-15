@@ -9,6 +9,7 @@ using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using Abp.UI;
 using CommonTools;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.TaskAssignment.ICMOInspectBill.Dtos;
@@ -291,7 +292,7 @@ namespace JIT.DIME2Barcode.AppService
                     A.FStatus
                 }).Where(A => A.FStatus >= PublicEnum.ICMODispBillState.已检验.EnumToInt() && A.FYSQty > 0); 
             var data = await query.PageBy(input).ToListAsync();
-            var list = data.MapTo<List<DIME2Barcode.Entities.VW_YSQty>>();
+            var list = data.MapTo<List<DIME2Barcode.Entities.VW_YSQty>>(); 
             return new PagedResultDto<DIME2Barcode.Entities.VW_YSQty>(query.Count(), list);
         }
     }
