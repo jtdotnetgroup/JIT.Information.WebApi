@@ -42,7 +42,7 @@ namespace JIT.DIME2Barcode.AppService
 
             if (input.RoleStaic == 1)//查询全部
             {
-                query = Repository.GetAll().Where(p=>p.RoleId== input.RoleId || p.RoleId==null&&p.TenantId==null);
+                query = Repository.GetAll().Where(p=>p.RoleId== input.RoleId&&p.TenantId==null);
                 count = await query.CountAsync();
                 data = await query.OrderBy(u => u.UserName).PageBy(input).ToListAsync();
                 list = data.MapTo<List<VW_RoleUserAllDto>>();
@@ -57,7 +57,7 @@ namespace JIT.DIME2Barcode.AppService
             else//查询不是角色成员
             {   
                List<VW_RoleUserAll> lists = new List<VW_RoleUserAll>();
-               List<VW_RoleUserAll> ListRole = Repository.GetAll().Where(p => p.RoleId != input.RoleId || p.RoleId == null && p.TenantId == null).OrderBy(u => u.UserName).PageBy(input).ToList();
+               List<VW_RoleUserAll> ListRole = Repository.GetAll().Where(p => p.RoleId != input.RoleId || p.RoleId == null && p.TenantId == null).ToList();
            
                foreach (var itme in ListRole)
                {
@@ -75,9 +75,13 @@ namespace JIT.DIME2Barcode.AppService
                     }
                }
 
-                 count = lists.Count();
+               var datas = lists.OrderBy(u => u.UserName).Skip(input.SkipCount)
+                   .Take(input.MaxResultCount).ToList();
 
-                list = lists.MapTo<List<VW_RoleUserAllDto>>();
+                count = lists.Count();
+
+              
+                list = datas.MapTo<List<VW_RoleUserAllDto>>();
             }
             return new PagedResultDto<VW_RoleUserAllDto>(count, list);
 
