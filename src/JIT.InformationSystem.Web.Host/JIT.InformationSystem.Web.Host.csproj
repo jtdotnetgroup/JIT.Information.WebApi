@@ -49,4 +49,5 @@
   <ItemGroup>
     <ProjectReference Include="..\JIT.InformationSystem.Web.Core\JIT.InformationSystem.Web.Core.csproj" />
   </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
 </Project>
