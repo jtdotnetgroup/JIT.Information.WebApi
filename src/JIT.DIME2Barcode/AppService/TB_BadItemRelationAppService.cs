@@ -44,10 +44,12 @@ namespace JIT.DIME2Barcode.AppService
             var Context = SubMessageRepository.GetDbContext() as Dime2barcodeContext;
 
             List<TreeSubMessageDto> list = new List<TreeSubMessageDto>();
+
             var query = from a in Context.t_SubMessage
                         join b in Context.t_SubMesType on a.FTypeID equals b.FTypeID into bd
                         from ac in bd.DefaultIfEmpty()
-                where ac.FName=="工序"
+                where ac.FName.Contains("工序资料")
+
                 select new
                 {
                     a.FInterID,
