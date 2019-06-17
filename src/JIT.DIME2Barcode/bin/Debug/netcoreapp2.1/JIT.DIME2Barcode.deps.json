@@ -2721,7 +2721,8 @@
       "JIT.InformationSystem.Application/1.0.0": {
         "dependencies": {
           "Abp.Quartz": "4.5.0",
-          "JIT.InformationSystem.Core": "1.0.0"
+          "JIT.InformationSystem.Core": "1.0.0",
+          "JIT.InformationSystem.EntityFrameworkCore": "1.0.0"
         },
         "runtime": {
           "JIT.InformationSystem.Application.dll": {}

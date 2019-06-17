@@ -4,11 +4,16 @@ using System.ComponentModel;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
+using Abp.EntityFrameworkCore.Repositories;
+using Abp.Linq.Extensions;
 using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using JIT.DIME2Barcode.Model;
 using CommonTools;
+using JIT.DIME2Barcode.TaskAssignment.Test.Dtos;
 using JIT.InformationSystem.Authorization.Users;
+using JIT.InformationSystem.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace JIT.DIME2Barcode.AppService
@@ -107,7 +112,8 @@ namespace JIT.DIME2Barcode.AppService
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.派工任务待汇报.ToDescription().Replace(",", ""),
-                    Total = await JIT_VW_MODispBillList.GetAll().Where(w => w.操作者 == AbpSession.UserId && w.FStatus == 1).CountAsync(),
+                    Total = await JIT_VW_MODispBillList.GetAll()
+                        .Where(w => w.操作者 == AbpSession.UserId && w.FStatus == 1).CountAsync(),
                     BZ = "派工任务待汇报"
                 };
                 listTaskQty.Add(tmpTaskQty);
@@ -134,30 +140,34 @@ namespace JIT.DIME2Barcode.AppService
                 };
                 listTaskQty.Add(tmpTaskQty);
             }
+
             if (isAll == "*" || StrKey.Contains(TaskType.包装余数.ToDescription()))
             {
                 TaskQty tmpTaskQty = new TaskQty()
                 {
                     StrKey = TaskType.包装余数.ToDescription().Replace(",", ""),
-                    Total = await JIT_ICMODispBill.GetAll().Join(JIT_ICMOInspectBill.GetAll(), A => A.FID, B => B.ICMODispBillID,
-                        (A, B) => new
-                        {
-                            A.FBillNo,
-                            A.FBiller,
-                            A.FDate,
-                            FBillNo2 = B.FBillNo,
-                            B.BatchNum,
-                            B.FYSQty,
-                            B.FInspector,
-                            B.FInspectTime,
-                            A.employee.FName,
-                            //
-                            A.FStatus
-                        }).Where(A => A.FStatus >= PublicEnum.ICMODispBillState.已检验.EnumToInt() && A.FYSQty > 0).CountAsync(),
+                    Total = await JIT_ICMODispBill.GetAll().Join(JIT_ICMOInspectBill.GetAll(), A => A.FID,
+                            B => B.ICMODispBillID,
+                            (A, B) => new
+                            {
+                                A.FBillNo,
+                                A.FBiller,
+                                A.FDate,
+                                FBillNo2 = B.FBillNo,
+                                B.BatchNum,
+                                B.FYSQty,
+                                B.FInspector,
+                                B.FInspectTime,
+                                A.employee.FName,
+                                //
+                                A.FStatus
+                            }).Where(A => A.FStatus >= PublicEnum.ICMODispBillState.已检验.EnumToInt() && A.FYSQty > 0)
+                        .CountAsync(),
                     BZ = "包装余数"
                 };
                 listTaskQty.Add(tmpTaskQty);
             }
+
             // 所有枚举信息
             string[] listTaskType = new string[Enum.GetValues(typeof(TaskType)).Length];
             int i = 0;
@@ -183,36 +193,42 @@ namespace JIT.DIME2Barcode.AppService
 
         #endregion
 
-        public async void Test(int RoleId)
+        /// <summary>
+        /// 查询所属角色所有用户
+        /// </summary>
+        /// <param name="input">查询条件</param>
+        public async void GetUserRole(UserRoleInput input)
         {
-            var r = ABP_UserRole.GetAll().ToList();
             // 全部
-            var result = await ABP_User.GetAll()
-                .GroupJoin(ABP_UserRole.GetAll(), A => A.Id, B => B.UserId,
-                    (A, B) => new UserRole
-                    {
-                        UserId = A.Id,
-                        RoleId = B.FirstOrDefault().RoleId
-                    })
-                .Where(w => w.RoleId == RoleId || w.RoleId == null)
-                .ToListAsync();
-            // 是角色
-            var result1 = await ABP_User.GetAll()
-                .Join(ABP_UserRole.GetAll(), A => A.Id, B => B.UserId,
-                    (A, B) => new UserRole {UserId = A.Id, RoleId = B.RoleId})
-                .Where(w => w.RoleId == RoleId)
-                .ToListAsync();
-            // 不是角色
-            var result2 = await ABP_User.GetAll()
-                .Where(w => !ABP_UserRole.GetAll().Where(q => q.RoleId == RoleId).Select(s => s.UserId)
-                    .Contains(w.Id))
-                .Select(s => new UserRole {UserId = s.Id, RoleId = (int?) null})
-                .ToListAsync();
+            var result = from a in ABP_User.GetAll()
+                join r in ABP_UserRole.GetAll().Where(w => w.RoleId == input.RoleId) on a.Id equals r.UserId into g1
+                from g in g1.DefaultIfEmpty()
+                select new UserRole {UserId = a.Id, RoleId = g.RoleId, UserName = a.UserName};
+            // 全部
+            if (input.type == 1)
+            {
 
-            var list = result.MapTo<List<UserRole>>();
-            var list1 = result1.MapTo<List<UserRole>>();
-            var list2 = result2.MapTo<List<UserRole>>();
+            }
+            // 是角色
+            else if (input.type == 2)
+            {
+                result = result.Where(w => w.RoleId == input.RoleId);
+            }
+            // 不是角色
+            else if (input.type == 3)
+            {
+                result = result.Where(w => w.RoleId == null);
+            }
+
+            // 开始查询
+            result = result.Where(w => w.UserName.Contains(input.UserName));
+            //
+            var count = result.Count();
+            var data = await result.OrderBy(o => o.RoleId).PageBy(input)
+                .ToListAsync();
+            var resultList = new PagedResultDto<UserRole>(count, data); 
         }
     }
 
+    
 }

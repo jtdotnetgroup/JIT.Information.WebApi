@@ -38,5 +38,6 @@ namespace JIT.InformationSystem.Authorization.Users
 
         [Email]
         public override string EmailAddress { get; set; }
+ 
     }
 }

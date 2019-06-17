@@ -7,7 +7,7 @@ using JIT.InformationSystem.EntityFrameworkCore.Seed;
 namespace JIT.InformationSystem.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(InformationSystemCoreModule), 
+        typeof(InformationSystemCoreModule),
         typeof(AbpZeroCoreEntityFrameworkCoreModule))]
     public class InformationSystemEntityFrameworkModule : AbpModule
     {
@@ -24,11 +24,13 @@ namespace JIT.InformationSystem.EntityFrameworkCore
                 {
                     if (options.ExistingConnection != null)
                     {
-                        InformationSystemDbContextConfigurer.Configure(options.DbContextOptions, options.ExistingConnection);
+                        InformationSystemDbContextConfigurer.Configure(options.DbContextOptions,
+                            options.ExistingConnection);
                     }
                     else
                     {
-                        InformationSystemDbContextConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
+                        InformationSystemDbContextConfigurer.Configure(options.DbContextOptions,
+                            options.ConnectionString);
                     }
                 });
             }

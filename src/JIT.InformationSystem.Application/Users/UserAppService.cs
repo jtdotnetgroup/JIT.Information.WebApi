@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
+using Abp.EntityFrameworkCore.Repositories;
 using Abp.Extensions;
 using Abp.IdentityFramework;
 using Abp.Linq.Extensions;
@@ -18,6 +20,7 @@ using JIT.InformationSystem.Authorization;
 using JIT.InformationSystem.Authorization.Accounts;
 using JIT.InformationSystem.Authorization.Roles;
 using JIT.InformationSystem.Authorization.Users;
+using JIT.InformationSystem.EntityFrameworkCore;
 using JIT.InformationSystem.Roles.Dto;
 using JIT.InformationSystem.Users.Dto;
 using Microsoft.AspNetCore.Identity;
@@ -34,6 +37,8 @@ namespace JIT.InformationSystem.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
+
+      
 
         public UserAppService(
             IRepository<User, long> repository,
@@ -114,6 +119,8 @@ namespace JIT.InformationSystem.Users
                 input.LanguageName
             );
         }
+
+        
 
         protected override User MapToEntity(CreateUserDto createInput)
         {
@@ -238,6 +245,8 @@ namespace JIT.InformationSystem.Users
             }
             return new PagedResultDto<UserDto>(count,list);
         }
+
+      
     }
 }
 

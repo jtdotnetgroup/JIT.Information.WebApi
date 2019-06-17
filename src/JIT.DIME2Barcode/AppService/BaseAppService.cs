@@ -13,18 +13,65 @@ namespace JIT.DIME2Barcode.AppService
     public class BaseAppService: ApplicationService 
     {
         #region 所有表、视图、存储过程
-        // ABP 系统表
+
+        #region ABP 系统表
+        /// <summary>
+        /// 用户表
+        /// </summary>
         public IRepository<User, long> ABP_User { get; set; }
+        /// <summary>
+        /// 角色表
+        /// </summary>
         public IRepository<UserRole, long> ABP_UserRole { get; set; }
+        #endregion
+
+        #region 业务表
         // 表
+        /// <summary>
+        /// 派工异常记录
+        /// </summary>
         public IRepository<DIME2Barcode.Entities.ICException, string> JIT_ICException { get; set; }
+        /// <summary>
+        /// 任务派工单
+        /// </summary>
         public IRepository<DIME2Barcode.Entities.ICMODispBill, string> JIT_ICMODispBill { get; set; }
+        /// <summary>
+        /// 任务派工单记录表
+        /// </summary>
         public IRepository<DIME2Barcode.Entities.ICMODispBillRecord, string> JIT_ICMODispBillRecord { get; set; }
+        /// <summary>
+        /// 质量检验单
+        /// </summary>
         public IRepository<ICMOInspectBill, string> JIT_ICMOInspectBill { get; set; }
+        /// <summary>
+        /// 员工表
+        /// </summary>
         public IRepository<Employee, int> JIT_Employee { get; set; }
-        // 视图
+        /// <summary>
+        /// 质量检验记录
+        /// </summary>
+        public IRepository<DIME2Barcode.Entities.ICQualityRpt, string> JIT_ICQualityRpt { get; set; }
+        /// <summary>
+        /// 工序不良项目表
+        /// </summary>
+        public IRepository<DIME2Barcode.Entities.TB_BadItemRelation, int> JIT_TB_BadItemRelation { get; set; }
+        #endregion
+
+        #region 视图
+        /// <summary>
+        /// 
+        /// </summary>
         public IRepository<DIME2Barcode.Entities.VW_MODispBillList, string> JIT_VW_MODispBillList { get; set; }
-        public IRepository<DIME2Barcode.Entities.VM_Inventory, int> JIT_VM_Inventory { get; set; }
+        /// <summary>
+        /// 库存查询
+        /// </summary>
+        public IRepository<DIME2Barcode.Entities.VM_Inventory, int> JIT_VM_Inventory { get; set; } 
+        /// <summary>
+        /// 
+        /// </summary>
+        public IRepository<VW_ICMOInspectBillList, string> JIT_VW_ICMOInspectBillList { get; set; }
+        #endregion
+
         #endregion
 
         /// <summary>
