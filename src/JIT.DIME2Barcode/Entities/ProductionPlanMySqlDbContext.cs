@@ -40,7 +40,8 @@ namespace JIT.DIME2Barcode.Entities
 
         public virtual DbSet<t_ICItem> t_ICItem { get; set; }
         //public virtual DbSet<t_ICItem> t_ICItem { get; set; }
-
+ 
+        
 
         #region 视图
 
@@ -50,7 +51,8 @@ namespace JIT.DIME2Barcode.Entities
         public virtual DbSet<VW_ICMODaily_Group_By_Day> VW_ICMODaily_Group_By_Day { get; set; }
         public virtual DbSet<VW_Employee> VW_Employee { get; set; }
         public virtual DbSet<VW_Group_ICMODaily> VW_Group_ICMODaily { get; set; }
-        
+
+        public virtual DbSet<VW_RoleUserAll> VW_RoleUserAll { get; set; } //角色成员的视图
 
         #endregion
 

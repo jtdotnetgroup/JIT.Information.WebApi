@@ -8,5 +8,9 @@ namespace JIT.InformationSystem.Users.Dto
     {
         public string Keyword { get; set; }
         public bool? IsActive { get; set; }
+        
     }
+
+  
+
 }

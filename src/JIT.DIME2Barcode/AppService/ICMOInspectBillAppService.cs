@@ -9,6 +9,7 @@ using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using Abp.UI;
 using CommonTools;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.TaskAssignment.ICMOInspectBill.Dtos;
@@ -20,20 +21,13 @@ using Microsoft.EntityFrameworkCore.Internal;
 
 namespace JIT.DIME2Barcode.AppService
 {
-    public class ICMOInspectBillAppService : ApplicationService
+    public class ICMOInspectBillAppService : BaseAppService
     {
-        public IRepository<ICMOInspectBill, string> JIT_ICMOInspectBill { get; set; }
-
-        public IRepository<VW_ICMOInspectBillList, string> VRepository { get; set; }
-        public IRepository<DIME2Barcode.Entities.ICQualityRpt, string> IcRepository { get; set; }
-        public IRepository<ICMODispBill, string> JIT_ICMODispBill { get; set; }
-        public IRepository<DIME2Barcode.Entities.TB_BadItemRelation, int> tbRepository { get; set; }
-
-        public IRepository<DIME2Barcode.Entities.VW_MODispBillList, string> vm_MODispBillList { get; set; }
+        
 
         public async Task<PagedResultDto<VW_ICMOInspectBillListDto>> GetAll(VW_ICMOInspectBillListGetAllInput input)
         {
-            var query = VRepository.GetAll().OrderBy(p => p.派工单号);
+            var query = JIT_VW_ICMOInspectBillList.GetAll().OrderBy(p => p.派工单号);
             var count = await query.CountAsync();
 
             var data = await query.PageBy(input).ToListAsync();
@@ -58,8 +52,8 @@ namespace JIT.DIME2Barcode.AppService
                     f.FID == input.FID  && f.FOperID == input.FOperID) ??
                 new ICMOInspectBill();
             // 
-            //var tmp = tbRepository.GetAll()
-            //    .Join(IcRepository.GetAll(),c=>c.FID, p => p.FItemID, (c, p) => new {p.FID,p.FAuxQty,p.FItemID,p.FNote,p.FRemark,p.ICMOInspectBillID,c.FName,c.FDeleted})
+            //var tmp = JIT_TB_BadItemRelation.GetAll()
+            //    .Join(JIT_ICQualityRpt.GetAll(),c=>c.FID, p => p.FItemID, (c, p) => new {p.FID,p.FAuxQty,p.FItemID,p.FNote,p.FRemark,p.ICMOInspectBillID,c.FName,c.FDeleted})
             //    .Where(w => (w.ICMOInspectBillID == input.FID || w.FDeleted == true)).Distinct().ToList();
             //icmoDispBillDetaileds.IcQualityRptsList =  new List<ICQualityRptDto>();
             //foreach (var item in tmp)
@@ -70,7 +64,7 @@ namespace JIT.DIME2Barcode.AppService
             //
 
             icmoDispBillDetaileds.IcQualityRptsList =
-                IcRepository.GetAll().Where(w => w.ICMOInspectBillID == input.FID).ToList();
+                JIT_ICQualityRpt.GetAll().Where(w => w.ICMOInspectBillID == input.FID).ToList();
             return icmoDispBillDetaileds;
         }
 
@@ -111,10 +105,10 @@ namespace JIT.DIME2Barcode.AppService
                 await JIT_ICMOInspectBill.UpdateAsync(query);
 
                 // 删除之前所有不良项目
-                var entity = IcRepository.GetAll().Where(w => w.FID == query.FID);
+                var entity = JIT_ICQualityRpt.GetAll().Where(w => w.FID == query.FID);
                 foreach (var item in entity)
                 {
-                    await IcRepository.DeleteAsync(item);
+                    await JIT_ICQualityRpt.DeleteAsync(item);
                 }
 
                 // 重新添加所有不良项目
@@ -122,7 +116,7 @@ namespace JIT.DIME2Barcode.AppService
                 {
                     item.ICMOInspectBillID = query.FID; // 关联主表
                     item.FID = Guid.NewGuid().ToString();
-                    await IcRepository.InsertAsync(item);
+                    await JIT_ICQualityRpt.InsertAsync(item);
                 }
 
                 // 所有汇报
@@ -199,7 +193,7 @@ namespace JIT.DIME2Barcode.AppService
         {
             try
             {
-                var result = vm_MODispBillList.GetAll().Where(w => w.FID == ICMODispBillID).FirstOrDefault() ??
+                var result = JIT_VW_MODispBillList.GetAll().Where(w => w.FID == ICMODispBillID).FirstOrDefault() ??
                              new VW_MODispBillList();
                 ICMOInspectBill icm = new ICMOInspectBill()
                 {
@@ -283,16 +277,34 @@ namespace JIT.DIME2Barcode.AppService
             var query = JIT_ICMODispBill.GetAll().Join(JIT_ICMOInspectBill.GetAll(), A => A.FID, B => B.ICMODispBillID,
                 (A, B) => new
                 {
-                    A.FBillNo, A.FBiller, A.FDate,
-                    FBillNo2 = B.FBillNo, B.BatchNum, B.FYSQty, B.FInspector,
+                    A.FBillNo,
+                    A.FBiller,
+                    A.FDate,
+                    FBillNo2 = B.FBillNo,
+                    B.BatchNum,
+                    B.FYSQty,
+                    B.FInspector,
                     B.FInspectTime,
                     A.employee.FName,
                     //
                     A.FStatus
-                }).Where(A => A.FStatus >= PublicEnum.ICMODispBillState.已检验.EnumToInt() && A.FYSQty > 0); 
+                }).Join(JIT_Employee.GetAll(),B=>B.FInspector.ToInt(),C=>C.FUserId,(B,C)=>new
+                {
+                    B.FBillNo,
+                    B.FBiller,
+                    B.FDate,
+                    B.FBillNo2,
+                    B.BatchNum,
+                    B.FYSQty,
+                    FInspector = C.FName,
+                    B.FInspectTime,
+                    B.FName,
+                    B.FStatus
+                }) 
+                .Where(A => A.FStatus >= PublicEnum.ICMODispBillState.已检验.EnumToInt() && A.FYSQty > 0);
             var data = await query.PageBy(input).ToListAsync();
             var list = data.MapTo<List<DIME2Barcode.Entities.VW_YSQty>>();
             return new PagedResultDto<DIME2Barcode.Entities.VW_YSQty>(query.Count(), list);
-        }
+        } 
     }
 }

@@ -3,6 +3,8 @@ using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using JIT.InformationSystem.Authorization;
+using JIT.InformationSystem.Authorization.Users;
+using JIT.InformationSystem.Users.Dto;
 
 namespace JIT.InformationSystem
 {
@@ -32,5 +34,6 @@ namespace JIT.InformationSystem
                 cfg => cfg.AddProfiles(thisAssembly)
             );
         }
+
     }
 }
