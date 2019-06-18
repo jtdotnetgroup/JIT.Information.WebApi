@@ -5,6 +5,7 @@ using Abp.Application.Services;
 using Abp.Auditing;
 using Abp.Domain.Repositories;
 using JIT.DIME2Barcode.Entities;
+using JIT.InformationSystem.Authorization.Users;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -21,7 +22,6 @@ namespace JIT.DIME2Barcode.AppService
         public IRepository<ICMOInspectBill, string> JIT_ICMOInspectBill { get; set; }
         public IRepository<Employee, int> JIT_Employee { get; set; }
         public IRepository<Abpauditlogs,long> LogsRepository { get; set; }
-
-       
+    
     }
 }
