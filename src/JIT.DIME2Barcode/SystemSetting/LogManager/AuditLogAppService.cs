@@ -19,29 +19,59 @@ namespace JIT.DIME2Barcode.SystemSetting.LogManager
     {
 
          
-
+        /// <summary>
+        /// 异常查询
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public async Task<PagedResultDto<AbpauditlogsDto>> GetAll(AbpauditlogsGetAllInput input)
-        {
+         {
+
+             
 
             var query = LogsRepository.GetAll();
 
-            if (input.StartTime == null && input.EndTime == null && string.IsNullOrEmpty(input.Message))
+            //一开始加载查询所有
+            if (input.StartTime == null && input.EndTime == null && string.IsNullOrEmpty(input.Message)&& !input.Exception)
             {
                 query = query;
-            }
-            else if (input.StartTime != null && input.EndTime != null && string.IsNullOrEmpty(input.Message))
+            }     
+            //根据时间查询
+            else if (input.StartTime != null && input.EndTime != null && string.IsNullOrEmpty(input.Message)&& !input.Exception)
             {
                 query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime);
             }
-            else if (input.StartTime != null && input.EndTime != null && !string.IsNullOrEmpty(input.Message))
+            //时间加异常查询
+            else if (input.StartTime != null && input.EndTime != null && !string.IsNullOrEmpty(input.Message)&& !input.Exception)
             {
                 query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime && p.Exception.Contains(input.Message));
             }
+            //时间加异常查询加异常不为空
+            else if (input.StartTime != null && input.EndTime != null && !string.IsNullOrEmpty(input.Message)&& input.Exception)
+            {
+                query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime && p.Exception.Contains(input.Message)&& p.Exception!=null);
+            }
+            //时间加异常不为空
+            else if (input.StartTime != null && input.EndTime != null && string.IsNullOrEmpty(input.Message) && input.Exception)
+            {
+                query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime  && p.Exception != null);
+            }
+            //只查异常的条件
+            else if (input.StartTime == null && input.EndTime == null && string.IsNullOrEmpty(input.Message) && input.Exception)
+            {
+                query = query.Where(p => p.Exception != null);
+            }
+            //异常内容+异常不为空
+            else if(input.StartTime == null && input.EndTime == null && !string.IsNullOrEmpty(input.Message) && input.Exception)
+            {
+                query = query.Where(p =>  p.Exception.Contains(input.Message) && p.Exception != null);
+            }
+            //查询异常的内容
             else
             {
                 query = query.Where(p => p.Exception.Contains(input.Message.Trim()));
             }
-            var data = query.OrderBy(p => p.Id).PageBy(input).ToList();
+            var data = query.OrderBy(p => p.ExecutionTime).PageBy(input).ToList();
             var count = await query.CountAsync(); 
             var list = data.MapTo<List<AbpauditlogsDto>>();
             return new PagedResultDto<AbpauditlogsDto>(count, list);
