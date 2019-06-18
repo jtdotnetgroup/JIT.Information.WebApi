@@ -42,7 +42,9 @@ namespace JIT.DIME2Barcode.AppService
 
             if (input.RoleStaic == 1)//查询全部
             {
-                query = Repository.GetAll().Where(p=>p.RoleId== input.RoleId&&p.TenantId==null);
+                //var Surname = input.Surname.ToString() == null ? "" : input.Surname.ToString();
+
+                query = Repository.GetAll().Where(p=>p.RoleId== input.RoleId&&p.TenantId==null&&p.Surname.Contains(input.Surname==null?"": input.Surname));
                 count = await query.CountAsync();
                 data = await query.OrderBy(u => u.UserName).PageBy(input).ToListAsync();
                 list = data.MapTo<List<VW_RoleUserAllDto>>();
@@ -57,7 +59,7 @@ namespace JIT.DIME2Barcode.AppService
             else//查询不是角色成员
             {   
                List<VW_RoleUserAll> lists = new List<VW_RoleUserAll>();
-               List<VW_RoleUserAll> ListRole = Repository.GetAll().Where(p => p.RoleId != input.RoleId || p.RoleId == null && p.TenantId == null).ToList();
+               List<VW_RoleUserAll> ListRole = Repository.GetAll().Where(p => (p.RoleId != input.RoleId || p.RoleId == null) && p.TenantId == null).ToList();
            
                foreach (var itme in ListRole)
                {
@@ -72,10 +74,10 @@ namespace JIT.DIME2Barcode.AppService
                    else
                    {
                        lists.Add(itme);
-                    }
+                   }
                }
 
-               var datas = lists.OrderBy(u => u.UserName).Skip(input.SkipCount)
+               var datas = lists.OrderBy(u => u.UserName).Where(p=>p.Surname.Contains(input.Surname == null ? "" : input.Surname)).Skip(input.SkipCount)
                    .Take(input.MaxResultCount).ToList();
 
                 count = lists.Count();
@@ -104,7 +106,7 @@ namespace JIT.DIME2Barcode.AppService
                         //新增加userrole true
 
                         var queryUsre = UserRoleRepository.GetAll()
-                            .FirstOrDefault(p => p.UserId == item.UserID && p.RoleId == input.Id) ??new UserRole();
+                            .FirstOrDefault(p => p.UserId == item.UserID && p.RoleId == input.Id && p.TenantId == null) ??new UserRole();
 
                         queryUsre.UserId = item.UserID;
                         queryUsre.RoleId = input.Id;//角色ID
@@ -116,7 +118,7 @@ namespace JIT.DIME2Barcode.AppService
                     else
                     {
                         //删除userrole false
-                        var query = UserRoleRepository.GetAll().FirstOrDefault(p => p.UserId == item.UserID && p.RoleId == input.Id) ??new UserRole();
+                        var query = UserRoleRepository.GetAll().FirstOrDefault(p => p.UserId == item.UserID && p.RoleId == input.Id&&p.TenantId==null) ??new UserRole();
 
                          UserRoleRepository.Delete(query);
                     }

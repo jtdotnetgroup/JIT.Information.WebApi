@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Abp.Domain.Entities;
+using System.Text;
+using Abp.Application.Services.Dto;
 
-namespace JIT.DIME2Barcode.Entities
+namespace JIT.DIME2Barcode.SystemSetting.LogManager.Dtos
 {
-    public partial class Abpauditlogs:Entity<long>
+    public class AbpauditlogsDto:EntityDto<long>
     {
-       // public long Id { get; set; }
+        //public long Id { get; set; }
         public int? TenantId { get; set; }
         public long? UserId { get; set; }
         public string ServiceName { get; set; }
@@ -22,5 +23,6 @@ namespace JIT.DIME2Barcode.Entities
         public long? ImpersonatorUserId { get; set; }
         public int? ImpersonatorTenantId { get; set; }
         public string CustomData { get; set; }
+
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Abp.Application.Services;
+using Abp.Auditing;
 using Abp.Domain.Repositories;
 using JIT.DIME2Barcode.Entities;
 
@@ -19,6 +20,8 @@ namespace JIT.DIME2Barcode.AppService
         public IRepository<DIME2Barcode.Entities.ICMODispBillRecord, string> JIT_ICMODispBillRecord { get; set; }
         public IRepository<ICMOInspectBill, string> JIT_ICMOInspectBill { get; set; }
         public IRepository<Employee, int> JIT_Employee { get; set; }
+        public IRepository<Abpauditlogs,long> LogsRepository { get; set; }
 
+       
     }
 }
