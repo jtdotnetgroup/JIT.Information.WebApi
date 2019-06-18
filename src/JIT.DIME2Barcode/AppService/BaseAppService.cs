@@ -27,6 +27,10 @@ namespace JIT.DIME2Barcode.AppService
         /// 角色表
         /// </summary>
         public IRepository<UserRole, long> ABP_UserRole { get; set; }
+        /// <summary>
+        /// 日志记录表
+        /// </summary>
+        public IRepository<Abpauditlogs, long> LogsRepository { get; set; }
         #endregion
 
         #region 业务表
