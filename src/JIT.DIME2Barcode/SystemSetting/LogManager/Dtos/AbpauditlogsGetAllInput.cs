@@ -11,6 +11,7 @@ namespace JIT.DIME2Barcode.SystemSetting.LogManager.Dtos
         public  DateTime? StartTime { get; set; }
         public  DateTime? EndTime { get; set; }
         public  string Message { get; set; }
+        public  bool Exception { get; set; }
 
     }
 }

@@ -44,7 +44,7 @@ namespace JIT.DIME2Barcode.AppService
             {
                 //var Surname = input.Surname.ToString() == null ? "" : input.Surname.ToString();
 
-                query = Repository.GetAll().Where(p=>p.RoleId== input.RoleId&&p.TenantId==null&&p.Surname.Contains(input.Surname==null?"": input.Surname));
+                query = Repository.GetAll().Where(p=>p.RoleId== input.RoleId&&p.TenantId==null&&  (p.Surname.Contains(string.IsNullOrEmpty(input.Surname)?"": input.Surname) || p.UserName.Contains(string.IsNullOrEmpty(input.Surname) ? "" : input.Surname)));
                 count = await query.CountAsync();
                 data = await query.OrderBy(u => u.UserName).PageBy(input).ToListAsync();
                 list = data.MapTo<List<VW_RoleUserAllDto>>();
@@ -77,10 +77,18 @@ namespace JIT.DIME2Barcode.AppService
                    }
                }
 
-               var datas = lists.OrderBy(u => u.UserName).Where(p=>p.Surname.Contains(input.Surname == null ? "" : input.Surname)).Skip(input.SkipCount)
+               var datas = lists.OrderBy(u => u.UserName).Where(p=> (p.Surname.Contains(string.IsNullOrEmpty(input.Surname) ? "" : input.Surname) || p.UserName.Contains(string.IsNullOrEmpty(input.Surname) ? "" : input.Surname))).Skip(input.SkipCount)
                    .Take(input.MaxResultCount).ToList();
 
-                count = lists.Count();
+               if (!string.IsNullOrEmpty(input.Surname))
+               {
+                   count = datas.Count();
+                }
+               else
+               {
+                   count = lists.Count();
+                }
+               
 
               
                 list = datas.MapTo<List<VW_RoleUserAllDto>>();
