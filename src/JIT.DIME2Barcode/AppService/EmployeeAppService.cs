@@ -70,7 +70,12 @@ namespace JIT.DIME2Barcode.AppService
             long userid = 0;
             var companyId = 0;
 
-            var count = _UserRepository.Count()+1;
+            var isExist=await  _ERepository.CountAsync(p => p.FMpno == input.FMpno);
+
+            if (isExist > 0)
+            {
+                throw new UserFriendlyException($"员工编号：{input.FMpno}已存在");
+            }
 
             //指定默认邮箱
             //input.FEmailAddress = string.IsNullOrEmpty(input.FEmailAddress) ? $"test{count}@jit.com" : input.FEmailAddress;
@@ -119,8 +124,8 @@ namespace JIT.DIME2Barcode.AppService
                 //User u = UserDto.MapTo<User>();
                 //u.NormalizedUserName = u.UserName.ToUpper();
                 //u.Password = PasswordHasher.HashPassword(u, u.Password);
-
                 //userid = await _UserRepository.InsertAndGetIdAsync(u);
+
             }
             if (input.FDepartment > 0) //部门ID
             {
@@ -152,10 +157,44 @@ namespace JIT.DIME2Barcode.AppService
         /// <returns></returns>
         public async Task<Employee> Update(EmployeeEdit input)
         {
-
             var entity = input.MapTo<Employee>();
             long userid = 0;
-            if (input.FSystemUser == 1)//是系统用户
+
+            //修改员工对应用户信息
+            await CreateOrUpdateUser(input);
+
+            if (input.FDepartment > 0) //部门ID
+            {
+
+                var treelist = _Repository.GetAll().Where(p => p.IsDeleted == false).ToList();
+
+                //查找部门的那条数据
+                var eneiety = _Repository.GetAll().Include(p => p.Parent)
+                    .SingleOrDefault(p => p.Id == input.FDepartment && p.IsDeleted == false);
+                if (eneiety != null)
+                {
+                    var resultjt = GetCompany(eneiety, treelist);
+                    entity.FOrganizationUnitId = resultjt.Id;
+                }
+            }
+
+            entity.FTenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0;
+           
+            entity.FUserId = userid==0?input.FUserId: userid;
+            entity.IsDeleted = false;
+            var count= await _ERepository.UpdateAsync(entity);
+            return count;
+        }
+
+        /// <summary>
+        /// 创建或更新员工对应的用户
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private async Task CreateOrUpdateUser(EmployeeEdit input)
+        {
+            long userid;
+            if (input.FSystemUser == 1) //是系统用户
             {
                 if (input.FUserId == 0)
                 {
@@ -168,11 +207,10 @@ namespace JIT.DIME2Barcode.AppService
                         EmailAddress = input.FEmailAddress,
                         IsActive = true,
                         RoleNames = null,
-                        Password = CreateUserDto.Password
-                    };              
+                        Password =string.IsNullOrEmpty( CreateUserDto.Password)?User.DefaultPassword:CreateUserDto.Password
+                    };
 
                     userid = UserAppService.Create(UserDto).Result.Id;
-
                 }
                 else
                 {
@@ -180,7 +218,7 @@ namespace JIT.DIME2Barcode.AppService
                     User entitys = null;
                     try
                     {
-                         entitys = await _UserRepository.GetAll()
+                        entitys = await _UserRepository.GetAll()
                             .SingleOrDefaultAsync(p => p.Id == input.FUserId);
                     }
                     catch (Exception e)
@@ -188,7 +226,7 @@ namespace JIT.DIME2Barcode.AppService
                         Console.WriteLine(e);
                         throw;
                     }
-                    
+
 
                     Console.WriteLine(entitys);
                     if (entitys != null)
@@ -196,26 +234,7 @@ namespace JIT.DIME2Barcode.AppService
                         entitys.IsActive = true;
                         await _UserRepository.UpdateAsync(entitys);
                     }
-
                 }
-                #region 旧代码
-                //var entitys = await _UserRepository.GetAll()
-                //    .SingleOrDefaultAsync(p => p.Id == input.FUserId);
-                //if (entitys!=null)
-                //{
-                //    entitys.UserName = input.FName;
-                //    entitys.EmailAddress = input.FEmailAddress;
-                //    entitys.Name = input.FName;
-                //    entitys.Surname = input.FName;
-                //    entitys.Password = User.DefaultPassword;
-                //    entitys.NormalizedUserName = input.FName;
-                //    entitys.NormalizedEmailAddress = input.FEmailAddress;
-                //    entitys.LastModificationTime = DateTime.Now;
-                //    await _UserRepository.UpdateAsync(entitys);
-                //}            
-
-
-                #endregion
             }
             else
             {
@@ -232,10 +251,10 @@ namespace JIT.DIME2Barcode.AppService
                     }
                 }
             }
+
             //修改为不在职状态的情况下
-            if (input.FWorkingState==2)
+            if (input.FWorkingState == 2)
             {
-                
                 if (input.FUserId > 0)
                 {
                     //不加查询条件去返回对象来更改会报错
@@ -249,9 +268,9 @@ namespace JIT.DIME2Barcode.AppService
                 }
             }
             else
-            {    
-               //在职状态的情况下  不是系统用户 
-                if (input.FSystemUser==2)
+            {
+                //在职状态的情况下  不是系统用户 
+                if (input.FSystemUser == 2)
                 {
                     if (input.FUserId > 0)
                     {
@@ -282,17 +301,7 @@ namespace JIT.DIME2Barcode.AppService
                     }
                 }
             }
-            
-
-            entity.FTenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0;
-            entity.FOrganizationUnitId = input.FOrganizationUnitId;
-           
-            entity.FUserId = userid==0?input.FUserId: userid;
-            entity.IsDeleted = false;
-            var count= await _ERepository.UpdateAsync(entity);
-            return count;
         }
-
 
 
         public async Task<int> Delete(EmployeeDelete input)
@@ -503,7 +512,7 @@ namespace JIT.DIME2Barcode.AppService
         public async Task<PagedResultDto<EmployeeDto>> GetAllWorkers()
         {
             var query = _ERepository.GetAllIncluding(p => p.Department)
-                .Where(p => p.Department.FWorkshopType == true);
+                .Where(p => p.Department.FWorkshopType == true&&p.IsDeleted==false);
 
             var count = await query.CountAsync();
 

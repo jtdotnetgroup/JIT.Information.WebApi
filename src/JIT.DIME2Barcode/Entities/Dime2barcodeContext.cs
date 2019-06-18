@@ -17,6 +17,9 @@ namespace JIT.DIME2Barcode.Entities
         public virtual DbSet<VW_MOBillList> VW_MOBillList { get; set; }
         public virtual DbSet<VM_Inventory> VM_Inventory { get; set; }
 
+        public virtual DbSet<t_SubMesType_Sync> t_SubMesType { get; set; }
+        public virtual DbSet<t_SubMessage_Sync> t_SubMessage { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

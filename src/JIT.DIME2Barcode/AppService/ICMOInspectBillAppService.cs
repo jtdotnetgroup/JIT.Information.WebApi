@@ -189,7 +189,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="ICMODispBillID">任务单号ID</param>
         /// <param name="FAuxQty">汇报数</param>
-        public bool Create(string ICMODispBillID, decimal FAuxQty, string BatchNum)
+        public bool Create(string ICMODispBillID, decimal FAuxQty,string BatchNum)
         {
             try
             {
@@ -243,7 +243,7 @@ namespace JIT.DIME2Barcode.AppService
         /// <summary>
         /// 更改汇报数
         /// </summary>
-        public async Task<bool> UpdateFAuxQty(string FID, decimal FAuxQty, string BatchNum)
+        public async Task<bool> UpdateFAuxQty(string FID,decimal FAuxQty, string BatchNum)
         {
             try
             {
@@ -267,7 +267,6 @@ namespace JIT.DIME2Barcode.AppService
                 Console.WriteLine(e);
                 return false;
             }
-
         }
         /// <summary>
         /// 返回余数

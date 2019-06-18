@@ -15,6 +15,7 @@ using Abp.Dependency;
 using JIT.DIME2Barcode.BackgroudJobs;
 using JIT.DIME2Barcode.BaseData.Equipment.Dtos;
 using JIT.DIME2Barcode.SystemSetting.Employee.Dtos;
+using JIT.DIME2Barcode.TaskAssignment.TB_BadItemRelation.Dtos;
 
 namespace JIT.DIME2Barcode
 {
@@ -135,6 +136,10 @@ namespace JIT.DIME2Barcode
                 config.CreateMap<ICMODispBill, ICMODispBillRecord>()
                     .ForMember(o => o.CreateTime, op => op.Ignore())
                     .ForMember(o => o.CreateUserID, op => op.Ignore());
+
+                config.CreateMap<TB_BadItemRelation, TB_BadItemRelationDto>()
+                    .ForMember(o => o.FItemID, op => op.Ignore())
+                    .ForMember(o => o.FOperName, op => op.Ignore());
 
             });
 

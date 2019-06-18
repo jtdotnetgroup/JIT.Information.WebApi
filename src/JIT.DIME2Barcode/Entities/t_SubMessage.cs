@@ -24,4 +24,11 @@ namespace JIT.DIME2Barcode.Entities
         public string FSpec { get; set; }
         public string UUID { get; set; }
     }
+
+    //此类用于同步
+    public class t_SubMessage_Sync : t_SubMessage
+    {
+        [ForeignKey("FTypeID")]
+        public t_SubMesType_Sync SubMessageType { get; set; }
+    }
 }
