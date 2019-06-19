@@ -65,10 +65,11 @@
     <text name="DisplayName">显示名</text>
     <text name="Description">描述</text>
     <text name="IsStatic">是否内置</text>
-
+    
     <text name="All">全部</text>
     <text name="Actived">启用</text>
     <text name="NoActive">未启用</text>
+    <text name="Refresh">刷新</text>
     
     <text name="Yes">是</text>
     <text name="No">否</text>
@@ -97,6 +98,8 @@
     <text name="DeleteTenantConfirm">确认删除该租户？</text>
     <text name="EditTenant">编辑租户</text>
 
+    <text name="WorkCenter">工作中心</text>
+
     <text name="SystemSettings">系统设置</text>
     <text name="Update">修改</text>
     <text name="Get">查询</text>
@@ -105,12 +108,36 @@
     <text name="TaskPlan">任务排产</text>
     <text name="TaskDispatch">任务派工</text>
 
+    <text name="ReportForm">报表管理</text>
+    
+    <text name="BasicData">基础资料</text>
+    <text name="OrganizeGet">组织查询</text>
+    <text name="OrganizeUpdate">组织编辑</text>
+    <text name="OrganizeDelete">组织删除</text>
+    <text name="StaffGet">员工查询</text>
+    <text name="StaffUpdate">员工编辑</text>
+    <text name="StaffDelete">员工删除</text>
+    
+    <text name="EquipmentArchives">设备档案</text>
+    <text name="DiscontinueUse">停用</text>
+    <text name="Scrap">报废</text>
+    <text name="Repair">维修</text>
+    <text name="ResourceImport">资源导入</text>
+    <text name="CapacityImport">产能导入</text>
+    <text name="FlightInformationMaintenance">班次信息维护</text>
+
+    <text name="BadProjects">不良项目</text>
+    <text name="MemberManagement">成员管理</text>
+    <text name="JournalQuery">日志查询</text>
+    <text name="UsersManagement">用户管理</text>
+    <text name="RolesManagement">角色管理</text>
+
     <text name="TouchPad">触屏端</text>
     <text name="DispatchedWork">派工任务</text>
     <text name="IPQC">质量检验</text>
     <text name="Stock">库存查询</text>
     <text name="BarCode">条码打印</text>
-
+    <text name="PackNum">包装余数</text>
 
 
   </texts>
