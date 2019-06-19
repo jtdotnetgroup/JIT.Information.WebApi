@@ -1,9 +1,5 @@
-﻿﻿using Abp.Application.Services;
+﻿using Abp.Application.Services;
 using Abp.Authorization.Users;
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Abp.Auditing;
 using Abp.Domain.Repositories;
 using Abp.UI;
 using JIT.DIME2Barcode.Entities;
@@ -27,10 +23,6 @@ namespace JIT.DIME2Barcode.AppService
         /// 角色表
         /// </summary>
         public IRepository<UserRole, long> ABP_UserRole { get; set; }
-        /// <summary>
-        /// 日志记录表
-        /// </summary>
-        public IRepository<Abpauditlogs, long> LogsRepository { get; set; }
         #endregion
 
         #region 业务表
@@ -65,10 +57,6 @@ namespace JIT.DIME2Barcode.AppService
         public IRepository<DIME2Barcode.Entities.TB_BadItemRelation, int> JIT_TB_BadItemRelation { get; set; }
         #endregion
 
-        #region 系统表
-        public IRepository<DIME2Barcode.Entities.Sys_Task, int> JIT_Sys_Task { get; set; }
-        public IRepository<DIME2Barcode.Entities.Sys_TaskRecord, int> JIT_Sys_TaskRecord { get; set; }
-        #endregion
         #region 视图
         /// <summary>
         /// 

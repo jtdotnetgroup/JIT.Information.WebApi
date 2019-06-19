@@ -5,13 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
-using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.TaskAssignment.ICException.Dtos;
-using JIT.InformationSystem.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace JIT.DIME2Barcode.AppService
@@ -20,7 +18,6 @@ namespace JIT.DIME2Barcode.AppService
     /// <summary>
     /// 派工异常记录
     /// </summary>
-    [AbpAuthorize()]
     public class ICExceptionAppService : BaseAppService
     { 
         /// <summary>
@@ -44,7 +41,8 @@ namespace JIT.DIME2Barcode.AppService
             var query = JIT_ICException.GetAll().Where(w=>w.FSrcID==input.FID); 
             var data = await query.ToListAsync(); 
             return data; 
-        } 
+        }
+
         /// <summary>
         /// 添加和更改
         /// </summary>

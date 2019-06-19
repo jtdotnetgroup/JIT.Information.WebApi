@@ -1,5 +1,4 @@
 ﻿using Abp.EntityFrameworkCore;
-using JIT.DIME2Barcode.SystemSetting.LogManager;
 using JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos;
 using JIT.InformationSystem;
@@ -40,11 +39,9 @@ namespace JIT.DIME2Barcode.Entities
         public virtual DbSet<t_SubMesType> t_SubMesType { get; set; }
 
         public virtual DbSet<t_ICItem> t_ICItem { get; set; }
-
-        public virtual DbSet<Abpauditlogs> Abpauditlogs { get; set; }
         //public virtual DbSet<t_ICItem> t_ICItem { get; set; }
-        public virtual DbSet<Sys_Task> Sys_Task { get; set; }
-        public virtual DbSet<Sys_TaskRecord> Sys_TaskRecord { get; set; }
+ 
+        
 
         #region 视图
 
