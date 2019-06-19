@@ -43,8 +43,8 @@ namespace JIT.DIME2Barcode.Entities
 
         public virtual DbSet<Abpauditlogs> Abpauditlogs { get; set; }
         //public virtual DbSet<t_ICItem> t_ICItem { get; set; }
-
-
+        public virtual DbSet<Sys_Task> Sys_Task { get; set; }
+        public virtual DbSet<Sys_TaskRecord> Sys_TaskRecord { get; set; }
 
         #region 视图
 
