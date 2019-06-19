@@ -4,9 +4,9 @@ using Abp.Domain.Entities;
 
 namespace JIT.DIME2Barcode.Entities
 {
-    public partial class Abpauditlogs:Entity
+    public partial class Abpauditlogs:Entity<long>
     {
-        public long Id { get; set; }
+       // public long Id { get; set; }
         public int? TenantId { get; set; }
         public long? UserId { get; set; }
         public string ServiceName { get; set; }

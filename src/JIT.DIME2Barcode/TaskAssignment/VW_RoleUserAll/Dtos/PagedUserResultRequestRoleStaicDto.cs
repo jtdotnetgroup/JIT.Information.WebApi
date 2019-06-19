@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Abp.Application.Services.Dto;
+using JetBrains.Annotations;
 
 namespace JIT.DIME2Barcode.TaskAssignment.VW_RoleUserAll.Dtos
 {
@@ -11,5 +12,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.VW_RoleUserAll.Dtos
         public int RoleStaic { get; set; }
 
         public  int RoleId { get; set; }
+
+       public  string Surname { get; set; }
     }
 }
