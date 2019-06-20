@@ -181,7 +181,8 @@ namespace JIT.DIME2Barcode.AppService
             }
 
             entity.FTenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0;
-           
+            entity.FERPUser = input.FERPUser == null ? 0 : input.FERPUser;
+            entity.FERPOfficeClerk = input.FERPOfficeClerk == null ? 0 : input.FERPOfficeClerk;
             entity.FUserId = userid==0?input.FUserId: userid;
             entity.IsDeleted = false;
             var count= await _ERepository.UpdateAsync(entity);

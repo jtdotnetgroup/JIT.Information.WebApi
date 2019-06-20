@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Castle.Components.DictionaryAdapter;
 using JIT.DIME2Barcode.AppService;
 using JIT.DIME2Barcode.SystemSetting.Employee.Dtos;
 
@@ -183,22 +184,33 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
 
             var entity = await query.SingleOrDefaultAsync(p => true);
 
-         
-
-            var ORByID = _repository.GetAll().SingleOrDefault(p => p.Id == entity.ParentId).Id;
+            var ORByID = _repository.GetAll().SingleOrDefault(p => p.Id == entity.ParentId);
 
             var EmployeeByID = EmployeeApp.GetOneselfAndJunior(new int[] {input.Id});
 
-            var EmployeeList = EmployeeApp._ERepository.GetAll()
-                .Where(p => p.IsDeleted == false && EmployeeByID.Contains(p.FDepartment)).ToList();
+            List<Entities.Employee> EmployeeList=new EditableList<Entities.Employee>();
 
+            if (EmployeeByID!=null)
+            {
+                 EmployeeList = EmployeeApp._ERepository.GetAll()
+                    .Where(p => p.IsDeleted == false && EmployeeByID.Contains(p.FDepartment)).ToList();
+            }
 
+          
             if (entity != null)
             {
-
+         
                 foreach (var e in EmployeeList)
                 {
-                  e.FDepartment = ORByID;
+                    if (ORByID!=null)
+                    {
+                        e.FDepartment = ORByID.Id;
+                    }
+                    else
+                    {
+                        e.FDepartment= _repository.GetAll().FirstOrDefault(p => p.Id == entity.ParentId&&p.IsDeleted==false).Id;
+                    }
+                 
                   EmployeeApp._ERepository.Update(e);
                 }
 

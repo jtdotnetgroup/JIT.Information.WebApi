@@ -21,9 +21,9 @@ namespace JIT.DIME2Barcode.AppService
 
         public IRepository<TB_BadItemRelation,int> Repository { get; set; }
         public IRepository<t_SubMesType_Sync,int> SubMesTypeRepository { get; set; }//辅助资料表
-        public IRepository<t_SubMessage_Sync,int> SubMessageRepository { get; set; }//辅助资料类型表
+        public IRepository<t_SubMessage_Sync, int> SubMessageRepository { get; set; }//辅助资料类型表
         public IRepository<t_ICItem,int> ICItemRepository { get; set; }
-
+      
 
         /// <summary>
         /// 工序不良项目表
@@ -46,10 +46,9 @@ namespace JIT.DIME2Barcode.AppService
             List<TreeSubMessageDto> list = new List<TreeSubMessageDto>();
 
             var query = from a in Context.t_SubMessage
-                        join b in Context.t_SubMesType on a.FTypeID equals b.FTypeID into bd
-                        from ac in bd.DefaultIfEmpty()
+                join b in Context.t_SubMesType on a.FTypeID equals b.FTypeID into bd
+                from ac in bd.DefaultIfEmpty()
                 where ac.FName.Contains("工序资料")
-
                 select new
                 {
                     a.FInterID,
@@ -141,9 +140,7 @@ namespace JIT.DIME2Barcode.AppService
                 return new PagedResultDto<TB_BadItemRelationDto>(count, list);
             }
 
-            
 
-        
 
         }
 
@@ -153,7 +150,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-         public async Task<TB_BadItemRelation> Create(TB_BadItemRelationCreateAndEditDto input)
+        public async Task<TB_BadItemRelation> Create(TB_BadItemRelationCreateAndEditDto input)
         {
             var entity = input.MapTo<TB_BadItemRelation>();
 

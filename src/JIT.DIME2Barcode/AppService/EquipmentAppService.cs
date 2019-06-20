@@ -74,7 +74,7 @@ namespace JIT.DIME2Barcode.AppService
 
             if (!string.IsNullOrEmpty(input.OrganizationCode))
             {
-                var org = await ORepository.GetAll().Where(p => p.Code == input.OrganizationCode).SingleOrDefaultAsync();
+                var org = await ORepository.GetAll().Where(p => p.Code == input.OrganizationCode&&p.IsDeleted==false).SingleOrDefaultAsync();
                 query = query.Where(p => p.FWorkCenterID == org.Id);
             }
 

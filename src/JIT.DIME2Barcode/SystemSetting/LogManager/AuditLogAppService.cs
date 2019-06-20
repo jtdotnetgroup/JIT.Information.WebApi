@@ -111,7 +111,7 @@ namespace JIT.DIME2Barcode.SystemSetting.LogManager
                     query = query.Where(p => (p.Exception.Contains(input.Message.Trim())));
                 }
             }
-
+             
             var data = query.OrderByDescending(p => p.ExecutionTime).PageBy(input).ToList();
             var count = await query.CountAsync(); 
             var list = data.MapTo<List<AbpauditlogsDto>>();
