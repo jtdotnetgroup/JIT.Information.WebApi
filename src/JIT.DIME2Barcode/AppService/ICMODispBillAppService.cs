@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Abp;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
@@ -12,6 +13,7 @@ using Abp.Linq.Extensions;
 using Castle.DynamicProxy.Generators.Emitters;
 using CommonTools;
 using JIT.DIME2Barcode.Entities;
+using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.VW_ICMODispBill_By_Date.Dtos;
@@ -36,6 +38,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Get)]
         public async Task<PagedResultDto<ICMODispBillListDto>> GetAll(ICMODispBillGetAllInput input)
         {
 
@@ -65,6 +68,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Create)]
         public async Task<ICMODispBillListDto> Create(ICMODispBillCreateInput input)
         {
             decimal? totalCommitQty = 0;
@@ -159,6 +163,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Get)]
         public async Task<PagedResultDto<VW_ICMODispBill_By_Date>> GetDailyGroup(
             VW_ICMODispBill_By_DateGetAllInput input)
         {
@@ -170,7 +175,7 @@ namespace JIT.DIME2Barcode.AppService
 
             return new PagedResultDto<VW_ICMODispBill_By_Date>(count, data);
         }
-
+         
         public async Task<bool> UpdateFFinishAuxQty(ICMODispBillUpdateFFinishAuxQtyInput input)
         {
             try

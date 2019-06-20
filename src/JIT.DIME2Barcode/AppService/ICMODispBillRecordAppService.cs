@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Abp.Authorization;
 using Abp.AutoMapper;
+using JIT.DIME2Barcode.Permissions;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -13,6 +15,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="FID"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Create)]
         public async Task<bool> Create(string FID)
         {
             try

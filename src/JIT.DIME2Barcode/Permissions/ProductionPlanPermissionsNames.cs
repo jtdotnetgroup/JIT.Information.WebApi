@@ -31,11 +31,13 @@ namespace JIT.DIME2Barcode.Permissions
         public const string TaskDispatch_Create = TaskDispatch + Create;
 
         // 基础资料-组织
+        public const string BasicData_OrganizeAdd = BasicData + ".OrganizeAdd";
         public const string BasicData_OrganizeGet = BasicData + ".OrganizeGet";
         public const string BasicData_OrganizeUpdate = BasicData + ".OrganizeUpdate";
         public const string BasicData_OrganizeDelete = BasicData + ".OrganizeDelete";
 
         // 基础资料-员工
+        public const string BasicData_StaffAdd = BasicData + ".StaffAdd";
         public const string BasicData_StaffGet = BasicData + ".StaffGet";
         public const string BasicData_StaffUpdate = BasicData + ".StaffUpdate";
         public const string BasicData_StaffDelete = BasicData + ".StaffDelete";
@@ -57,6 +59,7 @@ namespace JIT.DIME2Barcode.Permissions
         public const string BadProjects_Create = BadProjects + Create;
         public const string BadProjects_Import = BadProjects + Import;
         public const string BadProjects_Export = BadProjects + Export;
+        public const string BadProjects_Delete = BadProjects + Delete;
 
         // 用户管理
         public const string UsersManagement_Get = UsersManagement + Get;
@@ -82,8 +85,7 @@ namespace JIT.DIME2Barcode.Permissions
         // 工作中心
         public const string WorkCenter_Get = WorkCenter + Get;
         #endregion
-
-
+        
         #region 触屏端权限
         //派工任务
         public const string TouchPadDispatchedWork = "TouchPad.DispatchedWork";

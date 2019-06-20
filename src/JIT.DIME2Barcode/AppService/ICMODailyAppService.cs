@@ -66,6 +66,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskPlan_Get)]
         public async Task<PagedResultDto<VW_ICMODailyDto>> GetAll(ICMODailyGetAllInput input)
         {
             var query = VRepository.GetAll();
@@ -91,6 +92,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskPlan_Create)]
         public async Task<int> Create(ICMODailyCreatDto input)
         {
             var icmo = MRepository.GetAll().SingleOrDefault(p => p.任务单号 == input.FMOBillNo);
@@ -172,7 +174,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
 
             return 0;
         }
-
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskPlan_Update, ProductionPlanPermissionsNames.TaskPlan_Create)]
         protected async Task InsertOrUpdateICMOSchedul(ICMODailyCreatedtEventData eventData)
         {
             var entity = await SRepository.GetAll().SingleOrDefaultAsync(p =>
@@ -199,7 +201,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 SRepository.Update(entity);
             }
         }
-
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskPlan_Update, ProductionPlanPermissionsNames.TaskPlan_Create)]
         public async Task<Array> GetDialyQtyListByFMOInterID(ICMODailyGetAllInput input)
         {
             var query = Repository.GetAll().Where(p => p.FMOInterID == input.FMOInterID);
@@ -226,6 +228,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskPlan_Get)]
         public async Task<List<VW_Group_ICMODaily>> GetDailyListByFMOInterID(ICMODailyGetAllInput input)
         {
             try
@@ -242,12 +245,12 @@ namespace JIT.DIME2Barcode.TaskAssignment
                 throw;
             }
         }
-
         /// <summary>
         /// 导入EXCEL排产信息
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskPlan_Import)]
         public async Task<List<ICMOSchedule>> ImportDaily(List<ICMODailyCreatDto> input)
         {
             var fmobillno = "";
@@ -271,6 +274,8 @@ namespace JIT.DIME2Barcode.TaskAssignment
         /// <param name="icmo">任务单信息</param>
         /// <returns></returns>
         [UnitOfWork]
+
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskPlan_Get)]
         protected ICMOSchedule GetOrCreateSchedule(Entities.VW_MOBillList icmo)
         {
             var schedule = SRepository.GetAll().Include(p => p.Dailies).SingleOrDefault(p => p.FMOBillNo == icmo.任务单号);
@@ -308,6 +313,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskPlan_Get)]
         public async Task<PagedResultDto<VW_ICMODaily_Group_By_Day>> GetGroupDailyList(ICMODailyGetAllInput input)
         {
             var query = GRepository.GetAll();
@@ -320,7 +326,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
 
         }
 
-
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskPlan_Get)]
         public async Task<MOBillPlanDetail> GetMOBillPlanDetail(ICMODailyGetAllInput input)
         {
             var context = Repository.GetDbContext() as ProductionPlanMySqlDbContext;

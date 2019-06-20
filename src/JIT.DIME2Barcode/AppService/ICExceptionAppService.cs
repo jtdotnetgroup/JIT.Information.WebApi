@@ -10,6 +10,7 @@ using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using JIT.DIME2Barcode.Entities;
+using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.ICException.Dtos;
 using JIT.InformationSystem.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,7 @@ namespace JIT.DIME2Barcode.AppService
     /// <summary>
     /// 派工异常记录
     /// </summary>
-    [AbpAuthorize()]
+    [AbpAuthorize(ProductionPlanPermissionsNames.TouchPadDispatchedWork)]
     public class ICExceptionAppService : BaseAppService
     { 
         /// <summary>

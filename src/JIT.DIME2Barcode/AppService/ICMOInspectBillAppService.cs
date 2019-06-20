@@ -6,12 +6,14 @@ using System.Net.WebSockets;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Abp.UI;
 using CommonTools;
 using JIT.DIME2Barcode.Entities;
+using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.ICMOInspectBill.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICQualityRpt.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.VW_ICMOInspectBillList.Dtos;
@@ -21,10 +23,9 @@ using Microsoft.EntityFrameworkCore.Internal;
 
 namespace JIT.DIME2Barcode.AppService
 {
+    [AbpAuthorize(ProductionPlanPermissionsNames.TouchPadDispatchedWork,ProductionPlanPermissionsNames.TouchPadIPQC)]
     public class ICMOInspectBillAppService : BaseAppService
-    {
-        
-
+    { 
         public async Task<PagedResultDto<VW_ICMOInspectBillListDto>> GetAll(VW_ICMOInspectBillListGetAllInput input)
         {
             var query = JIT_VW_ICMOInspectBillList.GetAll().OrderBy(p => p.派工单号);

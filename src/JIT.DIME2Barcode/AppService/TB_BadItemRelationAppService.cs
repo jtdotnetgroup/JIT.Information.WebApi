@@ -6,11 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.EntityFrameworkCore.Repositories;
 using Abp.Linq.Extensions;
 using JIT.DIME2Barcode.Entities;
+using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.TB_BadItemRelation.Dtos;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,6 +31,7 @@ namespace JIT.DIME2Barcode.AppService
         /// 工序不良项目表
         /// </summary>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.BadProjects_Get)]
         public List<TB_BadItemRelation> GetAll()
         {
             return Repository.GetAll().ToList();
@@ -69,6 +72,7 @@ namespace JIT.DIME2Barcode.AppService
         }
 
 
+        [AbpAuthorize(ProductionPlanPermissionsNames.BadProjects_Get)]
         public async  Task<PagedResultDto<TB_BadItemRelationDto>> GetAllBadItemRelation(TB_BadItemRelationGetAllInput input)
         {
             #region 暂时不用，因为数据还没同步过来
@@ -153,7 +157,8 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-         public async Task<TB_BadItemRelation> Create(TB_BadItemRelationCreateAndEditDto input)
+        [AbpAuthorize(ProductionPlanPermissionsNames.BadProjects_Create)]
+        public async Task<TB_BadItemRelation> Create(TB_BadItemRelationCreateAndEditDto input)
         {
             var entity = input.MapTo<TB_BadItemRelation>();
 
@@ -168,6 +173,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.BadProjects_Update)]
         public Task<TB_BadItemRelation> Update(TB_BadItemRelationCreateAndEditDto input)
         {
             var entity = input.MapTo<TB_BadItemRelation>();
@@ -180,6 +186,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.BadProjects_Delete)]
         public async Task<int> Delete(TB_BadItemRelationCreateAndEditDto input)
         {
             try
