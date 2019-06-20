@@ -38,8 +38,7 @@ namespace JIT.DIME2Barcode.AppService
             int count = 0;
             List<VW_RoleUserAllDto> list = new List<VW_RoleUserAllDto>();
             List<VW_RoleUserAll> data = new List<VW_RoleUserAll>();
-
-
+            
             if (input.RoleStaic == 1)//查询全部
             {
                 //var Surname = input.Surname.ToString() == null ? "" : input.Surname.ToString();

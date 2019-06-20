@@ -13,6 +13,7 @@ namespace JIT.InformationSystem.CommonClass
         protected const string Print = ".Print";
         protected const string Import = ".Import";
         protected const string Export = ".Export";
+        protected const string Refresh = ".Refresh";
 
     }
 }
