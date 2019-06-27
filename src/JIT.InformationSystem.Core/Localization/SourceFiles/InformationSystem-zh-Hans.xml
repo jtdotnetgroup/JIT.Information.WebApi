@@ -134,6 +134,8 @@
     <text name="UsersManagement">用户管理</text>
     <text name="RolesManagement">角色管理</text>
 
+    <text name="BasicInfo">基础信息</text>
+
     <text name="TouchPad">触屏端</text>
     <text name="DispatchedWork">派工任务</text>
     <text name="IPQC">质量检验</text>

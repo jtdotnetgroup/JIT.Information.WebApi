@@ -31,7 +31,7 @@ namespace JIT.DIME2Barcode.AppService
         /// <returns></returns>
         public async Task<ICExceptionDto> Get(ICExceptionInput input)
         {
-            var entity = await JIT_ICException.GetAll()
+            var entity = await JIT_ICException.GetAll() 
                 .SingleOrDefaultAsync(p => p.FID == input.FID && p.FSrcID == input.FSrcID);
             return entity.MapTo<ICExceptionDto>();
         }

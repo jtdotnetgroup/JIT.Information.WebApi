@@ -44,12 +44,15 @@ namespace CommonTools
             switch (com)
             {
                 case 1:
-                    Start(cron);
+                    Del();
                     break;
                 case 2:
-                    Stop();
+                    Start(cron);
                     break;
                 case 3:
+                    Stop();
+                    break;
+                case 4:
                     Del();
                     break;
                 default:

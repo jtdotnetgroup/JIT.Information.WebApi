@@ -30,8 +30,7 @@ namespace JIT.DIME2Barcode.AppService
         /// <summary>
         /// 工序不良项目表
         /// </summary>
-        /// <returns></returns>
-        [AbpAuthorize(ProductionPlanPermissionsNames.BadProjects_Get)]
+        /// <returns></returns> 
         public List<TB_BadItemRelation> GetAll()
         {
             return Repository.GetAll().ToList();

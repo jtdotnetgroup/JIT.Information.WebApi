@@ -35,7 +35,7 @@ namespace JIT.DIME2Barcode.AppService.SysTask
         /// <summary>
         /// 任务调度运行记录添加
         /// </summary>
-        [Audited]
+        //[Audited]
         public async void Add(Sys_TaskRecord mRecord)
         {
             try
@@ -43,13 +43,11 @@ namespace JIT.DIME2Barcode.AppService.SysTask
                 var entity = await JIT_Sys_TaskRecord.GetAll()
                                  .FirstOrDefaultAsync(s => s.Id.Equals(mRecord.Id)) ?? mRecord;
                 entity.CreateTime = DateTime.Now;
-                await JIT_Sys_TaskRecord.InsertAsync(entity);
-                EX(0,"系统提示","添加成功！");
+                await JIT_Sys_TaskRecord.InsertAsync(entity); 
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                EX(0, "系统提示", "添加失败！" + e.Message);
+                Console.WriteLine(e); 
             }
         }
     }
