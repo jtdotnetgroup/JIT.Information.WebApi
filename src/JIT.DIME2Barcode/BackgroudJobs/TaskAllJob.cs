@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.AutoMapper;
 using CommonTools;
+using JIT.DIME2Barcode.AppService.SysTask;
 using JIT.DIME2Barcode.Entities;
 using Quartz;
 
@@ -14,19 +16,20 @@ namespace JIT.DIME2Barcode.BackgroudJobs
     /// 定义所有任务
     /// </summary>
     public class AllTask
-    {
+    { 
+        /// <summary>
+        /// 所有任务
+        /// </summary> 
+        public List<Sys_Task> TaskList = null;
+
         /// <summary>
         /// 构造方法一开始执行
         /// </summary>
         public AllTask()
         {
-            // 执行获取所有任务列表
-            TaskList = new List<Sys_Task>();
+            TaskList = null;
         }
-        /// <summary>
-        /// 所有任务
-        /// </summary>
-        public List<Sys_Task> TaskList = new List<Sys_Task>();
+
         /// <summary>
         /// 所有任务类型
         /// </summary>
@@ -39,8 +42,9 @@ namespace JIT.DIME2Barcode.BackgroudJobs
         /// <summary>
         /// 设置任务
         /// </summary>
-        public void SetTask(int taskId = 0)
+        public void SetTask(int taskId = 0, List<Sys_Task> aSysTasks = null)
         {
+            TaskList = aSysTasks;
             //开始设置任务
             foreach (var item in TaskList.Where(w => taskId.Equals(0) || w.TaskId.Equals(taskId)))
             {

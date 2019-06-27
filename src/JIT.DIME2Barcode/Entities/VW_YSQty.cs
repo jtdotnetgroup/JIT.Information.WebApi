@@ -7,6 +7,7 @@ namespace JIT.DIME2Barcode.Entities
 {
     public class VW_YSQty
     {
+        public string FID { get; set; }
         public string FBillNo { get; set; }
         public string FBiller { get; set; }
         public string FName { get; set; }
@@ -15,6 +16,8 @@ namespace JIT.DIME2Barcode.Entities
         public string BatchNum { get; set; }
         public int FYSQty { get; set; }
         public string FInspector { get; set; }
-        public DateTime FInspectTime { get; set; } 
+        public DateTime FInspectTime { get; set; }
+        public string FItemName { get; set; }
+        public double? F_102 { get; set; }
     }
 }

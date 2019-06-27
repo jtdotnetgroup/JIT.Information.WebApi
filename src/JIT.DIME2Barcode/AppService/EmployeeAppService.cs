@@ -19,13 +19,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.Authorization;
 using Abp;
 using Abp.UI;
 using Castle.Components.DictionaryAdapter;
+using JIT.DIME2Barcode.Permissions;
 using Microsoft.AspNetCore.Identity;
 
 namespace JIT.DIME2Barcode.AppService
 {
+    
     public class EmployeeAppService : ApplicationService
     {
         public IRepository<Employee, int> _ERepository { get; set; }
@@ -66,6 +69,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeAdd)]
         public async Task<int> Create(EmployeeEdit input)
         {
             var entity = input.MapTo<Employee>();
@@ -157,6 +161,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_StaffUpdate)]
         public async Task<Employee> Update(EmployeeEdit input)
         {
             var entity = input.MapTo<Employee>();
@@ -193,6 +198,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeUpdate, ProductionPlanPermissionsNames.BasicData_StaffAdd)]
         private async Task CreateOrUpdateUser(EmployeeEdit input)
         {
             long userid;
@@ -305,7 +311,7 @@ namespace JIT.DIME2Barcode.AppService
             }
         }
 
-
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_StaffDelete)]
         public async Task<int> Delete(EmployeeDelete input)
         {
             try
@@ -332,7 +338,7 @@ namespace JIT.DIME2Barcode.AppService
             }
 
         }
-
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_StaffGet)]
         public async Task<PagedResultDto<VWEmployeesDto>> GetAllVW(VWEmployeesGetAllInputDto input)
         {
 
@@ -400,12 +406,12 @@ namespace JIT.DIME2Barcode.AppService
             }
         }
 
-
         /// <summary>
         /// 取自己以及下级部门所有人
         /// </summary>
         /// <param name="ArrParentID"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_StaffGet)]
         public int[] GetOneselfAndJunior(int[] ArrParentID)
         {
             try
@@ -488,6 +494,8 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="ParentID"></param>
         /// <returns></returns>
+
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_StaffGet)]
         public async Task<List<OrganizationDtoTest>> GetTreeList(int ParentID)
         {
             List<OrganizationDtoTest> TreeList = new List<OrganizationDtoTest>();
@@ -511,6 +519,8 @@ namespace JIT.DIME2Barcode.AppService
         /// 返回所有的车间员工
         /// </summary>
         /// <returns></returns>
+
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_StaffGet)]
         public async Task<PagedResultDto<EmployeeDto>> GetAllWorkers()
         {
             var query = _ERepository.GetAllIncluding(p => p.Department)

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Abp.Authorization;
+using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.Printing;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +21,7 @@ namespace JIT.DIME2Barcode.AppService
         /// <param name="FID">所有质检单的FID</param>
         /// <returns></returns>
         [HttpPost]
+        [AbpAuthorize(ProductionPlanPermissionsNames.TouchPadBarCode)]
         public async Task<List<Printing>> GetAllPrinting(PrintingInput input)
         { 
             var data = JIT_VW_MODispBillList.GetAll().Join(JIT_ICMOInspectBill.GetAll().Where(w => input.FID.Contains(w.FID)),

@@ -11,12 +11,15 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Abp;
+using Abp.Authorization;
 using Abp.Domain.Uow;
 using Abp.Runtime.Validation;
 using JIT.DIME2Barcode.BaseData.Equipment.ISpecification;
+using JIT.DIME2Barcode.Permissions;
 
 namespace JIT.DIME2Barcode.AppService
 {
+   
     public class EquipmentAppService:ApplicationService
     {
         private IRepository<Equipment,int> _repository { get; set; }
@@ -29,7 +32,7 @@ namespace JIT.DIME2Barcode.AppService
         {
             _repository = repository;
         }
-
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Create)]
         public async Task<EquipmentDto> Create(EquipmentDto input)
         {
             var entity = input.MapTo<Equipment>();
@@ -45,14 +48,14 @@ namespace JIT.DIME2Barcode.AppService
 
             return entity.MapTo<EquipmentDto>();
         }
-
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Delete)]
         public async Task Delete(EntityDto<int> input)
         {
             var entity = await _repository.GetAsync(input.Id);
 
             await _repository.DeleteAsync(entity);
         }
-
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Update)]
         public async Task<EquipmentDto> Update(EquipmentDto input)
         {
             var entity = input.MapTo<Equipment>();
@@ -61,7 +64,7 @@ namespace JIT.DIME2Barcode.AppService
 
             return entity.MapTo<EquipmentDto>();
         }
-
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Get)]
         public async Task<PagedResultDto<EquipmentDto>> GetAll(EquipmentGetAllInput input)
         {
             var query = _repository.GetAll();
@@ -96,7 +99,7 @@ namespace JIT.DIME2Barcode.AppService
 
             return new PagedResultDto<EquipmentDto>(count,list);
         }
-
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Create, ProductionPlanPermissionsNames.TaskDispatch_Update)]
         public async Task<int> CreateOrUpdateShift(List<EquipmentShiftDto> input)
         {
             int count = 0;
@@ -118,17 +121,18 @@ namespace JIT.DIME2Barcode.AppService
             return count;
         }
 
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Get)]
         public async Task DeleteShift(EntityDto input)
         {
-            var entity =await EsRepository.GetAsync(input.Id);
+            var entity = await EsRepository.GetAsync(input.Id);
 
             if (entity != null)
             {
-               await EsRepository.DeleteAsync(entity);
+                await EsRepository.DeleteAsync(entity);
             }
         }
-       
 
+        [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Get)]
         public async Task<List<EquipmentShiftDto>> GetShiftByEquipmentID(int Id)
         {
             var query = EsRepository.GetAll().Where(p => p.FEqiupmentID == Id).Include(p => p.Employee)

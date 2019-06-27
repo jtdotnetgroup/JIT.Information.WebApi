@@ -6,12 +6,14 @@ using System.Net.WebSockets;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Abp.UI;
 using CommonTools;
 using JIT.DIME2Barcode.Entities;
+using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.ICMOInspectBill.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICQualityRpt.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.VW_ICMOInspectBillList.Dtos;
@@ -21,10 +23,9 @@ using Microsoft.EntityFrameworkCore.Internal;
 
 namespace JIT.DIME2Barcode.AppService
 {
+    [AbpAuthorize(ProductionPlanPermissionsNames.TouchPadDispatchedWork,ProductionPlanPermissionsNames.TouchPadIPQC)]
     public class ICMOInspectBillAppService : BaseAppService
-    {
-        
-
+    { 
         public async Task<PagedResultDto<VW_ICMOInspectBillListDto>> GetAll(VW_ICMOInspectBillListGetAllInput input)
         {
             var query = JIT_VW_ICMOInspectBillList.GetAll().OrderBy(p => p.派工单号);
@@ -267,44 +268,74 @@ namespace JIT.DIME2Barcode.AppService
                 Console.WriteLine(e);
                 return false;
             }
-            
         }
+
         /// <summary>
         /// 返回余数
         /// </summary>
-        public async Task<PagedResultDto<DIME2Barcode.Entities.VW_YSQty>> GetAllYSQty(PagedAndSortedResultRequestDto input)
+        public async Task<PagedResultDto<DIME2Barcode.Entities.VW_YSQty>> GetAllYSQty(
+            PagedAndSortedResultRequestDto input)
         {
-            var query = JIT_ICMODispBill.GetAll().Join(JIT_ICMOInspectBill.GetAll(), A => A.FID, B => B.ICMODispBillID,
-                (A, B) => new
+            var query = JIT_ICMODispBill.GetAll().Join(JIT_ICMOSchedule.GetAll(), Z => Z.FMOInterID, Y => Y.FMOInterID,
+                    (Z, Y) => new
+                    {
+                        Z.FID,
+                        Z.FBillNo,
+                        Z.FBiller,
+                        Z.FDate,
+                        Z.FStatus,
+                        Z.employee,
+                        Y.FItemName,
+                        Y.FItemID
+                    }).Join(JIT_t_ICItem.GetAll(), Y => Y.FItemID, X => X.FItemID, (X, Y) => new
                 {
-                    A.FBillNo,
-                    A.FBiller,
-                    A.FDate,
-                    FBillNo2 = B.FBillNo,
-                    B.BatchNum,
-                    B.FYSQty,
-                    B.FInspector,
-                    B.FInspectTime,
-                    A.employee.FName,
-                    //
-                    A.FStatus
-                }).Join(JIT_Employee.GetAll(),B=>B.FInspector.ToInt(),C=>C.FUserId,(B,C)=>new
+                    X.FID,
+                    X.FBillNo,
+                    X.FBiller,
+                    X.FDate,
+                    X.FStatus,
+                    X.employee,
+                    X.FItemName,
+                    Y.F_102
+                })
+                .Join(JIT_ICMOInspectBill.GetAll(), A => A.FID, B => B.ICMODispBillID,
+                    (A, B) => new
+                    {
+                        A.FID,
+                        A.FBillNo,
+                        A.FBiller,
+                        A.FDate,
+                        FBillNo2 = B.FBillNo,
+                        B.BatchNum,
+                        B.FYSQty,
+                        B.FInspector,
+                        B.FInspectTime,
+                        A.employee.FName,
+                        //
+                        A.FStatus,
+                        A.FItemName,
+                        A.F_102
+                    })
+                .Join(JIT_Employee.GetAll(), B => B.FInspector.ToInt(), C => C.FUserId, (B, C) => new
                 {
+                    B.FID,
                     B.FBillNo,
                     B.FBiller,
                     B.FDate,
                     B.FBillNo2,
                     B.BatchNum,
-                    B.FYSQty,
+                    FYSQty = B.FYSQty - JIT_RemainderLCLMx.GetAll().Where(w => w.ICMOInspectBillId == B.FID).Sum(s => s.SpelledQty),
                     FInspector = C.FName,
                     B.FInspectTime,
                     B.FName,
-                    B.FStatus
-                }) 
+                    B.FStatus,
+                    B.FItemName,
+                    B.F_102
+                })
                 .Where(A => A.FStatus >= PublicEnum.ICMODispBillState.已检验.EnumToInt() && A.FYSQty > 0);
             var data = await query.PageBy(input).ToListAsync();
             var list = data.MapTo<List<DIME2Barcode.Entities.VW_YSQty>>();
             return new PagedResultDto<DIME2Barcode.Entities.VW_YSQty>(query.Count(), list);
-        } 
+        }
     }
 }

@@ -17,6 +17,8 @@ namespace JIT.DIME2Barcode.Permissions
         private const string JournalQuery = "JournalQuery";
         private const string ReportForm = "ReportForm";
         private const string WorkCenter = "WorkCenter";
+        private const string BasicInfo = "BasicInfo";
+
         //任务排产
         public const string TaskPlan_Get = TaskPlan + Get;
         public const string TaskPlan_Update = TaskPlan + Update;
@@ -31,11 +33,13 @@ namespace JIT.DIME2Barcode.Permissions
         public const string TaskDispatch_Create = TaskDispatch + Create;
 
         // 基础资料-组织
+        public const string BasicData_OrganizeAdd = BasicData + ".OrganizeAdd";
         public const string BasicData_OrganizeGet = BasicData + ".OrganizeGet";
         public const string BasicData_OrganizeUpdate = BasicData + ".OrganizeUpdate";
         public const string BasicData_OrganizeDelete = BasicData + ".OrganizeDelete";
 
         // 基础资料-员工
+        public const string BasicData_StaffAdd = BasicData + ".StaffAdd";
         public const string BasicData_StaffGet = BasicData + ".StaffGet";
         public const string BasicData_StaffUpdate = BasicData + ".StaffUpdate";
         public const string BasicData_StaffDelete = BasicData + ".StaffDelete";
@@ -57,6 +61,7 @@ namespace JIT.DIME2Barcode.Permissions
         public const string BadProjects_Create = BadProjects + Create;
         public const string BadProjects_Import = BadProjects + Import;
         public const string BadProjects_Export = BadProjects + Export;
+        public const string BadProjects_Delete = BadProjects + Delete;
 
         // 用户管理
         public const string UsersManagement_Get = UsersManagement + Get;
@@ -81,8 +86,13 @@ namespace JIT.DIME2Barcode.Permissions
         
         // 工作中心
         public const string WorkCenter_Get = WorkCenter + Get;
-        #endregion
 
+        // 基础信息
+        public const string BasicInfo_Get = BasicInfo + Get;
+        public const string BasicInfo_Update = BasicInfo + Update;
+        public const string BasicInfo_Create = BasicInfo + Create;
+        public const string BasicInfo_Delete = BasicInfo + Delete;
+        #endregion
 
         #region 触屏端权限
         //派工任务
