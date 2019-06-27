@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using Abp;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.EntityFrameworkCore.Repositories;
 using Abp.Linq.Extensions;
 using JIT.DIME2Barcode.Entities;
+using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.VW_RoleUserAll.Dtos;
 using JIT.InformationSystem.Users.Dto;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +31,7 @@ namespace JIT.DIME2Barcode.AppService
         /// 查询角色管理的成员管理
         /// </summary>
         /// <param name="input"></param>
-        /// <returns></returns>
+        /// <returns></returns> 
         public async Task<PagedResultDto<VW_RoleUserAllDto>> GetRoleUser(PagedUserResultRequestRoleStaicDto input)
         {
 

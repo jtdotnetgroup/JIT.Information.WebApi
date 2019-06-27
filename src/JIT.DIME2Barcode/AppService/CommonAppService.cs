@@ -38,7 +38,8 @@ namespace JIT.DIME2Barcode.AppService
             [Description(",PGRWDHB,")] 派工任务待汇报,
             [Description(",ZLJYDJY,")] 质量检验待检验,
             [Description(",ZLJYYJY,")] 质量检验已检验,
-            [Description(",BZYS,")] 包装余数
+            [Description(",BZYS,")] 包装余数,
+            [Description(",PXJL,")] 拼箱记录
         }
 
         /// <summary>
@@ -167,7 +168,16 @@ namespace JIT.DIME2Barcode.AppService
                 };
                 listTaskQty.Add(tmpTaskQty);
             }
-
+            if (isAll == "*" || StrKey.Contains(TaskType.拼箱记录.ToDescription()))
+            {
+                TaskQty tmpTaskQty = new TaskQty()
+                {
+                    StrKey = TaskType.拼箱记录.ToDescription().Replace(",", ""),
+                    Total = await JIT_RemainderLCL.GetAll().CountAsync(),
+                    BZ = "拼箱记录"
+                };
+                listTaskQty.Add(tmpTaskQty);
+            }
             // 所有枚举信息
             string[] listTaskType = new string[Enum.GetValues(typeof(TaskType)).Length];
             int i = 0;

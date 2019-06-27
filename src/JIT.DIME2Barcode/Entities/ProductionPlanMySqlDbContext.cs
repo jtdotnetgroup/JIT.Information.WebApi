@@ -45,6 +45,10 @@ namespace JIT.DIME2Barcode.Entities
         //public virtual DbSet<t_ICItem> t_ICItem { get; set; }
         public virtual DbSet<Sys_Task> Sys_Task { get; set; }
         public virtual DbSet<Sys_TaskRecord> Sys_TaskRecord { get; set; }
+        public virtual DbSet<Sys_BasicInfo> Sys_BasicInfo { get; set; }
+        public virtual DbSet<RemainderLCL> RemainderLCL { get; set; }
+        public virtual DbSet<RemainderLCLMx> RemainderLCLMx { get; set; }
+        public virtual DbSet<VM_ICMOInspectBillED> VM_ICMOInspectBillED { get; set; } 
 
         #region 视图
 

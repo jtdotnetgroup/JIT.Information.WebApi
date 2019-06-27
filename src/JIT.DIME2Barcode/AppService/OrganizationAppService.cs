@@ -10,8 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Castle.Components.DictionaryAdapter;
+using Abp.Authorization;
 using JIT.DIME2Barcode.AppService;
+using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.SystemSetting.Employee.Dtos;
 
 namespace JIT.DIME2Barcode.SystemSetting.Organization
@@ -29,6 +30,8 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         /// </summary>
         /// <param name="ParentID"></param>
         /// <returns></returns>
+        
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeAdd)]
         public async Task<List<OrganizationDto>>  GetChildMenuList(int ParentID)
         {
      
@@ -47,6 +50,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         /// </summary>
         /// <param name="ParentID"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeGet)]
         public async Task<List<OrganizationDtoTest>> GetTreeList(int ParentID)
         {
             List<OrganizationDtoTest> TreeList = new List<OrganizationDtoTest>();
@@ -70,6 +74,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         }
 
 
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeGet)]
         public async Task<List<OrganizationDtoTest>> GetAll(OrganizationGetAllInput input)
         {
             var query = _repository.GetAll().Where(p=>p.IsDeleted.HasValue&&!p.IsDeleted.Value);
@@ -88,13 +93,14 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
             var data = await query.ToListAsync();
             return data.MapTo<List<OrganizationDtoTest>>();
         }
-       
+
 
         /// <summary>
         /// 新增组织
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeAdd)]
         public async Task<int> Create(OrganizationCreateInput input)
         {
             try
@@ -129,6 +135,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         }
 
         //修改组织
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeUpdate)]
         public async Task<t_OrganizationUnit> Update(OrganizationCreateInput input)
         {
             var entity = input.MapTo<t_OrganizationUnit>();
@@ -147,6 +154,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         /// 返回枚举 组织类型 list集合
         /// </summary>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeGet)]
         public  List<SelectOptio> GetSelectOptio()
         {
             List<SelectOptio> list = new List<SelectOptio>();
@@ -165,6 +173,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeGet)]
         public async Task<t_OrganizationUnit> Get(OrganizationDeleteDto input)
         {
             var entity = await _repository.GetAll().SingleOrDefaultAsync(p => p.Id == input.Id && p.IsDeleted == false);
@@ -176,6 +185,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeDelete)]
         public async Task<int> Delete(OrganizationDeleteDto input)
         {
             var count = 0;
@@ -233,14 +243,14 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         }
 
 
-       
+
 
 
         /// <summary>
         /// 查找子点所在的公司或集团
         /// </summary>
         /// <param name="node"></param>
-        /// <returns></returns>
+        /// <returns></returns> 
         protected  t_OrganizationUnit GetCompany(t_OrganizationUnit node,List<t_OrganizationUnit> treeList)
         {
             //最终返回的结果

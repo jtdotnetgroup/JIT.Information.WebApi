@@ -34,7 +34,11 @@ namespace JIT.DIME2Barcode.AppService
         #endregion
 
         #region 业务表
-        // 表
+        // 表 
+        /// <summary>
+        /// 
+        /// </summary>
+        public IRepository<DIME2Barcode.Entities.ICMOSchedule, string> JIT_ICMOSchedule { get; set; }
         /// <summary>
         /// 派工异常记录
         /// </summary>
@@ -63,12 +67,27 @@ namespace JIT.DIME2Barcode.AppService
         /// 工序不良项目表
         /// </summary>
         public IRepository<DIME2Barcode.Entities.TB_BadItemRelation, int> JIT_TB_BadItemRelation { get; set; }
+        /// <summary>
+        /// 余数拼箱
+        /// </summary>
+        public IRepository<DIME2Barcode.Entities.RemainderLCL, string> JIT_RemainderLCL { get; set; }
+        /// <summary>
+        /// 余数拼箱明细表
+        /// </summary>
+        public IRepository<DIME2Barcode.Entities.RemainderLCLMx, string> JIT_RemainderLCLMx { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public IRepository<DIME2Barcode.Entities.t_ICItem, int> JIT_t_ICItem { get; set; }
+        
         #endregion
 
         #region 系统表
         public IRepository<DIME2Barcode.Entities.Sys_Task, int> JIT_Sys_Task { get; set; }
         public IRepository<DIME2Barcode.Entities.Sys_TaskRecord, int> JIT_Sys_TaskRecord { get; set; }
+        public IRepository<DIME2Barcode.Entities.Sys_BasicInfo, int> JIT_Sys_BasicInfo { get; set; }
         #endregion
+
         #region 视图
         /// <summary>
         /// 
@@ -82,8 +101,10 @@ namespace JIT.DIME2Barcode.AppService
         /// 
         /// </summary>
         public IRepository<VW_ICMOInspectBillList, string> JIT_VW_ICMOInspectBillList { get; set; }
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        public IRepository<VM_ICMOInspectBillED, string> JIT_VM_ICMOInspectBillED { get; set; }
         #endregion
 
         #endregion

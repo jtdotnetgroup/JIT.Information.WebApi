@@ -11,7 +11,12 @@ namespace JIT.DIME2Barcode.Entities
     public class Sys_Task : Entity<int>
     {
         [NotMapped]
-        public override int Id { get; set; }
+        public override int Id
+        {
+            get { return TaskId; }
+            set { Id = TaskId; }
+        }
+
         /// <summary>
         /// 唯一ID,主键ID
         /// </summary>
@@ -37,6 +42,11 @@ namespace JIT.DIME2Barcode.Entities
         /// 任务状态 暂停，未更新，(执行中/已更新)，已结束
         /// </summary>
         public int TaskState { get; set; }
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        public string LastSyncUserId { get; set; }
+
         /// <summary>
         /// 最后更新时间
         /// </summary>
