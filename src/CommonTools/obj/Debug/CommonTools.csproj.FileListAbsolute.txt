@@ -469,3 +469,12 @@ E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Common.Logging
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Common.Logging.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Quartz.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CoreCompileInputs.cache
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.dll
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.pdb
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\bin\Debug\Common.Logging.Core.dll
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\bin\Debug\Common.Logging.dll
+F:\捷特科技公司\捷特开发项目\Server备份\JIT.Information.WebApi\src\CommonTools\bin\Debug\Quartz.dll

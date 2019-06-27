@@ -111,9 +111,11 @@
     <text name="ReportForm">报表管理</text>
     
     <text name="BasicData">基础资料</text>
+    <text name="OrganizeAdd">组织添加</text>
     <text name="OrganizeGet">组织查询</text>
     <text name="OrganizeUpdate">组织编辑</text>
     <text name="OrganizeDelete">组织删除</text>
+    <text name="StaffAdd">员工添加</text>
     <text name="StaffGet">员工查询</text>
     <text name="StaffUpdate">员工编辑</text>
     <text name="StaffDelete">员工删除</text>

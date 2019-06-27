@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 using Abp.Domain.Entities;
-using Castle.Components.DictionaryAdapter;
 
 namespace JIT.DIME2Barcode.Entities
 {
@@ -18,7 +16,7 @@ namespace JIT.DIME2Barcode.Entities
         /// <summary>
         /// 唯一ID,主键ID
         /// </summary>
-        [Key("TaskRecordId")]
+        [Key]
         public int TaskRecordId { get; set; }
         /// <summary>
         /// 任务调度定义ID
