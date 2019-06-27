@@ -14,7 +14,9 @@ using Abp.EntityFrameworkCore.Repositories;
 using Abp.Events.Bus;
 using Abp.Linq.Extensions;
 using Abp.Runtime.Validation;
+using Abp.UI;
 using CommonTools;
+using JIT.DIME2Barcode.AppService;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos;
@@ -27,7 +29,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
     /// <summary>
     ///     任务排产接口服务
     /// </summary>
-    public class ICMODailyAppService : ApplicationService
+    public class ICMODailyAppService : BaseAppService
     {
         public ICMODailyAppService()
         {
@@ -82,8 +84,6 @@ namespace JIT.DIME2Barcode.TaskAssignment
 
             return new PagedResultDto<VW_ICMODailyDto>(count, list);
 
-
-
         }
 
         /// <summary>
@@ -94,6 +94,11 @@ namespace JIT.DIME2Barcode.TaskAssignment
         public async Task<int> Create(ICMODailyCreatDto input)
         {
             var icmo = MRepository.GetAll().SingleOrDefault(p => p.任务单号 == input.FMOBillNo);
+
+            if(icmo==null)
+            {
+                this.EX(-1, $"{input.FMOBillNo} 任务单不存在，请检查");
+            }
 
             var oplist = await SUbRepository.GetAll().ToListAsync();
 
@@ -108,25 +113,28 @@ namespace JIT.DIME2Barcode.TaskAssignment
 
                 var org=orgs.SingleOrDefault(o => o.DisplayName==icmo.车间);
 
+                if(org==null)
+                {
+                    this.EX(-1, $"找不到此车间：{icmo.车间}，请检查组织架构信息");
+                }
+
                 foreach (var dailyItem in input.Dailies)
                 {
 
                     var equipment = equipmentList.SingleOrDefault(e => e.FName == dailyItem.FMachineName);
 
+                    if (equipment == null) { this.EX(-1,$"找不设备：{dailyItem.FMachineName} ，请检查设备档案");}
+
                     var shift = eqShifts.SingleOrDefault(p =>
                         p.FEqiupmentID == equipment.FInterID && p.FShift == dailyItem.FShift);
+
+                    if (shift == null) { this.EX(-1,$"设备：{dailyItem.FMachineName} 的班次信息中不存在 【{dailyItem.FShift}】，请检查设备的班次信息");}
 
                     var entity = schedule.Dailies.SingleOrDefault(p =>
                         p.FDate == dailyItem.FDate && p.FMachineID == equipment.FInterID &&
                         p.FShift == shift.Id);
 
                     var op = oplist.SingleOrDefault(p => p.FName == dailyItem.FOperID);
-
-                   
-                    if (equipment == null)
-                    {
-                        throw  new AbpValidationException($"设备:{dailyItem.FMachineName}不存在");
-                    }
 
                     var index = (schedule.Dailies.Count + 1).ToString("000");
 

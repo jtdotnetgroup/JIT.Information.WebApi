@@ -469,3 +469,9 @@ E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Common.Logging
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Common.Logging.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Quartz.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CoreCompileInputs.cache
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb
+D:\Net\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.dll
+D:\Net\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.pdb
