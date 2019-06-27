@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Authorization;
+using Abp;
 using Abp.UI;
 using Castle.Components.DictionaryAdapter;
 using JIT.DIME2Barcode.Permissions;
