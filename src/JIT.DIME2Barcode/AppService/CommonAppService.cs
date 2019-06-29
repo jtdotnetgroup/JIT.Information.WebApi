@@ -2,18 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
-using Abp.AutoMapper;
-using Abp.EntityFrameworkCore.Repositories;
 using Abp.Linq.Extensions;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
-using JIT.DIME2Barcode.Model;
 using CommonTools;
+using JIT.DIME2Barcode.Model;
 using JIT.DIME2Barcode.TaskAssignment.Test.Dtos;
-using JIT.InformationSystem.Authorization.Users;
-using JIT.InformationSystem.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace JIT.DIME2Barcode.AppService
@@ -50,7 +44,7 @@ namespace JIT.DIME2Barcode.AppService
             string isAll = StrKey;
             StrKey = "," + StrKey + ",";
             List<TaskQty> listTaskQty = new List<TaskQty>();
-            // 开始形成数据
+           // 开始形成数据
             if (isAll == "*" || StrKey.Contains(TaskType.派工任务.ToDescription()))
             {
                 TaskQty tmpTaskQty = new TaskQty()

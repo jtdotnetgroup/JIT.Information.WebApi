@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Authorization;
+using Castle.Components.DictionaryAdapter;
 using JIT.DIME2Barcode.AppService;
 using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.SystemSetting.Employee.Dtos;
