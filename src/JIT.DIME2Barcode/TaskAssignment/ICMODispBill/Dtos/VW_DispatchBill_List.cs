@@ -28,5 +28,6 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
         public int FShiftID { get; set; }
 
         public string dispFid { get; set; }
+        public string FStatus { get; set; }
     }
 }

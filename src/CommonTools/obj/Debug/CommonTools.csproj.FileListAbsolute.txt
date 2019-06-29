@@ -409,6 +409,8 @@ E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Abp.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Castle.Core.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Castle.Facilities.Logging.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Castle.Windsor.dll
+E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Common.Logging.Core.dll
+E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Common.Logging.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\JetBrains.Annotations.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
@@ -421,6 +423,7 @@ E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Nito.AsyncEx.C
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Nito.AsyncEx.Tasks.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Nito.Collections.Deque.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Nito.Disposables.dll
+E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Quartz.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\System.Buffers.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\System.Collections.Immutable.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\System.ComponentModel.Annotations.dll
@@ -465,7 +468,3 @@ E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.cs
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CopyComplete
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb
-E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Common.Logging.Core.dll
-E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Common.Logging.dll
-E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\Quartz.dll
-E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache

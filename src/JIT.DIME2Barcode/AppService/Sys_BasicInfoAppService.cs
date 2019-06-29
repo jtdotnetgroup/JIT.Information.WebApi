@@ -48,7 +48,7 @@ namespace JIT.DIME2Barcode.AppService
                 .OrderBy(o => o.BIOrder)
                 .Select(s => new treeData
                 {
-                    BasicInfoId = s.BasicInfoId, title = s.BIName, key = s.BICode, BIURL = s.BIURL,
+                    BasicInfoId = s.BasicInfoId, title = s.BIName, key = s.BasicInfoId.ToString(), BIURL = s.BIURL,
                     children = new List<treeData>()
                 })
                 .ToList();

@@ -17,6 +17,7 @@ using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.VW_ICMODispBill_By_Date.Dtos;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace JIT.DIME2Barcode.AppService
@@ -298,10 +299,30 @@ namespace JIT.DIME2Barcode.AppService
             {
                 Console.WriteLine(e.Message);
                 return false;
+            } 
+        }
+        /// <summary>
+        /// 关闭任务单
+        /// </summary>
+        [HttpDelete]
+        public async Task<bool> CloseOrder(string id)
+        {
+            try
+            {
+                var result = await Repository.GetAll().Where(w => id.Contains(w.FID)).ToListAsync();
+                foreach (var item in result)
+                {
+                    item.FStatus = -1;
+                    item.FClosed = true;
+                    await Repository.UpdateAsync(item);
+                }
+                return true;
             }
-           
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
         }
     }
-
-
 }
