@@ -78,8 +78,15 @@ namespace JIT.DIME2Barcode.AppService
         /// <summary>
         /// 
         /// </summary>
-        public IRepository<DIME2Barcode.Entities.t_ICItem, int> JIT_t_ICItem { get; set; }
-        
+        public IRepository<DIME2Barcode.Entities.t_ICItem, int> JIT_t_ICItem { get; set; } 
+        /// <summary>
+        /// 组织架构
+        /// </summary>
+        public IRepository<t_OrganizationUnit, int> JIT_t_OrganizationUnit { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public IRepository<DIME2Barcode.Entities.Equipment, int> JIT_t_equipment { get; set; }
         #endregion
 
         #region 系统表

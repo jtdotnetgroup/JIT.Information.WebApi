@@ -51,6 +51,7 @@ namespace CommonTools
         /// </summary>
         public enum ICMODispBillState
         {
+            关闭=-1,
             待开工= 0,
             待汇报 = 1,
             已检验 = 2,
