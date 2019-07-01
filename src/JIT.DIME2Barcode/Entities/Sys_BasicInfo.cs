@@ -18,6 +18,7 @@ namespace JIT.DIME2Barcode.Entities
             set { Id = BasicInfoId; }
         }
 
+
         [Key] public int BasicInfoId { get; set; }
         public string BICode { get; set; }
         public string BIName { get; set; }
@@ -30,7 +31,7 @@ namespace JIT.DIME2Barcode.Entities
         public bool? IsDeleted { get; set; }
         public int? ParentId { get; set; }
         public DateTime CreateTime { get; set; }
-        public int CreateUserId { get; set; }
+        public long CreateUserId { get; set; }
         [CanBeNull] public string Remark { get; set; }
 
     }

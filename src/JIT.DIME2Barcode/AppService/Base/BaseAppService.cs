@@ -15,7 +15,7 @@ namespace JIT.DIME2Barcode.AppService
     /// <summary>
     /// 服务基类
     /// </summary>
-    public class BaseAppService: ApplicationService 
+    public class BaseAppService : ApplicationService
     {
         #region 所有表、视图、存储过程
 
@@ -105,7 +105,7 @@ namespace JIT.DIME2Barcode.AppService
         /// <summary>
         /// 库存查询
         /// </summary>
-        public IRepository<DIME2Barcode.Entities.VM_Inventory, int> JIT_VM_Inventory { get; set; } 
+        public IRepository<DIME2Barcode.Entities.VM_Inventory, int> JIT_VM_Inventory { get; set; }
         /// <summary>
         /// 
         /// </summary>

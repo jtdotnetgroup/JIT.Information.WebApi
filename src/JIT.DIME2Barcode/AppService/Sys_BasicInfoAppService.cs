@@ -5,6 +5,7 @@ using Abp.Authorization;
 using Abp.AutoMapper;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.Model;
+using JIT.DIME2Barcode.Model.HtmlModel;
 using JIT.DIME2Barcode.Permissions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -64,16 +65,44 @@ namespace JIT.DIME2Barcode.AppService
             return result;
         }
 
-        [HttpPost]
-        public void Delete(List<Sys_BasicInfo> input)
+
+
+        /// <summary>
+        /// 新建和修改信息
+        /// </summary>
+        /// <returns></returns>
+        public async Task<int> Create(List<Sys_BasicInfo> input)
         {
-           JIT_Sys_BasicInfo.GetDbContext().RemoveRange(input.Where(w => w.BasicInfoId > 0));
+         
+            foreach (var item in input)
+            {
+                item.CreateUserId = this.AbpSession.UserId.HasValue ? this.AbpSession.UserId.Value : 0;
+                
+                 await  JIT_Sys_BasicInfo.InsertOrUpdateAsync(item);
+            }
+
+            return  1;
         }
 
-        public async void Create(List<Sys_BasicInfo> input)
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <returns></returns>
+        ///
+        [HttpPost]
+        public async Task<int> Delete(List<Sys_BasicInfo> input)
         {
-            await JIT_Sys_BasicInfo.GetDbContext().AddRangeAsync(input.Where(w => w.BasicInfoId.Equals(0)));
-            JIT_Sys_BasicInfo.GetDbContext().UpdateRange(input.Where(w => !w.BasicInfoId.Equals(0)));
+
+            foreach (var item in input.Where(w=>w.BasicInfoId>0))
+            {
+                
+                    await JIT_Sys_BasicInfo.DeleteAsync(item);
+                     
+            }
+
+            return 1;
         }
+
     }
 }

@@ -2,18 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
-using Abp.AutoMapper;
-using Abp.EntityFrameworkCore.Repositories;
 using Abp.Linq.Extensions;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
-using JIT.DIME2Barcode.Model;
 using CommonTools;
+using JIT.DIME2Barcode.Model;
 using JIT.DIME2Barcode.TaskAssignment.Test.Dtos;
-using JIT.InformationSystem.Authorization.Users;
-using JIT.InformationSystem.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace JIT.DIME2Barcode.AppService
@@ -50,7 +44,7 @@ namespace JIT.DIME2Barcode.AppService
             string isAll = StrKey;
             StrKey = "," + StrKey + ",";
             List<TaskQty> listTaskQty = new List<TaskQty>();
-            // 开始形成数据
+           // 开始形成数据
             if (isAll == "*" || StrKey.Contains(TaskType.派工任务.ToDescription()))
             {
                 TaskQty tmpTaskQty = new TaskQty()
@@ -230,6 +224,7 @@ namespace JIT.DIME2Barcode.AppService
                 result = result.Where(w => w.RoleId == null);
             }
 
+            input.UserName = input.UserName ?? "";
             // 开始查询
             result = result.Where(w => w.UserName.Contains(input.UserName));
             //
@@ -237,6 +232,45 @@ namespace JIT.DIME2Barcode.AppService
             var data = await result.OrderBy(o => o.RoleId).PageBy(input)
                 .ToListAsync();
             var resultList = new PagedResultDto<UserRole>(count, data); 
+        }
+
+        /// <summary>
+        /// 查询所属角色所有用户
+        /// </summary>
+        /// <param name="input">查询条件</param>
+        public async Task<PagedResultDto<UserRole>> GetUserRolessTask(UserRoleInput input)
+        {
+            // 全部
+            var result = from a in ABP_User.GetAll()
+                join r in ABP_UserRole.GetAll().Where(w => w.RoleId == input.RoleId) on a.Id equals r.UserId into g1
+                from g in g1.DefaultIfEmpty()
+                select new UserRole { UserId = a.Id, RoleId = g.RoleId, UserName = a.UserName };
+            // 全部
+            if (input.type == 1)
+            {
+
+            }
+            // 是角色
+            else if (input.type == 2)
+            {
+                result = result.Where(w => w.RoleId == input.RoleId);
+            }
+            // 不是角色
+            else if (input.type == 3)
+            {
+                result = result.Where(w => w.RoleId == null);
+            }
+
+            input.UserName = input.UserName ?? "";
+            // 开始查询
+            result = result.Where(w => w.UserName.Contains(input.UserName));
+            //
+            var count = result.Count();
+            var data = await result.OrderBy(o => o.RoleId).PageBy(input)
+                .ToListAsync();
+
+            return  new PagedResultDto<UserRole>(count, data);
+
         }
     }
 

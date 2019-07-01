@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Authorization;
+using Castle.Components.DictionaryAdapter;
 using JIT.DIME2Barcode.AppService;
 using JIT.DIME2Barcode.Model;
 using JIT.DIME2Barcode.Permissions;
@@ -195,20 +196,33 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
 
          
 
-            var ORByID = JIT_t_OrganizationUnit.GetAll().SingleOrDefault(p => p.Id == entity.ParentId).Id;
+            var ORByID = JIT_t_OrganizationUnit.GetAll().SingleOrDefault(p => p.Id == entity.ParentId);
 
             var EmployeeByID = EmployeeApp.GetOneselfAndJunior(new int[] {input.Id});
 
-            var EmployeeList = EmployeeApp._ERepository.GetAll()
-                .Where(p => p.IsDeleted == false && EmployeeByID.Contains(p.FDepartment)).ToList();
+            List<Entities.Employee> EmployeeList=new EditableList<Entities.Employee>();
 
+            if (EmployeeByID!=null)
+            {
+                 EmployeeList = EmployeeApp._ERepository.GetAll()
+                    .Where(p => p.IsDeleted == false && EmployeeByID.Contains(p.FDepartment)).ToList();
+            }
 
+          
             if (entity != null)
             {
-
+         
                 foreach (var e in EmployeeList)
                 {
-                  e.FDepartment = ORByID;
+                    if (ORByID!=null)
+                    {
+                        e.FDepartment = ORByID.Id;
+                    }
+                    else
+                    {
+                        e.FDepartment = EmployeeApp._ERepository.GetAll().FirstOrDefault(p => p.Id == entity.ParentId&&p.IsDeleted==false).Id;
+                    }
+                 
                   EmployeeApp._ERepository.Update(e);
                 }
 
