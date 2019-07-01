@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Authorization;
 using Abp.AutoMapper;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.Model;
-using JIT.DIME2Barcode.Model.HtmlModel;
 using JIT.DIME2Barcode.Permissions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +26,7 @@ namespace JIT.DIME2Barcode.AppService
         [AbpAuthorize(ProductionPlanPermissionsNames.BasicInfo_Get)]
         public async Task<List<Sys_BasicInfo>> GetAll(int? ParentId)
         {
-            return await JIT_Sys_BasicInfo.GetAll().Where(w => w.ParentId.Equals(ParentId)).ToListAsync();
+            return await JIT_Sys_BasicInfo.GetAll().Where(w => w.ParentId.Equals(ParentId)).OrderBy(o=>o.BIOrder).ToListAsync();
         }
         /// <summary>
         /// 查询所有目录
@@ -64,26 +64,20 @@ namespace JIT.DIME2Barcode.AppService
 
             return result;
         }
-
-
-
         /// <summary>
         /// 新建和修改信息
         /// </summary>
         /// <returns></returns>
         public async Task<int> Create(List<Sys_BasicInfo> input)
         {
-         
             foreach (var item in input)
             {
                 item.CreateUserId = this.AbpSession.UserId.HasValue ? this.AbpSession.UserId.Value : 0;
                 
                  await  JIT_Sys_BasicInfo.InsertOrUpdateAsync(item);
             }
-
             return  1;
         }
-
 
         /// <summary>
         /// 删除
@@ -93,16 +87,22 @@ namespace JIT.DIME2Barcode.AppService
         [HttpPost]
         public async Task<int> Delete(List<Sys_BasicInfo> input)
         {
-
-            foreach (var item in input.Where(w=>w.BasicInfoId>0))
+            // 页面处理
+            //input = input.Where(w => w.BasicInfoId > 0).ToList();
+            // 删除选中节点
+            foreach (var item in input)
             {
-                
-                    await JIT_Sys_BasicInfo.DeleteAsync(item);
-                     
+                await JIT_Sys_BasicInfo.DeleteAsync(item);
             }
-
+            // 删除选中子节点明细
+            int[] bArray = input.Select(s => s.BasicInfoId).ToArray();
+            var result = JIT_Sys_BasicInfo.GetAll().Where(w => bArray.Contains(Convert.ToInt32(w.ParentId)));
+            foreach (var item in result)
+            {
+                await JIT_Sys_BasicInfo.DeleteAsync(item);
+            }
+            // 
             return 1;
         }
-
     }
 }

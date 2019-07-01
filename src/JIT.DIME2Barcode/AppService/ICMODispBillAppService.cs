@@ -80,8 +80,7 @@ namespace JIT.DIME2Barcode.AppService
                     var entity =
                         JIT_ICMODispBill.GetAll().Where(p => p.FSrcID == itemDetail.FID && p.FID == itemDetail.ICMODispBillId)
                             .SingleOrDefault(p => true) ?? new ICMODispBill();
-                    
-                    // 判断是否
+                    // 判断是增加还是修改
                     if (string.IsNullOrWhiteSpace(entity.FID))
                     {
                         /*
@@ -111,6 +110,7 @@ namespace JIT.DIME2Barcode.AppService
                     entity.FMOBillNo = itemDetail.FMOBillNo;
                     entity.FMOInterID = itemDetail.FMOInterID;
                     entity.FWorkCenterID = mDaily.FWorkCenterID;
+                    // 判断是增加还是修改
                     if (itemDetail.ICMODispBillId.Equals("0"))
                     {
                         await JIT_ICMODispBill.InsertAsync(entity);

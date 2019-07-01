@@ -11,7 +11,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
         public override string Id { get; set; }
 
         public DateTime FDate { get; set; }
-        [Key]
+        
         public string FID { get; set; }
         public string FMOBillNo { get; set; }
         public int FMOInterID { get; set; }
@@ -26,7 +26,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
         public string FBiller { get; set; }
 
         public int FShiftID { get; set; }
-
+        [Key]
         public string dispFid { get; set; }
         public string FStatus { get; set; }
     }
