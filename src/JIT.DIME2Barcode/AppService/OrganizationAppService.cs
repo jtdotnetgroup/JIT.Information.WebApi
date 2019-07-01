@@ -196,7 +196,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
 
          
 
-            var ORByID = JIT_t_OrganizationUnit.GetAll().SingleOrDefault(p => p.Id == entity.ParentId).Id;
+            var ORByID = JIT_t_OrganizationUnit.GetAll().SingleOrDefault(p => p.Id == entity.ParentId);
 
             var EmployeeByID = EmployeeApp.GetOneselfAndJunior(new int[] {input.Id});
 
@@ -220,7 +220,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
                     }
                     else
                     {
-                        e.FDepartment= _repository.GetAll().FirstOrDefault(p => p.Id == entity.ParentId&&p.IsDeleted==false).Id;
+                        e.FDepartment = EmployeeApp._ERepository.GetAll().FirstOrDefault(p => p.Id == entity.ParentId&&p.IsDeleted==false).Id;
                     }
                  
                   EmployeeApp._ERepository.Update(e);
