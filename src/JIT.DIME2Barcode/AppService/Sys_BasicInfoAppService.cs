@@ -2,10 +2,13 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Authorization;
+using Abp.AutoMapper;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.Model;
 using JIT.DIME2Barcode.Permissions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Abp.EntityFrameworkCore.Repositories;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -59,6 +62,18 @@ namespace JIT.DIME2Barcode.AppService
             }
 
             return result;
+        }
+
+        [HttpPost]
+        public void Delete(List<Sys_BasicInfo> input)
+        {
+           JIT_Sys_BasicInfo.GetDbContext().RemoveRange(input.Where(w => w.BasicInfoId > 0));
+        }
+
+        public async void Create(List<Sys_BasicInfo> input)
+        {
+            await JIT_Sys_BasicInfo.GetDbContext().AddRangeAsync(input.Where(w => w.BasicInfoId.Equals(0)));
+            JIT_Sys_BasicInfo.GetDbContext().UpdateRange(input.Where(w => !w.BasicInfoId.Equals(0)));
         }
     }
 }

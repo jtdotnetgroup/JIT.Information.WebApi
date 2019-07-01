@@ -468,3 +468,4 @@ E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.cs
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CopyComplete
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb
+E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache

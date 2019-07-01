@@ -7,7 +7,8 @@ using Abp.Auditing;
 using Abp.Domain.Repositories;
 using Abp.UI;
 using JIT.DIME2Barcode.Entities;
-using JIT.InformationSystem.Authorization.Users;
+ using JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos;
+ using JIT.InformationSystem.Authorization.Users;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -35,6 +36,7 @@ namespace JIT.DIME2Barcode.AppService
 
         #region 业务表
         // 表 
+        public IRepository<ICMODaily, string> JIT_ICMODaily { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -112,6 +114,14 @@ namespace JIT.DIME2Barcode.AppService
         /// 
         /// </summary>
         public IRepository<VM_ICMOInspectBillED, string> JIT_VM_ICMOInspectBillED { get; set; }
+        /// <summary>
+        /// 日计划任务明细
+        /// </summary>
+        public IRepository<VW_DispatchBill_List, string> JIT_VW_DispatchBill_List { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public IRepository<VW_ICMODispBill_By_Date, string> JIT_VW_ICMODispBill_By_Date { get; set; }
         #endregion
 
         #endregion

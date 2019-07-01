@@ -37,5 +37,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
         [Required]
         public string FMOBillNo { get; set; }
         public int? FMOInterID { get; set; }
+
+        public string ICMODispBillId { get; set; }
     }
 }

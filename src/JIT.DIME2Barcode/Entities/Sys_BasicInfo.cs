@@ -11,7 +11,7 @@ namespace JIT.DIME2Barcode.Entities
     /// </summary>
     public class Sys_BasicInfo : Entity<int>
     {
-        [NotMapped]
+        [NotMapped()]
         public override int Id
         {
             get { return BasicInfoId; }

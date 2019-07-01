@@ -20,5 +20,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos
         public string FItemModel { get; set; }
 
         public decimal TotalPlanAuxQty { get; set; }
+
+        public string FId { get; set; }
     }
 }
