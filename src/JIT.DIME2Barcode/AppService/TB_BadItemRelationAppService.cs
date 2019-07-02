@@ -58,7 +58,7 @@ namespace JIT.DIME2Barcode.AppService
                     a.FName
                 };
 
-            foreach (var item in query.ToList())
+            foreach (var item in await query.ToListAsync())
             {
                 TreeSubMessageDto td = new TreeSubMessageDto();
                 td.key = item.FInterID.ToString();
@@ -137,7 +137,7 @@ namespace JIT.DIME2Barcode.AppService
 
 
 
-                var data = query.Where(p => p.FOperID == input.FOperID).OrderBy(p => p.FID).PageBy(input).ToList();
+                var data = await query.Where(p => p.FOperID == input.FOperID).OrderBy(p => p.FID).PageBy(input).ToListAsync();
 
                 var list = data.MapTo<List<TB_BadItemRelationDto>>();
                 return new PagedResultDto<TB_BadItemRelationDto>(count, list);
@@ -207,9 +207,9 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="FName"></param>
         /// <returns></returns>
-        public async Task<List<t_ICItem>> GetICItem(string  FName )
+        public async Task<List<t_ICItem>> GetICItem(string  FName)
         {
-            var query = ICItemRepository.GetAll().Where(p => p.FName.Contains(FName)).OrderBy(p=>p.FName).Take(10).ToList();
+            var query = await ICItemRepository.GetAll().Where(p => p.FName.Contains(FName)).OrderBy(p=>p.FName).Take(10).ToListAsync();
 
             return query.MapTo<List<t_ICItem>>();
         }

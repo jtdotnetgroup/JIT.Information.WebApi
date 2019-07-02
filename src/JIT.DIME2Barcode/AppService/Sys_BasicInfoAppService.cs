@@ -82,27 +82,38 @@ namespace JIT.DIME2Barcode.AppService
         /// <summary>
         /// 删除
         /// </summary>
-        /// <returns></returns>
-        ///
+        /// <param name="input">要删除的集合</param>
+        /// <returns>异常返回 -1，成功返回 1</returns>
         [HttpPost]
         public async Task<int> Delete(List<Sys_BasicInfo> input)
         {
-            // 页面处理
-            //input = input.Where(w => w.BasicInfoId > 0).ToList();
-            // 删除选中节点
-            foreach (var item in input)
+            // 异常返回 -1，成功返回 1
+            try
             {
-                await JIT_Sys_BasicInfo.DeleteAsync(item);
+                // 页面处理
+                //input = input.Where(w => w.BasicInfoId > 0).ToList();
+                // 删除选中节点
+                foreach (var item in input)
+                {
+                    await JIT_Sys_BasicInfo.DeleteAsync(item);
+                }
+                // 查询选中子节点明细
+                int[] bArray = input.Select(s => s.BasicInfoId).ToArray();
+                var result = await JIT_Sys_BasicInfo.GetAll().Where(w => bArray.Contains(Convert.ToInt32(w.ParentId))).ToListAsync();
+                // 删除所有的子节点
+                if (result.Count > 0)
+                {
+                    return await Delete(result);
+                }
+                // 删除成功返回 1
+                return 1;
             }
-            // 删除选中子节点明细
-            int[] bArray = input.Select(s => s.BasicInfoId).ToArray();
-            var result = JIT_Sys_BasicInfo.GetAll().Where(w => bArray.Contains(Convert.ToInt32(w.ParentId)));
-            foreach (var item in result)
+            catch (Exception e)
             {
-                await JIT_Sys_BasicInfo.DeleteAsync(item);
+                Console.WriteLine(e.Message);
+                // 删除成功返回 0
+                return -1;
             }
-            // 
-            return 1;
         }
     }
 }

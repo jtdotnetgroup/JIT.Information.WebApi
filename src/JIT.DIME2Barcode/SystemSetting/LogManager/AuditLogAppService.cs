@@ -38,7 +38,6 @@ namespace JIT.DIME2Barcode.SystemSetting.LogManager
             //一开始加载查询所有
             if (input.StartTime == null && input.EndTime == null && string.IsNullOrEmpty(input.Message)&& !input.Exception)
             {
-                query = query;
             }     
             //根据时间查询
             else if (input.StartTime != null && input.EndTime != null && string.IsNullOrEmpty(input.Message)&& !input.Exception)

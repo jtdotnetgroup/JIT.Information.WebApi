@@ -47,20 +47,20 @@ namespace JIT.DIME2Barcode.AppService
 
 
         //返回公司
-        protected t_OrganizationUnit GetCompany(t_OrganizationUnit node,List<t_OrganizationUnit> terrList)
+        protected t_OrganizationUnit GetCompany(t_OrganizationUnit node, List<t_OrganizationUnit> terrList)
         {
             t_OrganizationUnit reslut = null;
-            if (node.OrganizationType == PublicEnum.OrganizationType.公司|| node.OrganizationType==PublicEnum.OrganizationType.集团)
+            if (node.OrganizationType == PublicEnum.OrganizationType.公司 ||
+                node.OrganizationType == PublicEnum.OrganizationType.集团)
             {
                 return node;
             }
 
-            if (node.ParentId!=null)
+            if (node.ParentId != 0)
             {
-                var parent = terrList.SingleOrDefault(p=>p.Id== node.ParentId);
-                 reslut = GetCompany(parent,terrList);
-            }
-
+                var parent = terrList.SingleOrDefault(p => p.Id == node.ParentId);
+                reslut = GetCompany(parent, terrList);
+            } 
             return reslut;
         }
 
@@ -333,9 +333,8 @@ namespace JIT.DIME2Barcode.AppService
             }
             catch (Exception e)
             {
-                return 0;
                 Console.WriteLine(e);
-              
+                return 0;
             }
 
         }
@@ -432,6 +431,7 @@ namespace JIT.DIME2Barcode.AppService
             }
             catch (Exception e)
             {           
+                Console.Write(e.Message);
                 return ArrParentID;
             }
              
@@ -442,8 +442,8 @@ namespace JIT.DIME2Barcode.AppService
         /// 员工编号
         /// </summary>
         /// <returns></returns>
-        public async Task<string> FMpno()
-        {
+        //public async Task<string> FMpno()
+        //{
             // var FMpno = "";    
             // //查询最后一条没有别删除的编号
             // var enetity = _ERepository.GetAll().LastOrDefault();
@@ -487,8 +487,8 @@ namespace JIT.DIME2Barcode.AppService
             //}
 
             //return FMpno;
-            return "";
-        }
+        //    return  "";
+        //}
 
         /// <summary>
         /// 返回拼接的节点信息 上级主管

@@ -165,7 +165,7 @@ namespace JIT.DIME2Barcode.AppService
             try
             {
                 var result = await JIT_ICMOInspectBill.GetAll().Where(w => w.FID == FID).FirstOrDefaultAsync();
-                JIT_ICMOInspectBill.DeleteAsync(result);
+                await JIT_ICMOInspectBill.DeleteAsync(result);
                 return true;
             }
             catch (Exception e)

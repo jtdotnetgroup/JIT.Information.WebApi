@@ -128,7 +128,7 @@ namespace JIT.DIME2Barcode.AppService
                         //删除userrole false
                         var query = UserRoleRepository.GetAll().FirstOrDefault(p => p.UserId == item.UserID && p.RoleId == input.Id&&p.TenantId==null) ??new UserRole();
 
-                         UserRoleRepository.Delete(query);
+                       await  UserRoleRepository.DeleteAsync(query);
                     }
 
                 }
@@ -137,6 +137,7 @@ namespace JIT.DIME2Barcode.AppService
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return 0;
             }
           

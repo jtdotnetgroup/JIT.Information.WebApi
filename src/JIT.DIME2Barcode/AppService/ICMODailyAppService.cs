@@ -14,6 +14,7 @@ using Abp.EntityFrameworkCore.Repositories;
 using Abp.Events.Bus;
 using Abp.Linq.Extensions;
 using Abp.Runtime.Validation;
+using Abp.UI;
 using CommonTools;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.Permissions;
@@ -169,10 +170,8 @@ namespace JIT.DIME2Barcode.TaskAssignment
             }
             else
             {
-                throw new AbpValidationException(string.Format("任务单：{0}不存在", input.FMOBillNo));
+                throw new UserFriendlyException(string.Format("任务单：{0}不存在", input.FMOBillNo));
             }
-
-            return 0;
         }
         [AbpAuthorize(ProductionPlanPermissionsNames.TaskPlan_Update, ProductionPlanPermissionsNames.TaskPlan_Create)]
         protected async Task InsertOrUpdateICMOSchedul(ICMODailyCreatedtEventData eventData)
@@ -254,15 +253,14 @@ namespace JIT.DIME2Barcode.TaskAssignment
         public async Task<List<ICMOSchedule>> ImportDaily(List<ICMODailyCreatDto> input)
         {
             var fmobillno = "";
-            var fmointerid = -1;
-            ICMOSchedule schedule = null;
+            var fmointerid = -1; 
             var result = new List<ICMOSchedule>();
             //遍历导入数据
             foreach (var inputItem in input)
                 if (inputItem != null && fmobillno != inputItem.FMOBillNo)
                 {
                     fmobillno = inputItem.FMOBillNo;
-                    await Create(inputItem);
+                    fmointerid = await Create(inputItem);
                 }
 
             return null;
