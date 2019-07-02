@@ -5,7 +5,7 @@ using Abp.Authorization;
 using Abp.AutoMapper;
 using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.Model;
-using JIT.DIME2Barcode.Model.HtmlModel;
+
 using JIT.DIME2Barcode.Permissions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -96,7 +96,7 @@ namespace JIT.DIME2Barcode.AppService
             foreach (var item in input.Where(w=>w.BasicInfoId>0))
             {
                 
-                    await JIT_Sys_BasicInfo.DeleteAsync(item);
+                 await JIT_Sys_BasicInfo.DeleteAsync(item);
                      
             }
 

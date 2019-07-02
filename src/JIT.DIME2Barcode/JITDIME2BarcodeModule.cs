@@ -14,7 +14,6 @@ using System.Reflection;
 using Abp.Dependency;
 using JIT.DIME2Barcode.BackgroudJobs;
 using JIT.DIME2Barcode.BaseData.Equipment.Dtos;
-using JIT.DIME2Barcode.Model.HtmlModel;
 using JIT.DIME2Barcode.SystemSetting.Employee.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.TB_BadItemRelation.Dtos;
 
@@ -143,8 +142,8 @@ namespace JIT.DIME2Barcode
                     .ForMember(o => o.FOperName, op => op.Ignore());
 
 
-                config.CreateMap<Sys_BasicInfoCreate, Sys_BasicInfo>()
-                    .ForMember(o => o.Id, op => op.Ignore());
+                //config.CreateMap<Sys_BasicInfoCreate, Sys_BasicInfo>()
+                //    .ForMember(o => o.Id, op => op.Ignore());
 
             });
 

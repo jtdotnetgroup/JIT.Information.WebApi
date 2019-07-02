@@ -334,7 +334,7 @@ namespace JIT.DIME2Barcode.AppService
             catch (Exception e)
             {
                 return 0;
-                Console.WriteLine(e);
+               
               
             }
 
