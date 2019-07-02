@@ -22,8 +22,9 @@ namespace JIT.DIME2Barcode.Entities
         public bool FDeleted { get; set; }
         public string FRemark { get; set; }
 
-       // public string FItemName { get; set; }//产品名称
-
+        // public string FItemName { get; set; }//产品名称
+        [ForeignKey("FOperID")]
+        public t_SubMessage Operate { get; set; }
 
     }
 }

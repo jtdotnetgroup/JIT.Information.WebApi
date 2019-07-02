@@ -117,27 +117,32 @@ namespace JIT.DIME2Barcode.AppService
             #endregion
 
             var process = SubMessageRepository.GetAll().Include(p => p.SubMessageType)
-                .Where(p => p.SubMessageType.FName.Contains("工序"));
+                .Where(p => p.SubMessageType.FName.Contains("工序资料"));
+
+            var processIdList = (from a in process
+                select a.FInterID).ToList();
 
             var query = Repository.GetAll();
-
+            // 过滤工序不存的记录
+            query = from a in query
+                where processIdList.Contains(a.FOperID)
+                select a;
 
             if (input.FOperID == 0)
             {
-                var count = Repository.GetAll().Count();
+                var count = query.Count();
 
-                var data = query.OrderBy(p => p.FID).PageBy(input).ToList();
+                var data = query.OrderBy(p => p.FID).PageBy(input).Include(p => p.Operate).ToList();
 
                 var list = data.MapTo<List<TB_BadItemRelationDto>>();
+
                 return new PagedResultDto<TB_BadItemRelationDto>(count, list);
             }
             else
             {
-                var count = Repository.GetAll().Count(p => p.FOperID == input.FOperID);
+                var count = query.Count(p => p.FOperID == input.FOperID);
 
-
-
-                var data = await query.Where(p => p.FOperID == input.FOperID).OrderBy(p => p.FID).PageBy(input).ToListAsync();
+                var data = query.Where(p => p.FOperID == input.FOperID).OrderBy(p => p.FID).PageBy(input).Include(p => p.Operate).ToList();
 
                 var list = data.MapTo<List<TB_BadItemRelationDto>>();
                 return new PagedResultDto<TB_BadItemRelationDto>(count, list);
