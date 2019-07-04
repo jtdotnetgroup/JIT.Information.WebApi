@@ -227,7 +227,7 @@ namespace JIT.DIME2Barcode.AppService
 
             input.UserName = input.UserName ?? "";
             // 开始查询
-            result = result.Where(w => w.UserName.Contains(input.UserName));
+            result = result.Where(w => w.UserName.StartsWith(input.UserName));
             //
             var count = result.Count();
             var data = await result.OrderBy(o => o.RoleId).PageBy(input)

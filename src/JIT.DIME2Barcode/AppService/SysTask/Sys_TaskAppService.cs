@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.AutoMapper;
@@ -27,7 +28,8 @@ namespace JIT.DIME2Barcode.AppService.SysTask
             var result = await data.Where(w =>
                     w.TaskName.Contains(mSysTask.TaskName) && w.TaskType.Contains(mSysTask.TaskType) &&
                     (mSysTask.TaskState.Equals(0) || w.TaskState.Equals(mSysTask.TaskState)))
-                .ToListAsync();
+                //.OrderBy("DESC TaskId") 
+                .ToListAsync(); 
             return result.MapTo<List<Sys_Task>>();
         }
 

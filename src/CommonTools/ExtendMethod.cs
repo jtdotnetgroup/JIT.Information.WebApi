@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel; 
 
 namespace CommonTools
 {
@@ -12,6 +9,28 @@ namespace CommonTools
     /// </summary>
     public static class ExtendMethod
     {
+ 
+        /// <summary>
+        /// 转换为string数组
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string[] ToStrArr(this string str)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                str = "";
+            }
+            return str.Split(',');
+        }
+        public static int[] ToIntArr(this string str)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                str = "";
+            }
+            return Array.ConvertAll<string, int>(str.ToStrArr(), s => int.Parse(s)); 
+        }
         /// <summary>
         /// 3、实现一个具体的静态方法
         /// </summary>
