@@ -23,102 +23,133 @@ namespace JIT.DIME2Barcode.SystemSetting.LogManager
     {
 
          
+        ///// <summary>
+        ///// 异常查询
+        ///// </summary>
+        ///// <param name="input"></param>
+        ///// <returns></returns>
+        //public async Task<PagedResultDto<AbpauditlogsDto>> GetAll(AbpauditlogsGetAllInput input)
+        //{
+
+            
+        //    var query = JIT_Abpauditlogs.GetAll();
+
+           
+        //    //一开始加载查询所有
+        //    if (input.StartTime == null && input.EndTime == null && string.IsNullOrEmpty(input.Message)&& !input.Exception)
+        //    {
+        //    }     
+        //    //根据时间查询
+        //    else if (input.StartTime != null && input.EndTime != null && string.IsNullOrEmpty(input.Message)&& !input.Exception)
+        //    {
+        //        query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime);
+        //    }
+        //    //时间加异常查询
+        //    else if (input.StartTime != null && input.EndTime != null && !string.IsNullOrEmpty(input.Message)&& !input.Exception)
+        //    {
+               
+        //        //判断字符串是否为数字
+        //        if (IsNumber(input.Message.Trim()))
+        //        {
+                   
+        //            query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime && (p.UserId.Value.ToString().Contains(input.Message.Trim())));
+        //        }
+        //        else
+        //        {
+        //            query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime && (p.Exception.Contains(input.Message.Trim())));
+        //        }
+        //    }
+        //    //时间加异常查询加异常不为空
+        //    else if (input.StartTime != null && input.EndTime != null && !string.IsNullOrEmpty(input.Message)&& input.Exception)
+        //    {
+        //        //判断字符串是否为数字
+        //        if (IsNumber(input.Message.Trim()))
+        //        {
+        //            query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime && (p.UserId.Value.ToString().Contains(input.Message.Trim())) && p.Exception != null);
+        //        }
+        //        else
+        //        {
+        //            query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime && (p.Exception.Contains(input.Message.Trim())) && p.Exception != null);
+        //        }
+        //    }
+        //    //时间加异常不为空
+        //    else if (input.StartTime != null && input.EndTime != null && string.IsNullOrEmpty(input.Message) && input.Exception)
+        //    {
+        //        query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime  && p.Exception != null);
+        //    }
+        //    //只查异常的条件
+        //    else if (input.StartTime == null && input.EndTime == null && string.IsNullOrEmpty(input.Message) && input.Exception)
+        //    {
+        //        query = query.Where(p => p.Exception != null);
+        //    }
+        //    //异常内容+异常不为空
+        //    else if(input.StartTime == null && input.EndTime == null && !string.IsNullOrEmpty(input.Message) && input.Exception)
+        //    {
+                
+        //        //判断字符串是否为数字
+        //        if (IsNumber(input.Message.Trim()))
+        //        {      
+        //            query = query.Where(p =>(p.UserId.Value.ToString().Contains(input.Message.Trim())) && p.Exception != null);
+        //        }
+        //        else
+        //        {
+        //            query = query.Where(p => (p.Exception.Contains(input.Message.Trim())) && p.Exception != null);
+        //        }
+        //    }
+        //    //查询异常的内容
+        //    else
+        //    {
+               
+        //        //判断字符串是否为数字
+        //        if (IsNumber(input.Message.Trim()))
+        //        {
+        //            query = query.Where(p => (p.UserId.Value.ToString().Contains(input.Message.Trim())));
+        //        }
+        //        else
+        //        {
+        //            query = query.Where(p => (p.Exception.Contains(input.Message.Trim())));
+        //        }
+        //    }
+             
+        //    var data = query.OrderByDescending(p => p.ExecutionTime).PageBy(input).ToList();
+        //    var count = await query.CountAsync(); 
+        //    var list = data.MapTo<List<AbpauditlogsDto>>();
+        //    return new PagedResultDto<AbpauditlogsDto>(count, list);
+        //}
         /// <summary>
         /// 异常查询
         /// </summary>
         /// <param name="input"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// 逻辑：
+        /// 1.
+        ///
+        /// </returns>
         public async Task<PagedResultDto<AbpauditlogsDto>> GetAll(AbpauditlogsGetAllInput input)
         {
+            // 参数处理
+            input.Message = string.IsNullOrWhiteSpace(input.Message) ? "" : input.Message.Trim();
+            input.StartTime = !input.StartTime.HasValue ? DateTime.MinValue : input.StartTime;
+            input.EndTime = !input.EndTime.HasValue ? DateTime.MaxValue : input.EndTime;
 
-            
-            var query = LogsRepository.GetAll();
+            // 日志表
+            var query = JIT_Abpauditlogs.GetAll()
+                .Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime);
 
-           
-            //一开始加载查询所有
-            if (input.StartTime == null && input.EndTime == null && string.IsNullOrEmpty(input.Message)&& !input.Exception)
-            {
-            }     
-            //根据时间查询
-            else if (input.StartTime != null && input.EndTime != null && string.IsNullOrEmpty(input.Message)&& !input.Exception)
-            {
-                query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime);
-            }
-            //时间加异常查询
-            else if (input.StartTime != null && input.EndTime != null && !string.IsNullOrEmpty(input.Message)&& !input.Exception)
-            {
-               
-                //判断字符串是否为数字
-                if (IsNumber(input.Message.Trim()))
-                {
-                   
-                    query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime && (p.UserId.Value.ToString().Contains(input.Message.Trim())));
-                }
-                else
-                {
-                    query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime && (p.Exception.Contains(input.Message.Trim())));
-                }
-            }
-            //时间加异常查询加异常不为空
-            else if (input.StartTime != null && input.EndTime != null && !string.IsNullOrEmpty(input.Message)&& input.Exception)
-            {
-                //判断字符串是否为数字
-                if (IsNumber(input.Message.Trim()))
-                {
-                    query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime && (p.UserId.Value.ToString().Contains(input.Message.Trim())) && p.Exception != null);
-                }
-                else
-                {
-                    query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime && (p.Exception.Contains(input.Message.Trim())) && p.Exception != null);
-                }
-            }
-            //时间加异常不为空
-            else if (input.StartTime != null && input.EndTime != null && string.IsNullOrEmpty(input.Message) && input.Exception)
-            {
-                query = query.Where(p => p.ExecutionTime >= input.StartTime && p.ExecutionTime <= input.EndTime  && p.Exception != null);
-            }
-            //只查异常的条件
-            else if (input.StartTime == null && input.EndTime == null && string.IsNullOrEmpty(input.Message) && input.Exception)
-            {
-                query = query.Where(p => p.Exception != null);
-            }
-            //异常内容+异常不为空
-            else if(input.StartTime == null && input.EndTime == null && !string.IsNullOrEmpty(input.Message) && input.Exception)
-            {
-                
-                //判断字符串是否为数字
-                if (IsNumber(input.Message.Trim()))
-                {      
-                    query = query.Where(p =>(p.UserId.Value.ToString().Contains(input.Message.Trim())) && p.Exception != null);
-                }
-                else
-                {
-                    query = query.Where(p => (p.Exception.Contains(input.Message.Trim())) && p.Exception != null);
-                }
-            }
-            //查询异常的内容
-            else
-            {
-               
-                //判断字符串是否为数字
-                if (IsNumber(input.Message.Trim()))
-                {
-                    query = query.Where(p => (p.UserId.Value.ToString().Contains(input.Message.Trim())));
-                }
-                else
-                {
-                    query = query.Where(p => (p.Exception.Contains(input.Message.Trim())));
-                }
-            }
-             
-            var data = query.OrderByDescending(p => p.ExecutionTime).PageBy(input).ToList();
-            var count = await query.CountAsync(); 
+            // 查询条件
+            query = query.Where(p =>
+                (p.UserId.Value.ToString().Contains(input.Message) || p.Exception.Contains(input.Message)) &&
+                (!input.Exception || (input.Exception && p.Exception != null)));
+
+            // 返回查询结果
+            var data = await query.OrderByDescending(p => p.ExecutionTime).PageBy(input).ToListAsync();
+            var count = await query.CountAsync();
             var list = data.MapTo<List<AbpauditlogsDto>>();
             return new PagedResultDto<AbpauditlogsDto>(count, list);
         }
 
         /// <summary>
-       /// 判断字符串是否是数字
+        /// 判断字符串是否是数字
         /// </summary>
         public static bool IsNumber(string s)
         {

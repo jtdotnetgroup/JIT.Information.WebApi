@@ -31,7 +31,7 @@ namespace JIT.DIME2Barcode.AppService
         /// <summary>
         /// 日志记录表
         /// </summary>
-        public IRepository<Abpauditlogs, long> LogsRepository { get; set; }
+        public IRepository<Abpauditlogs, long> JIT_Abpauditlogs { get; set; }
         #endregion
 
         #region 业务表
