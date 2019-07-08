@@ -132,7 +132,7 @@ namespace JIT.DIME2Barcode.AppService
             {
                 var count = query.Count();
 
-                var data = query.OrderBy(p => p.FID).PageBy(input).Include(p => p.Operate).ToList();
+                var data = await query.OrderBy(p => p.FID).PageBy(input).Include(p => p.Operate).ToListAsync();
 
                 var list = data.MapTo<List<TB_BadItemRelationDto>>();
 
@@ -142,7 +142,7 @@ namespace JIT.DIME2Barcode.AppService
             {
                 var count = query.Count(p => p.FOperID == input.FOperID);
 
-                var data = query.Where(p => p.FOperID == input.FOperID).OrderBy(p => p.FID).PageBy(input).Include(p => p.Operate).ToList();
+                var data = await query.Where(p => p.FOperID == input.FOperID).OrderBy(p => p.FID).PageBy(input).Include(p => p.Operate).ToListAsync();
 
                 var list = data.MapTo<List<TB_BadItemRelationDto>>();
                 return new PagedResultDto<TB_BadItemRelationDto>(count, list);
