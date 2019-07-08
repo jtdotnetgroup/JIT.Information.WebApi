@@ -276,3 +276,4 @@ src/JIT.DIME2Barcode/bin/Debug/netcoreapp2.1/JIT.DIME2Barcode.deps.json
 *.props
 *.targets
 *.json
+*.cache

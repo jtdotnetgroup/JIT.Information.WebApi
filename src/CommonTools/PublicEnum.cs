@@ -56,6 +56,13 @@ namespace CommonTools
             已检验 = 2,
         }
 
+        public enum CompareOperate
+        {
+            DateTime,Number,String,Boolean
+        }
+
+
+
         
 
     }

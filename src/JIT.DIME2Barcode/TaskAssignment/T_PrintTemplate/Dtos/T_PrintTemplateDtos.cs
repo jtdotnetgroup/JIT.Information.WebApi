@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Entities;
+using JIT.DIME2Barcode.Model;
 
 namespace JIT.DIME2Barcode.TaskAssignment.T_PrintTemplate.Dtos
 {
@@ -56,7 +57,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.T_PrintTemplate.Dtos
         public byte[] FFile { get; set; }
         public string FNote { get; set; }
     }
-    public class T_PrintTemplateGetAllInput : PagedResultRequestDto
+    public class T_PrintTemplateGetAllInput : JITPagedResultRequestDto
     {
 
     }

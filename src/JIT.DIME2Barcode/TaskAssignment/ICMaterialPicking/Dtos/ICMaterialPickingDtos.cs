@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Entities;
+using JIT.DIME2Barcode.Model;
 
 namespace JIT.JIT.TaskAssignment.ICMaterialPicking.Dtos
 {
@@ -68,7 +69,7 @@ namespace JIT.JIT.TaskAssignment.ICMaterialPicking.Dtos
     /// <summary>
     /// 查询全部
     /// </summary>
-    public class ICMaterialPickingGetAllInput : PagedResultRequestDto
+    public class ICMaterialPickingGetAllInput : JITPagedResultRequestDto
     {
 
     }
