@@ -244,7 +244,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="methodName">方法名称，包含程序集名、类型名、方法名称格式如：assembly.class.method</param>
         /// <returns></returns>
-        public async Task<List<JITQueryFormDto>> GetQueryFields(string methodFullName)
+        public List<JITQueryFormDto> GetQueryFields(string methodFullName)
         {
             var arr = methodFullName.Split("#");
             if (arr.Length != 3)
@@ -271,6 +271,7 @@ namespace JIT.DIME2Barcode.AppService
             }
             catch (AmbiguousMatchException e)
             {
+                Console.WriteLine(e.Message);
                 throw new UserFriendlyException($"【{className}】中存在多个【{methodName}】名称的方法");
             }
 

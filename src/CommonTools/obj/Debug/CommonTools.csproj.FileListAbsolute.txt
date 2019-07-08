@@ -1,3 +1,9 @@
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CoreCompileInputs.cache
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb
+D:\Net\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.dll
+D:\Net\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.pdb
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.dll.config
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.pdb
@@ -153,14 +159,8 @@ E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\System.Memory.
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\System.Numerics.Vectors.xml
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\bin\Debug\TimeZoneConverter.xml
+E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CoreCompileInputs.cache
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CopyComplete
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb
-E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
-D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
-D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CoreCompileInputs.cache
-D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
-D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb
-D:\Net\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.dll
-D:\Net\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.pdb

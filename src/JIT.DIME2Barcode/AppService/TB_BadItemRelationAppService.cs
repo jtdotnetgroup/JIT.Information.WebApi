@@ -116,47 +116,27 @@ namespace JIT.DIME2Barcode.AppService
 
             #endregion
 
-            var process = SubMessageRepository.GetAll().Include(p => p.SubMessageType)
-                .Where(p => p.SubMessageType.FName.Contains("工序资料"));
+            // 
+            var processIdList = SubMessageRepository.GetAll().Include(p => p.SubMessageType)
+                .Where(p => p.SubMessageType.FName.Contains("工序资料")).Select(s=>s.FInterID).ToList();
 
-            var processIdList = (from a in process
-                select a.FInterID).ToList();
-
-            var query = Repository.GetAll();
-            // 过滤工序不存的记录
-            query = from a in query
-                where processIdList.Contains(a.FOperID)
-                select a;
-
+            // 过滤工序不存的记录  
+            var query = Repository.GetAll().Where(a => processIdList.Contains(a.FOperID));
             
-
-            /// 过滤工序不存的记录
-            //query = from a in query
-            //    where processIdList.Contains(a.FOperID)
-            //    select a;
-
-            if (input.FOperID == 0)
+            // 
+            query = query.Include(p => p.Operate);
+            // 
+            if (input.FOperID != 0)
             {
-                var count = query.Count();
+                query = query.Where(p => p.FOperID == input.FOperID);
+            }  
+            // 
+            var count = await query.CountAsync();
+            var data = await query.OrderBy(p => p.FID).PageBy(input).ToListAsync();
 
-                var data = query.OrderBy(p => p.FID).PageBy(input).Include(p => p.Operate).ToList();
-
-                var list = data.MapTo<List<TB_BadItemRelationDto>>();
-
-                return new PagedResultDto<TB_BadItemRelationDto>(count, list);
-            }
-            else
-            {
-                var count = query.Count(p => p.FOperID == input.FOperID);
-
-                var data = query.Where(p => p.FOperID == input.FOperID).OrderBy(p => p.FID).PageBy(input).Include(p => p.Operate).ToList();
-
-                var list = data.MapTo<List<TB_BadItemRelationDto>>();
-                return new PagedResultDto<TB_BadItemRelationDto>(count, list);
-            }
-
-
-
+            // 
+            var list = data.MapTo<List<TB_BadItemRelationDto>>();
+            return new PagedResultDto<TB_BadItemRelationDto>(count, list);
         }
 
 
