@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
-using Abp.Application.Services.Dto;
+﻿using Abp.Application.Services.Dto;
 using Abp.Linq.Extensions;
+using Abp.UI;
 using CommonTools;
 using JIT.DIME2Barcode.Model;
 using JIT.DIME2Barcode.TaskAssignment.Test.Dtos;
+using JIT.InformationSystem.CommonClass;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Linq.Dynamic.Core;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -234,6 +238,99 @@ namespace JIT.DIME2Barcode.AppService
                 .ToListAsync();
             var resultList = new PagedResultDto<UserRole>(count, data);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="methodName">方法名称，包含程序集名、类型名、方法名称格式如：assembly.class.method</param>
+        /// <returns></returns>
+        public async Task<List<JITQueryFormDto>> GetQueryFields(string methodFullName)
+        {
+            var arr = methodFullName.Split("#");
+            if (arr.Length != 3)
+            {
+                throw new UserFriendlyException("传入方法名称有误");
+            }
+
+            string assemblyName = arr[0];
+            string className = arr[1];
+            string methodName = arr[2];
+
+            //通过程序集名、类名获取类型
+            var t = ReflectionHelper.GetClassType(className, assemblyName);
+
+            MethodInfo method = null;
+
+            try
+            {
+                method = t.GetMethod(methodName);
+
+                var result = GetParamsInof(method);
+
+                return result;
+            }
+            catch (AmbiguousMatchException e)
+            {
+                throw new UserFriendlyException($"【{className}】中存在多个【{methodName}】名称的方法");
+            }
+
+        }
+
+        private List<JITQueryFormDto> GetParamsInof(MethodInfo method)
+        {
+            Dictionary<string, string> fielDictionary = new Dictionary<string, string>();
+
+            var pisfilter = new[] { "SkipCount", "MaxResultCount", "Where" };
+            fielDictionary.Add("system.int64", "int");
+            fielDictionary.Add("system.string","string");
+            fielDictionary.Add("system.boolean","bool");
+            fielDictionary.Add("system.int32","int");
+            fielDictionary.Add("system.double", "double");
+            fielDictionary.Add("system.datetime", "datetime"); 
+            fielDictionary.Add("system.decimal","double");
+
+            var paramTypes = method.GetParameters();
+            if (paramTypes.Length != 1)
+            {
+                throw new UserFriendlyException($"【{method.Name}】方法参数多于1个");
+            }
+
+            var parType = paramTypes[0].ParameterType;
+            var pis = parType.GetProperties().Where(p=>!pisfilter.Contains(p.Name)).ToList();
+
+            List<JITQueryFormDto> result = new List<JITQueryFormDto>();
+            JITQueryFormDto item = null;
+
+            pis.ForEach(p =>
+            {
+                var disp = p.GetCustomAttributes<DisplayNameAttribute>().ToList();
+                var display = disp.Count == 1 ? disp[0].DisplayName : p.Name;
+                var protyneName = p.PropertyType.ToString().Replace("System.Nullable`1","").Replace("[","").Replace("]","").ToLower();
+
+                item=new JITQueryFormDto();
+                item.DispName = display;
+                item.Name = p.Name;
+                item.FieldType =p.PropertyType.IsEnum?"select": fielDictionary[protyneName];
+
+                if (p.PropertyType.IsEnum)
+                {
+                    var values= Enum.GetValues(p.PropertyType);
+                    item.Values=new List<object>();
+
+                    foreach (var v in values)
+                    {
+                        var val = Enum.Parse(p.PropertyType, v.ToString());
+                        item.Values.Add(new{value=(int )val,title=v.ToString()});
+                    }
+                }
+
+                result.Add(item);
+            });
+            return result;
+
+        }
         #endregion
     }
+
+
 }

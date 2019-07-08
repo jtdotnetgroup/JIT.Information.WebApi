@@ -128,12 +128,18 @@ namespace JIT.DIME2Barcode.AppService
                 where processIdList.Contains(a.FOperID)
                 select a;
 
+            
+
+            /// 过滤工序不存的记录
+            //query = from a in query
+            //    where processIdList.Contains(a.FOperID)
+            //    select a;
+
             if (input.FOperID == 0)
             {
-                query = query.Include(p => p.Operate);
                 var count = query.Count();
 
-                var data = await query.OrderBy(p => p.FID).PageBy(input).ToListAsync();
+                var data = query.OrderBy(p => p.FID).PageBy(input).Include(p => p.Operate).ToList();
 
                 var list = data.MapTo<List<TB_BadItemRelationDto>>();
 
@@ -141,10 +147,9 @@ namespace JIT.DIME2Barcode.AppService
             }
             else
             {
-                query = query.Where(p => p.FOperID == input.FOperID).Include(p => p.Operate);
                 var count = query.Count(p => p.FOperID == input.FOperID);
 
-                var data = await query.OrderBy(p => p.FID).PageBy(input).ToListAsync();
+                var data = query.Where(p => p.FOperID == input.FOperID).OrderBy(p => p.FID).PageBy(input).Include(p => p.Operate).ToList();
 
                 var list = data.MapTo<List<TB_BadItemRelationDto>>();
                 return new PagedResultDto<TB_BadItemRelationDto>(count, list);

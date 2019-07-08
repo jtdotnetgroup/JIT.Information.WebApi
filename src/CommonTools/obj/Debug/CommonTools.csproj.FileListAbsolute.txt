@@ -158,3 +158,9 @@ E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.cs
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb
 E:\捷特\源码\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CoreCompileInputs.cache
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb
+D:\Net\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.dll
+D:\Net\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.pdb

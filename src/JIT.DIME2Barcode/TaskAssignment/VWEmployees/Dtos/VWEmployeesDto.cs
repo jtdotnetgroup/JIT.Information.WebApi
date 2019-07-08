@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Abp.Application.Services.Dto;
+using JIT.DIME2Barcode.Model;
 
 namespace JIT.DIME2Barcode.TaskAssignment.VWEmployees
 {
@@ -38,7 +39,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.VWEmployees
     }
 
 
-   public class VWEmployeesGetAllInputDto : PagedResultRequestDto
+   public class VWEmployeesGetAllInputDto : JITPagedResultRequestDto
     {
         [Required]
         public int Id { get; set; }
