@@ -138,7 +138,11 @@ namespace JIT.DIME2Barcode
                     .ForMember(o => o.CreateUserID, op => op.Ignore()); 
                 config.CreateMap<TB_BadItemRelation, TB_BadItemRelationDto>()
                     .ForMember(o => o.FItemID, op => op.Ignore())
-                    .ForMember(o => o.FOperName, op => op.MapFrom((e, d) => d.FOperName = e.Operate.FName));
+                    .ForMember(o => o.FOperName, op => op.Ignore());
+
+
+                //config.CreateMap<Sys_BasicInfoCreate, Sys_BasicInfo>()
+                //    .ForMember(o => o.Id, op => op.Ignore());
 
             });
 
