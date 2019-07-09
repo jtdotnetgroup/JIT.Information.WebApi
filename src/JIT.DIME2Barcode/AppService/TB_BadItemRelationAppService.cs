@@ -125,9 +125,6 @@ namespace JIT.DIME2Barcode.AppService
 
             var query = Repository.GetAll();
 
-
-            
-
             /// 过滤工序不存的记录
             //query = from a in query
             //    where processIdList.Contains(a.FOperID)
