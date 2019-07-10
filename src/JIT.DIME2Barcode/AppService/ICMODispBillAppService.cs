@@ -110,6 +110,10 @@ namespace JIT.DIME2Barcode.AppService
                     entity.FMOBillNo = itemDetail.FMOBillNo;
                     entity.FMOInterID = itemDetail.FMOInterID;
                     entity.FWorkCenterID = mDaily.FWorkCenterID;
+                    // 
+                    itemDetail.ICMODispBillId = string.IsNullOrWhiteSpace(itemDetail.ICMODispBillId)
+                        ? "0"
+                        : itemDetail.ICMODispBillId;
                     // 判断是增加还是修改
                     if (itemDetail.ICMODispBillId.Equals("0"))
                     {
