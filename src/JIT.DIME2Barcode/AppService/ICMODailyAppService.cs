@@ -122,14 +122,8 @@ namespace JIT.DIME2Barcode.TaskAssignment
 
                 foreach (var dailyItem in input.Dailies)
                 {
-                    var equipments = equipmentList.Where(e => e.FName == dailyItem.FMachineName && e.FWorkCenterID == org.Id);
 
-                    if (equipments.Count() > 1)
-                    {
-                        this.EX(-1, $"【{org.DisplayName}】车间存在多个【{dailyItem.FMachineName}】设备");
-                    }
-
-                    var equipment = equipments.SingleOrDefault(); 
+                    var equipment = equipmentList.SingleOrDefault(e => e.FName == dailyItem.FMachineName);
 
                     if (equipment == null) { this.EX(-1,$"找不设备：{dailyItem.FMachineName} ，请检查设备档案");}
 
