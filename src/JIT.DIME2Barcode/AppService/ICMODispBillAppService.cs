@@ -10,6 +10,7 @@ using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
+using Abp.UI;
 using Castle.DynamicProxy.Generators.Emitters;
 using CommonTools;
 using JIT.DIME2Barcode.Entities;
@@ -74,7 +75,7 @@ namespace JIT.DIME2Barcode.AppService
                     // 判断是否存在
                     if (mDaily == null)
                     {
-                        throw new AbpException("日计划单不存在");
+                        throw new UserFriendlyException("日计划单不存在");
                     }
                     // 查看是否已经存在
                     var entity =
