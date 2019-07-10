@@ -277,6 +277,11 @@ namespace JIT.DIME2Barcode.AppService
 
         }
 
+        /// <summary>
+        /// 获取方法
+        /// </summary>
+        /// <param name="method"></param>
+        /// <returns></returns>
         private List<JITQueryFormDto> GetParamsInof(MethodInfo method)
         {
             Dictionary<string, string> fielDictionary = new Dictionary<string, string>();
