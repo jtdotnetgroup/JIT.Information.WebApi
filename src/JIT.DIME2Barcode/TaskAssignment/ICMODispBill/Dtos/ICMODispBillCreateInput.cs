@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
+using CommonTools;
+using JIT.DIME2Barcode.Entities;
 
 namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
 {
@@ -26,6 +28,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
 
 
         //设备
+        [Select("Machine")]
         public int FMachineID { get; set; }
         //车间
         public int FWorkCenterID { get; set; }

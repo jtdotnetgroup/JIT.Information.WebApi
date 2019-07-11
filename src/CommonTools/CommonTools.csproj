@@ -182,6 +182,7 @@
     <Compile Include="ExtendMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicEnum.cs" />
+    <Compile Include="SelectAttribute.cs" />
     <Compile Include="SQLStoredProcedureHelper.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -28,7 +28,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.TaskScheduling
         /// <returns></returns>
         public async Task<PagedResultDto<TaskSchedulingDto>> GetAll(TaskSchedulingGetAllInput input)
         {
-            var query = Repository.GetAll();
+            var query = Repository.GetAll().Where(input.Where);
 
             var count = await query.CountAsync();
 

@@ -5,7 +5,7 @@ using Abp.Application.Services.Dto;
 
 namespace JIT.DIME2Barcode.Model
 {
-    public partial class JITPagedResultRequestDto:PagedResultRequestDto
+    public partial class JITPagedResultRequestDto:PagedAndSortedResultRequestDto
     {
         private string where;
 

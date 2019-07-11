@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Data;
 using Abp.Application.Services.Dto;
 using CommonTools;
+using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.Model;
 
 namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
@@ -23,6 +24,11 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
         public decimal? Decimal { get; set; }
 
         public PublicEnum.FWorkingState ddwer { get; set; }
+
+
+        public Entities.Employee Employee { get; set; }
+  
+        public Equipment Equipment { get; set; }
 
     }
 }

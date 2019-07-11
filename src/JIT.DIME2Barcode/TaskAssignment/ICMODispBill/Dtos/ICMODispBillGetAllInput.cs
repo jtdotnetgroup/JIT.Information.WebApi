@@ -15,6 +15,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
         
         public int FMOInterID { get; set; }
 
+
       
     }
 
