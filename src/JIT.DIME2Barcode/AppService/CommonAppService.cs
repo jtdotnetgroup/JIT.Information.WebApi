@@ -275,22 +275,24 @@ namespace JIT.DIME2Barcode.AppService
         }
 
         /// <summary>
-        /// 获取方法
+        /// 获取方法参数信息
         /// </summary>
         /// <param name="method"></param>
         /// <returns></returns>
         private List<JITQueryFormDto> GetParamsInof(MethodInfo method)
         {
             Dictionary<string, string> fielDictionary = new Dictionary<string, string>();
-
-            var pisfilter = new[] { "SkipCount", "MaxResultCount", "Where" };
             fielDictionary.Add("system.int64", "int");
-            fielDictionary.Add("system.string","string");
-            fielDictionary.Add("system.boolean","bool");
-            fielDictionary.Add("system.int32","int");
+            fielDictionary.Add("system.string", "string");
+            fielDictionary.Add("system.boolean", "bool");
+            fielDictionary.Add("system.int32", "int");
             fielDictionary.Add("system.double", "double");
-            fielDictionary.Add("system.datetime", "datetime"); 
-            fielDictionary.Add("system.decimal","double");
+            fielDictionary.Add("system.datetime", "datetime");
+            fielDictionary.Add("system.decimal", "double");
+
+            //不返回字段
+            var pisfilter = new[] { "SkipCount", "MaxResultCount", "Where", "Sorting" };
+            
 
             var paramTypes = method.GetParameters();
             if (paramTypes.Length != 1)
@@ -306,17 +308,20 @@ namespace JIT.DIME2Barcode.AppService
 
             pis.ForEach(p =>
             {
+                //获取字段DisplayName特性
                 var disp = p.GetCustomAttributes<DisplayNameAttribute>().ToList();
+                //获取字段显示名称
                 var display = disp.Count == 1 ? disp[0].DisplayName : p.Name;
+                //获取字段类型名称
                 var protyneName = p.PropertyType.ToString().Replace("System.Nullable`1","").Replace("[","").Replace("]","").ToLower();
 
                 item=new JITQueryFormDto();
                 item.DispName = display;
                 item.Name = p.Name;
-                item.FieldType =p.PropertyType.IsEnum?"select": fielDictionary[protyneName];
-
+                
                 if (p.PropertyType.IsEnum)
                 {
+                    item.FieldType = p.PropertyType.IsEnum ? "select" : fielDictionary[protyneName];
                     var values= Enum.GetValues(p.PropertyType);
                     item.Values=new List<object>();
 
@@ -325,6 +330,12 @@ namespace JIT.DIME2Barcode.AppService
                         var val = Enum.Parse(p.PropertyType, v.ToString());
                         item.Values.Add(new{value=(int )val,title=v.ToString()});
                     }
+                }
+                else
+                {
+                    item.FieldType = fielDictionary.Keys.Contains(protyneName)
+                        ? fielDictionary[protyneName]
+                        : p.PropertyType.Name;
                 }
 
                 result.Add(item);
