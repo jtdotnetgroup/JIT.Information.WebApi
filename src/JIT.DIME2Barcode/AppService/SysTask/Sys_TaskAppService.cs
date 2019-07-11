@@ -26,9 +26,7 @@ namespace JIT.DIME2Barcode.AppService.SysTask
         public async Task<List<Sys_Task>> Sys_TaskList(Sys_TaskAllInputDto mSysTask)
         { 
             var data = JIT_Sys_Task.GetAll().Where(w => w.TaskState != -1);
-            var result = await data.Where(w =>
-                    w.TaskName.Contains(mSysTask.TaskName) && w.TaskType.Contains(mSysTask.TaskType) &&
-                    (mSysTask.TaskState.Equals(0) || w.TaskState.Equals(mSysTask.TaskState)))
+            var result = await data
                 .Where(mSysTask.Where)
                 //.OrderBy("DESC TaskId") 
                 .ToListAsync(); 

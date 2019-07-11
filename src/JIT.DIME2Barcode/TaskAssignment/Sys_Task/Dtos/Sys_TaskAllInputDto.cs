@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using CommonTools;
 using JIT.DIME2Barcode.Model;
 
 namespace JIT.DIME2Barcode.TaskAssignment.Sys_Task.Dtos
@@ -23,7 +24,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.Sys_Task.Dtos
         /// 任务状态 暂停，未更新，(执行中/已更新)，已结束
         /// </summary>
         [DisplayName("任务状态")]
-        public int TaskState { get; set; } 
+        public PublicEnum.TaskState TaskState { get; set; } 
         [DisplayName("用户ID")]
         public string LastSyncUserId { get; set; } 
         [DisplayName("最后更新时间")]

@@ -63,8 +63,16 @@ namespace CommonTools
         }
 
 
-
-        
+        /// <summary>
+        /// 任务状态 暂停，未更新，(执行中/已更新)，已结束
+        /// </summary>
+        public enum TaskState
+        {
+            暂停,
+            未更新,
+            已更新,
+            已结束
+        }
 
     }
 }
