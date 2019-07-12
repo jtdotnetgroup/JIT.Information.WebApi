@@ -68,7 +68,7 @@ namespace JIT.DIME2Barcode.AppService
         [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Get)]
         public async Task<PagedResultDto<EquipmentDto>> GetAll(EquipmentGetAllInput input)
         {
-            var query = _repository.GetAll();
+            var query = _repository.GetAll().Where(input.Where);
 
             if (input.OrganizationID.HasValue)
             {

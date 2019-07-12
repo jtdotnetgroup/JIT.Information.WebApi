@@ -25,6 +25,7 @@ using Abp.UI;
 using Castle.Components.DictionaryAdapter;
 using JIT.DIME2Barcode.Permissions;
 using Microsoft.AspNetCore.Identity;
+using System.Linq.Dynamic.Core;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -344,8 +345,8 @@ namespace JIT.DIME2Barcode.AppService
 
             if (input.Id==0)
             {
-                var querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false);
-                var count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted==false );      
+                var querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false).Where(input.Where);
+                var count = await querys.CountAsync();      
                 var data = await querys.OrderBy(p => p.Id).Skip(input.SkipCount * input.MaxResultCount).Take(input.MaxResultCount).ToListAsync();
                 var list = data.MapTo<List<VWEmployeesDto>>();
                 return new PagedResultDto<VWEmployeesDto>(count, list);
@@ -356,33 +357,25 @@ namespace JIT.DIME2Barcode.AppService
                 var Querybufid = _Repository.GetAll().SingleOrDefault(p => p.Id == input.Id);
                 IQueryable<VW_Employee> querys;
                 int count = 0;
-                List<VW_Employee> data=new EditableList<VW_Employee>();
+                List<VW_Employee> data = new EditableList<VW_Employee>();
                 List<VWEmployeesDto> list=new List<VWEmployeesDto>();
 
                 if (Querybufid.ParentId==0&& Querybufid.OrganizationType==PublicEnum.OrganizationType.集团)
-                {
-                    //querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false);
-                    //count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted == false);
-                    //data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
-                    //list = data.MapTo<List<VWEmployeesDto>>();
-
+                { 
 
                     int[] FDepartmentIDArr = GetOneselfAndJunior(new int[] { input.Id });
 
-                    querys = from a in _VwRepository.GetAll()
-                        where (FDepartmentIDArr).Contains(a.FDepartment)
-                        select a;
+                    querys = _VwRepository.GetAll().Where(input.Where).Where(w => FDepartmentIDArr.Contains(w.FDepartment)&& w.IsDeleted == false);
 
-                    count = await _ERepository.GetAll().CountAsync(p =>
-                        p.IsDeleted == false && FDepartmentIDArr.Contains(p.FDepartment));
-                    data = await querys.Where(p => p.IsDeleted == false).OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
+                    count = await _ERepository.GetAll().CountAsync();
+                    data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
                     list = data.MapTo<List<VWEmployeesDto>>();
 
                 }
                 else if (Querybufid.OrganizationType== PublicEnum.OrganizationType.公司)
                 {
-                    querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false && p.FOrganizationUnitId == input.Id);
-                    count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted == false && p.FOrganizationUnitId == input.Id);
+                    querys = _VwRepository.GetAll().Where(input.Where).Where(p => p.IsDeleted == false && p.FOrganizationUnitId == input.Id);
+                    count = await querys.CountAsync();
                     data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
                     list = data.MapTo<List<VWEmployeesDto>>();
                 }
@@ -391,13 +384,10 @@ namespace JIT.DIME2Barcode.AppService
 
                     int[] FDepartmentIDArr = GetOneselfAndJunior(new int[] {input.Id});
 
-                    querys = from a in _VwRepository.GetAll()
-                             where (FDepartmentIDArr).Contains(a.FDepartment)
-                             select a;
+                    querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false && FDepartmentIDArr.Contains(p.FDepartment)).Where(input.Where);
 
-                    count = await _ERepository.GetAll().CountAsync(p =>
-                        p.IsDeleted == false && FDepartmentIDArr.Contains(p.FDepartment));
-                    data = await querys.Where(p=>p.IsDeleted==false).OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
+                    count = await querys.CountAsync();
+                    data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
                     list = data.MapTo<List<VWEmployeesDto>>();
                 }
 

@@ -314,11 +314,13 @@ namespace JIT.DIME2Barcode.AppService
                 //获取字段DisplayName特性
                 var disp = p.GetCustomAttributes<DisplayNameAttribute>().ToList();
                 //获取字段显示名称
-                var display = disp.Count == 1 ? disp[0].DisplayName : p.Name;
+                //var display = disp.Count == 1 ? disp[0].DisplayName : p.Name;
+                string  display = disp.Select(s => s.DisplayName).FirstOrDefault() ?? p.Name;
+                
                 //获取字段类型名称
                 var protyneName = p.PropertyType.ToString().Replace("System.Nullable`1","").Replace("[","").Replace("]","").ToLower();
 
-                item=new JITQueryFormDto();
+                item = new JITQueryFormDto();
                 item.DispName = display;
                 item.Name = p.Name;
                 
@@ -340,8 +342,12 @@ namespace JIT.DIME2Barcode.AppService
                         ? fielDictionary[protyneName]
                         : p.PropertyType.Name;
                 }
-
-                result.Add(item);
+                // 
+                if ( disp.Where(w=>w.DisplayName.Length>0).Count()==0) { }
+                else
+                {
+                    result.Add(item);
+                }
             });
             return result;
 

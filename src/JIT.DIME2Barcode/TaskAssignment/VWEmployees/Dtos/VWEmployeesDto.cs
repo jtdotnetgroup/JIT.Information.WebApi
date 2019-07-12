@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Abp.Application.Services.Dto;
 using JIT.DIME2Barcode.Model;
+using JIT.InformationSystem.CommonClass;
 
 namespace JIT.DIME2Barcode.TaskAssignment.VWEmployees
 {
@@ -34,16 +36,15 @@ namespace JIT.DIME2Barcode.TaskAssignment.VWEmployees
 
         public string UserName { get; set; }//用户账号
         public string Password { get; set; }//密码 用户绑定显示
-
-
     }
-
-
    public class VWEmployeesGetAllInputDto : JITPagedResultRequestDto
     {
         [Required]
         public int Id { get; set; }
-
+        [DisplayName("员工编号")]
+        public string FMpno { get; set; }
+        [DisplayName("姓名")]
+        public string FName { get; set; } 
     }
 
 }

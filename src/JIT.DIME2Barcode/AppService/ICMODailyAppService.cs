@@ -21,6 +21,7 @@ using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos;
 using JIT.DIME2Barcode.TaskAssignment.ICMODaily.EventsAndEventHandlers;
+using JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 
@@ -325,9 +326,9 @@ namespace JIT.DIME2Barcode.TaskAssignment
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize(ProductionPlanPermissionsNames.TaskPlan_Get)]
-        public async Task<PagedResultDto<VW_ICMODaily_Group_By_Day>> GetGroupDailyList(ICMODailyGetAllInput input)
+        public async Task<PagedResultDto<VW_ICMODaily_Group_By_Day>> GetGroupDailyList(GroupDailyListInput input)
         {
-            var query = GRepository.GetAll();
+            var query = GRepository.GetAll().Where(input.Where);
 
             var count = await query.CountAsync();
 

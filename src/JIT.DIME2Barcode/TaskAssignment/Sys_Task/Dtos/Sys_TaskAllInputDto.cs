@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Text;
 using CommonTools;
 using JIT.DIME2Barcode.Model;
+using JIT.InformationSystem.CommonClass;
 
 namespace JIT.DIME2Barcode.TaskAssignment.Sys_Task.Dtos
 {

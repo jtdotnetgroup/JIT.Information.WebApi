@@ -121,7 +121,7 @@ namespace JIT.DIME2Barcode.AppService
                 .Where(p => p.SubMessageType.FName.Contains("工序资料")).Select(s=>s.FInterID).ToList();
 
             // 过滤工序不存的记录  
-            var query = Repository.GetAll().Where(a => processIdList.Contains(a.FOperID));
+            var query = Repository.GetAll().Where(a => processIdList.Contains(a.FOperID)).Where(input.Where);
             
             // 
             query = query.Include(p => p.Operate);

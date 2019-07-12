@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Abp.Application.Services.Dto;
 
-namespace JIT.DIME2Barcode.Model
+namespace JIT.InformationSystem.CommonClass
 {
     public partial class JITPagedResultRequestDto:PagedAndSortedResultRequestDto
     {

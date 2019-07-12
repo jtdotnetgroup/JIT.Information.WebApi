@@ -3,8 +3,8 @@ using System.ComponentModel;
 using System.Data;
 using Abp.Application.Services.Dto;
 using CommonTools;
-using JIT.DIME2Barcode.Entities;
-using JIT.DIME2Barcode.Model;
+using JIT.DIME2Barcode.Entities; 
+using JIT.InformationSystem.CommonClass;
 
 namespace JIT.DIME2Barcode.SystemSetting.Organization.Dtos
 {
