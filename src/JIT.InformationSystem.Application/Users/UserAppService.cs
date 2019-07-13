@@ -25,6 +25,7 @@ using JIT.InformationSystem.Roles.Dto;
 using JIT.InformationSystem.Users.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Dynamic.Core;
 
 namespace JIT.InformationSystem.Users
 {
@@ -231,7 +232,7 @@ namespace JIT.InformationSystem.Users
         {
             CheckGetAllPermission();
 
-            var query = Repository.GetAll();
+            var query = Repository.GetAll().Where(input.Where);
             var count = await query.CountAsync();
 
             var data = await query.OrderBy(u => u.UserName).PageBy(input).ToListAsync();
@@ -245,8 +246,25 @@ namespace JIT.InformationSystem.Users
             }
             return new PagedResultDto<UserDto>(count,list);
         }
+        public async Task<PagedResultDto<UserDto>> GetAll2(UserGetAllDto input)
+        {
+            CheckGetAllPermission();
 
-      
+            var query = Repository.GetAll().Where(input.Where);
+            var count = await query.CountAsync();
+
+            var data = await query.OrderBy(u => u.UserName).PageBy(input).ToListAsync();
+
+            var list = data.MapTo<List<UserDto>>();
+            foreach (var tmp in list)
+            {
+                tmp.RoleNames = _roleRepository.GetAll()
+                    .Where(w => GetEntityByIdAsync(tmp.Id).Result.Roles.Select(s => s.RoleId).Contains(w.Id))
+                    .Select(s => s.NormalizedName).ToArray();
+            }
+            return new PagedResultDto<UserDto>(count, list);
+        }
+
     }
 }
 

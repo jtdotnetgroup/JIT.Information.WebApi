@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Abp.Application.Services.Dto;
 using JIT.DIME2Barcode.Model;
+using JIT.InformationSystem.CommonClass;
 
 namespace JIT.DIME2Barcode.SystemSetting.LogManager.Dtos
 {

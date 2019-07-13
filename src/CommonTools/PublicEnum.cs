@@ -51,6 +51,7 @@ namespace CommonTools
         /// </summary>
         public enum ICMODispBillState
         {
+            关闭=-1,
             待开工= 0,
             待汇报 = 1,
             已检验 = 2,
@@ -62,8 +63,16 @@ namespace CommonTools
         }
 
 
-
-        
+        /// <summary>
+        /// 任务状态 暂停，未更新，(执行中/已更新)，已结束
+        /// </summary>
+        public enum TaskState
+        {
+            暂停,
+            未更新,
+            已更新,
+            已结束
+        }
 
     }
 }

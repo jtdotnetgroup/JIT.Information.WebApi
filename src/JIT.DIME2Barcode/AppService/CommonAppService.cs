@@ -48,7 +48,7 @@ namespace JIT.DIME2Barcode.AppService
             string isAll = StrKey;
             StrKey = "," + StrKey + ",";
             List<TaskQty> listTaskQty = new List<TaskQty>();
-            // 开始形成数据
+           // 开始形成数据
             if (isAll == "*" || StrKey.Contains(TaskType.派工任务.ToDescription()))
             {
                 TaskQty tmpTaskQty = new TaskQty()
@@ -201,6 +201,7 @@ namespace JIT.DIME2Barcode.AppService
 
         #endregion
 
+        #region 测试
         /// <summary>
         /// 查询所属角色所有用户
         /// </summary>
@@ -209,9 +210,9 @@ namespace JIT.DIME2Barcode.AppService
         {
             // 全部
             var result = from a in ABP_User.GetAll()
-                         join r in ABP_UserRole.GetAll().Where(w => w.RoleId == input.RoleId) on a.Id equals r.UserId into g1
-                         from g in g1.DefaultIfEmpty()
-                         select new UserRole { UserId = a.Id, RoleId = g.RoleId, UserName = a.UserName };
+                join r in ABP_UserRole.GetAll().Where(w => w.RoleId == input.RoleId) on a.Id equals r.UserId into g1
+                from g in g1.DefaultIfEmpty()
+                select new UserRole { UserId = a.Id, RoleId = g.RoleId, UserName = a.UserName };
             // 全部
             if (input.type == 1)
             {
@@ -228,8 +229,9 @@ namespace JIT.DIME2Barcode.AppService
                 result = result.Where(w => w.RoleId == null);
             }
 
+            input.UserName = input.UserName ?? "";
             // 开始查询
-            result = result.Where(w => w.UserName.Contains(input.UserName));
+            result = result.Where(w => w.UserName.StartsWith(input.UserName));
             //
             var count = result.Count();
             var data = await result.OrderBy(o => o.RoleId).PageBy(input)
@@ -242,7 +244,7 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="methodName">方法名称，包含程序集名、类型名、方法名称格式如：assembly.class.method</param>
         /// <returns></returns>
-        public async Task<List<JITQueryFormDto>> GetQueryFields(string methodFullName)
+        public List<JITQueryFormDto> GetQueryFields(string methodFullName)
         {
             var arr = methodFullName.Split("#");
             if (arr.Length != 3)
@@ -269,6 +271,7 @@ namespace JIT.DIME2Barcode.AppService
             }
             catch (AmbiguousMatchException e)
             {
+                Console.WriteLine(e.Message);
                 throw new UserFriendlyException($"【{className}】中存在多个【{methodName}】名称的方法");
             }
 
@@ -311,11 +314,13 @@ namespace JIT.DIME2Barcode.AppService
                 //获取字段DisplayName特性
                 var disp = p.GetCustomAttributes<DisplayNameAttribute>().ToList();
                 //获取字段显示名称
-                var display = disp.Count == 1 ? disp[0].DisplayName : p.Name;
+                //var display = disp.Count == 1 ? disp[0].DisplayName : p.Name;
+                string  display = disp.Select(s => s.DisplayName).FirstOrDefault() ?? p.Name;
+                
                 //获取字段类型名称
                 var protyneName = p.PropertyType.ToString().Replace("System.Nullable`1","").Replace("[","").Replace("]","").ToLower();
 
-                item=new JITQueryFormDto();
+                item = new JITQueryFormDto();
                 item.DispName = display;
                 item.Name = p.Name;
                 
@@ -337,12 +342,17 @@ namespace JIT.DIME2Barcode.AppService
                         ? fielDictionary[protyneName]
                         : p.PropertyType.Name;
                 }
-
-                result.Add(item);
+                // 
+                if ( disp.Where(w=>w.DisplayName.Length>0).Count()==0) { }
+                else
+                {
+                    result.Add(item);
+                }
             });
             return result;
 
         }
+        #endregion
     }
 
 

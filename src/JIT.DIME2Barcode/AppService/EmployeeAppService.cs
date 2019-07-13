@@ -25,6 +25,7 @@ using Abp.UI;
 using Castle.Components.DictionaryAdapter;
 using JIT.DIME2Barcode.Permissions;
 using Microsoft.AspNetCore.Identity;
+using System.Linq.Dynamic.Core;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -47,20 +48,20 @@ namespace JIT.DIME2Barcode.AppService
 
 
         //返回公司
-        protected t_OrganizationUnit GetCompany(t_OrganizationUnit node,List<t_OrganizationUnit> terrList)
+        protected t_OrganizationUnit GetCompany(t_OrganizationUnit node, List<t_OrganizationUnit> terrList)
         {
             t_OrganizationUnit reslut = null;
-            if (node.OrganizationType == PublicEnum.OrganizationType.公司|| node.OrganizationType==PublicEnum.OrganizationType.集团)
+            if (node.OrganizationType == PublicEnum.OrganizationType.公司 ||
+                node.OrganizationType == PublicEnum.OrganizationType.集团)
             {
                 return node;
             }
 
-            if (node.ParentId!=null)
+            if (node.ParentId != 0)
             {
-                var parent = terrList.SingleOrDefault(p=>p.Id== node.ParentId);
-                 reslut = GetCompany(parent,terrList);
-            }
-
+                var parent = terrList.SingleOrDefault(p => p.Id == node.ParentId);
+                reslut = GetCompany(parent, terrList);
+            } 
             return reslut;
         }
 
@@ -186,7 +187,8 @@ namespace JIT.DIME2Barcode.AppService
             }
 
             entity.FTenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0;
-           
+            entity.FERPUser = input.FERPUser;
+            entity.FERPOfficeClerk = input.FERPOfficeClerk;
             entity.FUserId = userid==0?input.FUserId: userid;
             entity.IsDeleted = false;
             var count= await _ERepository.UpdateAsync(entity);
@@ -332,9 +334,8 @@ namespace JIT.DIME2Barcode.AppService
             }
             catch (Exception e)
             {
-                return 0;
                 Console.WriteLine(e);
-              
+                return 0;
             }
 
         }
@@ -344,8 +345,8 @@ namespace JIT.DIME2Barcode.AppService
 
             if (input.Id==0)
             {
-                var querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false);
-                var count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted==false );      
+                var querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false).Where(input.Where);
+                var count = await querys.CountAsync();      
                 var data = await querys.OrderBy(p => p.Id).Skip(input.SkipCount * input.MaxResultCount).Take(input.MaxResultCount).ToListAsync();
                 var list = data.MapTo<List<VWEmployeesDto>>();
                 return new PagedResultDto<VWEmployeesDto>(count, list);
@@ -356,33 +357,25 @@ namespace JIT.DIME2Barcode.AppService
                 var Querybufid = _Repository.GetAll().SingleOrDefault(p => p.Id == input.Id);
                 IQueryable<VW_Employee> querys;
                 int count = 0;
-                List<VW_Employee> data=new EditableList<VW_Employee>();
+                List<VW_Employee> data = new EditableList<VW_Employee>();
                 List<VWEmployeesDto> list=new List<VWEmployeesDto>();
 
                 if (Querybufid.ParentId==0&& Querybufid.OrganizationType==PublicEnum.OrganizationType.集团)
-                {
-                    //querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false);
-                    //count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted == false);
-                    //data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
-                    //list = data.MapTo<List<VWEmployeesDto>>();
-
+                { 
 
                     int[] FDepartmentIDArr = GetOneselfAndJunior(new int[] { input.Id });
 
-                    querys = from a in _VwRepository.GetAll()
-                        where (FDepartmentIDArr).Contains(a.FDepartment)
-                        select a;
+                    querys = _VwRepository.GetAll().Where(input.Where).Where(w => FDepartmentIDArr.Contains(w.FDepartment)&& w.IsDeleted == false);
 
-                    count = await _ERepository.GetAll().CountAsync(p =>
-                        p.IsDeleted == false && FDepartmentIDArr.Contains(p.FDepartment));
-                    data = await querys.Where(p => p.IsDeleted == false).OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
+                    count = await _ERepository.GetAll().CountAsync();
+                    data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
                     list = data.MapTo<List<VWEmployeesDto>>();
 
                 }
                 else if (Querybufid.OrganizationType== PublicEnum.OrganizationType.公司)
                 {
-                    querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false && p.FOrganizationUnitId == input.Id);
-                    count = await _ERepository.GetAll().CountAsync(p => p.IsDeleted == false && p.FOrganizationUnitId == input.Id);
+                    querys = _VwRepository.GetAll().Where(input.Where).Where(p => p.IsDeleted == false && p.FOrganizationUnitId == input.Id);
+                    count = await querys.CountAsync();
                     data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
                     list = data.MapTo<List<VWEmployeesDto>>();
                 }
@@ -391,13 +384,10 @@ namespace JIT.DIME2Barcode.AppService
 
                     int[] FDepartmentIDArr = GetOneselfAndJunior(new int[] {input.Id});
 
-                    querys = from a in _VwRepository.GetAll()
-                             where (FDepartmentIDArr).Contains(a.FDepartment)
-                             select a;
+                    querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false && FDepartmentIDArr.Contains(p.FDepartment)).Where(input.Where);
 
-                    count = await _ERepository.GetAll().CountAsync(p =>
-                        p.IsDeleted == false && FDepartmentIDArr.Contains(p.FDepartment));
-                    data = await querys.Where(p=>p.IsDeleted==false).OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
+                    count = await querys.CountAsync();
+                    data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
                     list = data.MapTo<List<VWEmployeesDto>>();
                 }
 
@@ -431,6 +421,7 @@ namespace JIT.DIME2Barcode.AppService
             }
             catch (Exception e)
             {           
+                Console.Write(e.Message);
                 return ArrParentID;
             }
              
@@ -441,8 +432,8 @@ namespace JIT.DIME2Barcode.AppService
         /// 员工编号
         /// </summary>
         /// <returns></returns>
-        public async Task<string> FMpno()
-        {
+        //public async Task<string> FMpno()
+        //{
             // var FMpno = "";    
             // //查询最后一条没有别删除的编号
             // var enetity = _ERepository.GetAll().LastOrDefault();
@@ -486,8 +477,8 @@ namespace JIT.DIME2Barcode.AppService
             //}
 
             //return FMpno;
-            return "";
-        }
+        //    return  "";
+        //}
 
         /// <summary>
         /// 返回拼接的节点信息 上级主管

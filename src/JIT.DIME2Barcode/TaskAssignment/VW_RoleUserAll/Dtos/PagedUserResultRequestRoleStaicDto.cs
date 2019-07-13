@@ -4,6 +4,7 @@ using System.Text;
 using Abp.Application.Services.Dto;
 using JetBrains.Annotations;
 using JIT.DIME2Barcode.Model;
+using JIT.InformationSystem.CommonClass;
 
 namespace JIT.DIME2Barcode.TaskAssignment.VW_RoleUserAll.Dtos
 {

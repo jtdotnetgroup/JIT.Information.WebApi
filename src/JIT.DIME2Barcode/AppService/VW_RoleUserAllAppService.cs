@@ -43,8 +43,7 @@ namespace JIT.DIME2Barcode.AppService
             
             if (input.RoleStaic == 1)//查询全部
             {
-                //var Surname = input.Surname.ToString() == null ? "" : input.Surname.ToString();
-
+              
                 query = Repository.GetAll().Where(p=>p.RoleId== input.RoleId&&p.TenantId==null&&  (p.Surname.Contains(string.IsNullOrEmpty(input.Surname)?"": input.Surname) || p.UserName.Contains(string.IsNullOrEmpty(input.Surname) ? "" : input.Surname)));
                 count = await query.CountAsync();
                 data = await query.OrderBy(u => u.UserName).PageBy(input).ToListAsync();
@@ -129,7 +128,7 @@ namespace JIT.DIME2Barcode.AppService
                         //删除userrole false
                         var query = UserRoleRepository.GetAll().FirstOrDefault(p => p.UserId == item.UserID && p.RoleId == input.Id&&p.TenantId==null) ??new UserRole();
 
-                         UserRoleRepository.Delete(query);
+                       await  UserRoleRepository.DeleteAsync(query);
                     }
 
                 }
@@ -138,6 +137,7 @@ namespace JIT.DIME2Barcode.AppService
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return 0;
             }
           

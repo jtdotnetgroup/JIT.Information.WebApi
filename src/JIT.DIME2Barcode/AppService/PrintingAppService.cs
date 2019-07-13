@@ -7,6 +7,7 @@ using Abp.Authorization;
 using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.Printing;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -24,7 +25,7 @@ namespace JIT.DIME2Barcode.AppService
         [AbpAuthorize(ProductionPlanPermissionsNames.TouchPadBarCode)]
         public async Task<List<Printing>> GetAllPrinting(PrintingInput input)
         { 
-            var data = JIT_VW_MODispBillList.GetAll().Join(JIT_ICMOInspectBill.GetAll().Where(w => input.FID.Contains(w.FID)),
+            var data =await JIT_VW_MODispBillList.GetAll().Join(JIT_ICMOInspectBill.GetAll().Where(w => input.FID.Contains(w.FID)),
                 A => A.FID, B => B.ICMODispBillID, (A, B) => new Printing
                 {
                     ItemNum = A.产品代码,
@@ -33,7 +34,7 @@ namespace JIT.DIME2Barcode.AppService
                     LotNum = B.BatchNum,
                     Qty = B.FPassAuxQty,
                     QRCode = ""
-                }).ToList();
+                }).ToListAsync();
             return data;
         }
     }

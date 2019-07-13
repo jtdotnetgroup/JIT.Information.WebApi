@@ -8,10 +8,10 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
     public class VW_DispatchBill_List:Entity<string>
     {
         [NotMapped]
-        public override string Id { get; set; }
+        public override string Id{ get; set; }
 
         public DateTime FDate { get; set; }
-        [Key]
+       
         public string FID { get; set; }
         public string FMOBillNo { get; set; }
         public int FMOInterID { get; set; }
@@ -26,7 +26,16 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
         public string FBiller { get; set; }
 
         public int FShiftID { get; set; }
-
+       
         public string dispFid { get; set; }
+        public string FStatus { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        //[Key]
+        //[NotMapped] 
+        [Key]
+        public string GUID { get; set; }
     }
 }

@@ -11,17 +11,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Authorization;
+using Castle.Components.DictionaryAdapter;
 using JIT.DIME2Barcode.AppService;
+using JIT.DIME2Barcode.Model;
 using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.SystemSetting.Employee.Dtos;
 
 namespace JIT.DIME2Barcode.SystemSetting.Organization
 {
-    public class OrganizationAppService:ApplicationService
+    public class OrganizationAppService:BaseAppService
         //: AsyncCrudAppService<OrganizationUnit, OrganizationDto, long, OrganizationGetAllInput, OrganizationCreateInput, OrganizationDto, OrganizationDto, OrganizationDeleteInput>
-    {
-
-        public IRepository<t_OrganizationUnit, int> _repository { get; set; }
+    { 
 
         public  EmployeeAppService EmployeeApp { get; set; }
 
@@ -35,7 +35,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         public async Task<List<OrganizationDto>>  GetChildMenuList(int ParentID)
         {
      
-            var quers =await _repository.GetAll().Where(p=> p.IsDeleted == false).ToListAsync();         
+            var quers =await JIT_t_OrganizationUnit.GetAll().Where(p=> p.IsDeleted == false).ToListAsync();         
             
             var list = quers.MapTo<List<OrganizationDto>>();
 
@@ -77,7 +77,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeGet)]
         public async Task<List<OrganizationDtoTest>> GetAll(OrganizationGetAllInput input)
         {
-            var query = _repository.GetAll().Where(p=>p.IsDeleted.HasValue&&!p.IsDeleted.Value);
+            var query = JIT_t_OrganizationUnit.GetAll().Where(p=>p.IsDeleted.HasValue&&!p.IsDeleted.Value);
             if (input.OrganizationType.HasValue)
             {
                 //过滤组织类型
@@ -123,7 +123,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
 
                 };
 
-                return await _repository.InsertAndGetIdAsync(entity);
+                return await JIT_t_OrganizationUnit.InsertAndGetIdAsync(entity);
             }
             catch (Exception e)
             {
@@ -146,7 +146,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
             entity.LastModifierUserId = this.AbpSession.UserId.HasValue ? this.AbpSession.UserId.Value : 0;
             entity.CreationTime = input.CreationTime;
             entity.CreatorUserId = input.CreatorUserId;
-            return await _repository.UpdateAsync(entity); ;
+            return await JIT_t_OrganizationUnit.UpdateAsync(entity); ;
         }
 
 
@@ -176,7 +176,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeGet)]
         public async Task<t_OrganizationUnit> Get(OrganizationDeleteDto input)
         {
-            var entity = await _repository.GetAll().SingleOrDefaultAsync(p => p.Id == input.Id && p.IsDeleted == false);
+            var entity = await JIT_t_OrganizationUnit.GetAll().SingleOrDefaultAsync(p => p.Id == input.Id && p.IsDeleted == false);
             return entity.MapTo<t_OrganizationUnit>();
         }
 
@@ -189,27 +189,40 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
         public async Task<int> Delete(OrganizationDeleteDto input)
         {
             var count = 0;
-            var query = _repository.GetAll().Where(p => p.Id == input.Id)
+            var query = JIT_t_OrganizationUnit.GetAll().Where(p => p.Id == input.Id)
                 .Include(p => p.Children);
 
             var entity = await query.SingleOrDefaultAsync(p => true);
 
          
 
-            var ORByID = _repository.GetAll().SingleOrDefault(p => p.Id == entity.ParentId).Id;
+            var ORByID = JIT_t_OrganizationUnit.GetAll().SingleOrDefault(p => p.Id == entity.ParentId);
 
             var EmployeeByID = EmployeeApp.GetOneselfAndJunior(new int[] {input.Id});
 
-            var EmployeeList = EmployeeApp._ERepository.GetAll()
-                .Where(p => p.IsDeleted == false && EmployeeByID.Contains(p.FDepartment)).ToList();
+            List<Entities.Employee> EmployeeList=new EditableList<Entities.Employee>();
 
+            if (EmployeeByID!=null)
+            {
+                 EmployeeList = EmployeeApp._ERepository.GetAll()
+                    .Where(p => p.IsDeleted == false && EmployeeByID.Contains(p.FDepartment)).ToList();
+            }
 
+          
             if (entity != null)
             {
-
+         
                 foreach (var e in EmployeeList)
                 {
-                  e.FDepartment = ORByID;
+                    if (ORByID!=null)
+                    {
+                        e.FDepartment = ORByID.Id;
+                    }
+                    else
+                    {
+                        e.FDepartment = EmployeeApp._ERepository.GetAll().FirstOrDefault(p => p.Id == entity.ParentId&&p.IsDeleted==false).Id;
+                    }
+                 
                   EmployeeApp._ERepository.Update(e);
                 }
 
@@ -225,7 +238,7 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
                     count++;
                 }
 
-                await _repository.UpdateAsync(entity);
+                await JIT_t_OrganizationUnit.UpdateAsync(entity);
             }
 
             return count;
@@ -249,8 +262,9 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
             {
                 return node;
             }
+             
             //判断传入节点是否有父节点，如果有，则执行递归
-            if (node.ParentId != null)
+            if (node.ParentId != 0)
             {
                 var parent = treeList.SingleOrDefault(p => p.Id == node.ParentId);
 
@@ -259,34 +273,13 @@ namespace JIT.DIME2Barcode.SystemSetting.Organization
 
             return result;
         }
-
         /// <summary>
-        /// 通过父节点ID获取所有子节点
+        /// 获取所有车间
         /// </summary>
-        /// <param name="parentId"></param>
-        /// <returns></returns>
-        //public async Task<List<t_OrganizationUnit>> GetChildren(int parentId)
-        //{
-        //    var list =await  _repository.GetAllListAsync();
-
-        //    var result = list.Where(p => p.ParentId == parentId||p.Id==parentId);
-
-
-
-        //}
-
-        /// <summary>
-        /// 通过父节点查出所有子节点
-        /// </summary>
-        /// <param name="node">父节点</param>
-        /// <param name="list">结果</param>
-        /// <returns></returns>
-        //protected List<t_OrganizationUnit> GetChildrent(t_OrganizationUnit parent, List<t_OrganizationUnit> list)
-        //{
-            
-        //}
-
-
-
+        public async Task<List<SelectModel>> GetSelectModel()
+        {
+            return await JIT_t_OrganizationUnit.GetAll()
+                .Select(s => new SelectModel {value = s.Id.ToString(), title = s.DisplayName}).ToListAsync();
+        } 
     }
 }

@@ -14,6 +14,7 @@ using Abp;
 using Abp.Authorization;
 using Abp.Domain.Uow;
 using Abp.Runtime.Validation;
+using Abp.UI;
 using JIT.DIME2Barcode.BaseData.Equipment.ISpecification;
 using JIT.DIME2Barcode.Permissions;
 
@@ -41,7 +42,7 @@ namespace JIT.DIME2Barcode.AppService
 
             if (count > 0)
             {
-                throw new AbpValidationException($"设备代码{input.FNumber}重复");
+                throw new UserFriendlyException($"设备代码{input.FNumber}重复");
             }
 
             entity =await  _repository.InsertAsync(entity);
@@ -67,7 +68,7 @@ namespace JIT.DIME2Barcode.AppService
         [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Get)]
         public async Task<PagedResultDto<EquipmentDto>> GetAll(EquipmentGetAllInput input)
         {
-            var query = _repository.GetAll();
+            var query = _repository.GetAll().Where(input.Where);
 
             if (input.OrganizationID.HasValue)
             {
@@ -77,7 +78,7 @@ namespace JIT.DIME2Barcode.AppService
 
             if (!string.IsNullOrEmpty(input.OrganizationCode))
             {
-                var org = await ORepository.GetAll().Where(p => p.Code == input.OrganizationCode).SingleOrDefaultAsync();
+                var org = await ORepository.GetAll().Where(p => p.Code == input.OrganizationCode&&p.IsDeleted==false).SingleOrDefaultAsync();
                 query = query.Where(p => p.FWorkCenterID == org.Id);
             }
 

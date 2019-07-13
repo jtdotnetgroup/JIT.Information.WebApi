@@ -7,14 +7,15 @@ using Abp.Auditing;
 using Abp.Domain.Repositories;
 using Abp.UI;
 using JIT.DIME2Barcode.Entities;
-using JIT.InformationSystem.Authorization.Users;
+ using JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos;
+ using JIT.InformationSystem.Authorization.Users;
 
 namespace JIT.DIME2Barcode.AppService
 {
     /// <summary>
     /// 服务基类
     /// </summary>
-    public class BaseAppService: ApplicationService 
+    public class BaseAppService : ApplicationService
     {
         #region 所有表、视图、存储过程
 
@@ -30,11 +31,12 @@ namespace JIT.DIME2Barcode.AppService
         /// <summary>
         /// 日志记录表
         /// </summary>
-        public IRepository<Abpauditlogs, long> LogsRepository { get; set; }
+        public IRepository<Abpauditlogs, long> JIT_Abpauditlogs { get; set; }
         #endregion
 
         #region 业务表
         // 表 
+        public IRepository<ICMODaily, string> JIT_ICMODaily { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -78,8 +80,15 @@ namespace JIT.DIME2Barcode.AppService
         /// <summary>
         /// 
         /// </summary>
-        public IRepository<DIME2Barcode.Entities.t_ICItem, int> JIT_t_ICItem { get; set; }
-        
+        public IRepository<DIME2Barcode.Entities.t_ICItem, int> JIT_t_ICItem { get; set; } 
+        /// <summary>
+        /// 组织架构
+        /// </summary>
+        public IRepository<t_OrganizationUnit, int> JIT_t_OrganizationUnit { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public IRepository<DIME2Barcode.Entities.Equipment, int> JIT_t_equipment { get; set; }
         #endregion
 
         #region 系统表
@@ -96,7 +105,7 @@ namespace JIT.DIME2Barcode.AppService
         /// <summary>
         /// 库存查询
         /// </summary>
-        public IRepository<DIME2Barcode.Entities.VM_Inventory, int> JIT_VM_Inventory { get; set; } 
+        public IRepository<DIME2Barcode.Entities.VM_Inventory, int> JIT_VM_Inventory { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -105,6 +114,14 @@ namespace JIT.DIME2Barcode.AppService
         /// 
         /// </summary>
         public IRepository<VM_ICMOInspectBillED, string> JIT_VM_ICMOInspectBillED { get; set; }
+        /// <summary>
+        /// 日计划任务明细
+        /// </summary>
+        public IRepository<VW_DispatchBill_List, string> JIT_VW_DispatchBill_List { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public IRepository<VW_ICMODispBill_By_Date, string> JIT_VW_ICMODispBill_By_Date { get; set; }
         #endregion
 
         #endregion

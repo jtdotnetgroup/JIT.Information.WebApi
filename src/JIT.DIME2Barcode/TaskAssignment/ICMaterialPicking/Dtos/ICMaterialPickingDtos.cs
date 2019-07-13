@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Entities;
 using JIT.DIME2Barcode.Model;
+using JIT.InformationSystem.CommonClass;
 
 namespace JIT.JIT.TaskAssignment.ICMaterialPicking.Dtos
 {

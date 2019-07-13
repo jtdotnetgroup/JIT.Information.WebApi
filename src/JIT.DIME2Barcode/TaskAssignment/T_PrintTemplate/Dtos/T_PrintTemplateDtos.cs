@@ -6,6 +6,7 @@ using System.Text;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Entities;
 using JIT.DIME2Barcode.Model;
+using JIT.InformationSystem.CommonClass;
 
 namespace JIT.DIME2Barcode.TaskAssignment.T_PrintTemplate.Dtos
 {

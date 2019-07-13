@@ -23,9 +23,9 @@ namespace JIT.DIME2Barcode.AppService
 
         public IRepository<TB_BadItemRelation,int> Repository { get; set; }
         public IRepository<t_SubMesType_Sync,int> SubMesTypeRepository { get; set; }//辅助资料表
-        public IRepository<t_SubMessage_Sync,int> SubMessageRepository { get; set; }//辅助资料类型表
+        public IRepository<t_SubMessage_Sync, int> SubMessageRepository { get; set; }//辅助资料类型表
         public IRepository<t_ICItem,int> ICItemRepository { get; set; }
-
+      
 
         /// <summary>
         /// 工序不良项目表
@@ -48,10 +48,9 @@ namespace JIT.DIME2Barcode.AppService
             List<TreeSubMessageDto> list = new List<TreeSubMessageDto>();
 
             var query = from a in Context.t_SubMessage
-                        join b in Context.t_SubMesType on a.FTypeID equals b.FTypeID into bd
-                        from ac in bd.DefaultIfEmpty()
+                join b in Context.t_SubMesType on a.FTypeID equals b.FTypeID into bd
+                from ac in bd.DefaultIfEmpty()
                 where ac.FName.Contains("工序资料")
-
                 select new
                 {
                     a.FInterID,
@@ -59,7 +58,7 @@ namespace JIT.DIME2Barcode.AppService
                     a.FName
                 };
 
-            foreach (var item in query.ToList())
+            foreach (var item in await query.ToListAsync())
             {
                 TreeSubMessageDto td = new TreeSubMessageDto();
                 td.key = item.FInterID.ToString();
@@ -117,43 +116,27 @@ namespace JIT.DIME2Barcode.AppService
 
             #endregion
 
-            var process = SubMessageRepository.GetAll().Include(p => p.SubMessageType)
-                .Where(p => p.SubMessageType.FName.Contains("工序"));
+            // 
+            var processIdList = SubMessageRepository.GetAll().Include(p => p.SubMessageType)
+                .Where(p => p.SubMessageType.FName.Contains("工序资料")).Select(s=>s.FInterID).ToList();
 
-            var processIdList = (from a in process
-                select a.FInterID).ToList();
-
-            var query = Repository.GetAll();
-
-            /// 过滤工序不存的记录
-            //query = from a in query
-            //    where processIdList.Contains(a.FOperID)
-            //    select a;
-
-            if (input.FOperID == 0)
-            {
-                var count = query.Count();
-
-                var data = query.OrderBy(p => p.FID).PageBy(input).Include(p => p.Operate).ToList();
-
-                var list = data.MapTo<List<TB_BadItemRelationDto>>();
-
-                return new PagedResultDto<TB_BadItemRelationDto>(count, list);
-            }
-            else
-            {
-                var count = query.Count(p => p.FOperID == input.FOperID);
-
-                var data = query.Where(p => p.FOperID == input.FOperID).OrderBy(p => p.FID).PageBy(input).Include(p => p.Operate).ToList();
-
-                var list = data.MapTo<List<TB_BadItemRelationDto>>();
-                return new PagedResultDto<TB_BadItemRelationDto>(count, list);
-            }
-
+            // 过滤工序不存的记录  
+            var query = Repository.GetAll().Where(a => processIdList.Contains(a.FOperID)).Where(input.Where);
             
+            // 
+            query = query.Include(p => p.Operate);
+            // 
+            if (input.FOperID != 0)
+            {
+                query = query.Where(p => p.FOperID == input.FOperID);
+            }  
+            // 
+            var count = await query.CountAsync();
+            var data = await query.OrderBy(p => p.FID).PageBy(input).ToListAsync();
 
-        
-
+            // 
+            var list = data.MapTo<List<TB_BadItemRelationDto>>();
+            return new PagedResultDto<TB_BadItemRelationDto>(count, list);
         }
 
 
@@ -216,9 +199,9 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="FName"></param>
         /// <returns></returns>
-        public async Task<List<t_ICItem>> GetICItem(string  FName )
+        public async Task<List<t_ICItem>> GetICItem(string  FName)
         {
-            var query = ICItemRepository.GetAll().Where(p => p.FName.Contains(FName)).OrderBy(p=>p.FName).Take(10).ToList();
+            var query = await ICItemRepository.GetAll().Where(p => p.FName.Contains(FName)).OrderBy(p=>p.FName).Take(10).ToListAsync();
 
             return query.MapTo<List<t_ICItem>>();
         }

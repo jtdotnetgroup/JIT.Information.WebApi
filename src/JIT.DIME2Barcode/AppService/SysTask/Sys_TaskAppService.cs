@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.AutoMapper;
 using JIT.DIME2Barcode.BackgroudJobs;
 using JIT.DIME2Barcode.Entities;
+using JIT.DIME2Barcode.TaskAssignment.Sys_Task.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,13 +23,13 @@ namespace JIT.DIME2Barcode.AppService.SysTask
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public async Task<List<Sys_Task>> Sys_TaskList(Sys_Task mSysTask)
-        {
+        public async Task<List<Sys_Task>> Sys_TaskList(Sys_TaskAllInputDto mSysTask)
+        { 
             var data = JIT_Sys_Task.GetAll().Where(w => w.TaskState != -1);
-            var result = await data.Where(w =>
-                    w.TaskName.Contains(mSysTask.TaskName) && w.TaskType.Contains(mSysTask.TaskType) &&
-                    (mSysTask.TaskState.Equals(0) || w.TaskState.Equals(mSysTask.TaskState)))
-                .ToListAsync();
+            var result = await data
+                .Where(mSysTask.Where)
+                //.OrderBy("DESC TaskId") 
+                .ToListAsync(); 
             return result.MapTo<List<Sys_Task>>();
         }
 

@@ -49,5 +49,5 @@
   <ItemGroup>
     <ProjectReference Include="..\JIT.InformationSystem.Web.Core\JIT.InformationSystem.Web.Core.csproj" />
   </ItemGroup>
-  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="http://json.schemastore.org/azure-iot-edge-deployment-template-2.0" /></VisualStudio></ProjectExtensions>
 </Project>
