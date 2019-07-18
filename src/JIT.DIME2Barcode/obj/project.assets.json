@@ -10951,6 +10951,7 @@
       ],
       "configFilePaths": [
         "C:\\Users\\CYX\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.1.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10958,6 +10959,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "D:\\Program Files (x86)\\DevExpress 18.1\\Components\\System\\Components\\Packages": {},
         "E:\\X_X\\我要我要\\WYWG\\WYWG\\packages": {},
         "https://www.myget.org/F/abp-nightly/api/v3/index.json": {},
         "https://www.nuget.org/api/v2/": {}
