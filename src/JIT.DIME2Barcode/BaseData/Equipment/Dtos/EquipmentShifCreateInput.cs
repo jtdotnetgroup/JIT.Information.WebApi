@@ -14,5 +14,6 @@ namespace JIT.DIME2Barcode.BaseData.Equipment.Dtos
         public int FEqiupmentID { get; set; }
         public int FEmployeeID { get; set; }
         public string FShift { get; set; }
+        public string FEmpName { get; set; }
     }
 }

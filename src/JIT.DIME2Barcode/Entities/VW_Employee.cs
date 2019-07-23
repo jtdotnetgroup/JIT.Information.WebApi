@@ -29,5 +29,6 @@ namespace JIT.DIME2Barcode.Entities
         public string remark { get; set; }
         public string UserName { get; set; }//用户账号
         public string Password { get; set; }//密码 用户绑定显示
+        public string FIDCard { get; set; }
     }
 }
