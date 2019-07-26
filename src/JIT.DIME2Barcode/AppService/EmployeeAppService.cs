@@ -153,6 +153,7 @@ namespace JIT.DIME2Barcode.AppService
             entity.FTenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0;      
             entity.FUserId = userid;
             entity.IsDeleted = false;
+
            // return 0;
             return await _ERepository.InsertAndGetIdAsync(entity);
         }
@@ -165,6 +166,15 @@ namespace JIT.DIME2Barcode.AppService
         [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_StaffUpdate)]
         public async Task<Employee> Update(EmployeeEdit input)
         {
+            if (!string.IsNullOrEmpty(input.FIDCard))
+            {
+                Employee emp;
+                if (!checkFIDCard(input.FIDCard, out emp))
+                {
+                    throw  new UserFriendlyException($"【{input.FIDCard}】此ID卡已绑定到员工【{emp.FName}】，不能重复绑定,请换卡！");
+                }
+            }
+
             var entity = input.MapTo<Employee>();
             long userid = 0;
 
@@ -193,6 +203,18 @@ namespace JIT.DIME2Barcode.AppService
             entity.IsDeleted = false;
             var count= await _ERepository.UpdateAsync(entity);
             return count;
+        }
+
+
+        private  bool checkFIDCard(string idcard,out Employee employee)
+        {
+            employee =  _ERepository.GetAll().SingleOrDefault(p => p.FIDCard == idcard);
+            if (employee != null)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -236,7 +258,6 @@ namespace JIT.DIME2Barcode.AppService
                         Console.WriteLine(e);
                         throw;
                     }
-
 
                     Console.WriteLine(entitys);
                     if (entitys != null)

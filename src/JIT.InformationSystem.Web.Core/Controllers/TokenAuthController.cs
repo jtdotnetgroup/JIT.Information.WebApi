@@ -60,6 +60,7 @@ namespace JIT.InformationSystem.Controllers
 
             var accessToken = CreateAccessToken(CreateJwtClaims(loginResult.Identity));
 
+
             return new AuthenticateResultModel
             {
                 AccessToken = accessToken,

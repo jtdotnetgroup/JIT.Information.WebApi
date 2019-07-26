@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Abp.Application.Services.Dto;
+using JetBrains.Annotations;
 using JIT.InformationSystem.Authorization.Users;
 
 namespace JIT.DIME2Barcode.SystemSetting.Employee.Dtos
@@ -26,6 +27,17 @@ namespace JIT.DIME2Barcode.SystemSetting.Employee.Dtos
         public bool IsDeleted { get; set; }
 
         public CreateEmployeeUserDto User { get; set; }
+        [CanBeNull] public string FIDCard
+        {
+            get { return fidcard;}
+            set {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    fidcard = value;
+                }}
+        }
+
+        [CanBeNull] private string fidcard;
         //public DateTime CreationTime { get; set; }
         //public bool IsDeleted { get; set; }
         //public string UserName { get; set; }

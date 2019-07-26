@@ -127,6 +127,9 @@ namespace JIT.DIME2Barcode
                     .ForMember(o => o.Employee, op => op.Ignore())
                     .ForMember(o => o.Equipment, op => op.Ignore());
 
+                config.CreateMap<EqiupmentShift, EquipmentShiftDto>()
+                    .ForMember(o => o.FEmpName, op => op.MapFrom(input => input.Employee.FName));
+
                 config.CreateMap<EmployeeDto, Employee>()
                     .ForMember(o => o.Department, op => op.Ignore());
 
@@ -137,8 +140,8 @@ namespace JIT.DIME2Barcode
                     .ForMember(o => o.CreateTime, op => op.Ignore())
                     .ForMember(o => o.CreateUserID, op => op.Ignore()); 
                 config.CreateMap<TB_BadItemRelation, TB_BadItemRelationDto>()
-                    .ForMember(o => o.FItemID, op => op.Ignore())
-                    .ForMember(o => o.FOperName, op => op.MapFrom((e,d)=>d.FOperName=e.Operate.FName));
+                    .ForMember(o => o.FItemID, op => op.Ignore());
+                    //.ForMember(o => o.FOperName, op => op.MapFrom((e,d)=>d.FOperName=e.Operate.FName));
 
 
 

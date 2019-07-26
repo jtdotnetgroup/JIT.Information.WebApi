@@ -29,6 +29,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.VWEmployees
         public bool IsDeleted { get; set; }
         public string fatherName { get; set; }
         public string zsonName { get; set; }
+        public string FIDCard { get; set; }
 
         public string rolename { get; set; }
 
@@ -45,6 +46,8 @@ namespace JIT.DIME2Barcode.TaskAssignment.VWEmployees
         public string FMpno { get; set; }
         [DisplayName("姓名")]
         public string FName { get; set; } 
+        [DisplayName("ID卡号")]
+        public string FIDCard { get; set; }
     }
 
 }

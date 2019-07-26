@@ -132,7 +132,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
 
                     var equipment = equipments.SingleOrDefault(); 
 
-                    if (equipment == null) { this.EX(-1,$"找不设备：{dailyItem.FMachineName} ，请检查设备档案");}
+                    if (equipment == null) { this.EX(-1,$"在【{icmo.车间}】车间找不到设备：{dailyItem.FMachineName} ，请检查设备档案");}
 
                     var shift = eqShifts.SingleOrDefault(p =>
                         p.FEqiupmentID == equipment.FInterID && p.FShift == dailyItem.FShift);
