@@ -13,8 +13,9 @@ namespace JIT.DIME2Barcode.Entities
         [NotMapped]
         public override int Id { get; set; }
 
-         [Key]
-        public int  FTypeID { get; set; }
+           [Key]
+           [DataType("Int32")]
+           public int  FTypeID { get; set; }
            public string FName { get; set; }  
            public int FDetail { get; set; }
            public int FType { get; set; }

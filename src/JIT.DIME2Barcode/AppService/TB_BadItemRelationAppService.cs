@@ -117,14 +117,16 @@ namespace JIT.DIME2Barcode.AppService
             #endregion
 
             // 
-            var processIdList = SubMessageRepository.GetAll().Include(p => p.SubMessageType)
-                .Where(p => p.SubMessageType.FName.Contains("工序资料")).Select(s=>s.FInterID).ToList();
+            var processList = SubMessageRepository.GetAll().Include(p => p.SubMessageType)
+                .Where(p => p.SubMessageType.FName.Contains("工序资料")).Select(p=>new {p.FInterID,p.FName}).ToList();
+
+            var processIdList = processList.Select(p => p.FInterID);
 
             // 过滤工序不存的记录  
             var query = Repository.GetAll().Where(a => processIdList.Contains(a.FOperID)).Where(input.Where);
             
             // 
-            query = query.Include(p => p.Operate);
+            //query = query.Include(p => p.Operate);
             // 
             if (input.FOperID != 0)
             {
@@ -136,6 +138,13 @@ namespace JIT.DIME2Barcode.AppService
 
             // 
             var list = data.MapTo<List<TB_BadItemRelationDto>>();
+            list.ForEach(p =>
+            {
+                var oper = processList.FirstOrDefault(a => a.FInterID == p.FOperID);
+
+                p.FOperName = oper == null ? null : oper.FName;
+            });
+
             return new PagedResultDto<TB_BadItemRelationDto>(count, list);
         }
 
