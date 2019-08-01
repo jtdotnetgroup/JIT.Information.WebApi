@@ -15,7 +15,7 @@ namespace JIT.DIME2Barcode.Entities
         public string 工作中心 { get; set; }
         public string 设备 { get; set; }
         public System.DateTime 生产日期 { get; set; }
-        public Nullable<int> 班次 { get; set; }
+        public string 班次 { get; set; }
         public string 生产任务 { get; set; }
         public string 派工单号 { get; set; }
         public long 操作者 { get; set; }
