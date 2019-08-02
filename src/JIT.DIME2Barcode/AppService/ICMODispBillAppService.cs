@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Abp;
 using Abp.Application.Services;
@@ -28,33 +29,49 @@ namespace JIT.DIME2Barcode.AppService
     /// </summary>
     public class ICMODispBillAppService : BaseAppService
     {     
+        public IRepository<ICMODispBill,string> Repository { get; set; }
+
         /// <summary>
         /// 任务派工界面数据
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Get)]
-        public async Task<PagedResultDto<ICMODispBillListDto>> GetAll(ICMODispBillGetAllInput input)
+        public async Task<PagedResultDto<ICMODispBill>> GetAll(ICMODispBillGetAllInput input)
         {
+            #region 废弃代码，并未被调用
+            //var query = JIT_VW_ICMODispBill_By_Date.GetAll()
+            //    .Where(p => p.FMOBillNo == input.FMOBillNo );
 
-            var query = JIT_VW_ICMODispBill_By_Date.GetAll()
-                .Where(p => p.FMOBillNo == input.FMOBillNo );
+            //query = input.FDate == null ? query : query.Where(p => p.日期 == input.FDate);
 
-            query = input.FDate == null ? query : query.Where(p => p.日期 == input.FDate);
+            //var count = await query.CountAsync();
+            //try
+            //{
+            //    var data = await query.ToListAsync();
+            //    var list = data.MapTo<List<ICMODispBillListDto>>();
+
+            //    return new PagedResultDto<ICMODispBillListDto>(count, list);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e);
+            //    throw;
+            //}
+
+
+            #endregion
+
+            var query = Repository.GetAll().Where(input.Where)
+                .Include(p=>p.employee)
+                .Include(p=>p.Equipment)
+                .Include(p=>p.EqiupmentShift);
 
             var count = await query.CountAsync();
-            try
-            {
-                var data = await query.ToListAsync();
-                var list = data.MapTo<List<ICMODispBillListDto>>();
 
-                return new PagedResultDto<ICMODispBillListDto>(count, list);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            var list = query.PageBy(input).ToList();
+
+            return new PagedResultDto<ICMODispBill>(count,list);
 
         }
         /// <summary>

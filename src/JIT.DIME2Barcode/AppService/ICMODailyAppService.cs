@@ -165,7 +165,8 @@ namespace JIT.DIME2Barcode.TaskAssignment
                             FDate = dailyItem.FDate.Date,
                             FOperID = op!=null?op.FInterID:0,
                             FWorkCenterName = icmo.车间,
-                            FWorker = shift.FEmployeeID
+                            FWorker = shift.FEmployeeID,
+                            FPackQty=dailyItem.PackQty
                         };
                         //插入新的日计划单
                         schedule.Dailies.Add(entity);
@@ -266,15 +267,11 @@ namespace JIT.DIME2Barcode.TaskAssignment
         [AbpAuthorize(ProductionPlanPermissionsNames.TaskPlan_Import)]
         public async Task<List<ICMOSchedule>> ImportDaily(List<ICMODailyCreatDto> input)
         {
-            var fmobillno = "";
-            var fmointerid = -1; 
-            var result = new List<ICMOSchedule>();
             //遍历导入数据
             foreach (var inputItem in input)
-                if (inputItem != null && fmobillno != inputItem.FMOBillNo)
+                if (inputItem != null )
                 {
-                    fmobillno = inputItem.FMOBillNo;
-                    fmointerid = await Create(inputItem);
+                    await Create(inputItem);
                 }
 
             return null;

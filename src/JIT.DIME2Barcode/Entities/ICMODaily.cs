@@ -44,6 +44,8 @@ namespace JIT.DIME2Barcode.Entities
         public DateTime? FCloseTime { get; set; }
         public string FNote { get; set; }
 
+        public decimal FPackQty { get; set; }
+
         public string FWorkCenterName { get; set; }
 
         [ForeignKey("FSrcID")]

@@ -43,6 +43,12 @@ namespace JIT.DIME2Barcode.Entities
         public DateTime? FStartTime { get; set; }
         [ForeignKey("FWorker")]
         public Employee employee { get; set; }
+
+        [ForeignKey("FMachineID")]
+        public Equipment Equipment { get; set; }
+
+        [ForeignKey("FShift")]
+        public EqiupmentShift EqiupmentShift { get; set; }
     }
     
 }
