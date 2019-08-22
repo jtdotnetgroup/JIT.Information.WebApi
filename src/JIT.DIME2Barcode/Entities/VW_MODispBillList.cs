@@ -40,8 +40,11 @@ namespace JIT.DIME2Barcode.Entities
 
         public DateTime 计划开工日期 { get; set; }
         public DateTime 计划完工日期 { get; set; }
+        public DateTime? FStartTime { get; set; }
 
-        public double F_102 { get; set; }
+        public DateTime? FBillTime { get; set; }
+
+        public decimal F_102 { get; set; }
         public int FWorker { get; set; }
 
         //public string WorkName { get; set; }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Abp.Domain.Entities;
+using JIT.InformationSystem.Authorization.Users;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace JIT.DIME2Barcode.Entities
@@ -35,5 +36,6 @@ namespace JIT.DIME2Barcode.Entities
     
         [ForeignKey("FDepartment")]
         public t_OrganizationUnit Department { get; set; }
+
     }
 }

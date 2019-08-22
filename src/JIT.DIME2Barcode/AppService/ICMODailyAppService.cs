@@ -329,7 +329,7 @@ namespace JIT.DIME2Barcode.TaskAssignment
 
             var count = await query.CountAsync();
 
-            var data = await query.OrderBy(p => p.FDate).PageBy(input).ToListAsync();
+            var data = await query.OrderByDescending(p => p.FDate).PageBy(input).ToListAsync();
 
             return new PagedResultDto<VW_ICMODaily_Group_By_Day>(count,data);
 

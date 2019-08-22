@@ -4256,6 +4256,14 @@
           "CommonTools.dll": {}
         }
       },
+      "Encrypt/1.0.0": {
+        "runtime": {
+          "Encrypt.dll": {}
+        },
+        "compile": {
+          "Encrypt.dll": {}
+        }
+      },
       "JIT.DIME2Barcode/1.0.0": {
         "dependencies": {
           "Abp": "4.5.0",
@@ -4325,6 +4333,7 @@
           "Abp.AspNetCore": "4.5.0",
           "Abp.AspNetCore.SignalR": "4.3.0",
           "Abp.ZeroCore": "4.3.0",
+          "Encrypt": "1.0.0",
           "JIT.DIME2Barcode": "1.0.0",
           "JIT.InformationSystem.Application": "1.0.0",
           "JIT.InformationSystem.EntityFrameworkCore": "1.0.0",
@@ -6581,6 +6590,11 @@
       "hashPath": "timezoneconverter.2.5.1.nupkg.sha512"
     },
     "CommonTools/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Encrypt/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

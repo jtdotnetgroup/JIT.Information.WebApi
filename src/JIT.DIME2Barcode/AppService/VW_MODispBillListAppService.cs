@@ -30,7 +30,7 @@ namespace JIT.JIT.TaskAssignment.VW_MODispBillList
             query = input.FStatus == 0 ? query.Where(p => p.FStatus == input.FStatus) : query.Where(p => p.FStatus > 0);
             query = input.FClosed.HasValue ? query.Where(p => p.FClosed == input.FClosed) : query;
 
-            var data = query.OrderBy(input.Sorting).PageBy(input).ToList();
+            var data = query.OrderByDescending(p=>p.FStartTime).OrderByDescending(p=>p.FBillTime).PageBy(input).ToList();
           
             var count = query.Count();
 
@@ -54,7 +54,7 @@ namespace JIT.JIT.TaskAssignment.VW_MODispBillList
             query = input.FStatus == 0 ? query.Where(p => p.FStatus == input.FStatus) : query.Where(p => p.FStatus > 0);
             query = input.FClosed.HasValue ? query.Where(p => p.FClosed == input.FClosed) : query;
 
-            var data = query.OrderBy(input.Sorting).PageBy(input).ToList();
+            var data = query.OrderByDescending(p=>p.FStartTime).OrderByDescending(p=>p.FBillTime).PageBy(input).ToList();
 
             var count = query.Count();
 

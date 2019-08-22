@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using Abp.EntityFrameworkCore.Repositories;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
 using Abp.UI;
@@ -28,8 +30,9 @@ namespace JIT.DIME2Barcode.AppService
     /// 派工单接口服务
     /// </summary>
     public class ICMODispBillAppService : BaseAppService
-    {     
-        public IRepository<ICMODispBill,string> Repository { get; set; }
+    {
+        public IRepository<ICMODispBill, string> Repository { get; set; }
+        public IRepository<VW_DispatchBill_List, string> V_Repository { get; set; }
 
         /// <summary>
         /// 任务派工界面数据
@@ -37,9 +40,10 @@ namespace JIT.DIME2Barcode.AppService
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize(ProductionPlanPermissionsNames.TaskDispatch_Get)]
-        public async Task<PagedResultDto<ICMODispBill>> GetAll(ICMODispBillGetAllInput input)
+        public async Task<PagedResultDto<VW_DispatchBill_List>> GetAll(ICMODispBillGetAllInput input)
         {
             #region 废弃代码，并未被调用
+
             //var query = JIT_VW_ICMODispBill_By_Date.GetAll()
             //    .Where(p => p.FMOBillNo == input.FMOBillNo );
 
@@ -62,18 +66,16 @@ namespace JIT.DIME2Barcode.AppService
 
             #endregion
 
-            var query = Repository.GetAll().Where(input.Where)
-                .Include(p=>p.employee)
-                .Include(p=>p.Equipment)
-                .Include(p=>p.EqiupmentShift);
+            var query = V_Repository.GetAll().Where(input.Where);
 
             var count = await query.CountAsync();
 
-            var list = query.PageBy(input).ToList();
+            var list = await query.OrderByDescending(p => p.FBillTime).PageBy(input).ToListAsync();
 
-            return new PagedResultDto<ICMODispBill>(count,list);
+            return new PagedResultDto<VW_DispatchBill_List>(count, list);
 
         }
+
         /// <summary>
         /// 日计划单生成或更新派工单
         /// </summary>
@@ -94,9 +96,11 @@ namespace JIT.DIME2Barcode.AppService
                     {
                         throw new UserFriendlyException("日计划单不存在");
                     }
+
                     // 查看是否已经存在
                     var entity =
-                        JIT_ICMODispBill.GetAll().Where(p => p.FSrcID == itemDetail.FID && p.FID == itemDetail.ICMODispBillId)
+                        JIT_ICMODispBill.GetAll().Where(p =>
+                                p.FSrcID == itemDetail.FID && p.FID == itemDetail.ICMODispBillId)
                             .SingleOrDefault(p => true) ?? new ICMODispBill();
                     // 判断是增加还是修改
                     if (string.IsNullOrWhiteSpace(entity.FID))
@@ -118,8 +122,10 @@ namespace JIT.DIME2Barcode.AppService
                          */
                         mDaily.FCommitAuxQty -= entity.FCommitAuxQty;
 
+
                         entity.FDate = DateTime.Now;
                     }
+
                     // 修改派工
                     entity.FCommitAuxQty = itemDetail.FCommitAuxQty;
                     entity.FWorker = itemDetail.FWorker;
@@ -128,6 +134,8 @@ namespace JIT.DIME2Barcode.AppService
                     entity.FMOBillNo = itemDetail.FMOBillNo;
                     entity.FMOInterID = itemDetail.FMOInterID;
                     entity.FWorkCenterID = mDaily.FWorkCenterID;
+
+                    entity.FPackQty = itemDetail.FPackQty;
                     // 
                     itemDetail.ICMODispBillId = string.IsNullOrWhiteSpace(itemDetail.ICMODispBillId)
                         ? "0"
@@ -140,18 +148,20 @@ namespace JIT.DIME2Barcode.AppService
                     else
                     {
                         await JIT_ICMODispBill.UpdateAsync(entity);
-                    } 
+                    }
+
                     // 修改日计划
                     mDaily.FCommitAuxQty += entity.FCommitAuxQty;
                     mDaily.FWorker = itemDetail.FWorker;
                     await JIT_ICMODaily.UpdateAsync(mDaily);
                 }
+
                 return null;
             }
             catch (Exception e)
             {
-                EX(-1,"系统提示",e.Message);
-                throw; 
+                EX(-1, e.Message);
+                throw;
             }
         }
         ///// <summary>
@@ -266,7 +276,7 @@ namespace JIT.DIME2Barcode.AppService
 
             return new PagedResultDto<VW_ICMODispBill_By_Date>(count, data);
         }
-         
+
         public async Task<bool> UpdateFFinishAuxQty(ICMODispBillUpdateFFinishAuxQtyInput input)
         {
             try
@@ -297,7 +307,7 @@ namespace JIT.DIME2Barcode.AppService
         {
             try
             {
-                var entity = await JIT_ICMODispBill.GetAll().Include(p=>p.employee)
+                var entity = await JIT_ICMODispBill.GetAll().Include(p => p.employee)
                     .SingleOrDefaultAsync(p => p.FID == input.FID && p.employee.FUserId == AbpSession.UserId);
                 if (entity != null)
                 {
@@ -331,21 +341,21 @@ namespace JIT.DIME2Barcode.AppService
             {
                 var data = await query.ToListAsync();
                 var list = from a in data
-                           select new
-                           {
+                    select new
+                    {
 
-                               a.FID,
-                               a.FSrcID,
-                               设备 = a.FMachineID,
-                               操作员 = a.FWorker,
-                               班次 = a.FShift,
-                               派工数量 = a.FCommitAuxQty,
-                               派工单号 = a.FBillNo,
-                               派单时间 = a.FBillTime,
-                               计划员 = a.FBiller,
-                               备注 = a.FNote,
-                               日期 = a.FDate
-                           };
+                        a.FID,
+                        a.FSrcID,
+                        设备 = a.FMachineID,
+                        操作员 = a.FWorker,
+                        班次 = a.FShift,
+                        派工数量 = a.FCommitAuxQty,
+                        派工单号 = a.FBillNo,
+                        派单时间 = a.FBillTime,
+                        计划员 = a.FBiller,
+                        备注 = a.FNote,
+                        日期 = a.FDate
+                    };
 
                 return list.ToArray();
 
@@ -357,22 +367,24 @@ namespace JIT.DIME2Barcode.AppService
             }
 
         }
+
         /// <summary>
         ///日计划任务明细
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<PagedResultDto<VW_DispatchBill_List>> Post_GetDailyDispatchList(ICMODispBill_Daily_GetAllListInput input)
+        public async Task<PagedResultDto<VW_DispatchBill_List>> Post_GetDailyDispatchList(
+            ICMODispBill_Daily_GetAllListInput input)
         {
             var query = JIT_VW_DispatchBill_List.GetAll();
 
             query = from a in query
-                    where input.FMOBillNos.Contains(a.FMOBillNo) && input.DatelList.Contains(a.FDate)
-                    select a;
+                where input.FMOBillNos.Contains(a.FMOBillNo) && input.DatelList.Contains(a.FDate)
+                select a;
 
             var count = await query.CountAsync();
 
-            var data = await query.OrderBy(a=>a.FDate).ToListAsync();
+            var data = await query.OrderByDescending(a => a.FDate).ToListAsync();
 
             return new PagedResultDto<VW_DispatchBill_List>(count, data);
         }
@@ -380,7 +392,7 @@ namespace JIT.DIME2Barcode.AppService
         /// <summary>
         /// 更改派工单状态
         /// </summary>
-        public async Task<bool> UpdateFStatus(string FID,int FStates)
+        public async Task<bool> UpdateFStatus(string FID, int FStates)
         {
             try
             {
@@ -393,8 +405,9 @@ namespace JIT.DIME2Barcode.AppService
             {
                 Console.WriteLine(e.Message);
                 return false;
-            } 
+            }
         }
+
         /// <summary>
         /// 关闭任务单
         /// </summary>
@@ -410,13 +423,32 @@ namespace JIT.DIME2Barcode.AppService
                     item.FClosed = true;
                     await JIT_ICMODispBill.UpdateAsync(item);
                 }
+
                 return true;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                return false;
+                throw new UserFriendlyException(e.Message);
             }
+        }
+
+        [HttpDelete]
+        public async Task<int> DeleteDailyAndDispBill([FromBody]string[] fids)
+        {
+            var count = 0;
+
+            var orders = await JIT_ICMODaily.GetAll().Where(p => fids.Contains(p.FID)).ToListAsync();
+
+            orders.ForEach(p =>
+            {
+                JIT_ICMODispBill.Delete(d=>d.FSrcID==p.FID);
+                
+                
+                JIT_ICMODaily.Delete(o => fids.Contains(o.FID));
+                count += 2;
+            });
+
+            return count;
         }
     }
 }

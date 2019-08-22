@@ -77,7 +77,7 @@ namespace JIT.DIME2Barcode.AppService
             long userid = 0;
             var companyId = 0;
 
-            var isExist=await  _ERepository.CountAsync(p => p.FMpno == input.FMpno);
+            var isExist=await  _ERepository.CountAsync(p => p.FMpno == input.FMpno&&p.IsDeleted==false);
 
             if (isExist > 0)
             {
@@ -366,7 +366,7 @@ namespace JIT.DIME2Barcode.AppService
 
             if (input.Id==0)
             {
-                var querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false).Where(input.Where);
+                var querys = _VwRepository.GetAll().Where(p=>p.IsDeleted).Where(input.Where);
                 var count = await querys.CountAsync();      
                 var data = await querys.OrderBy(p => p.Id).Skip(input.SkipCount * input.MaxResultCount).Take(input.MaxResultCount).ToListAsync();
                 var list = data.MapTo<List<VWEmployeesDto>>();
@@ -386,7 +386,7 @@ namespace JIT.DIME2Barcode.AppService
 
                     int[] FDepartmentIDArr = GetOneselfAndJunior(new int[] { input.Id });
 
-                    querys = _VwRepository.GetAll().Where(input.Where).Where(w => FDepartmentIDArr.Contains(w.FDepartment)&& w.IsDeleted == false);
+                    querys = _VwRepository.GetAll().Where(p=>p.IsDeleted).Where(input.Where).Where(w => FDepartmentIDArr.Contains(w.FDepartment));
 
                     count = await _ERepository.GetAll().CountAsync();
                     data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
@@ -447,59 +447,6 @@ namespace JIT.DIME2Barcode.AppService
             }
              
         }
-
-
-        /// <summary>
-        /// 员工编号
-        /// </summary>
-        /// <returns></returns>
-        //public async Task<string> FMpno()
-        //{
-            // var FMpno = "";    
-            // //查询最后一条没有别删除的编号
-            // var enetity = _ERepository.GetAll().LastOrDefault();
-            // if (enetity!=null)
-            // {
-            //     //如果存在这个编号就在原来基础上增加
-            //     string[] strFMpno = enetity.FMpno.Split("YK");
-            //     FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 1);
-
-            //     var quers = _ERepository.GetAll().SingleOrDefault(p => p.FMpno == FMpno);
-            //     if (quers!=null)
-            //     {
-            //         FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 2);
-            //     }
-            // }
-            // else
-            // {
-            //     FMpno = "YK00001";
-            // }
-
-            // return FMpno;
-
-            //var FMpno = "";    
-            ////查询最后一条没有别删除的编号
-            //var enetity = _ERepository.GetAll().LastOrDefault();
-            //if (enetity!=null)
-            //{
-            //    //如果存在这个编号就在原来基础上增加
-            //    string[] strFMpno = enetity.FMpno.Split("YK");
-            //    FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 1);
-
-            //    var quers = _ERepository.GetAll().SingleOrDefault(p => p.FMpno == FMpno);
-            //    if (quers!=null)
-            //    {
-            //        FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 2);
-            //    }
-            //}
-            //else
-            //{
-            //    FMpno = "YK00001";
-            //}
-
-            //return FMpno;
-        //    return  "";
-        //}
 
         /// <summary>
         /// 返回拼接的节点信息 上级主管

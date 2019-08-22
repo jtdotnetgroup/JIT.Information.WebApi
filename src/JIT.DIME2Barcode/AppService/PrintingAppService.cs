@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Authorization;
+using Abp.Domain.Repositories;
+using Abp.EntityFrameworkCore.Repositories;
+using JIT.DIME2Barcode.Entities;
 using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.Printing;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +19,9 @@ namespace JIT.DIME2Barcode.AppService
     /// </summary>
     public class PrintingAppService : BaseAppService
     {
+
+        public IRepository<vw_PrintLabel> PrintLabelRepository { get; set; }
+
         /// <summary>
         /// 打印质检单
         /// </summary>
@@ -23,19 +29,11 @@ namespace JIT.DIME2Barcode.AppService
         /// <returns></returns>
         [HttpPost]
         [AbpAuthorize(ProductionPlanPermissionsNames.TouchPadBarCode)]
-        public async Task<List<Printing>> GetAllPrinting(PrintingInput input)
-        { 
-            var data =await JIT_VW_MODispBillList.GetAll().Join(JIT_ICMOInspectBill.GetAll().Where(w => input.FID.Contains(w.FID)),
-                A => A.FID, B => B.ICMODispBillID, (A, B) => new Printing
-                {
-                    ItemNum = A.产品代码,
-                    ItemName = A.产品名称,
-                    PackQty = A.F_102,
-                    LotNum = B.BatchNum,
-                    Qty = B.FPassAuxQty,
-                    QRCode = ""
-                }).ToListAsync();
-            return data;
+        public async Task<List<vw_PrintLabel>> GetAllPrinting(PrintingInput input)
+        {
+            var query =await PrintLabelRepository.GetAll().Where(w => input.FID.Contains(w.FID)).ToListAsync();
+            
+            return query;
         }
     }
 }

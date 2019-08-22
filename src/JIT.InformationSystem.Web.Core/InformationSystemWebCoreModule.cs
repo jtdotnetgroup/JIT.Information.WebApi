@@ -63,6 +63,9 @@ namespace JIT.InformationSystem
             tokenAuthConfig.Audience = _appConfiguration["Authentication:JwtBearer:Audience"];
             tokenAuthConfig.SigningCredentials = new SigningCredentials(tokenAuthConfig.SecurityKey, SecurityAlgorithms.HmacSha256);
             tokenAuthConfig.Expiration = TimeSpan.FromDays(1);
+            tokenAuthConfig.PrivateKey = _appConfiguration["RsaPrivatekey"];
+            tokenAuthConfig.PublicKey = _appConfiguration["RsaPublickey"];
+            tokenAuthConfig.ClientName = _appConfiguration["ClientName"];
         }
 
         public override void Initialize()

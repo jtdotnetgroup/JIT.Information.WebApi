@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using JIT.DIME2Barcode.Entities.EFConfig;
@@ -44,12 +45,14 @@ namespace JIT.DIME2Barcode.Entities
         public DateTime? FCloseTime { get; set; }
         public string FNote { get; set; }
 
-        public decimal FPackQty { get; set; }
+        public decimal? FPackQty { get; set; }
 
         public string FWorkCenterName { get; set; }
 
         [ForeignKey("FSrcID")]
         public ICMOSchedule Schedule { get; set; }
+
+        public List<ICMODispBill> DispList { get; set; }
 
     }
 

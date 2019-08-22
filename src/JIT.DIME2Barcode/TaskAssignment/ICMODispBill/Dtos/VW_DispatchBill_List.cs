@@ -31,6 +31,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
        
         public string dispFid { get; set; }
         public string FStatus { get; set; }
+        public decimal? FPackQty { get; set; }
 
         /// <summary>
         /// 
