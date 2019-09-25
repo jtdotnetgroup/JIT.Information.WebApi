@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
 
@@ -37,5 +38,9 @@ namespace JIT.DIME2Barcode.Entities
         public decimal PackQty { get; set; }
 
         public string Biller { get; set; }
+
+        public DateTime ProductionDate { get; set; }
+        public DateTime FInspectDate { get; set; }
+        public string Machine { get; set; }
     }
 }

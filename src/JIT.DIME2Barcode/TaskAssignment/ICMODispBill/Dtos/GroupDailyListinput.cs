@@ -22,5 +22,9 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
         public string FItemModel { get; set; }
         [DisplayName("计划数量")]
         public decimal TotalPlanAuxQty { get; set; }
+
+        [DisplayName("班次")]
+        public string Fshift { get; set; }
+        
     }
 }

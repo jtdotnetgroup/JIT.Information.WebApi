@@ -10934,17 +10934,17 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DQ\\.nuget\\packages\\": {},
+    "D:\\Nuget\\.nuget\\packages": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\JIT.DIME2Barcode.csproj",
+      "projectUniqueName": "D:\\工作\\井上\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\JIT.DIME2Barcode.csproj",
       "projectName": "JIT.DIME2Barcode",
-      "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\JIT.DIME2Barcode.csproj",
-      "packagesPath": "C:\\Users\\DQ\\.nuget\\packages\\",
-      "outputPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\obj\\",
+      "projectPath": "D:\\工作\\井上\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\JIT.DIME2Barcode.csproj",
+      "packagesPath": "D:\\Nuget\\.nuget\\packages",
+      "outputPath": "D:\\工作\\井上\\JIT.Information.WebApi\\src\\JIT.DIME2Barcode\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -10952,13 +10952,14 @@
       "configFilePaths": [
         "C:\\Users\\DQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.1.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "D:\\Nuget\\.nuget\\packages": {},
         "E:\\DownLoads\\VS2017": {},
         "d:\\Program Files (x86)\\DevExpress 18.1\\Components\\System\\Components\\Packages": {},
         "https://api.nuget.org/v3/index.json": {}
@@ -10966,17 +10967,17 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\Net\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj": {
-              "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj"
+            "D:\\工作\\井上\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj": {
+              "projectPath": "D:\\工作\\井上\\JIT.Information.WebApi\\src\\CommonTools\\CommonTools.csproj"
             },
-            "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj": {
-              "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj"
+            "D:\\工作\\井上\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj": {
+              "projectPath": "D:\\工作\\井上\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Application\\JIT.InformationSystem.Application.csproj"
             },
-            "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj": {
-              "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj"
+            "D:\\工作\\井上\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj": {
+              "projectPath": "D:\\工作\\井上\\JIT.Information.WebApi\\src\\JIT.InformationSystem.Core\\JIT.InformationSystem.Core.csproj"
             },
-            "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.EntityFrameworkCore\\JIT.InformationSystem.EntityFrameworkCore.csproj": {
-              "projectPath": "D:\\Net\\JIT.Information.WebApi\\src\\JIT.InformationSystem.EntityFrameworkCore\\JIT.InformationSystem.EntityFrameworkCore.csproj"
+            "D:\\工作\\井上\\JIT.Information.WebApi\\src\\JIT.InformationSystem.EntityFrameworkCore\\JIT.InformationSystem.EntityFrameworkCore.csproj": {
+              "projectPath": "D:\\工作\\井上\\JIT.Information.WebApi\\src\\JIT.InformationSystem.EntityFrameworkCore\\JIT.InformationSystem.EntityFrameworkCore.csproj"
             }
           }
         }

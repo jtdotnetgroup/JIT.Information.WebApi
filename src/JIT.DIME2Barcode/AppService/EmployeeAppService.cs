@@ -26,6 +26,7 @@ using Castle.Components.DictionaryAdapter;
 using JIT.DIME2Barcode.Permissions;
 using Microsoft.AspNetCore.Identity;
 using System.Linq.Dynamic.Core;
+using JIT.InformationSystem.CommonClass;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -366,7 +367,7 @@ namespace JIT.DIME2Barcode.AppService
 
             if (input.Id==0)
             {
-                var querys = _VwRepository.GetAll().Where(p=>p.IsDeleted).Where(input.Where);
+                var querys = _VwRepository.GetAll().Where(p=>!p.IsDeleted).Where(input.Where);
                 var count = await querys.CountAsync();      
                 var data = await querys.OrderBy(p => p.Id).Skip(input.SkipCount * input.MaxResultCount).Take(input.MaxResultCount).ToListAsync();
                 var list = data.MapTo<List<VWEmployeesDto>>();
@@ -386,7 +387,7 @@ namespace JIT.DIME2Barcode.AppService
 
                     int[] FDepartmentIDArr = GetOneselfAndJunior(new int[] { input.Id });
 
-                    querys = _VwRepository.GetAll().Where(p=>p.IsDeleted).Where(input.Where).Where(w => FDepartmentIDArr.Contains(w.FDepartment));
+                    querys = _VwRepository.GetAll().Where(p=>!p.IsDeleted).Where(input.Where).Where(w => FDepartmentIDArr.Contains(w.FDepartment));
 
                     count = await _ERepository.GetAll().CountAsync();
                     data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
@@ -480,14 +481,17 @@ namespace JIT.DIME2Barcode.AppService
         /// <returns></returns>
 
         [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_StaffGet)]
-        public async Task<PagedResultDto<EmployeeDto>> GetAllWorkers()
+        public async Task<PagedResultDto<EmployeeDto>> GetAllWorkers(JITPagedResultRequestDto input)
         {
-            var query = _ERepository.GetAllIncluding(p => p.Department)
+            var query = _ERepository.GetAll().Where(input.Where).Include(p => p.Department)
                 .Where(p => p.Department.FWorkshopType == true&&p.IsDeleted==false);
+
+
+
 
             var count = await query.CountAsync();
 
-            var data =await query.ToListAsync();
+            var data =await query.OrderBy(p=>p.FName).PageBy(input).ToListAsync();
 
             var list = data.MapTo<List<EmployeeDto>>();
 
