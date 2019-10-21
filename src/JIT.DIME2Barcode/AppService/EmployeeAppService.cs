@@ -170,17 +170,17 @@ namespace JIT.DIME2Barcode.AppService
             if (!string.IsNullOrEmpty(input.FIDCard))
             {
                 Employee emp;
-                if (!checkFIDCard(input.FIDCard, out emp))
+                if (!checkFIDCard(input, out emp))
                 {
                     throw  new UserFriendlyException($"【{input.FIDCard}】此ID卡已绑定到员工【{emp.FName}】，不能重复绑定,请换卡！");
                 }
             }
 
             var entity = input.MapTo<Employee>();
-            long userid = 0;
+            long userid;
 
             //修改员工对应用户信息
-            await CreateOrUpdateUser(input);
+            CreateOrUpdateUser(input,out userid);
 
             if (input.FDepartment > 0) //部门ID
             {
@@ -200,16 +200,17 @@ namespace JIT.DIME2Barcode.AppService
             entity.FTenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0;
             entity.FERPUser = input.FERPUser;
             entity.FERPOfficeClerk = input.FERPOfficeClerk;
-            entity.FUserId = userid==0?input.FUserId: userid;
+            entity.FUserId =(userid!=0&& input.FUserId==0)?userid:input.FUserId;
             entity.IsDeleted = false;
+            entity.FHiredate = (entity.FHiredate == null ||entity.FHiredate==DateTime.MinValue)? DateTime.Now:entity.FHiredate;
             var count= await _ERepository.UpdateAsync(entity);
             return count;
         }
 
 
-        private  bool checkFIDCard(string idcard,out Employee employee)
+        private  bool checkFIDCard(EmployeeEdit input,out Employee employee)
         {
-            employee =  _ERepository.GetAll().SingleOrDefault(p => p.FIDCard == idcard);
+            employee =  _ERepository.GetAll().SingleOrDefault(p => p.FIDCard == input.FIDCard&&p.Id!=input.Id);
             if (employee != null)
             {
                 return false;
@@ -224,9 +225,9 @@ namespace JIT.DIME2Barcode.AppService
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeUpdate, ProductionPlanPermissionsNames.BasicData_StaffAdd)]
-        private async Task CreateOrUpdateUser(EmployeeEdit input)
+        private  void CreateOrUpdateUser(EmployeeEdit input,out long userid)
         {
-            long userid;
+            userid = 0;
             if (input.FSystemUser == 1) //是系统用户
             {
                 if (input.FUserId == 0)
@@ -249,22 +250,14 @@ namespace JIT.DIME2Barcode.AppService
                 {
                     //不加查询条件去返回对象来更改会报错
                     User entitys = null;
-                    try
-                    {
-                        entitys = await _UserRepository.GetAll()
-                            .SingleOrDefaultAsync(p => p.Id == input.FUserId);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                        throw;
-                    }
-
-                    Console.WriteLine(entitys);
+                    
+                        entitys =  _UserRepository.GetAll()
+                            .SingleOrDefault(p => p.Id == input.FUserId);
+                   
                     if (entitys != null)
                     {
                         entitys.IsActive = true;
-                        await _UserRepository.UpdateAsync(entitys);
+                         _UserRepository.Update(entitys);
                     }
                 }
             }
@@ -274,12 +267,12 @@ namespace JIT.DIME2Barcode.AppService
                 if (input.FUserId > 0)
                 {
                     //不加查询条件去返回对象来更改会报错
-                    var entitys = await _UserRepository.GetAll()
-                        .SingleOrDefaultAsync(p => p.Id == input.FUserId);
+                    var entitys =  _UserRepository.GetAll()
+                        .SingleOrDefault(p => p.Id == input.FUserId);
                     if (entitys != null)
                     {
                         entitys.IsActive = false;
-                        await _UserRepository.UpdateAsync(entitys);
+                         _UserRepository.Update(entitys);
                     }
                 }
             }
@@ -290,12 +283,12 @@ namespace JIT.DIME2Barcode.AppService
                 if (input.FUserId > 0)
                 {
                     //不加查询条件去返回对象来更改会报错
-                    var entitys = await _UserRepository.GetAll()
-                        .SingleOrDefaultAsync(p => p.Id == input.FUserId);
+                    var entitys =  _UserRepository.GetAll()
+                        .SingleOrDefault(p => p.Id == input.FUserId);
                     if (entitys != null)
                     {
                         entitys.IsActive = false;
-                        await _UserRepository.UpdateAsync(entitys);
+                         _UserRepository.Update(entitys);
                     }
                 }
             }
@@ -307,13 +300,13 @@ namespace JIT.DIME2Barcode.AppService
                     if (input.FUserId > 0)
                     {
                         //不加查询条件去返回对象来更改会报错
-                        var entitys = await _UserRepository.GetAll()
-                            .SingleOrDefaultAsync(p => p.Id == input.FUserId);
+                        var entitys =  _UserRepository.GetAll()
+                            .SingleOrDefault(p => p.Id == input.FUserId);
                         if (entitys != null)
                         {
                             entitys.IsActive = false;
                             //entity.IsDeleted = false;
-                            await _UserRepository.UpdateAsync(entitys);
+                             _UserRepository.Update(entitys);
                         }
                     }
                 }
@@ -322,13 +315,13 @@ namespace JIT.DIME2Barcode.AppService
                     if (input.FUserId > 0)
                     {
                         //不加查询条件去返回对象来更改会报错
-                        var entitys = await _UserRepository.GetAll()
-                            .SingleOrDefaultAsync(p => p.Id == input.FUserId);
+                        var entitys =  _UserRepository.GetAll()
+                            .SingleOrDefault(p => p.Id == input.FUserId);
                         if (entitys != null)
                         {
                             entitys.IsActive = true;
                             //entity.IsDeleted = false;
-                            await _UserRepository.UpdateAsync(entitys);
+                             _UserRepository.Update(entitys);
                         }
                     }
                 }

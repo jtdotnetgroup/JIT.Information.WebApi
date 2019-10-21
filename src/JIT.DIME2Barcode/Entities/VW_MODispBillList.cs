@@ -47,6 +47,9 @@ namespace JIT.DIME2Barcode.Entities
         public decimal F_102 { get; set; }
         public int FWorker { get; set; }
         public DateTime? IsYC { get; set; }
+
+        public decimal? FPackQty { get; set; }
+
         //public string WorkName { get; set; }
     }
 }
