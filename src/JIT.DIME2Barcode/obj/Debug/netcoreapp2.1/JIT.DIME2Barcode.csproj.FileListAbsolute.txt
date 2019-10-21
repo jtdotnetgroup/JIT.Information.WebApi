@@ -1,3 +1,4 @@
+ 
 E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.deps.json
 E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\bin\Debug\netcoreapp2.1\JIT.DIME2Barcode.dll
 E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csproj.CoreCompileInputs.cache
@@ -53,4 +54,4 @@ E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreap
 E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.AssemblyInfo.cs
 E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.csproj.CopyComplete
 E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.dll
-E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.pdb
+E:\捷特\源码\JIT.Information.WebApi\src\JIT.DIME2Barcode\obj\Debug\netcoreapp2.1\JIT.DIME2Barcode.pdb 

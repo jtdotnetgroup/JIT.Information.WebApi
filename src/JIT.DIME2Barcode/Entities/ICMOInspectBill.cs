@@ -36,5 +36,11 @@ namespace JIT.DIME2Barcode.Entities
         public DateTime? FBillTime { get; set; }
         public string FChecker { get; set; }
         public DateTime? FCheckTime { get; set; }
+
+        public string ICMODispBillID { get; set; }
+        public decimal FYSQty { get; set; }
+        public string BatchNum { get; set; }
+
+
     }
 }

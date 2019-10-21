@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Authorization.Users;
+using Abp.AutoMapper;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
+using Abp.EntityFrameworkCore.Repositories;
 using Abp.Extensions;
 using Abp.IdentityFramework;
 using Abp.Linq.Extensions;
@@ -17,10 +20,12 @@ using JIT.InformationSystem.Authorization;
 using JIT.InformationSystem.Authorization.Accounts;
 using JIT.InformationSystem.Authorization.Roles;
 using JIT.InformationSystem.Authorization.Users;
+using JIT.InformationSystem.EntityFrameworkCore;
 using JIT.InformationSystem.Roles.Dto;
 using JIT.InformationSystem.Users.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Dynamic.Core;
 
 namespace JIT.InformationSystem.Users
 {
@@ -29,10 +34,12 @@ namespace JIT.InformationSystem.Users
     {
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
-        private readonly IRepository<Role> _roleRepository;
+        private readonly IRepository<Role> _roleRepository; 
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
+
+      
 
         public UserAppService(
             IRepository<User, long> repository,
@@ -113,6 +120,8 @@ namespace JIT.InformationSystem.Users
                 input.LanguageName
             );
         }
+
+        
 
         protected override User MapToEntity(CreateUserDto createInput)
         {
@@ -217,6 +226,43 @@ namespace JIT.InformationSystem.Users
             }
 
             return true;
+        }
+
+        public override async Task<PagedResultDto<UserDto>> GetAll(PagedUserResultRequestDto input)
+        {
+            CheckGetAllPermission();
+
+            var query = Repository.GetAll().Where(input.Where);
+            var count = await query.CountAsync();
+
+            var data = await query.OrderBy(u => u.UserName).PageBy(input).ToListAsync();
+
+            var list = data.MapTo<List<UserDto>>();
+            foreach (var tmp in list)
+            {
+                tmp.RoleNames = _roleRepository.GetAll()
+                    .Where(w => GetEntityByIdAsync(tmp.Id).Result.Roles.Select(s => s.RoleId).Contains(w.Id))
+                    .Select(s => s.NormalizedName).ToArray();
+            }
+            return new PagedResultDto<UserDto>(count,list);
+        }
+        public async Task<PagedResultDto<UserDto>> GetAll2(UserGetAllDto input)
+        {
+            CheckGetAllPermission();
+
+            var query = Repository.GetAll().Where(input.Where);
+            var count = await query.CountAsync();
+
+            var data = await query.OrderBy(u => u.UserName).PageBy(input).ToListAsync();
+
+            var list = data.MapTo<List<UserDto>>();
+            foreach (var tmp in list)
+            {
+                tmp.RoleNames = _roleRepository.GetAll()
+                    .Where(w => GetEntityByIdAsync(tmp.Id).Result.Roles.Select(s => s.RoleId).Contains(w.Id))
+                    .Select(s => s.NormalizedName).ToArray();
+            }
+            return new PagedResultDto<UserDto>(count, list);
         }
 
     }

@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Entities;
+using JIT.DIME2Barcode.Model;
+using JIT.InformationSystem.CommonClass;
 
 namespace JIT.JIT.TaskAssignment.ICMaterialPicking.Dtos
 {
@@ -68,34 +70,32 @@ namespace JIT.JIT.TaskAssignment.ICMaterialPicking.Dtos
     /// <summary>
     /// 查询全部
     /// </summary>
-    public class ICMaterialPickingGetAllInput : PagedResultRequestDto
+    public class ICMaterialPickingGetAllInput : JITPagedResultRequestDto
     {
 
     }
     /// <summary>
     /// 创建传进来的参数
     /// </summary>
-    public class ICMaterialPickingCreateDto : IEntityDto<string>
-    {
-        public string Id { get => FID; set => FID = value; }
+    public class ICMaterialPickingCreateDto 
+    { 
         [StringLength(100)]
         public string FID { get; set; }
         [Required]
         [StringLength(100)]
         public string FSrcID { get; set; }
-        public int FEntryID { get; set; }
-        public int? FItemID { get; set; }
-        public int? FUnitID { get; set; }
-        [StringLength(200)]
-        public string FBatchNo { get; set; }
-        public decimal? FAuxQty { get; set; }
-        [StringLength(100)]
-        public string FBiller { get; set; }
-        public DateTime? FDate { get; set; }
         [StringLength(255)]
         public string FNote { get; set; }
-
+        public List<TMJX> tmjx { get; set; }
     }
+
+    public class TMJX
+    {
+        public int? FItemID { get; set; }
+        public int? FUnitID { get; set; }
+        public string FBatchNo { get; set; }
+    }
+
     /// <summary>
     /// 修改传进来的参数
     /// </summary>
@@ -123,11 +123,10 @@ namespace JIT.JIT.TaskAssignment.ICMaterialPicking.Dtos
     /// <summary>
     /// 查询明细
     /// </summary>
-    public class ICMaterialPickingGetDto : IEntityDto<string>
-    {
-        public string Id { get => FID; set => FID = value; }
-        [StringLength(100)]
+    public class ICMaterialPickingGetDto
+    { 
         public string FID { get; set; }
+        public string FSrcID { get; set; }
     }
     /// <summary>
     /// 删除明细

@@ -1,7 +1,10 @@
-﻿using Abp.AutoMapper;
+﻿using System;
+using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using JIT.InformationSystem.Authorization;
+using JIT.InformationSystem.Authorization.Users;
+using JIT.InformationSystem.Users.Dto;
 
 namespace JIT.InformationSystem
 {
@@ -13,6 +16,11 @@ namespace JIT.InformationSystem
         public override void PreInitialize()
         {
             Configuration.Authorization.Providers.Add<InformationSystemAuthorizationProvider>();
+
+            Configuration.Caching.ConfigureAll(cache =>
+            {
+                cache.DefaultSlidingExpireTime = TimeSpan.FromHours(2);
+            });
         }
 
         public override void Initialize()
@@ -26,5 +34,6 @@ namespace JIT.InformationSystem
                 cfg => cfg.AddProfiles(thisAssembly)
             );
         }
+
     }
 }

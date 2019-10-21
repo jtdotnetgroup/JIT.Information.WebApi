@@ -1,11 +1,4 @@
-E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\CommonTools\bin\Debug\CommonTools.dll
-E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\CommonTools\bin\Debug\CommonTools.pdb
-E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
-E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\CommonTools\obj\Debug\CommonTools.csproj.CoreCompileInputs.cache
-E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\CommonTools\obj\Debug\CommonTools.dll
-E:\DownLoads\JIT.InfomationSystem\4.6.0\aspnet-core\src\CommonTools\obj\Debug\CommonTools.pdb
-D:\Net\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.dll
-D:\Net\JIT.Information.WebApi\src\CommonTools\bin\Debug\CommonTools.pdb
+D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csprojAssemblyReference.cache
 D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.csproj.CoreCompileInputs.cache
 D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.dll
 D:\Net\JIT.Information.WebApi\src\CommonTools\obj\Debug\CommonTools.pdb

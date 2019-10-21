@@ -4,6 +4,7 @@ using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Runtime.Validation;
 using JIT.InformationSystem.Authorization.Users;
+using JIT.InformationSystem.CommonClass;
 
 namespace JIT.InformationSystem.Users.Dto
 {
@@ -22,8 +23,7 @@ namespace JIT.InformationSystem.Users.Dto
         [StringLength(AbpUserBase.MaxSurnameLength)]
         public string Surname { get; set; }
 
-        [Required]
-        [EmailAddress]
+        [Email]
         [StringLength(AbpUserBase.MaxEmailAddressLength)]
         public string EmailAddress { get; set; }
 
@@ -31,7 +31,7 @@ namespace JIT.InformationSystem.Users.Dto
 
         public string[] RoleNames { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "ÃÜÂë²»ÄÜÎª¿Õ")]
         [StringLength(AbpUserBase.MaxPlainPasswordLength)]
         [DisableAuditing]
         public string Password { get; set; }

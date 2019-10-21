@@ -1,14 +1,19 @@
-﻿using Abp.Application.Services;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using JIT.DIME2Barcode.Entities;
+using JIT.DIME2Barcode.Permissions;
 using JIT.DIME2Barcode.TaskAssignment.ICException.Dtos;
+using JIT.InformationSystem.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -16,14 +21,9 @@ namespace JIT.DIME2Barcode.AppService
     /// <summary>
     /// 派工异常记录
     /// </summary>
-    public class ICExceptionAppService : ApplicationService
-    {
-        //public ICExceptionAppService(IRepository<ICException, string> repository) : base(repository)
-        //{
-        //}
-        //DIME2BarcodeContext context = new DIME2BarcodeContext();
-        public IRepository<DIME2Barcode.Entities.ICException, string> Repository { get; set; }
-
+    [AbpAuthorize(ProductionPlanPermissionsNames.TouchPadDispatchedWork)]
+    public class ICExceptionAppService : BaseAppService
+    { 
         /// <summary>
         /// 获取明细
         /// </summary>
@@ -31,7 +31,7 @@ namespace JIT.DIME2Barcode.AppService
         /// <returns></returns>
         public async Task<ICExceptionDto> Get(ICExceptionInput input)
         {
-            var entity = await Repository.GetAll()
+            var entity = await JIT_ICException.GetAll() 
                 .SingleOrDefaultAsync(p => p.FID == input.FID && p.FSrcID == input.FSrcID);
             return entity.MapTo<ICExceptionDto>();
         }
@@ -40,21 +40,12 @@ namespace JIT.DIME2Barcode.AppService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<PagedResultDto<ICExceptionDto>> GetAll(ICExceptionGetAllInput input)
+        public async Task<List<Entities.ICException>> GetAll(ICExceptionGetAllInput input)
         { 
-
-            var query = Repository.GetAll().OrderBy(p => p.FID).PageBy(input);
-
-            var count = await Repository.GetAll().CountAsync();
-
-            var data = await query.ToListAsync();
-
-            var list = data.MapTo<List<ICExceptionDto>>();
-
-            return new PagedResultDto<ICExceptionDto>(count, list);
-
-        }
-
+            var query = JIT_ICException.GetAll().Where(w=>w.FSrcID==input.FID); 
+            var data = await query.ToListAsync(); 
+            return data; 
+        } 
         /// <summary>
         /// 添加和更改
         /// </summary>
@@ -64,31 +55,33 @@ namespace JIT.DIME2Barcode.AppService
         {
             try
             {
-                var entity = await Repository.GetAll()
+                var entity = await JIT_ICException.GetAll()
                     .SingleOrDefaultAsync(p => p.FID == input.FID && p.FSrcID == input.FSrcID);
+
+                var emp = await JIT_Employee.SingleAsync(p => p.FUserId == AbpSession.UserId);
                 if (entity == null)
                 {
                     entity = new DIME2Barcode.Entities.ICException()
                     {
-                        FID = input.FID,
+                        FID =  Guid.NewGuid().ToString(),
                         FSrcID = input.FSrcID,
-                        FBiller = input.FBiller,
+                        FBiller = emp.FName,
                         FNote = input.FNote,
                         FTime = input.FTime,
                         FRemark = input.FRemark,
                         FRecoverTime = input.FRecoverTime
                     };
-                    await Repository.InsertAsync(entity);
+                    await JIT_ICException.InsertAsync(entity);
                 }
                 else
                 {
-                    entity.FBiller = input.FBiller;
+                    entity.FBiller = emp.FName;
                     entity.FNote = input.FNote;
                     entity.FTime = input.FTime;
                     entity.FRemark = input.FRemark;
                     entity.FRecoverTime = input.FRecoverTime;
 
-                    await Repository.UpdateAsync(entity);
+                    await JIT_ICException.UpdateAsync(entity);
                 }
 
                 return true;
@@ -110,9 +103,9 @@ namespace JIT.DIME2Barcode.AppService
             try
             {
                 var entity =
-                    await Repository.GetAll().SingleOrDefaultAsync(p =>
+                    await JIT_ICException.GetAll().SingleOrDefaultAsync(p =>
                         p.FID == input.FID);
-                await Repository.DeleteAsync(entity);
+                await JIT_ICException.DeleteAsync(entity);
                 return true;
             }
             catch (Exception e)

@@ -9,6 +9,7 @@ using Abp.Net.Mail;
 using Abp.TestBase;
 using Abp.Zero.Configuration;
 using Abp.Zero.EntityFrameworkCore;
+using JIT.DIME2Barcode;
 using JIT.InformationSystem.EntityFrameworkCore;
 using JIT.InformationSystem.Tests.DependencyInjection;
 
@@ -17,7 +18,7 @@ namespace JIT.InformationSystem.Tests
     [DependsOn(
         typeof(InformationSystemApplicationModule),
         typeof(InformationSystemEntityFrameworkModule),
-        typeof(AbpTestBaseModule)
+        typeof(AbpTestBaseModule),typeof(JITDIME2BarcodeModule)
         )]
     public class InformationSystemTestModule : AbpModule
     {

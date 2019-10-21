@@ -14,5 +14,10 @@ namespace JIT.InformationSystem.Authentication.JwtBearer
         public SigningCredentials SigningCredentials { get; set; }
 
         public TimeSpan Expiration { get; set; }
+
+        public string PrivateKey { get; set; }
+        public string PublicKey { get; set; }
+
+        public string ClientName { get; set; }
     }
 }

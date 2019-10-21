@@ -65,8 +65,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DIME2Barcode.edmx</DependentUpon>
     </Compile>
+    <Compile Include="JITSystem.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JITSystem.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="t_ICItem.cs">
+      <DependentUpon>DIME2Barcode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Resource.cs">
       <DependentUpon>DIME2Barcode.tt</DependentUpon>
     </Compile>
     <Compile Include="VW_Group_ICMODaily.cs">
@@ -98,6 +106,13 @@
     <None Include="App.Config" />
     <None Include="DIME2Barcode.edmx.diagram">
       <DependentUpon>DIME2Barcode.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="JITSystem.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>JITSystem.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="JITSystem.edmx.diagram">
+      <DependentUpon>JITSystem.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

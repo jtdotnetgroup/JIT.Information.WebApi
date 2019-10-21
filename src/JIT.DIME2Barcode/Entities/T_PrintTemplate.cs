@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace JIT.DIME2Barcode.Entities
 {
     public partial class T_PrintTemplate
-    {
+    { 
         [Key]
         public string FInterID { get; set; }
         public int? FUserID { get; set; }

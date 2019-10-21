@@ -11,6 +11,10 @@
     <RootNamespace>JIT.InformationSystem</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Abp.Quartz" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\JIT.InformationSystem.Core\JIT.InformationSystem.Core.csproj" />
+    <ProjectReference Include="..\JIT.InformationSystem.EntityFrameworkCore\JIT.InformationSystem.EntityFrameworkCore.csproj" />
   </ItemGroup>
 </Project>
