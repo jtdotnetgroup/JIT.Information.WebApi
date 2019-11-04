@@ -14,7 +14,7 @@ namespace JIT.InformationSystem.EntityFrameworkCore.Seed
     {
         public static void SeedHostDb(IIocResolver iocResolver)
         {
-            WithDbContext<InformationSystemDbContext>(iocResolver, SeedHostDb);
+            //WithDbContext<InformationSystemDbContext>(iocResolver, SeedHostDb);
         }
 
         public static void SeedHostDb(InformationSystemDbContext context)
