@@ -9,6 +9,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.Printing
     /// </summary>
     public class Printing
     {
+
         /// <summary>
         /// 品番代码
         /// </summary>
@@ -24,7 +25,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.Printing
         /// <summary>
         /// 合格数，重量
         /// </summary>
-        public decimal? Qty { get; set; }
+        public decimal? PrintQty { get; set; }
         /// <summary>
         /// 二维码
         /// </summary>
@@ -32,6 +33,8 @@ namespace JIT.DIME2Barcode.TaskAssignment.Printing
         /// <summary>
         /// 包装数量
         /// </summary>
-        public double PackQty { get; set; }
+        public decimal PackQty { get; set; }
+
+        public string Biller { get; set; }
     }
 }

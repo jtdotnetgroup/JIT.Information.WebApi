@@ -8,15 +8,19 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Abp.Authorization;
 using Abp.Authorization.Users;
+using Abp.Domain.Repositories;
 using Abp.MultiTenancy;
 using Abp.Runtime.Security;
 using Abp.UI;
+using JIT.DIME2Barcode.Entities;
 using JIT.InformationSystem.Authentication.External;
 using JIT.InformationSystem.Authentication.JwtBearer;
 using JIT.InformationSystem.Authorization;
 using JIT.InformationSystem.Authorization.Users;
 using JIT.InformationSystem.Models.TokenAuth;
 using JIT.InformationSystem.MultiTenancy;
+using Microsoft.EntityFrameworkCore;
+using NUglify;
 
 namespace JIT.InformationSystem.Controllers
 {
@@ -30,6 +34,8 @@ namespace JIT.InformationSystem.Controllers
         private readonly IExternalAuthConfiguration _externalAuthConfiguration;
         private readonly IExternalAuthManager _externalAuthManager;
         private readonly UserRegistrationManager _userRegistrationManager;
+        private readonly IRepository<Employee> eRepository;
+        private readonly UserManager userManager;
 
         public TokenAuthController(
             LogInManager logInManager,
@@ -37,7 +43,8 @@ namespace JIT.InformationSystem.Controllers
             AbpLoginResultTypeHelper abpLoginResultTypeHelper,
             TokenAuthConfiguration configuration,
             IExternalAuthConfiguration externalAuthConfiguration,
-            IExternalAuthManager externalAuthManager,
+            IExternalAuthManager externalAuthManager,IRepository<Employee> eRepository,
+            UserManager userManager,
             UserRegistrationManager userRegistrationManager)
         {
             _logInManager = logInManager;
@@ -47,6 +54,8 @@ namespace JIT.InformationSystem.Controllers
             _externalAuthConfiguration = externalAuthConfiguration;
             _externalAuthManager = externalAuthManager;
             _userRegistrationManager = userRegistrationManager;
+            this.eRepository = eRepository;
+            this.userManager = userManager;
         }
 
         [HttpPost]
@@ -137,6 +146,37 @@ namespace JIT.InformationSystem.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<AuthenticateResultModel> AuthenticateByIDCard([FromBody] AuthenticateByIDCardModel model)
+        {
+
+
+
+            var employee =await eRepository.GetAll().Where(p => p.FIDCard == model.IDCardNumber).SingleOrDefaultAsync();
+
+            if (employee != null)
+            {
+                var user = await userManager.FindByIdAsync(employee.FUserId.ToString());
+
+                ClaimsIdentity identity=new ClaimsIdentity(new List<Claim>(){new Claim(ClaimTypes.NameIdentifier, model.IDCardNumber)});
+
+                var accessToken = CreateAccessToken(CreateJwtClaims(identity));
+
+                return new AuthenticateResultModel
+                {
+                    AccessToken = accessToken,
+                    EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),
+                    ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds,
+                    UserId = user.Id,
+                    Name = user.Name,
+                    UserName = user.UserName,
+                    EmailAddress =user.EmailAddress
+                };
+            }
+
+            throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(AbpLoginResultType.InvalidPassword, model.IDCardNumber, null);
+        }
+
         private async Task<User> RegisterExternalUserAsync(ExternalAuthUserInfo externalUser)
         {
             var user = await _userRegistrationManager.RegisterAsync(
@@ -187,7 +227,6 @@ namespace JIT.InformationSystem.Controllers
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
         {
             var loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
-
             switch (loginResult.Result)
             {
                 case AbpLoginResultType.Success:
@@ -232,6 +271,27 @@ namespace JIT.InformationSystem.Controllers
         private string GetEncrpyedAccessToken(string accessToken)
         {
             return SimpleStringCipher.Instance.Encrypt(accessToken, AppConsts.DefaultPassPhrase);
+        }
+
+        /// <summary>
+        /// 返回RSA公钥
+        /// </summary>
+        /// <param name="clientName"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public string GetPublicKey(string clientName)
+        {
+            if (string.IsNullOrEmpty(clientName))
+            {
+                throw  new UserFriendlyException("客户端名称不能为空");
+            }
+
+            if (clientName != _configuration.ClientName)
+            {
+                throw  new UserFriendlyException("非法请求");
+            }
+
+            return _configuration.PublicKey;
         }
     }
 }

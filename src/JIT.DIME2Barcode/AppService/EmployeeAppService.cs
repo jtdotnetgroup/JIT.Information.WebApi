@@ -26,6 +26,7 @@ using Castle.Components.DictionaryAdapter;
 using JIT.DIME2Barcode.Permissions;
 using Microsoft.AspNetCore.Identity;
 using System.Linq.Dynamic.Core;
+using JIT.InformationSystem.CommonClass;
 
 namespace JIT.DIME2Barcode.AppService
 {
@@ -77,7 +78,7 @@ namespace JIT.DIME2Barcode.AppService
             long userid = 0;
             var companyId = 0;
 
-            var isExist=await  _ERepository.CountAsync(p => p.FMpno == input.FMpno);
+            var isExist=await  _ERepository.CountAsync(p => p.FMpno == input.FMpno&&p.IsDeleted==false);
 
             if (isExist > 0)
             {
@@ -169,17 +170,17 @@ namespace JIT.DIME2Barcode.AppService
             if (!string.IsNullOrEmpty(input.FIDCard))
             {
                 Employee emp;
-                if (!checkFIDCard(input.FIDCard, out emp))
+                if (!checkFIDCard(input, out emp))
                 {
                     throw  new UserFriendlyException($"【{input.FIDCard}】此ID卡已绑定到员工【{emp.FName}】，不能重复绑定,请换卡！");
                 }
             }
 
             var entity = input.MapTo<Employee>();
-            long userid = 0;
+            long userid;
 
             //修改员工对应用户信息
-            await CreateOrUpdateUser(input);
+            CreateOrUpdateUser(input,out userid);
 
             if (input.FDepartment > 0) //部门ID
             {
@@ -199,16 +200,17 @@ namespace JIT.DIME2Barcode.AppService
             entity.FTenantId = this.AbpSession.TenantId.HasValue ? this.AbpSession.TenantId.Value : 0;
             entity.FERPUser = input.FERPUser;
             entity.FERPOfficeClerk = input.FERPOfficeClerk;
-            entity.FUserId = userid==0?input.FUserId: userid;
+            entity.FUserId =(userid!=0&& input.FUserId==0)?userid:input.FUserId;
             entity.IsDeleted = false;
+            entity.FHiredate = (entity.FHiredate == null ||entity.FHiredate==DateTime.MinValue)? DateTime.Now:entity.FHiredate;
             var count= await _ERepository.UpdateAsync(entity);
             return count;
         }
 
 
-        private  bool checkFIDCard(string idcard,out Employee employee)
+        private  bool checkFIDCard(EmployeeEdit input,out Employee employee)
         {
-            employee =  _ERepository.GetAll().SingleOrDefault(p => p.FIDCard == idcard);
+            employee =  _ERepository.GetAll().SingleOrDefault(p => p.FIDCard == input.FIDCard&&p.Id!=input.Id);
             if (employee != null)
             {
                 return false;
@@ -223,9 +225,9 @@ namespace JIT.DIME2Barcode.AppService
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_OrganizeUpdate, ProductionPlanPermissionsNames.BasicData_StaffAdd)]
-        private async Task CreateOrUpdateUser(EmployeeEdit input)
+        private  void CreateOrUpdateUser(EmployeeEdit input,out long userid)
         {
-            long userid;
+            userid = 0;
             if (input.FSystemUser == 1) //是系统用户
             {
                 if (input.FUserId == 0)
@@ -248,22 +250,14 @@ namespace JIT.DIME2Barcode.AppService
                 {
                     //不加查询条件去返回对象来更改会报错
                     User entitys = null;
-                    try
-                    {
-                        entitys = await _UserRepository.GetAll()
-                            .SingleOrDefaultAsync(p => p.Id == input.FUserId);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                        throw;
-                    }
-
-                    Console.WriteLine(entitys);
+                    
+                        entitys =  _UserRepository.GetAll()
+                            .SingleOrDefault(p => p.Id == input.FUserId);
+                   
                     if (entitys != null)
                     {
                         entitys.IsActive = true;
-                        await _UserRepository.UpdateAsync(entitys);
+                         _UserRepository.Update(entitys);
                     }
                 }
             }
@@ -273,12 +267,12 @@ namespace JIT.DIME2Barcode.AppService
                 if (input.FUserId > 0)
                 {
                     //不加查询条件去返回对象来更改会报错
-                    var entitys = await _UserRepository.GetAll()
-                        .SingleOrDefaultAsync(p => p.Id == input.FUserId);
+                    var entitys =  _UserRepository.GetAll()
+                        .SingleOrDefault(p => p.Id == input.FUserId);
                     if (entitys != null)
                     {
                         entitys.IsActive = false;
-                        await _UserRepository.UpdateAsync(entitys);
+                         _UserRepository.Update(entitys);
                     }
                 }
             }
@@ -289,12 +283,12 @@ namespace JIT.DIME2Barcode.AppService
                 if (input.FUserId > 0)
                 {
                     //不加查询条件去返回对象来更改会报错
-                    var entitys = await _UserRepository.GetAll()
-                        .SingleOrDefaultAsync(p => p.Id == input.FUserId);
+                    var entitys =  _UserRepository.GetAll()
+                        .SingleOrDefault(p => p.Id == input.FUserId);
                     if (entitys != null)
                     {
                         entitys.IsActive = false;
-                        await _UserRepository.UpdateAsync(entitys);
+                         _UserRepository.Update(entitys);
                     }
                 }
             }
@@ -306,13 +300,13 @@ namespace JIT.DIME2Barcode.AppService
                     if (input.FUserId > 0)
                     {
                         //不加查询条件去返回对象来更改会报错
-                        var entitys = await _UserRepository.GetAll()
-                            .SingleOrDefaultAsync(p => p.Id == input.FUserId);
+                        var entitys =  _UserRepository.GetAll()
+                            .SingleOrDefault(p => p.Id == input.FUserId);
                         if (entitys != null)
                         {
                             entitys.IsActive = false;
                             //entity.IsDeleted = false;
-                            await _UserRepository.UpdateAsync(entitys);
+                             _UserRepository.Update(entitys);
                         }
                     }
                 }
@@ -321,13 +315,13 @@ namespace JIT.DIME2Barcode.AppService
                     if (input.FUserId > 0)
                     {
                         //不加查询条件去返回对象来更改会报错
-                        var entitys = await _UserRepository.GetAll()
-                            .SingleOrDefaultAsync(p => p.Id == input.FUserId);
+                        var entitys =  _UserRepository.GetAll()
+                            .SingleOrDefault(p => p.Id == input.FUserId);
                         if (entitys != null)
                         {
                             entitys.IsActive = true;
                             //entity.IsDeleted = false;
-                            await _UserRepository.UpdateAsync(entitys);
+                             _UserRepository.Update(entitys);
                         }
                     }
                 }
@@ -366,7 +360,7 @@ namespace JIT.DIME2Barcode.AppService
 
             if (input.Id==0)
             {
-                var querys = _VwRepository.GetAll().Where(p => p.IsDeleted == false).Where(input.Where);
+                var querys = _VwRepository.GetAll().Where(p=>!p.IsDeleted).Where(input.Where);
                 var count = await querys.CountAsync();      
                 var data = await querys.OrderBy(p => p.Id).Skip(input.SkipCount * input.MaxResultCount).Take(input.MaxResultCount).ToListAsync();
                 var list = data.MapTo<List<VWEmployeesDto>>();
@@ -386,7 +380,7 @@ namespace JIT.DIME2Barcode.AppService
 
                     int[] FDepartmentIDArr = GetOneselfAndJunior(new int[] { input.Id });
 
-                    querys = _VwRepository.GetAll().Where(input.Where).Where(w => FDepartmentIDArr.Contains(w.FDepartment)&& w.IsDeleted == false);
+                    querys = _VwRepository.GetAll().Where(p=>!p.IsDeleted).Where(input.Where).Where(w => FDepartmentIDArr.Contains(w.FDepartment));
 
                     count = await _ERepository.GetAll().CountAsync();
                     data = await querys.OrderBy(p => p.Id).Skip(input.MaxResultCount * (input.SkipCount)).Take(input.MaxResultCount).ToListAsync();
@@ -448,59 +442,6 @@ namespace JIT.DIME2Barcode.AppService
              
         }
 
-
-        /// <summary>
-        /// 员工编号
-        /// </summary>
-        /// <returns></returns>
-        //public async Task<string> FMpno()
-        //{
-            // var FMpno = "";    
-            // //查询最后一条没有别删除的编号
-            // var enetity = _ERepository.GetAll().LastOrDefault();
-            // if (enetity!=null)
-            // {
-            //     //如果存在这个编号就在原来基础上增加
-            //     string[] strFMpno = enetity.FMpno.Split("YK");
-            //     FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 1);
-
-            //     var quers = _ERepository.GetAll().SingleOrDefault(p => p.FMpno == FMpno);
-            //     if (quers!=null)
-            //     {
-            //         FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 2);
-            //     }
-            // }
-            // else
-            // {
-            //     FMpno = "YK00001";
-            // }
-
-            // return FMpno;
-
-            //var FMpno = "";    
-            ////查询最后一条没有别删除的编号
-            //var enetity = _ERepository.GetAll().LastOrDefault();
-            //if (enetity!=null)
-            //{
-            //    //如果存在这个编号就在原来基础上增加
-            //    string[] strFMpno = enetity.FMpno.Split("YK");
-            //    FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 1);
-
-            //    var quers = _ERepository.GetAll().SingleOrDefault(p => p.FMpno == FMpno);
-            //    if (quers!=null)
-            //    {
-            //        FMpno = "YK0000" + (Convert.ToInt32(strFMpno[1]) + 2);
-            //    }
-            //}
-            //else
-            //{
-            //    FMpno = "YK00001";
-            //}
-
-            //return FMpno;
-        //    return  "";
-        //}
-
         /// <summary>
         /// 返回拼接的节点信息 上级主管
         /// </summary>
@@ -533,14 +474,17 @@ namespace JIT.DIME2Barcode.AppService
         /// <returns></returns>
 
         [AbpAuthorize(ProductionPlanPermissionsNames.BasicData_StaffGet)]
-        public async Task<PagedResultDto<EmployeeDto>> GetAllWorkers()
+        public async Task<PagedResultDto<EmployeeDto>> GetAllWorkers(JITPagedResultRequestDto input)
         {
-            var query = _ERepository.GetAllIncluding(p => p.Department)
+            var query = _ERepository.GetAll().Where(input.Where).Include(p => p.Department)
                 .Where(p => p.Department.FWorkshopType == true&&p.IsDeleted==false);
+
+
+
 
             var count = await query.CountAsync();
 
-            var data =await query.ToListAsync();
+            var data =await query.OrderBy(p=>p.FName).PageBy(input).ToListAsync();
 
             var list = data.MapTo<List<EmployeeDto>>();
 

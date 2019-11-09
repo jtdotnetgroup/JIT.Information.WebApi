@@ -15,4 +15,10 @@ namespace JIT.InformationSystem.Models.TokenAuth
         
         public bool RememberClient { get; set; }
     }
+
+    public class AuthenticateByIDCardModel
+    {
+        [Required]
+        public string IDCardNumber { get; set; }
+    }
 }

@@ -16,6 +16,7 @@
     <RootNamespace>JIT.InformationSystem</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Encrypt\Encrypt.csproj" />
     <ProjectReference Include="..\JIT.DIME2Barcode\JIT.DIME2Barcode.csproj" />
     <ProjectReference Include="..\JIT.InformationSystem.Application\JIT.InformationSystem.Application.csproj" />
     <ProjectReference Include="..\JIT.InformationSystem.EntityFrameworkCore\JIT.InformationSystem.EntityFrameworkCore.csproj" />

@@ -25,6 +25,6 @@ namespace JIT.DIME2Barcode.Entities
         public string FName { get; set; }
         public int FStatus { get; set; }
         public string FItemName { get; set; }
-        public double? F_102 { get; set; }
+        public decimal? F_102 { get; set; }
     }
 }

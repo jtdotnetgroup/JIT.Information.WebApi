@@ -22,5 +22,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODaily.Dtos
         public string fid { get; set; }
         //工序名称
         public string FOperID { get; set; }
+
+        public decimal PackQty { get; set; }
     }
 }

@@ -41,8 +41,21 @@ namespace JIT.DIME2Barcode.Entities
         public int FPrintCount { get; set; }
         public string FNote { get; set; }
         public DateTime? FStartTime { get; set; }
+
+        public decimal? FPackQty { get; set; }
+
         [ForeignKey("FWorker")]
         public Employee employee { get; set; }
+
+        [ForeignKey("FMachineID")]
+        public Equipment Equipment { get; set; }
+
+        [ForeignKey("FShift")]
+        public EqiupmentShift EqiupmentShift { get; set; }
+
+        [ForeignKey("FSrcID")]
+        public ICMODaily DailyBill { get; set; }
+
     }
     
 }
