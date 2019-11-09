@@ -11,7 +11,7 @@ namespace JIT.DIME2Barcode.TaskAssignment.ICMODispBill.Dtos
     {
         public  DateTime? FDate { get; set; }
 
-        [Required]
+        //[Required]
         public string FMOBillNo { get; set; }
         
         public int FMOInterID { get; set; }
